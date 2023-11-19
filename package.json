@@ -1,0 +1,15 @@
+{
+  "name": "semester-prosjekt-2",
+  "version": "1.0.0",
+  "description": "semester prosjekt",
+  "main": "index.js",
+  "scripts": {
+    "compile:tailwind" : "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.5"
+  }
+}
