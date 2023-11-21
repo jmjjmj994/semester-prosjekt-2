@@ -4,12 +4,16 @@
   "description": "semester prosjekt",
   "main": "index.js",
   "scripts": {
-    "compile:tailwind" : "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+    "compile:tailwind": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "tailwindcss": "^3.3.5"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31"
   }
 }
