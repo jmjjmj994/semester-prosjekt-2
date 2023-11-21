@@ -18,7 +18,8 @@ module.exports = {
      "primary": "	hsl(270, 6%, 6%)",
      "secondary": "hsl(257, 7%, 19%)",
       "accent": "hsl(78%, 88%, 67%)",
-      "comp" : "hsl(249, 91%, 68%)"
+      "comp" : "hsl(249, 91%, 68%)",
+      "accent": "	hsl(78, 88%, 67%)"
 
     }
 

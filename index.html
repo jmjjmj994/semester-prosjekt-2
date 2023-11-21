@@ -15,41 +15,79 @@
 
 <body class="bg-primary flex flex-col ">
 
+    <header class="flex  flex-col   h-20 bg-red-100 ">
+        <div class="w-full  flex items-center flex-col  px-4 gap-2 bg-secondary "> <!--Content wrapper-->
+
+<div class="flex items-center w-full">
+ 
 
 
-
-
-    <header class="flex  flex-col  h-20 bg-red-100 ">
-        <div class="w-full bg-secondary flex items-center justify-between"> <!--Content wrapper-->
-            
-            <div class="min-[768px]:hidden">
-                Logo
-            </div>
-            <div class="md:hidden hamburger flex  z-10"  data-hamburger>
+            <div class="md:hidden hamburger flex " data-hamburger>
                 <span class="burger bar-top active"></span>
                 <span class="burger bar-bottom active"></span>
             </div>
+  
+
+        <div>
+            <h2 class="logo-header text-white">AuctionSphere</h2>
         </div>
 
-        <nav class="navbar order-1" data-navbar> 
-
-
-
-
-
-        </nav>
-
-
-
-<form action="" class="bg-secondary h-full flex  ">
-        <div class="max-[768px]:hidden">
-            Logo
+    <nav class="flex flex-col md:bg-blue-300  navbar " data-navbar>
+        <div class="md:hidden">
+            <button  data-navbar-close >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+    
+            </button>
         </div>
-    <input class="max-[768px]:w-full w-8/12 m-auto m-0 " type="text" placeholder="Search" >
+        <nav></nav>
+    </nav>
+
+
+<button class="hidden md:block ml-auto">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+        <path fill-rule="evenodd"
+            d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+            clip-rule="evenodd" />
+    </svg>
+
+</button>
+
+        <button class="bg-comp p-1  rounded ml-auto md:ml-0">
+            Login
+        </button>
+        <button class="bg-accent p-1 rounded">
+            sign up
+        </button>
+        </div>
+
+        <div class="flex w-full">
+
+
+            <div class="search-container">
+<form action="" class="flex flex-col items-center px-4 w-full h-full md:hidden">
+    <input class="w-full h-full " type="search" placeholder="search">
 </form>
+</div>
+            </div>
+
+    </div>
+
+ 
+   
 
     </header>
- 
+
+
+  <!--   <section class="search-wrapper" data-search-wrapper>
+        search wrapper
+        <form action="">
+            <input type="search" placeholder="search">
+        </form>
+    </section> -->
+
     <main class=" bg-secondary flex-1 ">
         main
     </main>
