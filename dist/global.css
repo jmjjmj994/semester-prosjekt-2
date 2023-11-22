@@ -1,5 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap");
 
+
+
+
+/* =================================================================Typography ryles */
+
+h1 {
+  font-size: 1.750rem;
+}
+
+h2 {
+  font-size: 1.312rem;
+}
+
+
+
+
+
+/* =================================================================Typography ryles */
+
+
+
+
+
+
 body {
   font-family: "Roboto", sans-serif;
   min-height: 100vh;
@@ -75,3 +99,21 @@ header {
     visibility: visible;
   }
 }
+
+
+
+.section-wrapper {
+/*   background-color: lightblue; */
+
+  width: 100%;
+}
+
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+

@@ -7,6 +7,7 @@ module.exports = {
   ],
 
  theme:{
+  extend: {
  screens: {
   "sm": "350px",
   "md": "768px",
@@ -21,8 +22,12 @@ module.exports = {
       "comp" : "hsl(249, 91%, 68%)",
       "accent": "	hsl(78, 88%, 67%)"
 
-    }
+    },
 
+    border: {
+      "accent-border": "hsl(78, 88%, 67%)",
+    }
   } 
+},
 
 }

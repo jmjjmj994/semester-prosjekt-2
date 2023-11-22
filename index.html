@@ -15,50 +15,37 @@
 
 <body class="bg-primary flex flex-col ">
 
-    <header class="flex  flex-col   h-20 bg-red-100 ">
-        <div class="w-full h-full flex items-center flex-col  px-4 gap-2 bg-secondary "> <!--Content wrapper-->
-
+    <header class="flex flex-col  items-center  justify-between h-[6rem] bg-red-100  ">
+        <div class="w-full h-full flex items-center flex-col  gap-2 bg-accent  basis-[50%] md:basis-[100%]"> <!--Content wrapper padding later-->
             <div class="flex items-center w-full">
-
-
-
                 <div class="md:hidden hamburger flex " data-hamburger>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                         <path fill-rule="evenodd"
                             d="M2 6.75A.75.75 0 012.75 6h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 6.75zm0 6.5a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75z"
                             clip-rule="evenodd" />
                     </svg>
-
                 </div>
-
-
                 <div>
                     <h2 class="logo-header text-white">AuctionSphere</h2>
                 </div>
-
                 <nav class="flex flex-col md:bg-blue-300  navbar " data-navbar>
+                    <p>hola</p>
                     <div class="md:hidden">
                         <button data-navbar-close>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                             </svg>
-
                         </button>
                     </div>
-
                 </nav>
-
-
                 <button class="hidden md:block " data-open-search-form>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                         <path fill-rule="evenodd"
                             d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
                             clip-rule="evenodd" />
                     </svg>
-
                 </button>
-
                 <button class="bg-comp p-1  rounded ml-auto md:ml-0">
                     Login
                 </button>
@@ -67,9 +54,9 @@
                 </button>
             </div>
 
-            <div class="flex w-full">
 
 
+            <div class="flex w-full bg-purple-500 sm:basis-[50%] ">
                 <div class="search-container">
                     <button class="max-[768px]:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
@@ -78,92 +65,202 @@
                         </svg>
                     </button>
                     <form action="" class="flex flex-col items-center w-full h-full md:h-5  bg-primary">
-                        <input class="w-full h-full " type="search" placeholder="search">
+                        <input class="w-full h-full py-2" type="search" placeholder="search">
                     </form>
-
-
-
-
-
                 </div>
             </div>
-
         </div>
-
-
-
-
     </header>
 
 
 
+    <main class="  flex-grow ">
 
-    <main class=" bg-secondary flex-grow ">
-        main
+
+        <!--Top main section-->
+
+        <!--Main section wrapper-->
+        <section class="section-wrapper "> <!--Block wrapper padding later-->
+
+            <section class="  text-white flex flex-col items-center md:flex-row">
+                <article
+                    class=" flex flex-col items-center justify-center   max-w-[25rem] w-[100%] h-[15rem] gap-[10rem] order-1 text-center md:-order-1 md:max-w-[50%]">
+
+                    <!--Hero-->
+                    <div class="flex flex-col items-center">
+                        <h1>Stig inn og opplev spennende auksjoner!</h1>
+                        <button class="bg-accent text-primary p-2 w-[10rem]  rounded">Utforsk</button>
+                    </div>
+                </article>
+
+                <article class="flex flex-col items-center justify-center   w-[100%] h-[35rem]">
+                    <!--CTA-->
+                    <div class=" h-full w-full  relative md:w-[20rem] md:h-[20rem] ">
+
+                        <img class="absolute h-full w-full object-cover "
+                            src="/dist/assets/micheile-henderson-pLnaCZiwpIk-unsplash.jpg" alt="">
+
+                    </div>
+                </article>
+
+
+            </section>
+
+
+
+
+
+            <!--Featured section-->
+
+            <section  class="bg-secondary">
+                <h2 class="text-white">Featured</h2>
+
+                <article class="flex">
+                <div class="bg-purple-500 basis-72 h-20">1</div>
+                <div class="bg-purple-500 basis-72">2</div>
+                    <div class="bg-purple-500 basis-72">3</div>
+                        <div class="bg-purple-500 basis-72">4</div>
+                </article>
+            </section>
+
+
+
+            <!--Featured section-->
+
+
+
+
+
+
+            <!--About section-->
+            <section>
+                <article>
+                    image here
+                </article>
+
+
+                <section>
+                    <h3>About auction palace</h3>
+                    <p>AuctionPalace is a dynamic auction house that exudes sophistication and allure. We specialize in
+                        a wide range of
+                        exclusive items, including rare antiques, exquisite artwork, and vintage automobiles. Our
+                        auctions are curated with
+                        meticulous attention to detail, ensuring an exceptional experience for collectors and
+                        enthusiasts alike.
+                        The founder of AuctionPalace envisioned a platform that captured the elegance and beauty of
+                        luxury items, inviting
+                        buyers and sellers to engage in a seamlessly transparent bidding process. With a dedication to
+                        excellence, AuctionPalace
+                        sets itself apart in the auction industry.</p>
+
+
+                    <button class="ring-red-100">
+                        Read more
+                    </button>
+                </section>
+
+
+            </section>
+
+
+
+            <!--About section-->
+
+
+            <!--Secondary cta-->
+
+
+            <section>
+                <h4>Bli med! Legg inn ditt første bud</h4>
+                <button>Utfork</button>
+            </section>
+
+            <!--Secondary cta---->
+
+
+
+            <section>
+                <h5>Her finner jeg mye spennende</h>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt sit</p>
+                    <p>Jane Doe</p>
+            </section>
+
+
+
+
+            <!--Main section wrapper-->
+        </section>
+        <!--Top main section-->
+
+
+
+
+
+
     </main>
 
     <footer class="flex-shrink flex flex-col md:flex-wrap md:flex-row">
-<div class="md:flex-1">
-    <h3>About</h3>
-    <ul>
-        <li>
-            <a href="#">Link</a>
-        </li>
-        <li>
-            <a href="#">Link</a>
-        </li>
-        <li>
-            <a href="#">Link</a>
-        </li>
-        <li>
-            <a href="#">Link</a>
-        </li>
-        <li>
-            <a href="#">Link</a>
-        </li>
-    </ul>
-</div>
-<div class="md:flex-1">
-    <h3>Contact</h3>
-        <ul>
-            <li>
-                <a href="#">Link</a>
-            </li>
-            <li>
-                <a href="#">Link</a>
-            </li>
-            <li>
-                <a href="#">Link</a>
-            </li>
-            <li>
-                <a href="#">Link</a>
-            </li>
-            <li>
-                <a href="#">Link</a>
-            </li>
-        </ul>
-</div>
+        <div class="md:flex-1">
+            <h3>About</h3>
+            <ul>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+            </ul>
+        </div>
+        <div class="md:flex-1">
+            <h3>Contact</h3>
+            <ul>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+            </ul>
+        </div>
 
-<div class="md:flex-1">
-    <h3>Help</h3>
-        <ul>
-            <li>
-                <a href="#">Link</a>
-            </li>
-            <li>
-                <a href="#">Link</a>
-            </li>
-            <li>
-                <a href="#">Link</a>
-            </li>
-            <li>
-                <a href="#">Link</a>
-            </li>
-            <li>
-                <a href="#">Link</a>
-            </li>
-        </ul>
-</div>
+        <div class="md:flex-1">
+            <h3>Help</h3>
+            <ul>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+                <li>
+                    <a href="#">Link</a>
+                </li>
+            </ul>
+        </div>
 
 
 
