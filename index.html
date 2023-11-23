@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/dist/output.css">
     <link rel="stylesheet" href="/dist/global.css">
-    <!--     <script src="/dist/js/navbar/navbar.js" defer></script> -->
+    <script src="/dist/js/header/header.js" defer></script>
+
     <title>Home</title>
 </head>
 
@@ -15,7 +16,7 @@
 
 <body class="bg-primary flex flex-col ">
 
-    <header class="h-auto bg-accent ">
+    <header class=" bg-accent h-[5rem] ">
 
 
 
@@ -38,7 +39,13 @@
 
 
 
-        <section class="flex justify-between lg:items-center"> <!--Block parent component-->
+
+
+
+
+
+
+        <section class="flex justify-between lg:items-center  "> <!--Block parent component-->
             <!--Header hamburger & logo section-->
 
             <article class="flex">
@@ -122,7 +129,8 @@
 
 
                     <!--Ul dropdown-->
-                    <ul class="flex flex-col h-auto  lg:ml-auto  lg:flex-shrink lg:basis-[10rem] lg:flex-row lg:justify-center">
+                    <ul
+                        class="flex flex-col h-auto  lg:ml-auto  lg:flex-shrink lg:basis-[10rem] lg:flex-row lg:justify-center">
                         <li class="flex items-center justify-between lg:items-center">
                             <button>Categories</button>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
@@ -168,14 +176,20 @@
 
 
 
+
+
+
+
             <!--Search input section-->
             <article class="flex">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                    <path fill-rule="evenodd"
-                        d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z"
-                        clip-rule="evenodd" />
-                </svg>
 
+                <button data-open-search>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path fill-rule="evenodd"
+                            d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </button>
                 <!--Search input section-->
             </article>
 
@@ -200,6 +214,37 @@
 
     </header>
 
+    <section class="search-container">
+        <!--Form section-->
+        <div class="search-container__input">
+            <button data-close-search>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z"
+                        clip-rule="evenodd" />
+                </svg>
+            </button>
+
+            <section class="search-container__input-wrapper">
+                <input id="search-input" type="text">
+                <button data-clear-search>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+
+                        <path
+                            d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+                    </svg>
+                </button>
+
+            </section>
+        </div>
+
+
+        <section class="search-container__results">
+
+        </section>
+
+
+    </section>
 
 
     <main class="  flex-grow ">
