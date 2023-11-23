@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/dist/output.css">
     <link rel="stylesheet" href="/dist/global.css">
-    <script src="/dist/js/navbar/navbar.js" defer></script>
+    <!--     <script src="/dist/js/navbar/navbar.js" defer></script> -->
     <title>Home</title>
 </head>
 
@@ -15,61 +15,189 @@
 
 <body class="bg-primary flex flex-col ">
 
-    <header class="flex flex-col  items-center  justify-between h-[6rem] bg-red-100  ">
-        <div class="w-full h-full flex items-center flex-col  gap-2 bg-accent  basis-[50%] md:basis-[100%]"> <!--Content wrapper padding later-->
-            <div class="flex items-center w-full">
-                <div class="md:hidden hamburger flex " data-hamburger>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                        <path fill-rule="evenodd"
-                            d="M2 6.75A.75.75 0 012.75 6h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 6.75zm0 6.5a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </div>
-                <div>
-                    <h2 class="logo-header text-white">AuctionSphere</h2>
-                </div>
-                <nav class="flex flex-col md:bg-blue-300  navbar " data-navbar>
-                    <p>hola</p>
-                    <div class="md:hidden">
-                        <button data-navbar-close>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    <header class="h-auto bg-accent ">
+
+
+
+
+
+        <!--Top header section-->
+        <section class="top flex gap-1 justify-end">
+
+            <article class="flex items-center justify-between  ring-1 max-[1024px]:hidden ">
+                <img class="w-[2rem] h-[2rem] rounded-full" src="/alex-suprun-ZHvM3XIOHoE-unsplash(1).jpg" alt="">
+                <span data-credit>Credit: 1200</span>
+            </article>
+
+            <article class="flex items-center">
+                <p>Login</p>
+                <p>Sign up</p>
+            </article>
+        </section>
+        <!--Top header section-->
+
+
+
+        <section class="flex justify-between lg:items-center"> <!--Block parent component-->
+            <!--Header hamburger & logo section-->
+
+            <article class="flex">
+                <svg class="lg:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                    class="w-6 h-6">
+                    <path fill-rule="evenodd"
+                        d="M3 9a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 9zm0 6.75a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                        clip-rule="evenodd" />
+                </svg>
+                <img src="/dist/assets/purple_gradient.png" alt="logo dummy">
+            </article>
+            <!--Header hamburger & logo section-->
+
+
+            <nav class="fixed top-0 left-0 bg-orange-400 h-full w-[10rem] lg:static lg:flex-row lg:flex-1">
+                <!--Navbar content wrapper-->
+                <section class="bg-purple-400 h-full w-full pl-1 lg:flex ">
+                    <section class="flex justify-end py-1 pr-1 lg:hidden">
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                class="w-5 h-5">
+                                <path
+                                    d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
                             </svg>
                         </button>
-                    </div>
-                </nav>
-                <button class="hidden md:block " data-open-search-form>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                        <path fill-rule="evenodd"
-                            d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </button>
-                <button class="bg-comp p-1  rounded ml-auto md:ml-0">
-                    Login
-                </button>
-                <button class="bg-accent p-1 rounded">
-                    sign up
-                </button>
-            </div>
+                    </section>
+
+                    <!--Account section-->
+                    <section class="lg:hidden">
+                        <article class="flex items-center justify-between lg:flex-col lg:justify-start ring-1">
+                            <img class="w-[2rem] h-[2rem] rounded-full" src="/alex-suprun-ZHvM3XIOHoE-unsplash(1).jpg"
+                                alt="">
+                            <span data-credit>Credit: 1200</span>
+                        </article>
+                    </section>
+                    <!--Account section-->
+
+                    <ul class="lg:flex lg:justify-evenly bg-accent flex-1  ">
+                        <li>
+                            <a href="#">
+                                Account
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="#">
+                                Watchlist
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                History
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Buy
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="#">
+                                Sell
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                support
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                About
+                            </a>
+                        </li>
+                    </ul>
+
+
+                    <!--Ul dropdown-->
+                    <ul class="flex flex-col h-auto  lg:ml-auto  lg:flex-shrink lg:basis-[10rem] lg:flex-row lg:justify-center">
+                        <li class="flex items-center justify-between lg:items-center">
+                            <button>Categories</button>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                class="w-5 h-5">
+                                <path fill-rule="evenodd"
+                                    d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+
+
+                        </li>
+                        <!--Search result container-->
+                        <ul class="pl-1 hidden">
+                            <li>
+                                <p>Cars</p>
+                            </li>
+                            <li>
+                                <p>Cars</p>
+                            </li>
+                            <li>
+                                <p>Cars</p>
+                            </li>
+                            <li>
+                                <p>Cars</p>
+                            </li>
+                            <li>
+                                <p>Cars</p>
+                            </li>
+                        </ul>
+
+                        <!--Search result container-->
+                    </ul>
+
+                    <!--Ul dropdown-->
+
+
+                </section>
+                <!--Navbar content wrapper-->
+            </nav>
 
 
 
-            <div class="flex w-full bg-purple-500 sm:basis-[50%] ">
-                <div class="search-container">
-                    <button class="max-[768px]:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                            <path
-                                d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
-                        </svg>
-                    </button>
-                    <form action="" class="flex flex-col items-center w-full h-full md:h-5  bg-primary">
-                        <input class="w-full h-full py-2" type="search" placeholder="search">
-                    </form>
-                </div>
-            </div>
-        </div>
+
+
+
+            <!--Search input section-->
+            <article class="flex">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path fill-rule="evenodd"
+                        d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z"
+                        clip-rule="evenodd" />
+                </svg>
+
+                <!--Search input section-->
+            </article>
+
+            <!--Header hamburger & logo section-->
+        </section>
+
+
+
+
+
+        <!--Navbar-->
+
+
+
+
+
+
+        <!--Navbar-->
+
+
+
+
     </header>
 
 
@@ -93,15 +221,7 @@
                     </div>
                 </article>
 
-                <article class="flex flex-col items-center justify-center   w-[100%] h-[35rem]">
-                    <!--CTA-->
-                    <div class=" h-full w-full  relative md:w-[20rem] md:h-[20rem] ">
 
-                        <img class="absolute h-full w-full object-cover "
-                            src="/dist/assets/micheile-henderson-pLnaCZiwpIk-unsplash.jpg" alt="">
-
-                    </div>
-                </article>
 
 
             </section>
@@ -112,14 +232,14 @@
 
             <!--Featured section-->
 
-            <section  class="bg-secondary">
+            <section class="bg-secondary">
                 <h2 class="text-white">Featured</h2>
 
                 <article class="flex">
-                <div class="bg-purple-500 basis-72 h-20">1</div>
-                <div class="bg-purple-500 basis-72">2</div>
+                    <div class="bg-purple-500 basis-72 h-20">1</div>
+                    <div class="bg-purple-500 basis-72">2</div>
                     <div class="bg-purple-500 basis-72">3</div>
-                        <div class="bg-purple-500 basis-72">4</div>
+                    <div class="bg-purple-500 basis-72">4</div>
                 </article>
             </section>
 
