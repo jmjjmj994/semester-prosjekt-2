@@ -48,8 +48,8 @@
         <section class="flex justify-between lg:items-center  "> <!--Block parent component-->
             <!--Header hamburger & logo section-->
 
-            <article class="flex">
-                <button class="min-[1024px]:hidden" >
+            <article class="flex items-center">
+                <button data-hamburger class="min-[1024px]:hidden " >
                 <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                     class="w-6 h-6">
                     <path fill-rule="evenodd"
@@ -59,7 +59,7 @@
                 </button>
                
                 <div>
-                <svg class="w-[150px] h-[30px]"   viewBox="0 0 191 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="w-[100px] h-[50px]"   viewBox="0 0 191 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M10.9446 31V7.72727H20.2628C21.9749 7.72727 23.4029 7.98106 24.5469 8.48864C25.6908 8.99621 26.5507 9.70076 27.1264 10.6023C27.7022 11.4962 27.9901 12.5265 27.9901 13.6932C27.9901 14.6023 27.8082 15.4015 27.4446 16.0909C27.081 16.7727 26.581 17.3333 25.9446 17.7727C25.3158 18.2045 24.5961 18.5114 23.7855 18.6932V18.9205C24.6719 18.9583 25.5014 19.2083 26.2741 19.6705C27.0545 20.1326 27.687 20.7803 28.1719 21.6136C28.6567 22.4394 28.8991 23.4242 28.8991 24.5682C28.8991 25.803 28.5923 26.9053 27.9787 27.875C27.3726 28.8371 26.4749 29.5985 25.2855 30.1591C24.0961 30.7197 22.6302 31 20.8878 31H10.9446ZM15.8651 26.9773H19.8764C21.2476 26.9773 22.2476 26.7159 22.8764 26.1932C23.5052 25.6629 23.8196 24.9583 23.8196 24.0795C23.8196 23.4356 23.6643 22.8674 23.3537 22.375C23.0431 21.8826 22.5999 21.4962 22.0241 21.2159C21.456 20.9356 20.7779 20.7955 19.9901 20.7955H15.8651V26.9773ZM15.8651 17.4659H19.5128C20.187 17.4659 20.7855 17.3485 21.3082 17.1136C21.8385 16.8712 22.2552 16.5303 22.5582 16.0909C22.8688 15.6515 23.0241 15.125 23.0241 14.5114C23.0241 13.6705 22.7249 12.9924 22.1264 12.4773C21.5355 11.9621 20.6946 11.7045 19.6037 11.7045H15.8651V17.4659Z"
                         fill="black" class="svg-elem-1"></path>
@@ -96,11 +96,11 @@
             <!--Header hamburger & logo section-->
 
 
-            <nav class="fixed top-0 left-0 bg-orange-400 h-full w-[15rem] lg:static lg:flex-row lg:flex-1">
+            <nav  data-navbar class="fixed top-0 left-0 bg-orange-400 h-full  lg:static lg:flex-row lg:flex-1">
                 <!--Navbar content wrapper-->
                 <section class="bg-purple-400 h-full w-full  lg:flex ">
                     <section class="flex justify-end py-1 pr-1 lg:hidden">
-                        <button>
+                        <button data-close-nav >
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                 class="w-5 h-5">
                                 <path

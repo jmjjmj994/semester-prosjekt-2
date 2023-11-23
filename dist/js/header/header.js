@@ -38,3 +38,19 @@ const clearValue = (state) => {
 
 /* ==== Search modal ==== */
 
+
+
+const hamburger = document.querySelector("[data-hamburger]")
+const navClose = document.querySelector("[data-close-nav]")
+const navbar = document.querySelector("[data-navbar]")
+hamburger.onclick = () => navbarToggler(true);
+navClose.onclick = () => navbarToggler(false)
+
+
+const navbarToggler = (value) => {
+    if(value) {
+        navbar.classList.add("isActive")
+    } else {
+        navbar.classList.remove("isActive")
+    }
+}
