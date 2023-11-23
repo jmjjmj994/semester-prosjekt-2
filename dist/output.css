@@ -538,20 +538,12 @@ video {
   position: fixed;
 }
 
-.relative {
-  position: relative;
-}
-
 .left-0 {
   left: 0px;
 }
 
 .top-0 {
   top: 0px;
-}
-
-.z-10 {
-  z-index: 10;
 }
 
 .order-1 {
@@ -586,16 +578,16 @@ video {
   height: 2rem;
 }
 
+.h-\[5rem\] {
+  height: 5rem;
+}
+
 .h-auto {
   height: auto;
 }
 
 .h-full {
   height: 100%;
-}
-
-.h-\[5rem\] {
-  height: 5rem;
 }
 
 .w-5 {
@@ -829,5 +821,9 @@ video {
 
   .lg\:justify-evenly {
     justify-content: space-evenly;
+  }
+
+  .min-\[1024px\]\:hidden {
+    display: none;
   }
 }
