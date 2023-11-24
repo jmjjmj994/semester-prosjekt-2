@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/dist/global.css">
     <script src="/dist/js/header/header.js" defer></script>
     <script src="/dist/js/api/api.js" defer></script>
-
+    <script src="/dist/global.js" type="module"></script>
     <title>Home</title>
 </head>
 
@@ -27,13 +27,13 @@
         <section class="top flex gap-1 justify-end">
 
             <article class="flex items-center justify-between  ring-1 max-[1024px]:hidden ">
-                <img class="w-[2rem] h-[2rem] rounded-full" src="/alex-suprun-ZHvM3XIOHoE-unsplash(1).jpg" alt="">
-                <span data-credit>Credit: 1200</span>
+                <img data-avatar class="w-[2rem] h-[2rem] rounded-full" alt="avatar" />
+                <span data-credit></span>
             </article>
 
             <article class="flex items-center gap-2">
-              <a href="/login.html" class="underline text-blue-800">Login</a>
-               <a href="/signup.html" class="underline text-blue-800">Sign up</a>
+              <a data-login-logout href="/login.html" class="underline text-blue-800"></a>
+               <a data-signup href="/signup.html" class="underline text-blue-800"></a>
             </article>
         </section>
         <!--Top header section-->
@@ -107,9 +107,9 @@
                     <!--Account section-->
                     <section class="lg:hidden">
                         <article class="flex items-center justify-between lg:flex-col lg:justify-start ring-1">
-                            <img class="w-[2rem] h-[2rem] rounded-full" src="/alex-suprun-ZHvM3XIOHoE-unsplash(1).jpg"
-                                alt="">
-                            <span data-credit>Credit: 1200</span>
+                            <img data-avatar class="w-[2rem] h-[2rem] rounded-full" alt="avatar" />
+                             
+                            <span data-credit></span>
                         </article>
                     </section>
                     <!--Account section-->
