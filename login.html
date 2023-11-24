@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="/dist/global.css">
     <script src="/dist/js/header/header.js" defer></script>
     <script src="/dist/js/api/api.js" defer></script>
-    <script src="/dist//js/authentication/authentication.js" defer></script>
+    <script src="/dist/js/authentication/login.js" defer></script>
+   
 
-    <title>Sign up</title>
+    <title>Login</title>
 </head>
 
 
@@ -31,7 +32,7 @@
             </article>
 
             <article class="flex items-center gap-2">
-                <a href="./login.html" class="underline text-blue-800">Login</a>
+                <a href="#" class="underline text-blue-800">Login</a>
                 <a href="./signup.html" class="underline text-blue-800">Sign up</a>
             </article>
         </section>
@@ -285,41 +286,33 @@
 
     <main class="flex flex-grow">
 
-        <section class="ring-1 flex-grow flex items-center justify-center flex-col">
 
-            <section class="text-white max-w-[40rem] h-[40rem] flex flex-col ">
-                <section class="px-2  flex items-center">
-                    <h1 class="ring-1">Lag en bruker</h1>
-                </section>
-                <form data-form-type="sign-up" class="ring-1 flex-1 max-w-[28rem] w-full flex flex-col px-2 justify-center gap-3">
-                    <label for="username">Navn:</label>
-                    <input data-input-type="name" class="py-[0.5rem] rounded-md bg-accent pl-2" type="text"
-                        id="username" name="username" placeholder="Lag ett brukernavn">
-                    <label for="email">Email:</label>
-                    <input data-input-type="email" class="py-[0.5rem] rounded-md bg-accent pl-2" type="text" id="email"
-                        name="email" placeholder="Skriv din e-mail adresse">
-                    <label for="password">Passord:</label>
-                    <input data-input-type="password" class="py-[0.5rem] rounded-md bg-accent pl-2" type="password"
-                        id="password" name="password" placeholder="Lag ett password">
+<section class="ring-1 flex-grow flex items-center justify-center flex-col  ">
+   
+<section class="text-white max-w-[40rem] w-full h-[40rem]  flex flex-col items-center relative ">
+    <span class="loader"></span>
+<section class="px-2  flex items-center">
+    <h1>Logg inn</h1>
+</section>
 
 
-                    <div class="text-sm flex flex-col">
-                        <span class="flex items-center gap-2"> <span class="input-icon-name"> </span>
-                            <span class="input-name-msg">Navnet
-                                må ikke inneholde andre tegn enn understrek (_)</span></span>
-                        <span class="flex items-center gap-2"> <span class="input-icon-email">
-                            </span><span class="input-email-msg">Email må
-                                være en gyldig <b>stud.noroff.no</b> eller <b>noroff.no</b> adresse
-                            </span></span>
-                        <span class="flex items-center gap-2"> <span class="input-icon-password"></span>
-                            <span class="input-password-msg">Passordverdien må være på minst 8 tegn </span>
-                        </span>
-                    </div>
+<form data-form-type="log-in" class="ring-1 h-[30rem] max-w-[28rem] w-[100%] flex flex-col px-2 justify-center gap-5">
 
-                    <button type="submit" data-action="submit" class="bg-accent rounded-md py-3">Fullfør</button>
-                </form>
-            </section>
-        </section>
+<label for="email">Email:</label>
+<input type="text" data-input-type="email" placeholder="E-post adresse" name="email" class="py-[0.5rem] rounded-md bg-accent pl-2 w-full"> 
+<label for="password">Passord:</label>
+<input type="text" data-input-type="password" placeholder="Passord" name="passord" class="py-[0.5rem] rounded-md bg-accent pl-2">
+
+<span data-form-type="error" class="text-white block ring-1 min-h-[2rem]"></span>
+
+<button type="submit" data-action="submit" class="bg-accent rounded-md py-5 ">Fullfør</button>
+
+
+
+
+</form>
+</section>
+</section>
 
 
 

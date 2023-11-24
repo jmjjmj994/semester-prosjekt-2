@@ -4,7 +4,8 @@ module.exports = {
     './dist/**/*.js',
     './components/**/*.{html,js}',
     './index.html',
-    './signup.html'
+    './signup.html',
+    './login.html'
   ],
 
  theme:{

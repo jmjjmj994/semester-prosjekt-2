@@ -33,3 +33,9 @@ DELETE
 /api/v1/auction/listings/{id}
 POST
 /api/v1/auction/listings/{id}/bids
+
+testacc
+
+taurin
+taurin@noroff.no
+taurin12

@@ -10,8 +10,6 @@ login: "https://api.noroff.dev/api/v1/auction/auth/login",
 }
 
 
-console.log(userAuthEndpoints)
-
 
 
 
