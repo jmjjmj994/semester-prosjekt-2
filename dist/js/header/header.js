@@ -54,3 +54,13 @@ const navbarToggler = (value) => {
         navbar.classList.remove("isActive")
     }
 }
+
+
+/* const header = document.querySelector("[data-header]");
+
+
+header.addEventListener("click", (e) => {
+   if(e.target.tagName === "NAV") {
+    console.log(e.target)
+   }
+}) */
