@@ -8,22 +8,19 @@
     <link rel="stylesheet" href="/dist/global.css">
     <script src="/dist/js/header/header.js" defer></script>
     <script src="/dist/js/api/api.js" defer></script>
+    <script src="/dist//js/authentication/authentication.js" defer></script>
 
-    <title>Home</title>
+    <title>Sign up</title>
 </head>
 
 
-<span class="loader"></span>
+
 
 
 
 <body class="bg-primary flex flex-col ">
 
     <header data-header class=" bg-accent h-[5rem] ">
-
-
-
-
 
         <!--Top header section-->
         <section class="top flex gap-1 justify-end">
@@ -34,8 +31,8 @@
             </article>
 
             <article class="flex items-center gap-2">
-              <a href="#" class="underline text-blue-800">Login</a>
-               <a href="/signup.html" class="underline text-blue-800">Sign up</a>
+                <a href="#" class="underline text-blue-800">Login</a>
+                <a href="#" class="underline text-blue-800">Sign up</a>
             </article>
         </section>
         <!--Top header section-->
@@ -286,137 +283,43 @@
     </section>
 
 
-    <main class="  flex-grow ">
+    <main class="flex flex-grow">
 
+        <section class="ring-1 flex-grow flex items-center justify-center flex-col">
 
-
-
-        <!--Main section wrapper-->
-
-        <!--CTA-->
-        <section class="section-wrapper "> <!--Block wrapper padding later-->
-
-
-            <section class=" w-full  h-[50vh]  text-white flex flex-col justify-center items-center md:flex-row p-4">
-
-                <!--Hero-->
-                <div class="flex flex-col items-center gap-5 ring-1">
-                    <h1 class="cta-header">
-
-
-                        <span></span>Stig inn og opplev spennende auksjoner!
-                    </h1>
-                    <button class="bg-accent text-primary p-2 w-[10rem]  rounded">Utforsk</button>
-                </div>
-            </section>
-
-            <!--CTA-->
-
-
-
-
-            <!--Featured section-->
-
-            <section class="bg-secondary h-auto">
-                <h2 class="text-white">Featured</h2>
-
-                <section class="flex flex-wrap ">
-                    <article class="bg-purple-500 test-card">1</article>
-                    <article class="bg-purple-500 test-card">1</article>
-                    <article class="bg-purple-500 test-card">1</article>
-                    <article class="bg-purple-500 test-card">1</article>
+            <section class="text-white max-w-[40rem] h-[40rem] flex flex-col ">
+                <section class="px-2  flex items-center">
+                    <h1 class="ring-1">Lag en bruker</h1>
                 </section>
-            </section>
+                <form data-form-type="sign-up" class="ring-1 flex-1 flex flex-col px-2 justify-center gap-3">
+                    <label for="username">Navn:</label>
+                    <input data-input-type="name" class="py-[0.5rem] rounded-md bg-accent pl-2" type="text"
+                        id="username" name="username" placeholder="Lag ett brukernavn">
+                    <label for="email">Email:</label>
+                    <input data-input-type="email" class="py-[0.5rem] rounded-md bg-accent pl-2" type="text" id="email"
+                        name="email" placeholder="Skriv din e-mail adresse">
+                    <label for="password">Passord:</label>
+                    <input data-input-type="password" class="py-[0.5rem] rounded-md bg-accent pl-2" type="password"
+                        id="password" name="password" placeholder="Lag ett password">
 
 
-
-            <!--Featured section-->
-
-
-
-
-
-
-            <!--About section-->
-            <section>
-                <article class="bg-purple-400 h-[40vh]">
-                    image here
-                </article>
-
-
-                <section class=" w-full">
-
-                    <article class="s-wrap text-white ring-1 bg-accent ">
-                        <h3>Om BudHjørnet</h3>
-                        <p class="max-w-[50ch]">BudHjørnet er et dynamisk auksjonshus som tilbyr alt fra hverdagslige
-                            varer til verdifulle gjenstander. Vi huser et
-                            variert utvalg av produkter, inkludert alt fra rimelige varer til verdifulle varer av høy
-                            verdi. Uansett om det er
-                            små ting eller større verdigjenstander, ønsker vi å tilby en plattform for en bred variasjon
-                            av auksjoner.
-                            Vårt mål er å tilby en sømløs og gjennomsiktig budprosess for alle typer varer. Enten det er
-                            hverdagslige
-                            gjenstander eller verdifulle varer, er BudHjørnet stedet hvor budgivere og selgere kan
-                            samles for å handle på en
-                            enkel og pålitelig måte.</p>
-
-
-
-                        <button class="ring-red-100">
-                            Les mer
-                        </button>
-                    </article>
-                </section>
-
-
-            </section>
-
-
-
-            <!--About section-->
-
-
-            <!--Secondary cta-->
-
-
-            <section class="bg-purple-300 text-center  py-20 ">
-                <h4>Bli med! Legg inn ditt første bud</h4>
-                <button>Utforsk</button>
-            </section>
-
-            <!--Secondary cta---->
-
-
-
-            <section class="h-[50vh]"> <!--Reviews slider-->
-                <article class="text-white flex flex-col items-center justify-center ring-1">
-                    <div>
-                        <h5>Her finner jeg mye spennende</h5>
+                    <div class="text-sm flex flex-col">
+                        <span class="flex items-center gap-2"> <span class="input-icon-name"> </span>
+                            <span class="input-name-msg">Navnet
+                                må ikke inneholde andre tegn enn understrek (_)</span></span>
+                        <span class="flex items-center gap-2"> <span class="input-icon-email">
+                            </span><span class="input-email-msg">Email må
+                                være en gyldig <b>stud.noroff.no</b> eller <b>noroff.no</b> adresse
+                            </span></span>
+                        <span class="flex items-center gap-2"> <span class="input-icon-password"></span>
+                            <span class="input-password-msg">Passordverdien må være på minst 8 tegn </span>
+                        </span>
                     </div>
 
-                    <div class="text-center flex-col items-center flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" fill="white"
-                            viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                            <path
-                                d="M448 296c0 66.3-53.7 120-120 120h-8c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8H320c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32 32 72zm-256 0c0 66.3-53.7 120-120 120H64c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8H64c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32 32 72z" />
-                        </svg>
-                        <p >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt sit</p>
-                    </div>
-                    <div>
-                        <img class="w-[1.5rem] h-[1.5rem] rounded-full" src="/alex-suprun-ZHvM3XIOHoE-unsplash(1).jpg" alt="">
-                        <p>Jane Doe</p>
-                    </div>
-                </article>
-
+                    <button type="submit" data-action="submit" class="bg-accent rounded-md py-3">Fullfør</button>
+                </form>
             </section>
-
-
-
-
-            <!--Main section wrapper-->
         </section>
-        <!--Top main section-->
-
 
 
 

@@ -165,3 +165,17 @@ body {
 }
 
 
+
+.loader {
+  display: none;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+   border: 5px solid #000000;
+   box-shadow: 1px 1px 1px black;
+    border-bottom-color: #FF3D00;
+  position: absolute;
+
+ 
+}
+

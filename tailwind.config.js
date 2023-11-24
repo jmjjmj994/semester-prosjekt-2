@@ -3,7 +3,8 @@ module.exports = {
   content: [
     './dist/**/*.js',
     './components/**/*.{html,js}',
-    './index.html'
+    './index.html',
+    './signup.html'
   ],
 
  theme:{
