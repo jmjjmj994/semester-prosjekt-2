@@ -1,4 +1,4 @@
-import { userAuthEndpoints } from "../api/api.js";
+import { userAuthEndpoints, showLoader } from "../api/api.js";
 
 const form = document.querySelector("[data-form-type='log-in']");
 const email = document.querySelector("[data-input-type='email']");
@@ -32,7 +32,7 @@ form.addEventListener("submit", async (e) => {
 
 
 async function login(email, password) {
-    console.log(email, password)
+  
     try {
         const res = await fetch(`${userAuthEndpoints.login}`, {
             method: "POST",
@@ -45,6 +45,7 @@ async function login(email, password) {
 
         if (res.ok) {
             const data = await res.json()
+           showLoader(true)
             localStorage.setItem("user-token", data.accessToken)
             localStorage.setItem("user-data", JSON.stringify(data))
             window.location.href = "/index.html"
