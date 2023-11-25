@@ -19,9 +19,6 @@ h2 {
   font-size: 1.312rem;
 }
 
-
-
-
 .cta-header {
   font-size: clamp(1.4rem, 4vw, 3.5rem);
 }
@@ -31,9 +28,6 @@ h2 {
   width: 20rem;
   height: 20rem;
 }
-
-
-
 
 @media screen and (min-width: 300px) and (max-width: 1024px) {
   nav {
@@ -164,25 +158,36 @@ body {
   outline: 1px solid red;
 }
 
-
-
 .loader {
-
-width: 5rem;
-height: 5rem;
- display: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  position: absolute;
-  background-color: rgb(255, 255, 255);
-
-
- border-radius: 100%;
- border-left: 2px solid blue;
+  border: 10px solid;
+  box-sizing: border-box;
+  animation: animloader 1s linear infinite alternate;
+  display: none;
 }
 
-
-
-
-
+.loader.isActive {
+  display: block;
+}
+@keyframes animloader {
+  0% {
+    border-color: white rgba(255, 255, 255, 0) rgba(255, 255, 255, 0)
+      rgba(255, 255, 255, 0);
+  }
+  33% {
+    border-color: white white rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
+  }
+  66% {
+    border-color: white white white rgba(255, 255, 255, 0);
+  }
+  100% {
+    border-color: white white white white;
+  }
+}

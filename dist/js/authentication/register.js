@@ -1,24 +1,16 @@
 import { userAuthEndpoints } from "../api/api.js";
 
 const form = document.querySelector("[data-form-type='sign-up']");
-
 const btnSubmit = document.querySelector("[data-action='submit']")
-
 const nameInput = document.querySelector("[data-input-type='name']")
 const emailInput = document.querySelector("[data-input-type='email']")
 const passwordInput = document.querySelector("[data-input-type='password']")
-
 const nameIcon = document.querySelector(".input-icon-name");
 const passwordIcon = document.querySelector(".input-icon-password");
 const emailIcon = document.querySelector(".input-icon-email");
-
-
 const nameMsg = document.querySelector(".input-name-msg");
 const passwordMsg = document.querySelector(".input-password-msg");
 const emailMsg = document.querySelector(".input-email-msg");
-
-
-
 
 
 
@@ -29,13 +21,9 @@ const inputValid = () => {
     const passwordInput = document.querySelector("[data-input-type='password']").value.trim();
     const nameRegex = /^[A-Za-z0-9_]+$/
     const emailRegex = /^\w+@(?:stud\.)?noroff\.no$/
-
-
-
     const nameValid = nameRegex.test(nameInput);
     const emailValid = emailRegex.test(emailInput)
     const passwordValid = passwordInput.length >= 8;
-
 
     return {
         nameValid, emailValid, passwordValid
@@ -47,7 +35,6 @@ const inputValid = () => {
 
 const feedback = () => {
     const { nameValid, emailValid, passwordValid } = inputValid();
-    console.log(nameValid, emailValid, passwordValid);
 
     if (nameInput.value === '') {
         nameMsg.style.color = "black";
@@ -137,13 +124,12 @@ form.addEventListener("submit", async (e) => {
 
 })
 
-''
 
 
 
 
 async function registerUser(name, email, password) {
-    console.log(name, email, password)
+
     try {
         const res = await fetch(`${userAuthEndpoints.register}`, {
             method: "POST",
@@ -159,6 +145,7 @@ async function registerUser(name, email, password) {
             const data = await res.json();
             console.log("response", data)
 
+
         } else {
             throw new Error("Response status not ok")
         }
@@ -166,3 +153,5 @@ async function registerUser(name, email, password) {
         console.log("fetcherror", error.message)
     }
 }
+
+
