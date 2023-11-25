@@ -53,7 +53,7 @@ async function login(email, password) {
           
         } else {
 
-            const errorMessage = "Invalid username or password"; // Adjust this based on the error structure from the API
+            const errorMessage = "Invalid username or password"; 
 
             console.log(errorMessage);
             throw new Error(`${errorMessage}`);
