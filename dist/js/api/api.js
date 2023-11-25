@@ -24,101 +24,153 @@ export const showLoader = (value) => {
 
 
 
+//Auction-profiles related endpoints
 
-
-
-
-
-// auction profiles
-const GET = async (name, optParam, limit) => {
-    let url = `https://api.noroff.dev/api/v1/auction/profiles/`
-    /*
-    listings, bids, credits, `?limit=${limit}`
-    */
-    if (name !== undefined) {
-        url += `${name}`
-
-        if (optParam !== undefined) {
-            url += `/${optParam}`
-        }
-    } else if (name === undefined && optParam === undefined && limit !== undefined) (
-        url += `/?limit=${limit}`
-    )
-
+const allProfiles = async (limit) => {
+    let url = `https://api.noroff.dev/api/v1/auction/profiles?_listings=true`
 
     try {
 
         const res = await fetch(url, options)
 
         if (res.ok) {
-            const data = await res.json()
-            console.log(data)
+            const data = await res.json();
+            return data;
+
+        } else {
+            throw new Error("There seem to be a problem fetching the data")
+        }
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+
+
+const singleProfile = async (name) => {
+    let url = `https://api.noroff.dev/api/v1/auction/profiles/${name}?_listings=true`
+
+    try {
+        const res = await fetch(url, options)
+        if (res.ok) {
+            const data = await res.json();
+            return data;
         } else {
             throw new Error("Profile not found")
         }
-
 
     } catch (error) {
         console.log(error.message)
     }
 
-
-
-
-};
-
-/*  GET("taurin") */
-
-
-
-
-
-//Auction listings
-
-
-
-
-
-
-//Auction listings
-
+}
 
 
 
 
 
 const updateMedia = async (name, imageUrl) => {
-    /*   updateMedia */
-    let url = `https://api.noroff.dev/api/v1/auction/profiles/${name}/media`
-    console.log(url)
+    let url = `https://api.noroff.dev/api/v1/auction/profiles/${name}/media`;
 
     try {
-        const requestOptions = {
+        const res = await fetch(url, {
             method: "PUT",
-            headers: options.headers,
-            body: JSON.stringify({
-                avatar: imageUrl,
-            })
-        }
-
-        const res = await fetch(url, requestOptions)
+            body: JSON.stringify({ avatar: imageUrl }),
+            headers: options.headers
+        });
 
         if (res.ok) {
-            const data = await res.json()
+            const data = await res.json();
+            console.log(data);
         } else {
-            throw new Error("There seems to be a problem. Check the image url and try again")
+            throw new Error("Failed to update media");
         }
+    } catch (error) {
+        console.log(error.message);
+    }
+};
 
+
+const auctionProfiles = async (name, param) => {
+    let url = `https://api.noroff.dev/api/v1/auction/profiles/${name}/${param}`;
+    //listings, bids, credits
+    try {
+        const res = await fetch(url, options)
+
+        if (res.ok) {
+            const data = await res.json();
+            console.log(data)
+        } else {
+            throw new Error("Failed to fetch data")
+        }
     } catch (error) {
         console.log(error.message)
     }
 
 
+}
 
 
-};
-
-/* PUT("taurin", ) */
 
 
-// auction profiles
+
+//Auction-profiles related endpoints
+
+
+
+
+//Auction-listings related endpoints
+
+const listings = async () => {
+    let url = `https://api.noroff.dev/api/v1/auction/listings?_seller?_bids`
+
+    try {
+        const res = await fetch(url, options)
+        if (res.ok) {
+            const data = await res.json();
+            return data;
+        } else {
+            throw new Error("Failed to fetch data")
+        }
+
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+
+
+const createListing = async (title, description, tags, imageUrl) => {
+    let url = `https://api.noroff.dev/api/v1/auction/listings`
+
+
+    const requestOptions = {
+        method: "POST",
+        headers: options.headers,
+        body: JSON.stringify({
+            title, title,
+            description: description,
+            tags: [tags],
+            media: imageUrl,
+            endsAt: "10.07.2024"
+        })
+
+    }
+
+
+    try {
+        const res = await fetch(url, requestOptions)
+        const data = await res.json()
+        console.log(data)
+    }
+    catch (error) {
+
+    }
+
+
+
+}
+
+createListing("tester", "mye rart", "hei hva skjer")
+
+//Auction-listings related endpoints
