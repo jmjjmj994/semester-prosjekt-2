@@ -7,10 +7,9 @@
     <link rel="stylesheet" href="/dist/output.css">
     <link rel="stylesheet" href="/dist/global.css">
     <script src="/dist/js/header/header.js" defer></script>
-    <script src="/dist/js/api/api.js" defer></script>
-    <script src="/dist/js/authentication/login.js" defer></script>
+    <script src="/dist/js/authentication/login.js" type="module"></script>
     <script src="/dist/global.js" type="module"></script>
-   
+
 
     <title>Login</title>
 </head>
@@ -22,31 +21,31 @@
 
 <body class="bg-primary flex flex-col ">
     <header data-header class=" bg-accent h-[5rem] ">
-    
-    
-    
-    
-    
+
+
+
+
+
         <!--Top header section-->
         <section class="top flex gap-1 justify-end">
-    
+
             <article class="flex items-center justify-between  ring-1 max-[1024px]:hidden ">
-                <img data-avatar class="w-[2rem] h-[2rem] rounded-full"  />
+                <img data-avatar class="w-[2rem] h-[2rem] rounded-full" />
                 <span data-credit></span>
             </article>
-    
+
             <article class="flex items-center gap-2">
                 <a data-login-logout href="/login.html" class="underline text-blue-800"></a>
                 <a data-signup href="/signup.html" class="underline text-blue-800"></a>
             </article>
         </section>
         <!--Top header section-->
-    
-    
-    
+
+
+
         <section class="flex justify-between lg:items-center  "> <!--Block parent component-->
             <!--Header hamburger & logo section-->
-    
+
             <article class="flex items-center">
                 <button data-hamburger class="min-[1024px]:hidden ">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
@@ -55,7 +54,7 @@
                             clip-rule="evenodd" />
                     </svg>
                 </button>
-    
+
                 <div>
                     <svg class="w-[100px] h-[50px]" viewBox="0 0 191 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -89,48 +88,49 @@
                             d="M182.497 14.5455V18.1818H171.986V14.5455H182.497ZM174.372 10.3636H179.213V26.6364C179.213 27.0833 179.281 27.4318 179.418 27.6818C179.554 27.9242 179.743 28.0947 179.986 28.1932C180.236 28.2917 180.524 28.3409 180.849 28.3409C181.077 28.3409 181.304 28.322 181.531 28.2841C181.759 28.2386 181.933 28.2045 182.054 28.1818L182.815 31.7841C182.573 31.8598 182.232 31.947 181.793 32.0455C181.353 32.1515 180.819 32.2159 180.19 32.2386C179.024 32.2841 178.001 32.1288 177.122 31.7727C176.251 31.4167 175.573 30.8636 175.088 30.1136C174.603 29.3636 174.365 28.4167 174.372 27.2727V10.3636Z"
                             fill="black" class="svg-elem-10"></path>
                     </svg>
-    
+
                 </div>
             </article>
             <!--Header hamburger & logo section-->
-    
-    
+
+
             <nav data-navbar class="fixed top-0 left-0 bg-orange-400 h-full  lg:static lg:flex-row lg:flex-1">
                 <!--Navbar content wrapper-->
                 <section class="bg-purple-400 h-full w-full  lg:flex ">
                     <section class="flex justify-end py-1 pr-1 lg:hidden">
                         <button data-close-nav>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                class="w-5 h-5">
                                 <path
                                     d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
                             </svg>
                         </button>
                     </section>
-    
+
                     <!--Account section-->
                     <section class="lg:hidden">
                         <article class="flex items-center justify-between lg:flex-col lg:justify-start ring-1">
                             <img data-avatar class="w-[2rem] h-[2rem] rounded-full" alt="avatar" />
-    
+
                             <span data-credit></span>
                         </article>
                     </section>
                     <!--Account section-->
-    
+
                     <ul class="lg:flex lg:justify-evenly bg-accent flex-1  ">
                         <li>
                             <a href="#">
                                 Account
                             </a>
                         </li>
-    
-    
+
+
                         <li>
                             <a href="#">
                                 Watchlist
                             </a>
                         </li>
-    
+
                         <li>
                             <a href="#">
                                 History
@@ -141,14 +141,14 @@
                                 Buy
                             </a>
                         </li>
-    
-    
+
+
                         <li>
                             <a href="#">
                                 Sell
                             </a>
                         </li>
-    
+
                         <li>
                             <a href="#">
                                 support
@@ -160,20 +160,21 @@
                             </a>
                         </li>
                     </ul>
-    
-    
+
+
                     <!--Ul dropdown-->
                     <ul
                         class="flex flex-col h-auto  lg:ml-auto  lg:flex-shrink lg:basis-[10rem] lg:flex-row lg:justify-center">
                         <li class="flex items-center justify-between lg:items-center">
                             <button>Categories</button>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                class="w-5 h-5">
                                 <path fill-rule="evenodd"
                                     d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z"
                                     clip-rule="evenodd" />
                             </svg>
-    
-    
+
+
                         </li>
                         <!--Search result container-->
                         <ul class="pl-1 hidden">
@@ -193,29 +194,29 @@
                                 <p>Cars</p>
                             </li>
                         </ul>
-    
+
                         <!--Search result container-->
                     </ul>
-    
+
                     <!--Ul dropdown-->
-    
-    
+
+
                 </section>
                 <!--Navbar content wrapper-->
             </nav>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
             <!--Search input section-->
             <article class="flex">
-    
+
                 <button data-open-search>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                         <path fill-rule="evenodd"
@@ -225,26 +226,26 @@
                 </button>
                 <!--Search input section-->
             </article>
-    
+
             <!--Header hamburger & logo section-->
         </section>
-    
-    
-    
-    
-    
+
+
+
+
+
         <!--Navbar-->
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
         <!--Navbar-->
-    
-    
-    
-    
+
+
+
+
     </header>
 
     <section class="search-container">
@@ -283,32 +284,35 @@
     <main class="flex flex-grow">
 
 
-<section class="ring-1 flex-grow flex items-center justify-center flex-col  ">
-   
-<section class="text-white max-w-[40rem] w-full h-[40rem]  flex flex-col items-center relative ">
-    <span class="loader"></span>
-<section class="px-2  flex items-center">
-    <h1>Logg inn</h1>
-</section>
+        <section class="ring-1 flex-grow flex items-center justify-center flex-col  ">
+
+            <section class="text-white max-w-[40rem] w-full h-[40rem]  flex flex-col items-center relative ">
+                <span class="loader"></span>
+                <section class="px-2  flex items-center">
+                    <h1>Logg inn</h1>
+                </section>
 
 
-<form data-form-type="log-in" class="ring-1 h-[30rem] max-w-[28rem] w-[100%] flex flex-col px-2 justify-center gap-5">
+                <form data-form-type="log-in"
+                    class="ring-1 h-[30rem] max-w-[28rem] w-[100%] flex flex-col px-2 justify-center gap-5">
 
-<label for="email">Email:</label>
-<input type="text" data-input-type="email" placeholder="E-post adresse" name="email" class="py-[0.5rem] rounded-md bg-accent pl-2 w-full"> 
-<label for="password">Passord:</label>
-<input type="text" data-input-type="password" placeholder="Passord" name="passord" class="py-[0.5rem] rounded-md bg-accent pl-2">
+                    <label for="email">Email:</label>
+                    <input type="text" data-input-type="email" placeholder="E-post adresse" name="email"
+                        class="py-[0.5rem] rounded-md bg-accent pl-2 w-full">
+                    <label for="password">Passord:</label>
+                    <input type="text" data-input-type="password" placeholder="Passord" name="passord"
+                        class="py-[0.5rem] rounded-md bg-accent pl-2">
 
-<span data-form-type="error" class="text-white block ring-1 min-h-[2rem]"></span>
+                    <span data-form-type="error" class="text-white block ring-1 min-h-[2rem]"></span>
 
-<button type="submit" data-action="submit" class="bg-accent rounded-md py-5 ">Fullfør</button>
-
-
+                    <button type="submit" data-action="submit" class="bg-accent rounded-md py-5 ">Fullfør</button>
 
 
-</form>
-</section>
-</section>
+
+
+                </form>
+            </section>
+        </section>
 
 
 

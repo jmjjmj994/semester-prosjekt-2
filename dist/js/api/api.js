@@ -4,10 +4,11 @@ const loader = document.querySelector("[data-loader]")
 
 
 
-const userAuthEndpoints = {
-register: "https://api.noroff.dev/api/v1/auction/auth/register",
-login: "https://api.noroff.dev/api/v1/auction/auth/login",
+export const userAuthEndpoints = {
+    register: "https://api.noroff.dev/api/v1/auction/auth/register",
+    login: "https://api.noroff.dev/api/v1/auction/auth/login",
 }
+
 
 
 

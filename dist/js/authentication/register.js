@@ -1,4 +1,4 @@
-
+import { userAuthEndpoints } from "../api/api.js";
 
 const form = document.querySelector("[data-form-type='sign-up']");
 
@@ -141,10 +141,11 @@ form.addEventListener("submit", async (e) => {
 
 
 
+
 async function registerUser(name, email, password) {
     console.log(name, email, password)
     try {
-        const res = await fetch("https://api.noroff.dev/api/v1/auction/auth/register", {
+        const res = await fetch(`${userAuthEndpoints.register}`, {
             method: "POST",
             body: JSON.stringify({
                 name: name,
