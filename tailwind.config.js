@@ -8,6 +8,13 @@ module.exports = {
     './login.html'
   ],
 
+  purge:[
+    './dist/**/*.js',
+    './index.html',
+    './signup.html',
+    './login.html'
+  ],
+
  theme:{
   extend: {
  screens: {
@@ -22,12 +29,13 @@ module.exports = {
      "secondary": "hsl(257, 7%, 19%)",
       "accent": "hsl(78%, 88%, 67%)",
       "comp" : "hsl(249, 91%, 68%)",
-      "accent": "	hsl(78, 88%, 67%)"
+    
 
     },
 
     border: {
       "accent-border": "hsl(78, 88%, 67%)",
+      "comp": "hsl(249, 91%, 68%)",
     }
   } 
 },

@@ -9,7 +9,7 @@
     <script src="/dist/js/header/header.js" defer></script>
     <script src="/dist/js/api/api.js" type="module"></script>
     <script src="/dist/global.js" type="module"></script>
-   <script src="/dist/js/utils/utils.js"  type="module"></script>
+    <script src="/dist/js/utils/utils.js" type="module"></script>
     <title>Home</title>
 </head>
 
@@ -33,8 +33,8 @@
             </article>
 
             <article class="flex items-center gap-2">
-              <a data-login-logout href="/login.html" class="underline text-blue-800"></a>
-               <a data-signup href="/signup.html" class="underline text-blue-800"></a>
+                <a data-login-logout href="/login.html" class="underline text-blue-800"></a>
+                <a data-signup href="/signup.html" class="underline text-blue-800"></a>
             </article>
         </section>
         <!--Top header section-->
@@ -109,7 +109,7 @@
                     <section class="lg:hidden">
                         <article class="flex items-center justify-between lg:flex-col lg:justify-start ring-1">
                             <img data-avatar class="w-[2rem] h-[2rem] rounded-full" alt="avatar" />
-                             
+
                             <span data-credit></span>
                         </article>
                     </section>
@@ -310,14 +310,27 @@
 
             <!--Featured section-->
 
-            <section class="bg-secondary h-auto">
+            <section class=" bg-secondary min-h-[100vh]">
                 <h2 class="text-white">Featured</h2>
 
-                <section class="flex flex-wrap ">
-                    <article class="bg-purple-500 test-card">1</article>
-                    <article class="bg-purple-500 test-card">1</article>
-                    <article class="bg-purple-500 test-card">1</article>
-                    <article class="bg-purple-500 test-card">1</article>
+                <section class="flex flex-wrap ring-1 ">
+
+
+                    <article class=" text-white  flex flex-col p-1  h-auto w-auto  ">
+                        <div class="rounded-md bg-white relative h-[10rem] w-[10rem] md:h-[15rem] md:w-[15rem]">
+                            <img class=" h-full w-full object-cover rounded-md border-4 border-comp"
+                                src="/dist/assets/dummy-item.jpg" alt="">
+                        </div>
+
+                        <div class="flex flex-col  items-center justify-center h-auto bg-accent">
+                            <span>399,-</span>
+                            <button class="ring-1 bg-comp p-1 w-2/4  rounded-md">Place bid</button>
+                        </div>
+                    </article>
+
+
+
+
                 </section>
             </section>
 
@@ -393,10 +406,11 @@
                             <path
                                 d="M448 296c0 66.3-53.7 120-120 120h-8c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8H320c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32 32 72zm-256 0c0 66.3-53.7 120-120 120H64c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8H64c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32 32 72z" />
                         </svg>
-                        <p >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt sit</p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt sit</p>
                     </div>
                     <div>
-                        <img class="w-[1.5rem] h-[1.5rem] rounded-full" src="/alex-suprun-ZHvM3XIOHoE-unsplash(1).jpg" alt="">
+                        <img class="w-[1.5rem] h-[1.5rem] rounded-full" src="/alex-suprun-ZHvM3XIOHoE-unsplash(1).jpg"
+                            alt="">
                         <p>Jane Doe</p>
                     </div>
                 </article>
