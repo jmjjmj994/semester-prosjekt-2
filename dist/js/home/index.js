@@ -5,10 +5,8 @@ import { createCardElement, createButtonElement } from "../utils/utils.js";
 
 
 
-/* const featuredSection = document.querySelector("[data-featured-section]");
-
+const featuredSection = document.querySelector("[data-featured-section]");
 const featuredListings = await listings(100);
-
 const sortListingsByBids = () => {
     const items = featuredListings;
     const itemsByBids = items
@@ -29,11 +27,11 @@ const featuredCards = (image, bids) => {
     articleDivHeaderImg.className = "h-full w-full object-cover rounded-md border-2 "
     const articleDivFooter = createCardElement("div", "flex flex-col  items-center justify-center h-auto gap-4")
     const span = createCardElement("span");
-    span.className ="text-black"
+    span.className = "text-black"
     span.textContent = "Bids:"
     const spanBid = createCardElement("span");
     spanBid.textContent = bids
-  
+
     const button = createButtonElement("border-2 border-accent  text-accent p-1 w-2/4  rounded-md ");
     button.textContent = "Place bid"
     article.append(articleDivHeader, articleDivFooter)
@@ -73,7 +71,7 @@ const renderFeaturedCards = async () => {
 
 
 
-   await new Promise((resolve => setTimeout(resolve, 3000))) 
+     /*    await new Promise((resolve => setTimeout(resolve, 3000))) */
         featuredSection.innerHTML = ""
         items.forEach(item => {
             console.log(item)
@@ -87,8 +85,9 @@ const renderFeaturedCards = async () => {
 
 
 }
-renderFeaturedCards()
- */
+/* renderFeaturedCards() */
+
+
 
 
 
