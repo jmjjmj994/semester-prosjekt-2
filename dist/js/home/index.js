@@ -1,12 +1,16 @@
 import { listings } from "../api/api.js";
 import { createCardElement, createButtonElement } from "../utils/utils.js";
 
-
-
-
-
 const featuredSection = document.querySelector("[data-featured-section]");
+const carouselContainer = document.querySelector("[data-carousel-container]");
+const carouselSlides = document.querySelectorAll("[data-carousel-slide]");
+const carouselPrevBtn = document.querySelector("[data-prev-btn]");
+const carouselNextBtn = document.querySelector("[data-next-btn]");
 const featuredListings = await listings(100);
+
+
+
+
 const sortListingsByBids = () => {
     const items = featuredListings;
     const itemsByBids = items
@@ -71,7 +75,7 @@ const renderFeaturedCards = async () => {
 
 
 
-     /*    await new Promise((resolve => setTimeout(resolve, 3000))) */
+        /*    await new Promise((resolve => setTimeout(resolve, 3000))) */
         featuredSection.innerHTML = ""
         items.forEach(item => {
             console.log(item)
@@ -91,11 +95,7 @@ const renderFeaturedCards = async () => {
 
 
 
-const carouselContainer = document.querySelector("[data-carousel-container]");
-const carouselSlides = document.querySelectorAll("[data-carousel-slide]");
-console.log(carouselSlides)
-const carouselPrevBtn = document.querySelector("[data-prev-btn]");
-const carouselNextBtn = document.querySelector("[data-next-btn]");
+
 
 carouselSlides.forEach((slide, index) => {
     slide.style.cssText = "transition:0.2s ease-in-out; opacity:0.5s;";

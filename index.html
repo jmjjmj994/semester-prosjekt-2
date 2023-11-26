@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
     <script src="/dist/js/header/header.js" defer></script>
     <script src="/dist/js/home/index.js" type="module"></script>
+    <script src="/dist/global.js" type="module"></script>
 
     <title>Home</title>
 </head>
@@ -21,13 +22,15 @@
     <header data-header class="bg-secondary h-[5rem]">
         <!--Top header section-->
         <section class="top flex gap-1 justify-end">
-            <article class="flex items-center justify-between ring-1 max-[1024px]:hidden">
-                <img data-avatar class="w-[2rem] h-[2rem] rounded-full" alt="avatar" />
+            <article class="flex items-center justify-between max-[1024px]:hidden">
+                <div class="w-[2rem] h-[2rem] bg-white rounded-full">
+                    <img data-avatar class="w-[2rem] h-[2rem] rounded-full" alt="" />
+                </div>
                 <span data-credit></span>
             </article>
 
             <article class="flex items-center gap-2">
-                <a data-login-logout href="/login.html" class="underline text-blue-800"></a>
+                <a data-login-logout class="underline text-blue-800"></a>
                 <a data-signup href="/signup.html" class="underline text-blue-800"></a>
             </article>
         </section>
@@ -101,7 +104,7 @@
                         <article class="flex items-center justify-between lg:flex-col lg:justify-start ring-1">
                             <img data-avatar class="w-[2rem] h-[2rem] rounded-full" alt="avatar" />
 
-                            <span data-credit></span>
+                            <span>Credits: <span data-credit></span></span>
                         </article>
                     </section>
                     <!--Account section-->
@@ -228,8 +231,8 @@
             <section class="w-full h-[50vh] flex flex-col justify-center items-center md:flex-row p-4">
                 <!--Hero-->
                 <div class="flex flex-col items-center gap-5 ring-1">
-                    <h1 class="cta-header">
-                        <span></span>Stig inn og opplev spennende auksjoner!
+                    <h1 class="cta-header ">
+                        Stig inn og opplev spennende auksjoner
                     </h1>
                     <button class="border-2 border-accent ring-comp text-accent p-2 w-[10rem] rounded">
                         Utforsk
@@ -263,32 +266,7 @@
 
             <!--Secondary cta---->
 
-            <section>
-                <!--       <section class=" w-full bg-accent">
 
-                    <article class=" text-white ring-1 bg-cyan-700 max-w-[50%] w-full  ">
-                        <h2>Om BudHjørnet</h2>
-                        <p class="max-w-[50ch] leading-8">BudHjørnet er et dynamisk auksjonshus som tilbyr alt fra
-                            hverdagslige
-                            varer til verdifulle gjenstander. Vi huser et
-                            variert utvalg av produkter, inkludert alt fra rimelige varer til verdifulle varer av høy
-                            verdi. Uansett om det er
-                            små ting eller større verdigjenstander, ønsker vi å tilby en plattform for en bred variasjon
-                            av auksjoner.
-                            Vårt mål er å tilby en sømløs og gjennomsiktig budprosess for alle typer varer. Enten det er
-                            hverdagslige
-                            gjenstander eller verdifulle varer, er BudHjørnet stedet hvor budgivere og selgere kan
-                            samles for å handle på en
-                            enkel og pålitelig måte.</p>
-
-
-
-                        <button class="ring-red-100">
-                            Les mer
-                        </button>
-                    </article>
-                </section> -->
-            </section>
 
             <!--About section-->
 

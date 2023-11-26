@@ -19,7 +19,7 @@ li {
 }
 
 h1 {
-  font-size: clamp(1.2rem, 3vw, 1.75rem);
+ /*  font-size: clamp(1.2rem, 3vw, 1.75rem); */
 }
 
 h2 {
@@ -36,7 +36,10 @@ h1, h2, h3, h4, h5, p, span, a {
 }
 
 
-
+.cta-header {
+  font-size:clamp(1.4rem, 4vw, 3.75rem);
+  letter-spacing:-0.025rem;
+}
 
 .test-card {
   flex-basis: 20rem;

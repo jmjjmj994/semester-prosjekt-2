@@ -1,5 +1,3 @@
-
-
 /* ==== Search modal ==== */
 const openSearchContainer = document.querySelector("[data-open-search]");
 const closeSearchContainer = document.querySelector("[data-close-search]");
