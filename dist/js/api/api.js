@@ -121,8 +121,8 @@ const auctionProfiles = async (name, param) => {
 
 //Auction-listings related endpoints
 
-const listings = async () => {
-    let url = `https://api.noroff.dev/api/v1/auction/listings?_seller?_bids`
+export const listings = async (limit) => {
+    let url = `https://api.noroff.dev/api/v1/auction/listings?_seller?_bids&limit=${limit}`
 
     try {
         const res = await fetch(url, options)
@@ -171,6 +171,6 @@ const createListing = async (title, description, tags, imageUrl) => {
 
 }
 
-createListing("tester", "mye rart", "hei hva skjer")
+/* createListing("tester", "mye rart", "hei hva skjer") */
 
 //Auction-listings related endpoints
