@@ -19,17 +19,18 @@ module.exports = {
 
 
     colors:{
-      "primary": "	hsl(0, 0%, 95%)",
-      "secondary": "	hsl(0, 0%, 100%)",
-      "accent": "hsl(78%, 88%, 67%)",
-      "comp" : "hsl(249, 91%, 68%)",
+      "primary": "	hsl(37, 100%, 96%)",
+      "secondary": "		hsl(0, 0%, 95%)",
+      "accent": "hsl(22, 100%, 35%)",
+      "secondary-cta": "	hsl(270, 6%, 6%)"
+      
     
 
     },
 
     border: {
-      "accent-border": "hsl(78, 88%, 67%)",
-      "comp": "hsl(249, 91%, 68%)",
+      "accent-border": "hsl(22, 100%, 35%)",
+      
     }
   } 
 },
