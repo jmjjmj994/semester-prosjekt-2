@@ -37,6 +37,7 @@ h2 {
     opacity: 0;
 
     transition: 250ms ease-in-out;
+    z-index:1;
   }
 
   nav.isActive {
@@ -194,5 +195,5 @@ body {
 
 
 .featured-skeleton {
-  
+
 }

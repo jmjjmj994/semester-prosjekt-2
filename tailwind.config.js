@@ -1,15 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  mode: 'jit',
   content: [
     './dist/**/*.js',
     './components/**/*.{html,js}',
-    './index.html',
-    './signup.html',
-    './login.html'
-  ],
-
-  purge:[
-    './dist/**/*.js',
     './index.html',
     './signup.html',
     './login.html'
@@ -25,8 +19,8 @@ module.exports = {
 
 
     colors:{
-     "primary": "	hsl(270, 6%, 6%)",
-     "secondary": "hsl(257, 7%, 19%)",
+      "primary": "	hsl(0, 0%, 95%)",
+      "secondary": "	hsl(0, 0%, 100%)",
       "accent": "hsl(78%, 88%, 67%)",
       "comp" : "hsl(249, 91%, 68%)",
     
