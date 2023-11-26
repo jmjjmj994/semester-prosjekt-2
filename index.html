@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
     <script src="/dist/js/header/header.js" defer></script>
-    <!--  <script src="/dist/js/home/index.js" type="module"></script> -->
+ <script src="/dist/js/home/index.js" type="module"></script> 
 
     <title>Home</title>
 </head>
@@ -295,9 +295,8 @@
             <section class="h-[50vh] relative">
                 <!--Reviews slider-->
 
-                <section class=" carousel h-[50vh] w-full relative m-auto flex ">
-                    <article
-                        class="bg-purple-400 flex items-center justify-center flex-grow-0 flex-shrink-0 basis-[50%] w-[50%] h-full">
+                <section data-carousel-container class=" h-[50vh] w-full relative m-auto flex overflow-hidden">
+                    <article data-carousel-slide class=" absolute flex items-center justify-center flex-grow-0 flex-shrink-0 w-full h-full">
                         <div class="w-[30rem] h-[30rem] flex flex-col items-center justify-center gap-3">
                             <div class="flex items-center flex-col">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" fill="#9B4819"
@@ -322,7 +321,7 @@
                             </div>
                         </div>
                     </article>
-                    <article class="flex-grow-0 flex-shrink-0 basis-[100%] w-full h-full">
+                    <article data-carousel-slide class="absolute flex items-center justify-center  flex-grow-0 flex-shrink-0 basis-[100%] w-full h-full">
                         <div class="w-[30rem] h-[30rem] flex flex-col items-center justify-center gap-3">
                             <div class="flex items-center flex-col">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" fill="#9B4819"
@@ -347,7 +346,7 @@
                             </div>
                         </div>
                     </article>
-                    <article class="flex-grow-0 flex-shrink-0 basis-[100%] w-full h-full">
+                    <article data-carousel-slide class="absolute flex items-center justify-center  flex-grow-0 flex-shrink-0 basis-[100%] w-full h-full">
                         <div class="w-[30rem] h-[30rem] flex flex-col items-center justify-center gap-3">
                             <div class="flex items-center flex-col">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" fill="#9B4819"
@@ -374,9 +373,34 @@
                         </div>
                     </article>
                 </section>
+                            <button data-prev-btn class="flex justify-center items-center absolute z-10 w-[2rem] h-[2rem] left-[30%] top-[85%]  md:left-[25%] lg:left-[30%]  md:top-[50%] rounded-full  bg-accent"> 
+                                
+                            
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                <path
+                                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+                            </svg>
+                            
+                            
+                            
+                            </button>
+                            <button data-next-btn class="flex justify-center items-center absolute z-10 w-[2rem] h-[2rem] right-[30%] top-[85%]   md:right-[25%] lg:right-[30%]  md:top-[50%] rounded-full bg-accent">
+<svg xmlns="http://www.w3.org/2000/svg" height="1em"
+    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+    <path
+        d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+</svg>
+
+
+
+
+
+                            </button>
             </section>
 
             <!--Main section wrapper-->
+
         </section>
         <!--Top main section-->
     </main>

@@ -214,20 +214,3 @@ body {
 }
 
 
-.carousel {
-  
-
-/*   animation: slideLeft 15s infinite ease-in; */
-}
-
- @keyframes slideLeft {
-  0%, 100% {
-    transform: translateX(0); 
-  }
-  25% {
-    transform: translateX(-100%);
-  }
-  75% {
-    transform: translateX(-200%); 
-  }
-} 

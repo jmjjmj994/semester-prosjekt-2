@@ -5,7 +5,7 @@ import { createCardElement, createButtonElement } from "../utils/utils.js";
 
 
 
-const featuredSection = document.querySelector("[data-featured-section]");
+/* const featuredSection = document.querySelector("[data-featured-section]");
 
 const featuredListings = await listings(100);
 
@@ -73,7 +73,7 @@ const renderFeaturedCards = async () => {
 
 
 
-     /*  await new Promise((resolve => setTimeout(resolve, 3000)))  */
+   await new Promise((resolve => setTimeout(resolve, 3000))) 
         featuredSection.innerHTML = ""
         items.forEach(item => {
             console.log(item)
@@ -88,8 +88,36 @@ const renderFeaturedCards = async () => {
 
 }
 renderFeaturedCards()
+ */
 
 
 
+const carouselContainer = document.querySelector("[data-carousel-container]");
+const carouselSlides = document.querySelectorAll("[data-carousel-slide]");
+console.log(carouselSlides)
+const carouselPrevBtn = document.querySelector("[data-prev-btn]");
+const carouselNextBtn = document.querySelector("[data-next-btn]");
+
+carouselSlides.forEach((slide, index) => {
+    slide.style.cssText = "transition:0.2s ease-in-out; opacity:0.5s;";
+    slide.style.transform = `translateX(${index * 100}%)`;
+
+});
+let curSlide = 0;
+let maxSlide = carouselSlides.length - 1;
+carouselNextBtn.addEventListener("click", (e) => {
+    curSlide === maxSlide ? (curSlide = 0) : curSlide++;
+    moveSlides();
+});
+
+carouselPrevBtn.addEventListener("click", (e) => {
+    curSlide === 0 ? (curSlide = maxSlide) : curSlide--;
+    moveSlides();
+});
 
 
+function moveSlides() {
+    carouselSlides.forEach((slide, index) => {
+        slide.style.transform = `translateX(${100 * (index - curSlide)}%)`;
+    });
+}
