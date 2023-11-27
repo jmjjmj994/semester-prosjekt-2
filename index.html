@@ -12,11 +12,13 @@
     <script src="/dist/js/header/header.js" defer></script>
     <script src="/dist/js/home/index.js" type="module"></script>
     <script src="/dist/global.js" type="module"></script>
+    <script src="/dist/js/modal/profile-modal.js" type="module"></script>
 
     <title>Home</title>
 </head>
 
 <div data-loader class="loader"></div>
+
 
 <body class="bg-primary flex flex-col">
     <header data-header class="bg-secondary h-[5rem]">
@@ -24,7 +26,7 @@
         <section class="top flex gap-1 justify-end">
             <article class="flex items-center justify-between max-[1024px]:hidden">
                 <div class="w-[2rem] h-[2rem] bg-white rounded-full">
-                    <img data-avatar class="w-[2rem] h-[2rem] rounded-full" alt=""/>
+                    <img data-avatar class="w-[2rem] h-[2rem] rounded-full" alt="" />
                 </div>
                 <span data-credit> </span>
             </article>
@@ -195,7 +197,7 @@
 
         <!--Navbar-->
     </header>
-<!--Modals-->
+    <!--Modals-->
     <section class="search-container">
         <!--Form section-->
         <div class="search-container__input">
@@ -220,64 +222,108 @@
 
         <section class="search-container__results"></section>
     </section>
-<!-- 
+    <!-- 
 <section data-modal-listing class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-accent w-auto h-auto hidden">
     <p>Modal</p>
 </section> -->
 
-<section data-modal-profile class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-secondary w-[25rem] h-[35rem]  rounded-md ">
+    <section data-profile-modal
+        class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  bg-slate-600   h-[30rem]  rounded-md shadow  max-w-[30rem] w-full "> <!--Hidden here-->
 
-   <div id="smooth-bg" class=" h-[15rem]  relative">
- 
-        <div class=" rounded-t-md  text-white  bg-black flex flex-col relative">
-            <p class="z-10 absolute top-0 left-[10px]">Exit</p>
-            <h3 class="z-10 absolute left-[50%] -translate-x-1/2 ">Din bruker</h3>
+
+        <div id="modal-bg" class=" rounded-t-md   text-white h-[10rem]  bg-black relative">
+            <div class="flex items-center justify-between ">
+                <div data-profile-modal-secondary
+                    class="bg-black flex flex-col absolute w-full h-full top-0 z-[3] rounded-t-md">
+                    <div class="flex ">
+                        <button data-profile-modal-input-close>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1.3em"
+                                viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                <style>
+                                    svg {
+                                        fill: #ffffff
+                                    }
+                                </style>
+                                <path
+                                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+                            </svg>
+
+                        </button>
+                        <h3 class="m-auto">Change your avatar</h3>
+                    </div>
+
+                    <form data-avatar-form class="bg-accent flex-grow flex items-center justify-center gap-1">
+                        <input data-avatar-form-input type="text" placeholder="Bytt din avatar"
+                            class="p-1 rounded-md text-black">
+                        <button data-avatar-form-btn class="bg-white p-1 rounded-md text-black">Fullfør</button>
+                    </form>
+                </div>
+
+                <button data-profile-modal-close>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1.3em"
+                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <style>
+                            svg {
+                                fill: #ffffff
+                            }
+                        </style>
+                        <path
+                            d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+                    </svg>
+
+                </button>
+                <h3>Din bruker</h3>
+                <button data-profile-modal-settings>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <style>
+                            svg {
+                                fill: #ffffff
+                            }
+                        </style>
+                        <path
+                            d="M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z" />
+                    </svg>
+
+                </button>
+            </div>
+
+            <div class="flex items-center justify-center h-full">
+                <div class="w-[4rem] h-[4rem] bg-secondary rounded-full relative">
+                    <div data-loader-sm class="loader-sm"></div>
+                    <img data-profile-modal-img class="w-[4rem] h-[4rem] rounded-full " src="" alt="" loading="lazy">
+                </div>
+            </div>
         </div>
 
-       <img src="/alex-suprun-ZHvM3XIOHoE-unsplash(1).jpg" class="w-[4rem] h-[4rem] rounded-full absolute z-[1] left-[50%] top-[50%] -translate-x-1/2 -translate-y-14 " alt="">
-<svg class="w-full absolute top-0 z-[0]" id="svg" viewBox="0 0 1440 690" xmlns="http://www.w3.org/2000/svg"
-    class="transition duration-300 ease-in-out delay-150">
 
-    <defs>
-        <linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%">
-            <stop offset="5%" stop-color="#b04000"></stop>
-            <stop offset="95%" stop-color="#fcb900"></stop>
-        </linearGradient>
-    </defs>
-    <path
-        d="M 0,700 C 0,700 0,350 0,350 C 148.96428571428572,336.8571428571429 297.92857142857144,323.7142857142857 424,351 C 550.0714285714286,378.2857142857143 653.25,446 765,426 C 876.75,406 997.0714285714287,298.2857142857143 1111,271 C 1224.9285714285713,243.71428571428572 1332.4642857142858,296.8571428571429 1440,350 C 1440,350 1440,700 1440,700 Z"
-        stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="1"
-        class="transition-all duration-300 ease-in-out delay-150 path-0" transform="rotate(-180 720 350)"></path>
-</svg>
-   </div>
 
-   <!---->
-   <div class="bg-primary flex flex-col rounded-md gap-4 p-2 mx-4 ">
-  <div>
-    <p>Username:</p>
-    <p>Jane Doe</p>
-  </div>
 
-    <div>
-        <p>Email:</p>
-        <p>Jane Doe@noroff.no</p>
-    </div>
+        <!---->
+        <div class="bg-primary flex flex-col rounded-md gap-4 h-full ">
+            <div>
+                <p>Navn:</p>
+                <p data-profile-modal-name></p>
+            </div>
 
-        <div>
-        <p>Credits:</p>
-<p>Amount</p>
-        </div>
-        <div>
-            <p>Avatar</p>
-            <div>Avatar here</div>
+            <div>
+                <p>E-post:</p>
+                <p data-profile-modal-email></p>
+            </div>
+
+            <div>
+                <p>Kreditt:</p>
+                <p data-profile-modal-credits></p>
+            </div>
+
+
         </div>
 
-   </div>
 
+    </section>
 
-</section>
-
-<!--Modals-->
+    <!--Modals-->
     <main class="flex-grow">
         <!--Main section wrapper-->
 

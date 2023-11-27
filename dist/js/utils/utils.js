@@ -1,11 +1,15 @@
-export {localStorageItems, createCardElement, createButtonElement}
+export { localStorageItems, createCardElement, createButtonElement, blockElements }
 const localStorageItems = {
     userData: JSON.parse(localStorage.getItem("user-data")),
     token: localStorage.getItem("user-token"),
-    hasToken: localStorage.getItem("tokenChecked")
+    hasToken: localStorage.getItem("tokenChecked"),
+    media: localStorage.getItem("new-media")
 
 }
-
+const blockElements = {
+    header: document.querySelector("header"),
+    main: document.querySelector("main")
+}
 
 
 const norwegianDate = (date) => {
@@ -26,3 +30,5 @@ const createButtonElement = (className) => {
     button.className = className;
     return button;
 }
+
+

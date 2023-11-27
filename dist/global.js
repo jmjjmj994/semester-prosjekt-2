@@ -1,15 +1,18 @@
-import { localStorageItems } from "./js/utils/utils.js";
+import { localStorageItems, blockElements } from "./js/utils/utils.js";
 import { singleProfile } from "./js/api/api.js";
+
 const profileAvatar = document.querySelector("[data-avatar]");
 const profileCredit = document.querySelector("[data-credit]");
 const loginLogout = document.querySelector("[data-login-logout ]")
-const register = document.querySelector("[data-signup ]")
-const modalProfile = document.querySelector("[data-modal-profile]");
+export const register = document.querySelector("[data-signup ]")
+
+//Modal
+const modalProfile = document.querySelector("[data-profile-modal]");
+const closeProfileModal = document.querySelector("[data-profile-modal-close]");
+const profileModalSettings = document.querySelector("[data-profile-modal-settings]");
 
 
 
-
-console.log(localStorageItems)
 
 
 const hasToken = () => {
@@ -17,7 +20,7 @@ const hasToken = () => {
 
 
 
-    let registerActive = false;
+   /*  let registerActive = false; */
     if (localStorageItems.token) {
         loginLogout.textContent = "Logg ut"
         loginLogout.href = "./login.html"
@@ -25,8 +28,8 @@ const hasToken = () => {
         profileCredit.textContent = `Kreddit: ${localStorageItems.userData.credits}`
         register.href = ""
         register.role = "button"
-        registerActive = true;
-        triggerModal(register, registerActive)
+       /*  registerActive = true;
+        openProfileModal(register, registerActive) */
     }
 
 
@@ -37,7 +40,7 @@ const hasToken = () => {
     } else {
         profileAvatar.src = "dist/assets/blank-avatar.png"
         profileAvatar.alt = "";
-        registerActive = false;
+      /*   registerActive = false; */
 
     }
 
@@ -90,18 +93,9 @@ loginLogout.addEventListener("click", (e) => {
 
 //Profile
 
-function triggerModal(btn, value) {
-    console.log(value)
-    btn.addEventListener("click", (e) => {
-        e.preventDefault()
-        console.log("cative")
-        modalProfile.className = "fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-secondary w-auto h-auto flex"
-    })
-}
 
 
 const profileData = localStorageItems.userData;
-console.log(profileData)
 
 
 //Profile

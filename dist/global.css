@@ -1,12 +1,7 @@
-/* font-family: 'Lato', sans-serif; regular, 700
-/* =================================================================Typography ryles */
-
-
 body {
- line-height:1.5;
- 
-
-
+  font-family: "Roboto", sans-serif;
+  min-height: 100vh;
+  line-height: 1.5;
 }
 
 nav > ul > li > button,
@@ -18,33 +13,20 @@ li {
   margin-block: 10px;
 }
 
-h1 {
- /*  font-size: clamp(1.2rem, 3vw, 1.75rem); */
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+span,
+a {
+  font-family: "Lato", sans-serif;
 }
-
-h2 {
-  font-size: clamp(1.6rem, 3vw, 1.5rem);
-}
-
-h3 {
-  font-size: clamp(1.4rem, 3vw, 1.5rem);
-}
-
-
-h1, h2, h3, h4, h5, p, span, a {
-   font-family: 'Lato', sans-serif;
-}
-
 
 .cta-header {
-  font-size:clamp(1.4rem, 4vw, 3.75rem);
-  letter-spacing:-0.025rem;
-}
-
-.test-card {
-  flex-basis: 20rem;
-  width: 20rem;
-  height: 20rem;
+  font-size: clamp(1.4rem, 4vw, 3.75rem);
+  letter-spacing: -0.025rem;
 }
 
 @media screen and (min-width: 300px) and (max-width: 1024px) {
@@ -55,7 +37,7 @@ h1, h2, h3, h4, h5, p, span, a {
     opacity: 0;
 
     transition: 250ms ease-in-out;
-    z-index:1;
+    z-index: 1;
   }
 
   nav.isActive {
@@ -71,26 +53,6 @@ h1, h2, h3, h4, h5, p, span, a {
     width: 100%;
   }
 }
-
-/* .search-container, .search-container-results {
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-   width: 10rem;
-    position: absolute;
-}
-
-.search-container {
-
-
-  background-color: white;
-
-  height: auto;
-  overflow: scroll;
-  z-index: 1;
- 
-} */
 
 .search-container {
   display: flex;
@@ -166,15 +128,11 @@ h1, h2, h3, h4, h5, p, span, a {
   }
 }
 
-/* =================================================================Typography ryles */
-
-body {
-  font-family: "Roboto", sans-serif;
-  min-height: 100vh;
+[data-profile-modal-secondary] {
+  display: none;
 }
-
-.top {
-  outline: 1px solid red;
+[data-profile-modal-secondary].isActive {
+  display: flex;
 }
 
 .loader {
@@ -195,6 +153,41 @@ body {
 .loader.isActive {
   display: block;
 }
+
+.loader-sm {
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  border-radius: 50%;
+
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+.loader-sm:before {
+  content: "";
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  border-radius: inherit;
+  border-left: 1px solid #b04000;
+  animation: rotateSmall 500ms infinite ease-in-out;
+}
+.loader-sm.isActive {
+  display: flex;
+}
+@keyframes rotateSmall {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes animloader {
   0% {
     border-color: white rgba(255, 255, 255, 0) rgba(255, 255, 255, 0)
@@ -211,36 +204,8 @@ body {
   }
 }
 
-
-.featured-skeleton {
-
+#modal-bg {
+  background: url(/dist/assets/liquid-cheese.png);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-
-
-      .path-0 {
-            animation: pathAnim-0 4s;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-        }
-
-        @keyframes pathAnim-0 {
-            0% {
-                d: path("M 0,700 C 0,700 0,350 0,350 C 148.96428571428572,336.8571428571429 297.92857142857144,323.7142857142857 424,351 C 550.0714285714286,378.2857142857143 653.25,446 765,426 C 876.75,406 997.0714285714287,298.2857142857143 1111,271 C 1224.9285714285713,243.71428571428572 1332.4642857142858,296.8571428571429 1440,350 C 1440,350 1440,700 1440,700 Z");
-            }
-
-            25% {
-                d: path("M 0,700 C 0,700 0,350 0,350 C 105.42857142857142,284.3571428571429 210.85714285714283,218.71428571428572 344,233 C 477.14285714285717,247.28571428571428 638,341.49999999999994 755,391 C 872,440.50000000000006 945.1428571428571,445.2857142857143 1052,431 C 1158.857142857143,416.7142857142857 1299.4285714285716,383.3571428571429 1440,350 C 1440,350 1440,700 1440,700 Z");
-            }
-
-            50% {
-                d: path("M 0,700 C 0,700 0,350 0,350 C 93.92857142857142,303.82142857142856 187.85714285714283,257.6428571428571 317,228 C 446.14285714285717,198.35714285714286 610.5000000000001,185.25 747,243 C 883.4999999999999,300.75 992.1428571428571,429.3571428571429 1103,459 C 1213.857142857143,488.6428571428571 1326.9285714285716,419.32142857142856 1440,350 C 1440,350 1440,700 1440,700 Z");
-            }
-
-            75% {
-                d: path("M 0,700 C 0,700 0,350 0,350 C 143.78571428571428,354.7857142857143 287.57142857142856,359.57142857142856 389,363 C 490.42857142857144,366.42857142857144 549.5,368.49999999999994 658,363 C 766.5,357.50000000000006 924.4285714285716,344.42857142857144 1063,341 C 1201.5714285714284,337.57142857142856 1320.7857142857142,343.7857142857143 1440,350 C 1440,350 1440,700 1440,700 Z");
-            }
-
-            100% {
-                d: path("M 0,700 C 0,700 0,350 0,350 C 148.96428571428572,336.8571428571429 297.92857142857144,323.7142857142857 424,351 C 550.0714285714286,378.2857142857143 653.25,446 765,426 C 876.75,406 997.0714285714287,298.2857142857143 1111,271 C 1224.9285714285713,243.71428571428572 1332.4642857142858,296.8571428571429 1440,350 C 1440,350 1440,700 1440,700 Z");
-            }
-        }

@@ -69,7 +69,7 @@ export const singleProfile = async (name) => {
 
 
 
-const updateMedia = async (name, imageUrl) => {
+export const updateMedia = async (name, imageUrl) => {
     let url = `https://api.noroff.dev/api/v1/auction/profiles/${name}/media`;
 
     try {
@@ -81,7 +81,8 @@ const updateMedia = async (name, imageUrl) => {
 
         if (res.ok) {
             const data = await res.json();
-            console.log(data);
+            const media = data.avatar
+            localStorage.setItem("new-media", media)
         } else {
             throw new Error("Failed to update media");
         }
@@ -89,6 +90,7 @@ const updateMedia = async (name, imageUrl) => {
         console.log(error.message);
     }
 };
+
 
 
 const auctionProfiles = async (name, param) => {
