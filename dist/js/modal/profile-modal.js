@@ -22,6 +22,7 @@ function openProfileModal(btn) {
     btn.addEventListener("click", (e) => {
         e.preventDefault()
         modalProfile.className = "fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-secondary w-[25rem] transition-all h-[35rem]  rounded-md shadow "
+        modalProfile.classList.add("isActive")
         blockElements.header.style.cssText = "background-color: rgba(0, 0, 0, 0.65) "
         blockElements.main.style.cssText = "background-color: rgba(0, 0, 0, 0.65) "
     })
@@ -131,5 +132,6 @@ const changeUserAvatar = async (imageUrl) => {
     closeModal()
 
 })();
+
 
 
