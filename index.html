@@ -88,7 +88,7 @@
             </article>
             <!--Header hamburger & logo section-->
 
-            <nav data-navbar class="fixed top-0 left-0 bg-orange-400 h-full lg:static lg:flex-row lg:flex-1">
+            <nav data-navbar class="fixed top-0 left-0 bg-orange-400 h-full lg:static lg:flex-row lg:flex-1 isActive">
                 <!--Navbar content wrapper-->
                 <section class="bg-purple-400 h-full w-full lg:flex">
                     <section class="flex justify-end py-1 pr-1 lg:hidden">
@@ -112,38 +112,38 @@
                     <!--Account section-->
 
                     <ul class="lg:flex lg:justify-evenly flex-1">
+                    
                         <li>
-                            <a href="#"> Account </a>
+                            <a href="#">Hjem</a>
+                        </li>
+
+
+                        <li>
+                            <a href="#">Auksjoner</a>
+                        </li>
+                        <li>
+                            <a href="#">Kjøp</a>
+                        </li>
+                        <li>
+                            <a href="#">Selg</a>
                         </li>
 
                         <li>
-                            <a href="#"> Watchlist </a>
+                            <a href="#">Informasjon</a>
                         </li>
 
                         <li>
-                            <a href="#"> History </a>
+                            <a href="#">Om oss</a>
                         </li>
-                        <li>
-                            <a href="#"> Buy </a>
-                        </li>
+                     
 
-                        <li>
-                            <a href="#"> Sell </a>
-                        </li>
-
-                        <li>
-                            <a href="#"> support </a>
-                        </li>
-                        <li>
-                            <a href="#"> About </a>
-                        </li>
                     </ul>
 
                     <!--Ul dropdown-->
                     <ul
                         class="flex flex-col h-auto lg:ml-auto lg:flex-shrink lg:basis-[10rem] lg:flex-row lg:justify-center">
                         <li class="flex items-center justify-between lg:items-center">
-                            <button>Categories</button>
+                            <button>Kategorier</button>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                 class="w-5 h-5">
                                 <path fill-rule="evenodd"
@@ -220,15 +220,16 @@
             </section>
         </div>
 
+
+
+        <!--MODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALS-->
         <section class="search-container__results"></section>
     </section>
-    <!-- 
-<section data-modal-listing class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-accent w-auto h-auto hidden">
-    <p>Modal</p>
-</section> -->
 
-    <section id="l" data-profile-modal
-        class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  bg-slate-600    h-[30rem]  rounded-md shadow  max-w-[30rem] w-full hidden"> <!--Hidden here-->
+
+    <section data-profile-modal
+        class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  bg-slate-600    h-[30rem]  rounded-md shadow  max-w-[30rem] w-full hidden">
+        <!--Hidden here-->
 
 
         <div id="modal-bg" class=" rounded-t-md   text-white h-[10rem]  bg-black relative">
@@ -322,6 +323,8 @@
 
 
     </section>
+
+    <!--MODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALS-->
 
     <!--Modals-->
     <main class="flex-grow">
