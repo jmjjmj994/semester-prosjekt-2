@@ -47,10 +47,10 @@ navClose.onclick = () => navbarToggler(false)
 
 const navbarToggler = (value) => {
     const navbar = document.querySelector("[data-navbar]")
-    if(value) {
+    if (value) {
         navbar.classList.add("isActive")
 
-        
+
     } else {
         navbar.classList.remove("isActive")
     }
@@ -59,23 +59,29 @@ const navbarToggler = (value) => {
 
 
 const navbarDropdownButton = document.querySelector("[data-navbar-dropdown-toggler]")
-
-navbarDropdownButton.onclick = () => navbarDropdownToggler()
+/* 
+navbarDropdownButton.onclick = () => navbarDropdownToggler() */
+navbarDropdownButton.addEventListener("click", (e) => {
+    navbarDropdownToggler()
+    toggleAriaExpanded()
+})
 
 const navbarDropDownMenuItems = document.querySelectorAll("[data-navbar-dropdown-menu] > li")
 console.log(navbarDropDownMenuItems)
+const navbarDropdownParent = document.querySelector("[data-navbar-dropdown-parent]")
 
 
 
 const navbarDropdownToggler = (value) => {
     const navbarDropdownMenu = document.querySelector("[data-navbar-dropdown-menu]");
     const navbarDropdownMenuAngle = document.querySelector("[data-navbar-dropdown-angle]");
- 
     navbarDropdownMenu.classList.toggle("isActive")
-   navbarDropdownMenuAngle.classList.toggle("isActive")
+    navbarDropdownMenuAngle.classList.toggle("isActive")
 
- /*    const navbarDropdownMenu = document.querySelector("[data-navbar-dropdown-menu]");
-    const navbarDropdownMenuAngle = document.querySelector("[data-navbar-dropdown-angle]");
-    navbarDropdownMenu.className ="pl-1"
-    console.log("Hih") */
+
+}
+const toggleAriaExpanded = () => {
+    const ariaExpanded = navbarDropdownParent.getAttribute("aria-expanded")
+    const updateAria = (ariaExpanded === "true") ? false : true;
+    navbarDropdownParent.setAttribute("aria-expanded", updateAria)
 }
