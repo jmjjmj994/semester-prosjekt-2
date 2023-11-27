@@ -24,9 +24,9 @@
         <section class="top flex gap-1 justify-end">
             <article class="flex items-center justify-between max-[1024px]:hidden">
                 <div class="w-[2rem] h-[2rem] bg-white rounded-full">
-                    <img data-avatar class="w-[2rem] h-[2rem] rounded-full" alt="" />
+                    <img data-avatar class="w-[2rem] h-[2rem] rounded-full" alt=""/>
                 </div>
-                <span data-credit></span>
+                <span data-credit> </span>
             </article>
 
             <article class="flex items-center gap-2">
@@ -195,7 +195,7 @@
 
         <!--Navbar-->
     </header>
-
+<!--Modals-->
     <section class="search-container">
         <!--Form section-->
         <div class="search-container__input">
@@ -220,7 +220,64 @@
 
         <section class="search-container__results"></section>
     </section>
+<!-- 
+<section data-modal-listing class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-accent w-auto h-auto hidden">
+    <p>Modal</p>
+</section> -->
 
+<section data-modal-profile class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-secondary w-[25rem] h-[35rem]  rounded-md ">
+
+   <div id="smooth-bg" class=" h-[15rem]  relative">
+ 
+        <div class=" rounded-t-md  text-white  bg-black flex flex-col relative">
+            <p class="z-10 absolute top-0 left-[10px]">Exit</p>
+            <h3 class="z-10 absolute left-[50%] -translate-x-1/2 ">Din bruker</h3>
+        </div>
+
+       <img src="/alex-suprun-ZHvM3XIOHoE-unsplash(1).jpg" class="w-[4rem] h-[4rem] rounded-full absolute z-[1] left-[50%] top-[50%] -translate-x-1/2 -translate-y-14 " alt="">
+<svg class="w-full absolute top-0 z-[0]" id="svg" viewBox="0 0 1440 690" xmlns="http://www.w3.org/2000/svg"
+    class="transition duration-300 ease-in-out delay-150">
+
+    <defs>
+        <linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%">
+            <stop offset="5%" stop-color="#b04000"></stop>
+            <stop offset="95%" stop-color="#fcb900"></stop>
+        </linearGradient>
+    </defs>
+    <path
+        d="M 0,700 C 0,700 0,350 0,350 C 148.96428571428572,336.8571428571429 297.92857142857144,323.7142857142857 424,351 C 550.0714285714286,378.2857142857143 653.25,446 765,426 C 876.75,406 997.0714285714287,298.2857142857143 1111,271 C 1224.9285714285713,243.71428571428572 1332.4642857142858,296.8571428571429 1440,350 C 1440,350 1440,700 1440,700 Z"
+        stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="1"
+        class="transition-all duration-300 ease-in-out delay-150 path-0" transform="rotate(-180 720 350)"></path>
+</svg>
+   </div>
+
+   <!---->
+   <div class="bg-primary flex flex-col rounded-md gap-4 p-2 mx-4 ">
+  <div>
+    <p>Username:</p>
+    <p>Jane Doe</p>
+  </div>
+
+    <div>
+        <p>Email:</p>
+        <p>Jane Doe@noroff.no</p>
+    </div>
+
+        <div>
+        <p>Credits:</p>
+<p>Amount</p>
+        </div>
+        <div>
+            <p>Avatar</p>
+            <div>Avatar here</div>
+        </div>
+
+   </div>
+
+
+</section>
+
+<!--Modals-->
     <main class="flex-grow">
         <!--Main section wrapper-->
 

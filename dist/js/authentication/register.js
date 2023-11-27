@@ -144,6 +144,7 @@ async function registerUser(name, email, password) {
         if (res.ok) {
             const data = await res.json();
             console.log("response", data)
+            window.location.href = "/login.html"
 
 
         } else {

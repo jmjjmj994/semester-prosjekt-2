@@ -47,7 +47,7 @@ const allProfiles = async (limit) => {
 
 
 
-const singleProfile = async (name) => {
+export const singleProfile = async (name) => {
     let url = `https://api.noroff.dev/api/v1/auction/profiles/${name}?_listings=true`
 
     try {
