@@ -1,9 +1,10 @@
 import { localStorageItems, blockElements } from "./js/utils/utils.js";
 import { singleProfile } from "./js/api/api.js";
 
-const profileAvatar = document.querySelector("[data-avatar]");
+const profileAvatar = document.querySelectorAll("[data-avatar]");
 const profileCredit = document.querySelector("[data-credit]");
 const loginLogout = document.querySelector("[data-login-logout ]")
+const navbarName = document.querySelector("[data-navbar-name]")
 export const register = document.querySelector("[data-signup ]")
 
 //Modal
@@ -17,10 +18,6 @@ const profileModalSettings = document.querySelector("[data-profile-modal-setting
 
 const hasToken = () => {
 
-
-
-
-   /*  let registerActive = false; */
     if (localStorageItems.token) {
         loginLogout.textContent = "Logg ut"
         loginLogout.href = "./login.html"
@@ -28,19 +25,24 @@ const hasToken = () => {
         profileCredit.textContent = `Kreddit: ${localStorageItems.userData.credits}`
         register.href = ""
         register.role = "button"
-       /*  registerActive = true;
-        openProfileModal(register, registerActive) */
+
     }
 
 
     if (localStorageItems.userData.avatar) {
-        profileAvatar.src = localStorageItems.userData.avatar
-        profileAvatar.alt = "";
+        profileAvatar[0].src = localStorageItems.userData.avatar
+        profileAvatar[1].src = localStorageItems.userData.avatar
+        profileAvatar[0].alt = "";
+        profileAvatar[1].alt = "";
+        navbarName.textContent = localStorageItems.userData.name
 
     } else {
-        profileAvatar.src = "dist/assets/blank-avatar.png"
-        profileAvatar.alt = "";
-      /*   registerActive = false; */
+        navbarName.textContent = "Lag en konto"
+        profileAvatar[0].src = "dist/assets/blank-avatar.png"
+        profileAvatar[1].src = "dist/assets/blank-avatar.png"
+        profileAvatar[0].alt = "";
+        profileAvatar[1].alt = "";
+        /*   registerActive = false; */
 
     }
 
@@ -51,7 +53,8 @@ const hasToken = () => {
 hasToken()
 
 const noToken = () => {
-    profileAvatar.src = "dist/assets/blank-avatar.png"
+    profileAvatar[0].src = "dist/assets/blank-avatar.png"
+    profileAvatar[1].src = "dist/assets/blank-avatar.png"
     loginLogout.textContent = "Logg inn"
     loginLogout.href = "./index.html"
     register.textContent = "Registrer"
