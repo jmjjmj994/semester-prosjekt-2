@@ -1,72 +1,71 @@
-/* import { localStorageItems } from "./js/utils/utils.js";
-console.log(localStorageItems)
-const userData = { ...localStorageItems };
-const avatar = document.querySelectorAll("[data-avatar]");
-const credit = document.querySelectorAll("[data-credit]");
-const signUp = document.querySelector("[data-signup]")
-const loginLogout = document.querySelector("[data-login-logout]");
+import { localStorageItems } from "./js/utils/utils.js";
+const profileAvatar = document.querySelector("[data-avatar]");
+const profileCredit = document.querySelector("[data-credit]");
+
+const loginLogout = document.querySelector("[data-login-logout ]")
+const register = document.querySelector("[data-signup ]")
+
+console.log(loginLogout)
 
 
 
-const userStatus = () => {
-    if (!userData.token && window.location.pathname === "/login.html") {
-        loginLogout.textContent = "Logg inn";
-        signUp.textContent = "Registrer"
-    }
 
-    if (window.location.pathname === "/signup.html") {
-        loginLogout.textContent = "Logg inn";
-        signUp.textContent = "Registrer"
-        avatar.forEach(img => {
-            userData.userData.avatar ? img.src = userData.userData.avatar : img.src = "dist/assets/blank-profile-picture-973460_640.png"
-        })
-    }
 
-    if (userData.token && window.location.pathname === "/index.html") {
-        loginLogout.textContent = "Logg ut"
-        loginLogout.addEventListener("click", (e) => {
-        localStorage.removeItem("user-token");
-      
-        })
-        avatar.forEach(img => {
-            userData.userData.avatar ? img.src = userData.userData.avatar : img.src = "dist/assets/blank-profile-picture-973460_640.png"
-        })
+console.log(localStorageItems.userData.avatar)
 
-        credit.forEach(credit => {
-            credit.textContent = `Kreditt: ${userData.userData.credits}.- NOK`
-        })
-        signUp.textContent = "";
+
+const hasToken = () => {
+    if (localStorageItems.userData.avatar) {
+        profileAvatar.src = localStorageItems.userData.avatar
+        profileAvatar.alt = "";
     } else {
-        avatar.forEach(img => {
-            img.src = "dist/assets/blank-profile-picture-973460_640.png"
-        })
-        loginLogout.textContent = "Logg inn";
-        signUp.textContent = "Registrer"
+        profileAvatar.src = "dist/assets/blank-avatar.png"
+        profileAvatar.alt = "";
     }
-
+    profileCredit.textContent = `Kreddit: ${localStorageItems.userData.credits}`
+    loginLogout.textContent = "Logg ut"
+    loginLogout.href = "./login.html"
+    register.textContent = "Min profil"
+    register.href = ""
 
 }
 
 
-const tokenPresent = () => {
+
+const noToken = () => {
+    profileAvatar.src = "dist/assets/blank-avatar.png"
+    loginLogout.textContent = "Logg inn"
+    loginLogout.href = "./index.html"
+    register.textContent = "Registrer"
+
+}
 
 
-    const hasCheckedToken = localStorage.getItem('tokenChecked');
-console.log(hasCheckedToken)
-    console.log("Hei")
+
+const determineState = () => {
+    if (localStorageItems.token) {
+        hasToken()
+    } else {
+        noToken()
+    }
+}
 
 
-};
+
+determineState()
 
 
-document.addEventListener('DOMContentLoaded', tokenPresent);
-userStatus()
- */
 
+const monitorPage = () => {
+    if (window.location.pathname === "/login.html" ) {
+    loginLogout.textContent = "";
+} else if(window.location.pathname === "/signup.html") {
+    loginLogout.href = "/login.html"
+} 
 
-/*    if (!hasCheckedToken && userData.token) {
-       localStorage.setItem('tokenChecked', 'true');
-       window.location.href = "/index.html";
-   } else if (!userData.token && hasCheckedToken !== 'true') {
-       localStorage.removeItem('tokenChecked'); 
-   } */
+}
+monitorPage()
+
+loginLogout.addEventListener("click", (e) => {
+    localStorage.removeItem("user-token")
+})
