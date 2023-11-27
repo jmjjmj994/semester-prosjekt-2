@@ -2,20 +2,15 @@ import { register } from "../../global.js";
 import { localStorageItems, blockElements } from "../utils/utils.js";
 import { updateMedia } from "../api/api.js";
 const modalProfile = document.querySelector("[data-profile-modal]");
-const closeProfileModal = document.querySelector("[data-profile-modal-close]");
+const avatarForm = document.querySelector("[data-avatar-form]")
+const avatarFormInput = document.querySelector("[data-avatar-form-input]")
+const avatarFormBtn = document.querySelector("[data-avatar-form-btn]")
+const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
 const profileModalSettings = document.querySelector("[data-profile-modal-settings]");
 const modalProfileSecondary = document.querySelector("[data-profile-modal-secondary]")
 const closeProfileModalInput = document.querySelector("[data-profile-modal-input-close]")
-const image = document.querySelector("[data-profile-modal-img]");
-const name = document.querySelector("[data-profile-modal-name]");
-const email = document.querySelector("[data-profile-modal-email]");
-const credits = document.querySelector("[data-profile-modal-credits]");
-
-//
 
 
-
-//
 
 
 const profileModal = () => {
@@ -33,6 +28,7 @@ function openProfileModal(btn) {
 }
 
 function closeModal() {
+    const closeProfileModal = document.querySelector("[data-profile-modal-close]");
     closeProfileModal.addEventListener("click", (e) => {
         modalProfile.className = "fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-secondary w-[25rem] transition-all h-[35rem]  rounded-md shadow hidden"
         blockElements.header.style.cssText = " "
@@ -41,6 +37,10 @@ function closeModal() {
 }
 
 const renderModalContent = () => {
+    const image = document.querySelector("[data-profile-modal-img]");
+    const name = document.querySelector("[data-profile-modal-name]");
+    const email = document.querySelector("[data-profile-modal-email]");
+    const credits = document.querySelector("[data-profile-modal-credits]");
 
     if (localStorageItems.userData.avatar) {
         image.src = localStorageItems.media;
@@ -60,10 +60,7 @@ const renderModalContent = () => {
  */
 
 
-const avatarForm = document.querySelector("[data-avatar-form]")
-const avatarFormInput = document.querySelector("[data-avatar-form-input]")
-const avatarFormBtn = document.querySelector("[data-avatar-form-btn]")
-const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+
 
 
 profileModalSettings.onclick = () => displaySecondaryModal(true)
@@ -107,16 +104,12 @@ const changeUserAvatar = async (imageUrl) => {
     const imageContainer = document.querySelector("[data-profile-modal-image-container]");
     if (image) {
         image.style.cssText = "opacity:0;"
-
         try {
             const changeMedia = await updateMedia("NeonNebula", imageUrl);
-            
             smLoader.classList.add("isActive")
             await new Promise((resolve => setTimeout(resolve, 3000)))
             image.src = localStorage.getItem("new-media");
             image.style.cssText = "opacity:1;"
-
-
         } finally {
             smLoader.classList.remove("isActive")
         }
@@ -128,6 +121,15 @@ const changeUserAvatar = async (imageUrl) => {
 }
 
 
-renderModalContent()
-profileModal()
-closeModal()
+
+
+
+
+(() => { //initializer
+    renderModalContent()
+    profileModal()
+    closeModal()
+
+})();
+
+
