@@ -10,11 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
     <script src="/dist/js/header/header.js" type="module"></script>
-    <script src="/dist/js/home/index.js" type="module"></script>
+
     <script src="/dist/global.js" type="module"></script>
     <script src="/dist/js/modal/profile-modal.js" type="module"></script>
 
-    <title>Home</title>
+    <title>Profil</title>
 </head>
 
 <div data-loader class="loader"></div>
@@ -88,13 +88,12 @@
             </article>
             <!--Header hamburger & logo section-->
 
-            <nav data-navbar class="fixed top-0 left-0 bg-primary   text-black h-full lg:static  isActive">
+            <nav data-navbar class="fixed top-0 left-0 bg-primary   text-black h-full lg:static  ">
                 <!--Navbar content wrapper-->
                 <section class=" h-full w-full lg:flex p-2 lg:p-0">
                     <section class="flex justify-end py-1 pr-1 lg:hidden">
                         <button data-close-nav>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" 
-                                class="w-5 h-5 fill-black ">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="w-5 h-5 fill-black ">
                                 <path
                                     d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
                             </svg>
@@ -104,14 +103,14 @@
                     <!--Account section-->
                     <section class="lg:hidden">
                         <article class="flex items-center justify-between lg:flex-col lg:justify-start ">
-                            <img data-avatar class="w-[2rem] h-[2rem] rounded-full"  />
+                            <img data-avatar class="w-[2rem] h-[2rem] rounded-full" />
                             <span data-navbar-name></span>
                         </article>
                     </section>
                     <!--Account section-->
 
-                    <ul data-navbar-ul  class="lg:flex lg:justify-evenly flex-1 bg-accent">
-                    
+                    <ul data-navbar-ul class="lg:flex lg:justify-evenly flex-1 bg-accent">
+
                         <li>
                             <a href="/index.html">Hjem</a>
                         </li>
@@ -133,7 +132,7 @@
                         <li>
                             <a href="#">Om oss</a>
                         </li>
-                     
+
                         <li>
                             <a href="#">Kategorier</a>
                         </li>
@@ -141,14 +140,13 @@
                     </ul>
 
                     <!--Ul dropdown-->
-                    <ul data-navbar-dropdown-parent  aria-haspopup="true" aria-expanded="false"
+                    <ul data-navbar-dropdown-parent aria-haspopup="true" aria-expanded="false"
                         class="flex flex-col h-auto lg:ml-auto lg:flex-shrink lg:basis-[10rem] lg:items-center lg:flex-column lg:justify-center ">
                         <li class="flex items-center   lg:items-center ">
                             <button data-navbar-dropdown-toggler>Kategorier</button>
-                            <svg data-navbar-dropdown-angle xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" 
-                            
+                            <svg data-navbar-dropdown-angle xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                 class="w-5 h-5 fill-black ">
-                            
+
                                 <path fill-rule="evenodd"
                                     d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z"
                                     clip-rule="evenodd" />
@@ -156,7 +154,7 @@
                         </li>
                         <!--Search result container-->
                         <ul data-navbar-dropdown-menu class="pl-5 ">
-                            
+
                             <li>
                                 <p>Cars</p>
                             </li>
@@ -231,256 +229,103 @@
     </section>
 
 
-    <section data-profile-modal
-        class="fixed w-[50rem] h-[40rem] bg-blue-400     shadow"> <!--Hidden-->
-        <!--Hidden here-->
 
-
-        <div  class="   text-white h-[10rem]  relative ">
-            <div class="flex items-center justify-between ">
-                <div data-profile-modal-secondary
-                    class="bg-black flex flex-col absolute w-full h-full top-0 z-[3] rounded-t-md ">
-                    <div class="flex ">
-                        <button data-profile-modal-input-close>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-black h-[1rem]"
-                                viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                         
-                                <path
-                                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
-                            </svg>
-                        </button>
-                        <h3 class="m-auto">Change your avatar</h3>
-                    </div>
-
-                    <form data-avatar-form class="bg-accent flex-grow flex items-center justify-center gap-1">
-                        <input data-avatar-form-input type="text" placeholder="Bytt din avatar"
-                            class="p-1 rounded-md text-black">
-                        <button data-avatar-form-btn class="bg-white p-1  text-black">Fullfør</button>
-                    </form>
-                </div>
-
-                <button data-profile-modal-close>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="fill-black h-[1.5rem]"
-                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path
-                            d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
-                    </svg>
-
-                </button>
-                <h3>Din bruker</h3>
-                <button data-profile-modal-settings>
-                    <svg xmlns="http://www.w3.org/2000/svg"  class="fill-black h-[1.5rem]"
-                        viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                     
-                        <path
-                            d="M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z" />
-                    </svg>
-
-                </button>
-            </div>
-
-            <div class="flex items-center justify-center h-full">
-                <div class="w-[4rem] h-[4rem] bg-secondary rounded-full relative">
-                    <div data-loader-sm class="loader-sm"></div>
-                    <img data-profile-modal-img class="w-[4rem] h-[4rem] rounded-full " src="" alt="" loading="lazy">
-                </div>
-            </div>
-        </div>
-
-
-
-
-        <!---->
-        <div class="bg-primary flex flex-col  gap-4 h-full ">
-            <div>
-                <p>Navn:</p>
-                <p data-profile-modal-name></p>
-            </div>
-
-            <div>
-                <p>E-post:</p>
-                <p data-profile-modal-email></p>
-            </div>
-
-            <div>
-                <p>Kreditt:</p>
-                <p data-profile-modal-credits></p>
-            </div>
-
-
-        </div>
-
-
-    </section>
 
     <!--MODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALS-->
 
     <!--Modals-->
-    <main class="flex-grow">
-        <!--Main section wrapper-->
+    <main class="flex flex-grow ">
 
-        <!--CTA-->
-        <section class="section-wrapper">
-            <!--Block wrapper padding later-->
 
-            <section class="w-full h-[50vh] flex flex-col justify-center items-center md:flex-row p-4">
-                <!--Hero-->
-                <div class="flex flex-col items-center gap-5 ring-1">
-                    <h1 class="cta-header ">
-                        Stig inn og opplev spennende auksjoner
-                    </h1>
-                    <button class="border-2 border-accent ring-comp text-accent p-2 w-[10rem] rounded">
-                        Utforsk
-                    </button>
-                </div>
-            </section>
+        <section class=" flex items-center justify-center flex-1  h-[100vh] px-[0.5rem] md:px-[1rem] lg:px-[3rem]"> <!--Wrapper-->
 
-            <!--CTA-->
-
-            <!--Featured section-->
-
-            <section class="min-h-[100vh]">
-                <h2>Featured</h2>
-
-                <section data-featured-section class="flex bg-accent flex-wrap justify-between ring-1 gap-[10px]">
+            <section class="flex flex-col  justify-center    h-[80%]  max-w-[100%] w-full  md:w-[45rem] lg:w-[50rem]">
+                <section
+                    class=" flex items-center flex-col  md:flex-row gap-2  bg-white shadow-sm rounded-lg py-5 px-[0.5rem] md:px-[1rem] lg:px-[3rem]">
+                    <div>
+                    <img src="/alex-suprun-ZHvM3XIOHoE-unsplash(1).jpg" class="w-[5rem] h-[5rem] rounded-full" alt="">
+                   
+                    </div>
+                  
+                    <div class="md:ml-auto">
+                    <button class=" bg-accent py-1 px-5 rounded-lg text-white">Bytt avatar</button>
+                    </div>
                 </section>
-            </section>
-
-            <!--Featured section-->
-
-            <!--About section-->
-
-            <!--Secondary cta-->
-
-            <section class="bg-secondary-cta text-accent flex flex-col items-center justify-center h-[50vh]">
-                <h2>Bli med! Legg inn ditt første bud</h2>
-                <button class="border-2 border-accent ring-comp text-accent p-2 w-[10rem] mt-4 rounded">
-                    Utforsk
-                </button>
-            </section>
-
-            <!--Secondary cta---->
 
 
 
-            <!--About section-->
 
-            <section class="h-[50vh] relative">
-                <!--Reviews slider-->
 
-                <section data-carousel-container class=" h-[50vh] w-full relative m-auto flex overflow-hidden">
-                    <article data-carousel-slide
-                        class=" absolute flex items-center justify-center flex-grow-0 flex-shrink-0 w-full h-full">
-                        <div class="w-[30rem] h-[30rem] flex flex-col items-center justify-center gap-3">
-                            <div class="flex items-center flex-col">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" fill="#9B4819"
-                                    viewBox="0 0 448 512">
-                                    <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                    <path
-                                        d="M448 296c0 66.3-53.7 120-120 120h-8c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8H320c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32 32 72zm-256 0c0 66.3-53.7 120-120 120H64c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8H64c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32 32 72z" />
-                                </svg>
-                                <h3>Her finner jeg mye spennende!</h3>
-                            </div>
-                            <div class="text-center flex-col items-center flex">
-                                <p class="max-w-[28ch]">
-                                    Jeg fant en rekke interessante varer her. Enkelt å delta i
-                                    auksjonene.
-                                </p>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <img class="w-[3.5rem] h-[3.5rem] rounded-full"
-                                    src="/dist/assets/carousel-avatars/aiony-haust-3TLl_97HNJo-unsplash.webp"
-                                    alt="avatar" />
-                                <p>Jane Doe</p>
-                            </div>
-                        </div>
+
+                <section class=" flex flex-col  justify-center gap-10  h-auto py-1 "> <!--Wrapper-->
+
+
+
+                    <article
+                        class=" flex flex-col justify-center gap-1  bg-white shadow-sm rounded-lg basis-[10%] px-[0.5rem] md:px-[1rem] lg:px-[3rem] mt-10 ">
+                        <p>Navn:</p>
+                        <p>Neon Nebula</p>
                     </article>
-                    <article data-carousel-slide
-                        class="absolute flex items-center justify-center  flex-grow-0 flex-shrink-0 basis-[100%] w-full h-full">
-                        <div class="w-[30rem] h-[30rem] flex flex-col items-center justify-center gap-3">
-                            <div class="flex items-center flex-col">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" fill="#9B4819"
-                                    viewBox="0 0 448 512">
-                                    <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                    <path
-                                        d="M448 296c0 66.3-53.7 120-120 120h-8c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8H320c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32 32 72zm-256 0c0 66.3-53.7 120-120 120H64c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8H64c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32 32 72z" />
-                                </svg>
-                                <h3>God kundeservice og rask hjelp!</h3>
-                            </div>
 
-                            <div class="text-center flex-col items-center flex">
-                                <p class="max-w-[28ch]">
-                                    Jeg fikk rask og vennlig hjelp fra kundeservice.
-                                </p>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <img class="w-[3.5rem] h-[3.5rem] rounded-full"
-                                    src="/dist/assets/carousel-avatars/christian-buehner-DItYlc26zVI-unsplash.webp"
-                                    alt="avatar" />
-                                <p>John Doe</p>
-                            </div>
-                        </div>
+                    <article
+                        class="flex flex-col justify-center gap-1  bg-white shadow-sm rounded-lg basis-[10%] px-[0.5rem] md:px-[1rem] lg:px-[3rem]  ">
+                        <p>E-post adresse</p>
+                        <p>NeonNebula@noroff.no</p>
                     </article>
-                    <article data-carousel-slide
-                        class="absolute flex items-center justify-center  flex-grow-0 flex-shrink-0 basis-[100%] w-full h-full">
-                        <div class="w-[30rem] h-[30rem] flex flex-col items-center justify-center gap-3">
-                            <div class="flex items-center flex-col">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" fill="#9B4819"
-                                    viewBox="0 0 448 512">
-                                    <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                    <path
-                                        d="M448 296c0 66.3-53.7 120-120 120h-8c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8H320c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32 32 72zm-256 0c0 66.3-53.7 120-120 120H64c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8H64c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32 32 72z" />
-                                </svg>
-                                <h3>Spennende nettsted og enkelt å navigere!</h3>
-                            </div>
 
-                            <div class="text-center flex-col items-center flex">
-                                <p class="max-w-[28ch]">
-                                    Fantastisk utvalg og enkel navigering gjorde
-                                    handleopplevelsen her glimrende.
-                                </p>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <img class="w-[3.5rem] h-[3.5rem] rounded-full"
-                                    src="/dist/assets/carousel-avatars/christopher-campbell-rDEOVtE7vOs-unsplash.webp"
-                                    alt="avatar" />
-                                <p>Emily Johnson</p>
-                            </div>
-                        </div>
+
+
+                    <article
+                        class="flex flex-col justify-center gap-1  bg-white shadow-sm rounded-lg basis-[10%] px-[0.5rem] md:px-[1rem] lg:px-[3rem]  ">
+                        <p>Kreditt</p>
+                        <p>1000</p>
                     </article>
+
+                    <article
+                        class="flex flex-col justify-center gap-1  bg-white shadow-sm rounded-lg basis-[10%] px-[0.5rem] md:px-[1rem] lg:px-[3rem] ">
+                        <p>Oppføringer</p>
+                        <p>1000</p>
+                    </article>
+
+
+                    <article
+                        class="flex flex-col justify-center gap-1  bg-white shadow-sm rounded-lg basis-[10%] px-[0.5rem] md:px-[1rem] lg:px-[3rem]  ">
+                        <p>Vunnet</p>
+                        <p>1000</p>
+                    </article>
+
+
+
+
                 </section>
-                <button data-prev-btn
-                    class="flex justify-center items-center absolute z-10 w-[2rem] h-[2rem] left-[30%] top-[85%]  md:left-[25%] lg:left-[30%]  md:top-[50%] rounded-full  bg-accent">
+
+                <!--
+credits: 1000​
+Oppføringer: Array []
+wins: Array []
+
+-->
 
 
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path
-                            d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
-                    </svg>
-
-
-
-                </button>
-                <button data-next-btn
-                    class="flex justify-center items-center absolute z-10 w-[2rem] h-[2rem] right-[30%] top-[85%]   md:right-[25%] lg:right-[30%]  md:top-[50%] rounded-full bg-accent">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path
-                            d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
-                    </svg>
-
-
-
-
-
-                </button>
             </section>
 
-            <!--Main section wrapper-->
+
 
         </section>
-        <!--Top main section-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </main>
 
     <footer class="bg-secondary flex-shrink flex flex-col md:flex-wrap md:flex-row md:items-center">

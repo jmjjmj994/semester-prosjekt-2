@@ -66,8 +66,7 @@ navbarDropdownButton.addEventListener("click", (e) => {
     toggleAriaExpanded()
 })
 
-const navbarDropDownMenuItems = document.querySelectorAll("[data-navbar-dropdown-menu] > li")
-console.log(navbarDropDownMenuItems)
+
 const navbarDropdownParent = document.querySelector("[data-navbar-dropdown-parent]")
 
 

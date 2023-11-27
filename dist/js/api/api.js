@@ -69,6 +69,7 @@ export const singleProfile = async (name) => {
 
 
 
+
 export const updateMedia = async (name, imageUrl) => {
     let url = `https://api.noroff.dev/api/v1/auction/profiles/${name}/media`;
 

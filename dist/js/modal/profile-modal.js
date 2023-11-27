@@ -1,4 +1,4 @@
-import { register } from "../../global.js";
+/* import { register } from "../../global.js";
 import { localStorageItems, blockElements } from "../utils/utils.js";
 import { updateMedia } from "../api/api.js";
 const modalProfile = document.querySelector("[data-profile-modal]");
@@ -21,7 +21,7 @@ const profileModal = () => {
 function openProfileModal(btn) {
     btn.addEventListener("click", (e) => {
         e.preventDefault()
-        modalProfile.className = "fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-secondary w-[25rem] transition-all h-[35rem]  rounded-md shadow "
+        modalProfile.className = "fixed w-full h-full bg-slate-600     "
         modalProfile.classList.add("isActive")
         blockElements.header.style.cssText = "background-color: rgba(0, 0, 0, 0.65) "
         blockElements.main.style.cssText = "background-color: rgba(0, 0, 0, 0.65) "
@@ -31,7 +31,7 @@ function openProfileModal(btn) {
 function closeModal() {
     const closeProfileModal = document.querySelector("[data-profile-modal-close]");
     closeProfileModal.addEventListener("click", (e) => {
-        modalProfile.className = "fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-secondary w-[25rem] transition-all h-[35rem]  rounded-md shadow hidden"
+        modalProfile.className = "fixed w-full h-full bg-slate-600  hidden"
         blockElements.header.style.cssText = " "
         blockElements.main.style.cssText = ""
     })
@@ -57,8 +57,6 @@ const renderModalContent = () => {
 
 }
 
-/* 
- */
 
 
 
@@ -126,7 +124,7 @@ const changeUserAvatar = async (imageUrl) => {
 
 
 
-(() => { //initializer
+(() => { 
     renderModalContent()
     profileModal()
     closeModal()
@@ -135,3 +133,4 @@ const changeUserAvatar = async (imageUrl) => {
 
 
 
+ */

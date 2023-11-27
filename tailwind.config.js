@@ -6,7 +6,8 @@ module.exports = {
     './components/**/*.{html,js}',
     './index.html',
     './signup.html',
-    './login.html'
+    './login.html',
+    "./profile.html"
   ],
 
  theme:{
