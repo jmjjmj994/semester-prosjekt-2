@@ -1,6 +1,6 @@
 import { createListing } from "../api/api.js";
 
-/* const test = await createListing("hei"); */
+
 
 const form = document.querySelector("[data-form-type='listing-form']")
 
@@ -69,12 +69,9 @@ const validateInput = () => {
 
 
 const imagePreview = (image) => {
-    const productPreviewContainerDiv = document.querySelector("[data-container-='image-container']");
     const img = document.querySelector("[data-container-='image-container-img']")
-
-
-
     img.src = image
+    img.alt = image
 
 
 
@@ -92,6 +89,7 @@ productImageInput.addEventListener("keydown", (e) => {
     const inputImageVal = productImageInput.value.trim();
     if (e.key === "Delete" || e.key === "Backspace") {
         productImageInput.value = "";
+        
         imagePreview(productImageInput.value)
 
 

@@ -1,4 +1,3 @@
-import { blockElements } from "../utils/utils.js";
 /* ==== Search modal ==== */
 const openSearchContainer = document.querySelector("[data-open-search]");
 const closeSearchContainer = document.querySelector("[data-close-search]");

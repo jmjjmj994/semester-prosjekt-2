@@ -1,7 +1,8 @@
+
+//Needed in several actions
 import { register } from "../../global.js";
 import { localStorageItems } from "../utils/utils.js";
 import { updateMedia, singleProfile } from "../api/api.js";
-//Needed in several actions
 const avatarOverlay = document.querySelector("[data-avatar-overlay]");
 const avatarOverlayForm = document.querySelector("[data-avatar-overlay-form ]");
 const avatarOverlayFormInput = document.querySelector("[data-avatar-overlay-form--input ]");

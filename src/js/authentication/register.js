@@ -1,4 +1,4 @@
-import { userAuthEndpoints } from "../api/api.js";
+import {userAuthEndpoints} from "../api/api.js"; 
 
 const form = document.querySelector("[data-form-type='sign-up']");
 const btnSubmit = document.querySelector("[data-action='submit']")

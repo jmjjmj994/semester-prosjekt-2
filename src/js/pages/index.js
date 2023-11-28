@@ -1,5 +1,5 @@
 import { listings } from "../api/api.js";
-import { createCardElement, createButtonElement } from "../utils/utils.js";
+import { createCardElement } from "../utils/utils.js";
 
 const featuredSection = document.querySelector("[data-featured-section]");
 const carouselContainer = document.querySelector("[data-carousel-container]");
@@ -7,8 +7,6 @@ const carouselSlides = document.querySelectorAll("[data-carousel-slide]");
 const carouselPrevBtn = document.querySelector("[data-prev-btn]");
 const carouselNextBtn = document.querySelector("[data-next-btn]");
 const featuredListings = await listings(100);
-
-
 
 
 const sortListingsByBids = () => {

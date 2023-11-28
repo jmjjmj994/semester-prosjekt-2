@@ -1,4 +1,4 @@
-import { localStorageItems, blockElements } from "./js/utils/utils.js";
+import { localStorageItems } from "./js/utils/utils.js";
 import { singleProfile } from "./js/api/api.js";
 
 const profileAvatar = document.querySelectorAll("[data-avatar]");
@@ -81,7 +81,6 @@ const monitorPage = () => {
 
 }
 monitorPage()
-
 loginLogout.addEventListener("click", (e) => {
     localStorage.removeItem("user-token")
 })

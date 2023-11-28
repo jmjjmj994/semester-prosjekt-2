@@ -1,10 +1,10 @@
-export { localStorageItems,  createCardElement, createButtonElement, blockElements }
+export { localStorageItems, createCardElement, createButtonElement, blockElements }
 const localStorageItems = {
     userData: JSON.parse(localStorage.getItem("user-data")),
     token: localStorage.getItem("user-token"),
     hasToken: localStorage.getItem("tokenChecked"),
     media: localStorage.getItem("new-media")
-  
+
 }
 
 

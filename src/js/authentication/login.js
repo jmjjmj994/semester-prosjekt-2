@@ -1,4 +1,4 @@
-import { userAuthEndpoints, showLoader } from "../api/api.js";
+import { userAuthEndpoints } from "../api/api.js";
 
 const form = document.querySelector("[data-form-type='log-in']");
 const email = document.querySelector("[data-input-type='email']");
@@ -9,30 +9,27 @@ const errorEl = document.querySelector("[data-form-type='error']")
 
 
 
-
-
-
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const emailValue = email.value.trim();
     const passwordValue = password.value.trim();
 
-    if(emailValue && passwordValue) {
+    if (emailValue && passwordValue) {
         login(emailValue, passwordValue)
         email.value = "";
         password.value = "";
-  
+
     } else {
         console.log("Please enter a valid email")
         return
-      
+
     }
-  
+
 })
 
 
 async function login(email, password) {
-  
+
     try {
         const res = await fetch(`${userAuthEndpoints.login}`, {
             method: "POST",
@@ -45,16 +42,14 @@ async function login(email, password) {
 
         if (res.ok) {
             const data = await res.json()
-           showLoader(true)
             localStorage.setItem("user-token", data.accessToken)
             localStorage.setItem("user-data", JSON.stringify(data))
             window.location.href = "/index.html"
-        
-          
+
+
         } else {
 
-            const errorMessage = "Invalid username or password"; 
-
+            const errorMessage = "Invalid username or password";
             console.log(errorMessage);
             throw new Error(`${errorMessage}`);
         }
