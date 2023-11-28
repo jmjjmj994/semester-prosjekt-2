@@ -1,3 +1,59 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --text-white: hsl(0, 0%, 95%);
+  --text-black: hsl(0, 0%, 8%);
+  --light-background: hsl(0, 0%, 95%);
+  --light-secondary: hsl(0, 0%, 100%);
+  --light-accent: hsl(260, 100%, 66%);
+  --light-special: hsl(52, 100%, 75%);
+  --dark-background: hsl(0, 0%, 8%);
+  --dark-secondary: hsl(0, 0%, 15%);
+  --dark-accent: hsl(260, 100%, 66%);
+  --dark-special: hsl(180, 46%, 56%);
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark p,
+.dark span,
+.dark div,
+.dark button {
+  --text: var(--text-white);
+}
+
+
+
+
+
+button {
+  --accent: var(--light-accent);
+}
+.dark button {
+  --accent: var(--dark-accent);
+}
+
+div {
+  --secondary: var(--light-secondary);
+  width: 5rem;
+  height: 5rem;
+}
+
+.dark div {
+  width: 10rem;
+  height: 10rem;
+  --secondary: var(--dark-secondary);
+}
+
+body {
+  --background: var(--light-background);
+}
+
+body.dark {
+  --background: var(--dark-background);
+}

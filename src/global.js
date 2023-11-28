@@ -88,8 +88,30 @@ loginLogout.addEventListener("click", (e) => {
 
 
 
-//Profile
 
 
 
+// Function to set the theme based on a given mode
+function setThemeMode(mode) {
+    const body = document.body;
 
+    // Check the mode and apply the appropriate classes to the body
+    if (mode === 'lightMode') {
+        body.classList.remove('darkMode');
+        body.classList.add('lightMode');
+        localStorage.setItem('theme', 'lightMode'); // Store the selected theme in local storage
+    } else if (mode === 'darkMode') {
+        body.classList.remove('lightMode');
+        body.classList.add('darkMode');
+        localStorage.setItem('theme', 'darkMode'); // Store the selected theme in local storage
+    }
+}
+
+// Check the local storage for the selected theme and apply it
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    setThemeMode(savedTheme);
+} else {
+    // Default to lightMode mode if no theme is saved in local storage
+    setThemeMode('lightMode');
+}
