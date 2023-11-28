@@ -23,7 +23,7 @@ const hasToken = () => {
         loginLogout.href = "./login.html"
         register.textContent = "Min profil"
         profileCredit.textContent = `Kreddit: ${localStorageItems.userData.credits}`
-        register.href = ""
+        register.href = "/profile.html"
         register.role = "button"
 
     }
@@ -36,27 +36,22 @@ const hasToken = () => {
         profileAvatar[1].alt = "";
         navbarName.textContent = localStorageItems.userData.name
 
-    } else {
-        navbarName.textContent = "Lag en konto"
-        profileAvatar[0].src = "dist/assets/blank-avatar.png"
-        profileAvatar[1].src = "dist/assets/blank-avatar.png"
-        profileAvatar[0].alt = "";
-        profileAvatar[1].alt = "";
-        /*   registerActive = false; */
-
     }
 
 
 }
 
 
-hasToken()
+
 
 const noToken = () => {
+    navbarName.textContent = "Lag en konto"
     profileAvatar[0].src = "dist/assets/blank-avatar.png"
     profileAvatar[1].src = "dist/assets/blank-avatar.png"
+    profileAvatar[0].alt = "";
+    profileAvatar[1].alt = "";
     loginLogout.textContent = "Logg inn"
-    loginLogout.href = "./index.html"
+    loginLogout.href = "./login.html"
     register.textContent = "Registrer"
 
 }
@@ -96,12 +91,6 @@ loginLogout.addEventListener("click", (e) => {
 
 //Profile
 
-
-
-const profileData = localStorageItems.userData;
-
-
-//Profile
 
 
 

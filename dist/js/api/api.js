@@ -35,6 +35,7 @@ const allProfiles = async (limit) => {
 
         if (res.ok) {
             const data = await res.json();
+            console.log(data)
             return data;
 
         } else {
