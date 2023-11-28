@@ -31,7 +31,9 @@ module.exports = {
           
         
         },
-     
+       joker: {
+         funny:"#cc6e32"
+       }
       },
 
       border: {
