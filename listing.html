@@ -9,12 +9,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+    <script src="/dist/js/pages/listing.js" type="module"></script>
     <script src="/dist/js/header/header.js" type="module"></script>
-    <script src="/dist/js/pages/profile.js" type="module"></script>
     <script src="/dist/global.js" type="module"></script>
-  
 
-    <title>Profil</title>
+
+    <title>Selg</title>
 </head>
 
 <!-- <div data-loader class="loader"></div>
@@ -195,11 +195,8 @@
             <!--Header hamburger & logo section-->
         </section>
 
-        <!--Navbar-->
-
-        <!--Navbar-->
     </header>
-    <!--Modals-->
+
     <section class="search-container">
         <!--Form section-->
         <div class="search-container__input">
@@ -224,129 +221,99 @@
 
 
 
-        <!--MODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALS-->
+      
         <section class="search-container__results"></section>
     </section>
 
 
 
 
-    <!--MODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALS-->
-
-    <!--Modals-->
+ 
     <main class="flex flex-grow ">
 
 
-        <section class=" flex items-center justify-center flex-1  h-[100vh] px-[0.5rem] md:px-[1rem] lg:px-[3rem]"> <!--Wrapper-->
 
-            <section class="flex flex-col  justify-center    h-[80%]  max-w-[100%] w-full  md:w-[45rem] lg:w-[50rem]">
-          
 
-<section>
-    <h1 class="header-secondary">
-        Min profil 
-    </h1>
-</section>
-                <section
-                    class=" flex items-center flex-col  md:flex-row gap-2  bg-white shadow-sm rounded-lg py-5 px-[0.5rem] md:px-[1rem] lg:px-[3rem] relative">
-                    <div class="inject-loader relative">
-                      
-                    <img data-avatar-image src="" class="w-[5rem] h-[5rem] rounded-full" alt="">
-                   
+
+
+
+
+        <section class="bg-slate-400 flex-1 flex items-center justify-center flex-col min-h-[100vh]"> <!--Wrapper-->
+
+            <section class="bg-orange-300 w-[50%] flex-1 flex flex-col  py-1 px-1"> <!--Wrapper-->
+
+                <section class="header-secondary">
+                    <h1>Selg</h1>
+                </section> <!--Header-->
+
+
+
+
+                <form data-form-type="listing-form" class="flex flex-col flex-1 gap-10 " action="">
+
+                    <div class="flex flex-col">
+                        <label  for="produkt-title">PRODUKT TITTEL*:</label>
+                        <input data-input-type="product-title" class="basis-full py-2 rounded-md" type="text" name="product-title"
+                            placeholder="Produkt navn:">
                     </div>
-                  
-                    <div class="md:ml-auto">
-                    <button data-open-avatar-overlay class=" bg-accent py-1 px-5 rounded-lg text-white">Bytt avatar</button>
+
+
+
+                    <div class="flex flex-col">
+                        <label  for="product-tags">TAGGER*:</label>
+                        <input data-input-type="product-tags" class="basis-full py-2 rounded-md" type="text" name="product-tags"
+                            placeholder="Kategorier">
                     </div>
 
-                    <aside data-avatar-overlay id="aside-bg" class="bg-slate-800 absolute flex  w-full h-full top-0 left-[50%] transform -translate-x-1/2 rounded-lg " >
-                      <div>
-                            <button data-close-avatar-overlay >
+
+                    <div class="flex flex-col gap-5">
+
+                        <div data-container-="preview" class="border-dashed border-2 h-[25rem] rounded-md flex items-center justify-center relative">
+                            <div data-container-="image-container"  class="flex flex-col ">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                    viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                     <style>
                                         svg {
                                             fill: #000000
                                         }
                                     </style>
                                     <path
-                                        d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+                                        d="M448 80c8.8 0 16 7.2 16 16V415.8l-5-6.5-136-176c-4.5-5.9-11.6-9.3-19-9.3s-14.4 3.4-19 9.3L202 340.7l-30.5-42.7C167 291.7 159.8 288 152 288s-15 3.7-19.5 10.1l-80 112L48 416.3l0-.3V96c0-8.8 7.2-16 16-16H448zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z" />
                                 </svg>
-                            </button>
-                      </div>
-                       
-                    <form data-avatar-overlay-form class="w-full lg:flex-1 flex items-center justify-center gap-3  flex-col md:flex-row px-[2.5rem] lg:px-[5rem]">
+                                <span>Forhåndsvis bilde</span>
+                                <img data-container-="image-container-img" class="w-full h-full absolute object-cover top-0 left-0 ronded-md" />
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                        <label  for="product-image">BILDE*:</label>
+                        <input data-input-type="product-image" class="py-2 rounded-md" type="text" name="product-image" placeholder="Last opp bilde">
+                        </div>
 
-                        <input data-avatar-overlay-form--input  class=" w-full md:flex-1 py-[0.50rem] rounded-lg pl-3"  type="text" placeholder="Legg til bilde">
-                        <button class=" w-full md:w-auto bg-accent py-[0.50rem] px-7 rounded-lg">Kjør</button>
-                    </form>
+                    </div>
 
-
-                    </aside>
-                </section>
-
-
-
-
-
-
-                <section class=" flex flex-col  justify-center gap-10  h-auto py-1 "> <!--Wrapper-->
+                    <div>
+                        <label  for="product-description">BESKRIVELSE*:</label>
+                        <textarea data-input-type="product-textarea" class="w-full min-h-[20rem] py-2 rounded-md resize-y" name="product-description"
+                            placeholder="Beskrivelse"></textarea>
+                    </div
 
 
+                    <div class="flex flex-col">
+                        <label  for="product-end">SLUTT DATO*:</label>
+                        <input data-input-type="product-end" class="basis-full py-2 rounded-md" type="date" name="product-end"
+                            placeholder="Slutt dato:">
+                    </div>
 
-                    <article
-                        class=" flex flex-col justify-center gap-1  bg-white shadow-sm rounded-lg basis-[10%] px-[0.5rem] md:px-[1rem] lg:px-[3rem] mt-10 ">
-                        <p>Navn:</p>
-                        <p data-username></p>
-                    </article>
-
-                    <article
-                        class="flex flex-col justify-center gap-1  bg-white shadow-sm rounded-lg basis-[10%] px-[0.5rem] md:px-[1rem] lg:px-[3rem]  ">
-                        <p>Epost-adresse:</p>
-                        <p data-email></p>
-                    </article>
+                    <button class="w-full bg-purple-400 py-2 rounded-md">Fullfør</button>
+                </form>
 
 
-
-                    <article
-                        class="flex flex-col justify-center gap-1  bg-white shadow-sm rounded-lg basis-[10%] px-[0.5rem] md:px-[1rem] lg:px-[3rem]  ">
-                        <p>Kreditt:</p>
-                        <p data-profile-credit></p>
-                    </article>
-
-                    <article
-                        class="flex flex-col justify-center gap-1  bg-white shadow-sm rounded-lg basis-[10%] px-[0.5rem] md:px-[1rem] lg:px-[3rem] ">
-                        <p>Oppføringer:</p>
-                        <p data-listings></p>
-                    </article>
-
-
-                    <article
-                        class="flex flex-col justify-center gap-1  bg-white shadow-sm rounded-lg basis-[10%] px-[0.5rem] md:px-[1rem] lg:px-[3rem]  ">
-                        <p>Vunnet:</p>
-                        <p data-wins></p>
-                    </article>
-
-
-
-
-                </section>
-
-                <!--
-credits: 1000​
-Oppføringer: Array []
-wins: Array []
-
--->
 
 
             </section>
 
 
-
         </section>
-
-
 
 
 

@@ -144,9 +144,9 @@ export const listings = async (limit) => {
 
 
 
-const createListing = async (title, description, tags, imageUrl) => {
+export const createListing = async (title, description, tags, image, date) => {
     let url = `https://api.noroff.dev/api/v1/auction/listings`
-
+console.log(title, description, tags, image, date)
 
     const requestOptions = {
         method: "POST",
@@ -155,8 +155,8 @@ const createListing = async (title, description, tags, imageUrl) => {
             title, title,
             description: description,
             tags: [tags],
-            media: imageUrl,
-            endsAt: "10.07.2024"
+            media: [image],
+            endsAt: date
         })
 
     }
@@ -165,7 +165,8 @@ const createListing = async (title, description, tags, imageUrl) => {
     try {
         const res = await fetch(url, requestOptions)
         const data = await res.json()
-        console.log(data)
+        return data;
+       
     }
     catch (error) {
 
@@ -174,6 +175,7 @@ const createListing = async (title, description, tags, imageUrl) => {
 
 
 }
+
 
 /* createListing("tester", "mye rart", "hei hva skjer") */
 

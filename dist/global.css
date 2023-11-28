@@ -23,9 +23,23 @@ span,
 a {
   font-family: "Lato", sans-serif;
 }
+.label-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
 
 .cta-header {
   font-size: clamp(1.4rem, 4vw, 3.75rem);
+  letter-spacing: -0.025rem;
+}
+.header-secondary {
+  font-size: clamp(1.1rem, 3vw, 3rem);
   letter-spacing: -0.025rem;
 }
 
@@ -165,11 +179,6 @@ a {
   display: flex;
 }
 
-/* #aside-bg {
-  background: url(/dist/assets/liquid-cheese.png);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-} */
 
 [data-avatar-overlay] {
   opacity: 0;
@@ -195,25 +204,3 @@ header.modalClosed {
 
 /*================== Color changes================== */
 
-/* .loader {
-    border: 5px solid #FFF;
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    animation: rotation 1s linear infinite;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transform-origin: center;
-    }
-
-    @keyframes rotation {
-    0% {
-      
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-    } 
- */

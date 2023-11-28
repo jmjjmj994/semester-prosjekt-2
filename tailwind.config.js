@@ -7,7 +7,8 @@ module.exports = {
     './index.html',
     './signup.html',
     './login.html',
-    "./profile.html"
+    './profile.html',
+    './listing.html'
   ],
 
  theme:{
