@@ -31,7 +31,6 @@ a {
 
 @media screen and (min-width: 300px) and (max-width: 1024px) {
   nav {
-    
     max-width: 15rem;
     width: 100%;
     transform: translateX(-100%);
@@ -45,7 +44,7 @@ a {
     transform: translateX(0);
     will-change: opacity, box-shadow;
     opacity: 1;
-    box-shadow: 13px 0px 24px 7px rgba(0,0,0,0.1);
+    box-shadow: 13px 0px 24px 7px rgba(0, 0, 0, 0.1);
     transition: transform 200ms opacity 3000s ease-in-out;
   }
 }
@@ -56,31 +55,27 @@ a {
   }
 }
 
-
 [data-navbar-dropdown-menu] {
-visibility: hidden;
-background-color: orange;
-height:0rem;
+  visibility: hidden;
+  background-color: orange;
+  height: 0rem;
 }
 [data-navbar-dropdown-menu].isActive {
-visibility: visible;
-height:auto;
-transition:all 250ms ;
-
+  visibility: visible;
+  height: auto;
+  transition: all 250ms;
 }
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
   [data-navbar-dropdown-menu].isActive {
-visibility: visible;
-height:auto;
-transition:all 250ms ;
-position: fixed;
-display: flex;
-flex-direction: column;
-width: 10rem;
-top: 5rem;
-
-}
-
+    visibility: visible;
+    height: auto;
+    transition: all 250ms;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 10rem;
+    top: 5rem;
+  }
 }
 [data-navbar-dropdown-angle] {
   transform: rotate(0deg);
@@ -88,8 +83,6 @@ top: 5rem;
 [data-navbar-dropdown-angle].isActive {
   transform: rotate(180deg);
 }
-
-
 
 .search-container {
   display: flex;
@@ -172,84 +165,24 @@ top: 5rem;
   display: flex;
 }
 
-.loader {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: inline-block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 10px solid;
-  box-sizing: border-box;
-  animation: animloader 1s linear infinite alternate;
-  display: none;
-}
-
-.loader.isActive {
-  display: block;
-}
-
-.loader-sm {
-  width: 2rem;
-  height: 2rem;
-  position: absolute;
-  border-radius: 50%;
-
-  justify-content: center;
-  align-items: center;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: none;
-}
-.loader-sm:before {
-  content: "";
-  position: absolute;
-  width: 2rem;
-  height: 2rem;
-  border-radius: inherit;
-  border-left: 1px solid #b04000;
-  animation: rotateSmall 500ms infinite ease-in-out;
-}
-.loader-sm.isActive {
-  display: flex;
-}
-@keyframes rotateSmall {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes animloader {
-  0% {
-    border-color: white rgba(255, 255, 255, 0) rgba(255, 255, 255, 0)
-      rgba(255, 255, 255, 0);
-  }
-  33% {
-    border-color: white white rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
-  }
-  66% {
-    border-color: white white white rgba(255, 255, 255, 0);
-  }
-  100% {
-    border-color: white white white white;
-  }
-}
-
-#modal-bg {
+/* #aside-bg {
   background: url(/dist/assets/liquid-cheese.png);
-  background-size: cover;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
+} */
+
+[data-avatar-overlay] {
+  opacity: 0;
+  visibility: hidden;
+}
+
+[data-avatar-overlay].isActive {
+  opacity: 1;
+  visibility: visible;
 }
 
 /*================== Color changes================== */
 header.modalOpen {
-
   background-color: rgba(0, 0, 0, 0.881);
   transition: 250ms ease-in-out;
 }
@@ -261,3 +194,61 @@ header.modalClosed {
 }
 
 /*================== Color changes================== */
+
+/* .loader {
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    animation: rotation 1s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    }
+
+    @keyframes rotation {
+    0% {
+      
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
+ */
+.loaderAbsolute {
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  position: absolute;
+}
+
+.loaderAbsoluteIsActive {
+  visibility: visible;
+}
+.spinner {
+  border: 5px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

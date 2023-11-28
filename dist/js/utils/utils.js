@@ -32,3 +32,24 @@ const createButtonElement = (className) => {
 }
 
 
+
+
+
+export const createLoader = ((spinnerHeight, spinnerWidth, active) => {
+    const loaderContainer = document.createElement("div");
+    loaderContainer.className = "loaderAbsolute"
+    const spinner = document.createElement("span");
+    spinner.style.height = spinnerHeight;
+    spinner.style.width = spinnerWidth
+    spinner.className = "spinner";
+    loaderContainer.append(spinner)
+     if(active) {
+        loaderContainer.classList.add("loaderAbsoluteIsActive")
+     } else {
+         loaderContainer.classList.remove("loaderAbsoluteIsActive")
+
+
+     }
+    return loaderContainer;
+})
+createLoader()
