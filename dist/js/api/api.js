@@ -146,7 +146,7 @@ export const listings = async (limit) => {
 
 export const createListing = async (title, description, tags, image, date) => {
     let url = `https://api.noroff.dev/api/v1/auction/listings`
-console.log(title, description, tags, image, date)
+console.log(date)
 
     const requestOptions = {
         method: "POST",

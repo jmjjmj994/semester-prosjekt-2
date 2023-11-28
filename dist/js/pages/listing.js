@@ -12,17 +12,30 @@ const productPreviewContainerDiv = document.querySelector("[data-container-='ima
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const validatedInput = validateInput();
-    console.log(validatedInput)
+    console.log(validatedInput.end)
+ /*    const date = validateInput.endsAt
+    console.log(date) */
+   /*  const date = new Date(validateInput.inputDateVal) */
+   
     // title: "wqeqwe", description: "qwewqe", category: "qweqwe", image: "wqeweq", date: "10.07.2024" 
     if (validatedInput) {
-        await createListing(validatedInput.title, validatedInput.description, validatedInput.tags, validatedInput.image, validatedInput.productDateInput)
+        await createListing(validatedInput.title, validatedInput.description, validatedInput.tags, validatedInput.image, validatedInput.inputDateVal)
         console.log("valid")
     } else {
         console.log("invalid")
     }
 })
 
-
+const productInputTitle = document.querySelector("[data-input-type='product-title']")
+const productTagsInput = document.querySelector("[data-input-type='product-tags']")
+const productImageInput = document.querySelector("[data-input-type='product-image']")
+const productTextareaInput = document.querySelector("[data-input-type='product-textarea']")
+const productDateInput = document.querySelector("[data-input-type='product-end']")
+productInputTitle.value = "";
+productTagsInput.value = "";
+productImageInput.value = "";
+productTextareaInput.value = ""
+productDateInput.value = "";
 const validateInput = () => {
     const productInputTitle = document.querySelector("[data-input-type='product-title']")
     const productTagsInput = document.querySelector("[data-input-type='product-tags']")
@@ -40,8 +53,13 @@ const validateInput = () => {
             description: inputTextareaVal,
             tags: inputTagsVal,
             image: inputImageVal,
-            endsAt: inputDateVal
+            end: inputDateVal
         }
+        productInputTitle.value = "";
+        productTagsInput.value = "";
+        productImageInput.value = "";
+        productTextareaInput.value =""
+        productDateInput.value = "";
         return inputData
     } else {
         return false;
@@ -59,11 +77,11 @@ const imagePreview = (image) => {
     img.src = image
 
 
+
 }
 
 
-const productImageInput = document.querySelector("[data-input-type='product-image']")
-const inputImageVal = productImageInput.value.trim();
+
 productImageInput.addEventListener("input", (e) => {
     const inputImageVal = productImageInput.value.trim();
     imagePreview(inputImageVal);
