@@ -85,15 +85,3 @@ loginLogout.addEventListener("click", (e) => {
     localStorage.removeItem("user-token")
 })
 
-
-
-
-
-
-const toggleTheme = () => {
-    const root = document.documentElement;
-    const currentTheme = root.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', newTheme);
-};
-/*  toggleTheme()  */

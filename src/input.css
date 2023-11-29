@@ -15,6 +15,10 @@
   --dark-special: hsl(180, 46%, 56%);
 } */
 
+svg {
+  fill: var(--color-background);
+}
+
 @layer base {
   :root {
     --color-background: 0, 0%, 95%;
@@ -35,78 +39,27 @@
   }
 }
 
+@layer components {
+  .cta-btn-sm {
+    width: 7.5rem;
+    height: 2.1875rem;
+    padding: 8px 20px 9px 21px;
+    border-radius: 5px;
+    
+  }
 
+  .cta-btn-md {
+    display: flex;
+width: 8.75rem;
+height: 2.5rem;
+padding: 11px 30px 11px 31px;
 
-/* .dark h1,
-.dark h2,
-.dark h3,
-.dark h4,
-.dark h5,
-.dark p,
-.dark span,
-.dark div,
-.dark a,
-.dark li,
-.dark button {
-  --text: var(--text-white);
-}
+  }
+  .cta-btn-lg {
 
-button {
-  --accent: var(--light-accent);
-}
-.dark button {
-  --accent: var(--dark-accent);
-}
+width: 9.375rem;
+height: 2.8125rem;
+padding: 13px 36px 14px 35px;
 
-div {
-  --secondary: var(--light-secondary);
+  }
 }
-
-.dark div {
-  --secondary: var(--dark-secondary);
-}
-
-body {
-  --background: var(--light-background);
-}
-
-body.dark {
-  --background: var(--dark-background);
-}
-
-header {
-  --background: var(--light-secondary);
-}
-
-.dark header {
-  --background: var(--dark-secondary);
-}
-
-nav {
-  --secondary:var(--light-secondary);
-}
-.dark nav {
-  --secondary:var(--dark-secondary);
-}
-.svg-logo {
-  fill:var(--light-background);
-}
-
-.svg-logo.dark {
-  fill:var(--dark-background)
-}
-
-.customBlack {
-     --background: var(--light-secondary);
-
-}
-.customBlack.dark {
-     --background: var(--dark-secondary);
-
-}
-
- @layer base {
-:root {
-
-}
- } */
