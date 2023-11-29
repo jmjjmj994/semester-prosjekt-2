@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* 
 :root {
   --text-white: hsl(0, 0%, 95%);
   --text-black: hsl(0, 0%, 8%);
@@ -10,12 +10,42 @@
   --light-accent: hsl(260, 100%, 66%);
   --light-special: hsl(52, 100%, 75%);
   --dark-background: hsl(0, 0%, 8%);
-  --dark-secondary: hsl(0, 0%, 15%);
+  --dark-secondary: hsla(0, 0%, 15%, 0);
   --dark-accent: hsl(260, 100%, 66%);
   --dark-special: hsl(180, 46%, 56%);
+} */
+
+@layer base {
+  :root {
+    --color-background: 0, 0%, 95%;
+    --color-secondary: 0, 0%, 100%;
+    --color-accent: 210, 100%, 60%;
+    --color-special: 52, 100%, 75%;
+    --color-text: 0, 0%, 8%;
+    --color-text-special: 52, 100%, 75%;
+  }
+
+  :root[data-theme="dark"] {
+    --color-background: 0, 0%, 8%;
+    --color-secondary: 0, 0%, 11%;
+    --color-accent: 260, 100%, 66%;
+    --color-special: 180, 46%, 56%;
+    --color-text: 0, 0%, 100%;
+    --color-text-special: 180, 46%, 56%;
+  }
 }
 
-.dark h1,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+/* .dark h1,
 .dark h2,
 .dark h3,
 .dark h4,
@@ -23,13 +53,11 @@
 .dark p,
 .dark span,
 .dark div,
+.dark a,
+.dark li,
 .dark button {
   --text: var(--text-white);
 }
-
-
-
-
 
 button {
   --accent: var(--light-accent);
@@ -40,13 +68,9 @@ button {
 
 div {
   --secondary: var(--light-secondary);
-  width: 5rem;
-  height: 5rem;
 }
 
 .dark div {
-  width: 10rem;
-  height: 10rem;
   --secondary: var(--dark-secondary);
 }
 
@@ -57,3 +81,40 @@ body {
 body.dark {
   --background: var(--dark-background);
 }
+
+header {
+  --background: var(--light-secondary);
+}
+
+.dark header {
+  --background: var(--dark-secondary);
+}
+
+nav {
+  --secondary:var(--light-secondary);
+}
+.dark nav {
+  --secondary:var(--dark-secondary);
+}
+.svg-logo {
+  fill:var(--light-background);
+}
+
+.svg-logo.dark {
+  fill:var(--dark-background)
+}
+
+.customBlack {
+     --background: var(--light-secondary);
+
+}
+.customBlack.dark {
+     --background: var(--dark-secondary);
+
+}
+
+ @layer base {
+:root {
+
+}
+ } */

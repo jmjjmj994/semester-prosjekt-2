@@ -4,6 +4,7 @@ body {
   line-height: 1.5;
 }
 
+
 nav > ul > li > button,
 [data-credit] {
   font-size: 1rem;
@@ -21,7 +22,7 @@ h5,
 p,
 span,
 a {
-  font-family: "Lato", sans-serif;
+
 }
 
 

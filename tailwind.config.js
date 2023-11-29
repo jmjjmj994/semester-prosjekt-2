@@ -22,18 +22,28 @@ module.exports = {
 
 
       colors: {
-        custom :{
-          background: "var(--background)",
-          secondary: "var(--secondary)",
-          accent:"var(--accent)",
-          special:"var(--special)",
-          text:"var(--text)",
-          
-        
+
+        custom: {
+          background: 'hsl(var(--color-background))',
+          secondary: 'hsl(var(--color-secondary))',
+          accent: 'hsl(var(--color-accent))',
+          special: 'hsl(var(--color-special))',},
+
+        typography:{
+          standard: 'hsl(var(--color-text))',
+          special:`hsl(var(--color-text-special))`
         },
-       joker: {
-         funny:"#cc6e32"
-       }
+
+
+        /*        background: "hsl(--background)",
+               secondary: "hsl(--secondary)",
+               accent:"hsl(--accent)",
+               special:"hsl(--special)",
+               text:"hsl(--text)",
+                */
+
+
+
       },
 
       border: {
