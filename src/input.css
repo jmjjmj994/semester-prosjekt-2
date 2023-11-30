@@ -44,7 +44,7 @@ svg {
 
 @layer components {
     .height-calc {
-    height: calc(100vh - 5rem);
+    min-height: calc(100vh - 8.5rem);
   }
   .cta-btn-sm {
     width: 7.5rem;
@@ -71,9 +71,13 @@ padding: 13px 36px 14px 35px;
 
 
   .card-grid {
-    display: grid;
-grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-justify-content: space-between;
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(200px, 20rem));
+ grid-auto-rows: 20rem;
+ justify-content: space-around;
+ align-content: space-around;
+ gap: 5px;
+padding-block: 5px;
 
   }
 

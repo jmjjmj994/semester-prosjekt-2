@@ -1,9 +1,9 @@
-import { createCardElement } from "../utils/utils.js";
+import { createCardElement, dateConverter } from "../utils/utils.js";
 
 
 const listings = async (limit, offset) => {
     const url =
-        `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_bids=true&_active=true&limit=${limit}&offset=${offset}`;
+        `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&limit=${limit}&offset=${offset}`;
 
     try {
         const res = await fetch(url, {
@@ -28,7 +28,7 @@ const listings = async (limit, offset) => {
 //1fd16e0d #ef788
 
 
-const container = document.querySelector("[data-type-section='listings']")
+
 
 
 let num = 1;
@@ -77,21 +77,33 @@ const paginationNumbers = (number) => {
 };
 
 const fetchData = async (offset, limit) => {
-
+    const container = document.querySelector("[data-type-section='listings']")
     const myData = await listings(offset, limit);
+    const data = myData.filter(item => {
 
-    
-    const data = myData.map(item => {
-if(item) {
-    return item.title
-} else {
-    return "loading..."
-}
-      
-    })
-console.log(data)
-
-    container.innerHTML += data
+        return item.id && item.title && item.description && item.media && item.endsAt && item._count;
+    }).forEach(item => {
+        const { id, title, description, media, endsAt, bids } = item;
+        const norwegianDate = dateConverter(endsAt)
+        console.log(media)
+        const article = createCardElement("article", "flex flex-col  bg-slate-300")
+        const articleHeader = createCardElement("div", "h-[70%] relative ");
+        const articleHeaderImage = createCardElement("img", "absolute w-full h-full object-cover");
+        articleHeaderImage.src = media[0]
+        const articleBody = createCardElement("div");
+        const articleBodyEndsAt = document.createElement("p");
+        const articleBodyTitle = createCardElement("p");
+        const articleBodyDescription = createCardElement("p");
+        const articleBodyBids = document.createElement("p")
+        articleBodyEndsAt.textContent = norwegianDate
+        articleBodyTitle.textContent = title
+        articleBodyDescription.textContent = description
+        articleBodyBids.textContent =
+            articleBody.append(articleBodyEndsAt, articleBodyTitle, articleBodyDescription, articleBodyBids)
+        articleHeader.append(articleHeaderImage)
+        article.append(articleHeader, articleBody)
+        container.append(article)
+    });
 
 };
 
@@ -107,5 +119,5 @@ const initializePagination = () => {
 
 window.addEventListener("DOMContentLoaded", () => {
     initializePagination();
-    fetchData(offset, itemsPerPage);
+    fetchData(itemsPerPage, offset);
 });
