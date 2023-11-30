@@ -19,7 +19,7 @@ form.addEventListener("submit", async (e) => {
    
     // title: "wqeqwe", description: "qwewqe", category: "qweqwe", image: "wqeweq", date: "10.07.2024" 
     if (validatedInput) {
-        await createListing(validatedInput.title, validatedInput.description, validatedInput.tags, validatedInput.image, validatedInput.inputDateVal)
+        await createListing(validatedInput.title, validatedInput.description, validatedInput.tags, validatedInput.image, validatedInput.end)
         console.log("valid")
     } else {
         console.log("invalid")
@@ -31,6 +31,8 @@ const productTagsInput = document.querySelector("[data-input-type='product-tags'
 const productImageInput = document.querySelector("[data-input-type='product-image']")
 const productTextareaInput = document.querySelector("[data-input-type='product-textarea']")
 const productDateInput = document.querySelector("[data-input-type='product-end']")
+const today = new Date().toISOString().split("T")[0];
+productDateInput.min = today;
 productInputTitle.value = "";
 productTagsInput.value = "";
 productImageInput.value = "";

@@ -1,4 +1,4 @@
-
+import { dateConverter } from "../utils/utils.js"
 export const userAuthEndpoints = {
     register: "https://api.noroff.dev/api/v1/auction/auth/register",
     login: "https://api.noroff.dev/api/v1/auction/auth/login",
@@ -146,7 +146,7 @@ export const listings = async (limit) => {
 
 export const createListing = async (title, description, tags, image, date) => {
     let url = `https://api.noroff.dev/api/v1/auction/listings`
-console.log(date)
+/* const norwegianDate = dateConverter(date); */
 
     const requestOptions = {
         method: "POST",
@@ -165,6 +165,7 @@ console.log(date)
     try {
         const res = await fetch(url, requestOptions)
         const data = await res.json()
+        console.log(data)
         return data;
        
     }
