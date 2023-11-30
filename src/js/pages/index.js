@@ -1,5 +1,5 @@
 import { listings } from "../api/api.js";
-import { createCardElement } from "../utils/utils.js";
+import { createCardElement, createButtonElement, dateConverter} from "../utils/utils.js";
 
 const featuredSection = document.querySelector("[data-featured-section]");
 const carouselContainer = document.querySelector("[data-carousel-container]");
@@ -11,9 +11,10 @@ const featuredListings = await listings(100);
 
 const sortListingsByBids = () => {
     const items = featuredListings;
+
     const itemsByBids = items
         .filter(item => item.media && item._count && item._count.bids >= 5)
-        .map(({ media, _count }) => ({ media, bids: _count.bids }))
+        .map(({ media, _count, endsAt }) => ({ media, bids: _count.bids, endsAt }))
 
     return itemsByBids
 }
@@ -21,25 +22,34 @@ const sortListingsByBids = () => {
 
 
 
-const featuredCards = (image, bids) => {
-    const article = createCardElement("article", "text-white flex-1  flex flex-col p-1  h-auto w-auto");
-    const articleDivHeader = createCardElement("div", "rounded-md  bg-white relative h-[10rem] w-[10rem]  md:h-[15rem] md:w-[18rem] ")
+const featuredCards = (image, bids, date) => {
+    const article = createCardElement("article", "text-white   flex flex-col items-center   bg-custom-secondary rounded-md py-2 cursor-pointer");
+    const articleDivHeader = createCardElement("div", "rounded-md  bg-white relative h-full w-full ")
     const articleDivHeaderImg = document.createElement("img")
     articleDivHeaderImg.src = image
     articleDivHeaderImg.className = "h-full w-full object-cover rounded-md border-2 "
-    const articleDivFooter = createCardElement("div", "flex flex-col  items-center justify-center h-auto gap-4")
-    const span = createCardElement("span");
-    span.className = "text-black"
-    span.textContent = "Bids:"
+    const articleDivFooter = createCardElement("div", "flex  w-full flex-col items-center justify-center h-auto gap-4 text-typography-standard")
+    const articleDivFooterTop = createCardElement("div", "flex flex-col text-sm ring-1 items-center" );
     const spanBid = createCardElement("span");
-    spanBid.textContent = bids
+    const spanDateRemaining = createCardElement("span");
+    spanDateRemaining.textContent = "Slutter:"
+    spanBid.className = "text-black"
+    spanBid.textContent = "Antall bud:"
+    const spanDateRemainingTime = createCardElement("span");
+    spanDateRemainingTime.textContent = date
+    const spanBidCount = createCardElement("span");
+    
+    spanBidCount.textContent = bids;
+    spanDateRemaining.append(spanDateRemainingTime)
+    spanBid.append(spanBidCount)
+    articleDivFooterTop.append(spanDateRemaining, spanBid)
 
     const button = createButtonElement("border-2 border-accent  text-accent p-1 w-2/4  rounded-md ");
     button.textContent = "Place bid"
     article.append(articleDivHeader, articleDivFooter)
     articleDivHeader.append(articleDivHeaderImg)
-    articleDivFooter.append(span, button)
-    span.append(spanBid)
+    articleDivFooter.append(articleDivFooterTop, button)
+ 
     return article;
 }
 const featuredSkeletonCards = () => {
@@ -61,6 +71,8 @@ const featuredSkeletonCards = () => {
 
 const renderFeaturedCards = async () => {
     const items = sortListingsByBids();
+    const norwegianDate = dateConverter;
+    
     const articleCard = featuredCards;
     featuredSection.innerHTML = "";
     for (let i = 0; i < items.length; i++) {
@@ -76,9 +88,9 @@ const renderFeaturedCards = async () => {
         /*    await new Promise((resolve => setTimeout(resolve, 3000))) */
         featuredSection.innerHTML = ""
         items.forEach(item => {
-            console.log(item)
-
-            featuredSection.append(articleCard(item.media, item.bids))
+            
+            
+            featuredSection.append(articleCard(item.media, item.bids, norwegianDate(item.endsAt)))
         })
     } catch (error) {
 
@@ -87,7 +99,7 @@ const renderFeaturedCards = async () => {
 
 
 }
-/* renderFeaturedCards() */
+/*  renderFeaturedCards()    */
 
 
 

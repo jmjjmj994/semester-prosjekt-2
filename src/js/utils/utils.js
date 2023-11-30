@@ -1,4 +1,4 @@
-export { localStorageItems, createCardElement, createButtonElement, blockElements }
+export { localStorageItems, createCardElement, createButtonElement, blockElements,dateConverter}
 const localStorageItems = {
     userData: JSON.parse(localStorage.getItem("user-data")),
     token: localStorage.getItem("user-token"),
@@ -31,6 +31,21 @@ const createButtonElement = (className) => {
 }
 
 
+const dateConverter = (date) => {
+
+    const options = {
+        weekday:"long",
+        year:"numeric", 
+        month:"long",
+        day:"numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",}
+
+    const norwegianDate = new Date(date).toLocaleString("no-NO", options)
+    console.log(norwegianDate)
+    return norwegianDate;
+}
 
 
 
