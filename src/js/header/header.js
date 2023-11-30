@@ -57,29 +57,3 @@ const navbarToggler = (value) => {
 
 
 
-const navbarDropdownButton = document.querySelector("[data-navbar-dropdown-toggler]")
-/* 
-navbarDropdownButton.onclick = () => navbarDropdownToggler() */
-navbarDropdownButton.addEventListener("click", (e) => {
-    navbarDropdownToggler()
-    toggleAriaExpanded()
-})
-
-
-const navbarDropdownParent = document.querySelector("[data-navbar-dropdown-parent]")
-
-
-
-const navbarDropdownToggler = (value) => {
-    const navbarDropdownMenu = document.querySelector("[data-navbar-dropdown-menu]");
-    const navbarDropdownMenuAngle = document.querySelector("[data-navbar-dropdown-angle]");
-    navbarDropdownMenu.classList.toggle("isActive")
-    navbarDropdownMenuAngle.classList.toggle("isActive")
-
-
-}
-const toggleAriaExpanded = () => {
-    const ariaExpanded = navbarDropdownParent.getAttribute("aria-expanded")
-    const updateAria = (ariaExpanded === "true") ? false : true;
-    navbarDropdownParent.setAttribute("aria-expanded", updateAria)
-}

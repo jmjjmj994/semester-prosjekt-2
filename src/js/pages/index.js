@@ -6,12 +6,11 @@ const carouselContainer = document.querySelector("[data-carousel-container]");
 const carouselSlides = document.querySelectorAll("[data-carousel-slide]");
 const carouselPrevBtn = document.querySelector("[data-prev-btn]");
 const carouselNextBtn = document.querySelector("[data-next-btn]");
-const featuredListings = await listings(100);
+const featuredListings = await listings(10);
 
 
 const sortListingsByBids = () => {
     const items = featuredListings;
-
     const itemsByBids = items
         .filter(item => item.media && item._count && item._count.bids >= 5)
         .map(({ media, _count, endsAt }) => ({ media, bids: _count.bids, endsAt }))
@@ -85,9 +84,10 @@ const renderFeaturedCards = async () => {
 
 
 
-        /*    await new Promise((resolve => setTimeout(resolve, 3000))) */
+      /*    await new Promise((resolve => setTimeout(resolve, 3000)))  */
         featuredSection.innerHTML = ""
         items.forEach(item => {
+            console.log(item)
             
             
             featuredSection.append(articleCard(item.media, item.bids, norwegianDate(item.endsAt)))
@@ -99,8 +99,8 @@ const renderFeaturedCards = async () => {
 
 
 }
-/*  renderFeaturedCards()    */
-
+ renderFeaturedCards()    
+ 
 
 
 
@@ -130,3 +130,20 @@ function moveSlides() {
         slide.style.transform = `translateX(${100 * (index - curSlide)}%)`;
     });
 }
+
+
+/* async function test() {
+    const url =
+        'https://api.noroff.dev/api/v1/auction/listings?_seller=true&_bids=true&_active=true&limit=10';
+    const res = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    const data = await res.json();
+    console.log(data);
+}
+
+test(); */

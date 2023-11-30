@@ -126,16 +126,30 @@ const auctionProfiles = async (name, param) => {
 //Auction-listings related endpoints
 
 export const listings = async (limit) => {
-    let url = `https://api.noroff.dev/api/v1/auction/listings?_seller?_bids&limit=${limit}`
+    const url =
+        `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_bids=true&_active=true&limit=${limit}` ;
 
     try {
-        const res = await fetch(url, options)
-        if (res.ok) {
+
+        const res = await fetch(url, {
+            method:"GET",
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        });
+        if(res.ok) {
             const data = await res.json();
             return data;
         } else {
             throw new Error("Failed to fetch data")
         }
+  /*       const res = await fetch(url, options)
+        if (res.ok) {
+            const data = await res.json();
+            return data;
+        } else {
+            throw new Error("Failed to fetch data")
+        } */
 
     } catch (error) {
         console.log(error.message)
@@ -144,8 +158,10 @@ export const listings = async (limit) => {
 
 
 
+
+
 export const createListing = async (title, description, tags, image, date) => {
-    let url = `https://api.noroff.dev/api/v1/auction/listings`
+    let url = `https://api.noroff.dev/api/v1/auction/listings?_bids`
 /* const norwegianDate = dateConverter(date); */
 
     const requestOptions = {
@@ -178,6 +194,3 @@ export const createListing = async (title, description, tags, image, date) => {
 }
 
 
-/* createListing("tester", "mye rart", "hei hva skjer") */
-
-//Auction-listings related endpoints

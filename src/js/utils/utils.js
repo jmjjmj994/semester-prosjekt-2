@@ -43,7 +43,7 @@ const dateConverter = (date) => {
         second: "numeric",}
 
     const norwegianDate = new Date(date).toLocaleString("no-NO", options)
- console.log(norwegianDate)
+
     return norwegianDate;
 }
 

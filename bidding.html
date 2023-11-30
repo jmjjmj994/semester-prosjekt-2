@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/868d223859.js" crossorigin="anonymous"></script>
     <script src="/src/js/header/header.js" type="module"></script>
-    <script src="/src/js/pages/profile.js" type="module"></script>
+    <script src="/src/js/pages/bidding.js" type="module"></script>
     <script src="/src/global.js" type="module"></script>
 
 
@@ -234,17 +235,91 @@
     <!--MODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALSMODALS-->
 
     <!--Modals-->
-    <main class="flex flex-grow ">
+    <main class="flex  flex-col flex-grow ">
+
+<section class="height-calc ">  <!--Wrapper-->
+<section class=" bg-slate-300 h-full w-full flex flex-col">
+<article> <!--Header-->
+    <h1>Auksjoner</h1>
+</article>
 
 
 
+<section > <!--Sorting-->
+
+    <details class="bg-white max-w-[10rem] ">
+        <summary class="cursor-pointer">Sorter</summary>
+        <ul class="w-full pl-4  flex flex-col gap-4">
+            <li>
+                <span>
+                    Category -1
+                </span>
+
+                <span>
+                    Category -2
+                </span>
+
+                <span>
+                    Category - 3
+                </span>
+
+
+                <span>
+                    Category -4
+                </span>
+            </li>
+        </ul>
+
+    </details>
+
+
+</section>
+
+
+
+<section data-type-section="listings" class="flex-1 bg-orange-200"> <!--Card container-->
+<!--     <article class="w-[5rem] h-[5rem]">
+        <div>
+            <img src="/alex-suprun-ZHvM3XIOHoE-unsplash(1).jpg" alt="">
+        </div>
+        <div>
+            <p>Lorem Isum</p>
+            <p>Antall bud:2030</p>
+        </div>
+    </article> -->
+    <button data-type-section="pagination">
+        pag
+    </button>
+</section> <!--hits-->
+
+
+
+
+
+
+<section> <!--Pagination-->
+<div class="bg-white">
+    Paginater
+</div>
+
+
+
+</section>
+
+
+</section><!--wrapper-->
+
+
+    
+</section> 
+|
 
 
 
 
     </main>
 
-    <footer class="bg-secondary flex-shrink flex flex-col md:flex-wrap md:flex-row md:items-center">
+    <footer class="bg-secondary flex flex-col  md:flex-wrap md:flex-row  md:items-center bg-orange-200">
         <div class="md:flex-1">
             <h3>About</h3>
             <ul>

@@ -37,9 +37,15 @@ svg {
     --color-text: 0, 0%, 100%;
     --color-text-special: 180, 46%, 56%;
   }
+
+
+
 }
 
 @layer components {
+    .height-calc {
+    height: calc(100vh - 5rem);
+  }
   .cta-btn-sm {
     width: 7.5rem;
     height: 2.1875rem;
