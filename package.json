@@ -4,7 +4,8 @@
   "description": "semester prosjekt",
   "main": "index.js",
   "scripts": {
-    "compile:tailwind": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+    "compile:tailwind": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "npm install && npx tailwindcss build ./src/input.css -o ./dist/output.css"
   },
   "keywords": [],
   "author": "",
