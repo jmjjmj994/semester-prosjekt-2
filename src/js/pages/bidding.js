@@ -14,7 +14,6 @@ const listings = async (limit, offset) => {
         });
         if (res.ok) {
             const data = await res.json();
-
             return data;
         } else {
             throw new Error("Failed to fetch data")
@@ -27,32 +26,86 @@ const listings = async (limit, offset) => {
 }
 
 //1fd16e0d #ef788
-const fetchButton = document.querySelector("[data-type-section='pagination']");
 
 
+const container = document.querySelector("[data-type-section='listings']")
 
 
+let num = 1;
+let itemsPerPage = 10;
+let offset = localStorage.getItem('offset') ? parseInt(localStorage.getItem('offset')) : 0;
 
+const nextPage = document.querySelector("[data-type-pagination='next-page']");
+const prevPage = document.querySelector("[data-type-pagination='prev-page']");
 
-
-
-const setContent = (num) => {
-    const container = document.querySelector("[data-type-section='listings']")
-    location.hash = `?page=${num}`
-    const currentPage = location.hash.split("#")[1];
-    const currentNum = parseInt(currentPage.split("=")[1]);
-
-
-    if (currentNum === 1) {
-        console.log(currentNum, "current page")
-        container.innerHTML = "Side1"
-
-    } else if (currentNum === 2) {
-        console.log(currentNum, "next page")
-        container.innerHTML = "Side2"
+nextPage.addEventListener("click", (e) => {
+    if (num < 5) {
+        num++;
+        paginationNumbers(num);
+        offset += itemsPerPage;
+        localStorage.setItem('offset', offset);
+        hashNumber(num);
+        container.innerHTML = ""
+        fetchData(itemsPerPage, offset);
     }
+});
 
+prevPage.addEventListener("click", (e) => {
+    if (num > 1) {
+        num--;
+        paginationNumbers(num);
+        offset -= itemsPerPage;
+        localStorage.setItem('offset', offset);
+        hashNumber(num);
+        container.innerHTML = "";
+        fetchData(itemsPerPage, offset);
+    }
+});
+
+const hashNumber = (num) => {
+    location.hash = `?page=${num}`;
+};
+
+const paginationNumbers = (number) => {
+    const numberBar = document.querySelectorAll("[data-type-pagination='numbers'] > span");
+    numberBar.forEach((span) => {
+        span.classList.remove("highlight");
+        if (parseInt(span.textContent) === number) {
+            span.classList.add("highlight");
+        }
+    });
+};
+
+const fetchData = async (offset, limit) => {
+
+    const myData = await listings(offset, limit);
+
+    
+    const data = myData.map(item => {
+if(item) {
+    return item.title
+} else {
+    return "loading..."
 }
+      
+    })
+console.log(data)
 
-setContent(1)
+    container.innerHTML += data
 
+};
+
+
+const initializePagination = () => {
+    const currentPage = location.hash.split("=")[1];
+    const currentNum = parseInt(currentPage);
+    if (!isNaN(currentNum) && currentNum >= 1 && currentNum <= 5) {
+        num = currentNum;
+        paginationNumbers(num);
+    }
+};
+
+window.addEventListener("DOMContentLoaded", () => {
+    initializePagination();
+    fetchData(offset, itemsPerPage);
+});

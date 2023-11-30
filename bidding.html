@@ -237,48 +237,48 @@
     <!--Modals-->
     <main class="flex  flex-col flex-grow ">
 
-<section class="height-calc ">  <!--Wrapper-->
-<section class=" bg-slate-300 h-full w-full flex flex-col">
-<article> <!--Header-->
-    <h1>Auksjoner</h1>
-</article>
+        <section class="height-calc "> <!--Wrapper-->
+            <section class=" bg-slate-300 h-full w-full flex flex-col">
+                <article> <!--Header-->
+                    <h1>Auksjoner</h1>
+                </article>
 
 
 
-<section > <!--Sorting-->
+                <section> <!--Sorting-->
 
-    <details class="bg-white max-w-[10rem] ">
-        <summary class="cursor-pointer">Sorter</summary>
-        <ul class="w-full pl-4  flex flex-col gap-4">
-            <li>
-                <span>
-                    Category -1
-                </span>
+                    <details class="bg-white max-w-[10rem] ">
+                        <summary class="cursor-pointer">Sorter</summary>
+                        <ul class="w-full pl-4  flex flex-col gap-4">
+                            <li>
+                                <span>
+                                    Category -1
+                                </span>
 
-                <span>
-                    Category -2
-                </span>
+                                <span>
+                                    Category -2
+                                </span>
 
-                <span>
-                    Category - 3
-                </span>
-
-
-                <span>
-                    Category -4
-                </span>
-            </li>
-        </ul>
-
-    </details>
+                                <span>
+                                    Category - 3
+                                </span>
 
 
-</section>
+                                <span>
+                                    Category -4
+                                </span>
+                            </li>
+                        </ul>
+
+                    </details>
+
+
+                </section>
 
 
 
-<section data-type-section="listings" class="flex-1 bg-orange-200"> <!--Card container-->
-<!--     <article class="w-[5rem] h-[5rem]">
+                <section data-type-section="listings" class="flex-1 bg-orange-200"> <!--Card container-->
+                    <!--     <article class="w-[5rem] h-[5rem]">
         <div>
             <img src="/alex-suprun-ZHvM3XIOHoE-unsplash(1).jpg" alt="">
         </div>
@@ -287,39 +287,55 @@
             <p>Antall bud:2030</p>
         </div>
     </article> -->
-    <button data-type-section="pagination">
-        pag
-    </button>
-</section> <!--hits-->
+                
+                </section> <!--hits-->
 
 
 
 
 
 
-<section> <!--Pagination-->
-<div class="bg-white">
-    Paginater
-</div>
+                <section> <!--Pagination buttons-->
+                    <div class="bg-white flex justify-between">
+                        <div class="ring-1 grow-0"><button data-type-pagination="prev-page" class="w-full h-full px-2 bg-orange-400">
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </button>
+                        </div> <!--Prev btn-->
+
+                        <div data-type-pagination="numbers" class="bg-slate-600 flex-1 flex justify-around">
+                            <span>1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                        </div>
+
+
+                        <div class="grow-0 "> <!--Next button-->
+                            <button data-type-pagination="next-page" class="w-full h-full px-2 bg-orange-400">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
 
 
 
-</section>
+                </section>
 
 
-</section><!--wrapper-->
+            </section><!--wrapper-->
 
 
-    
-</section> 
-|
+
+        </section>
+        
 
 
 
 
     </main>
 
-    <footer class="bg-secondary flex flex-col  md:flex-wrap md:flex-row  md:items-center bg-orange-200">
+    <!--     <footer class="bg-secondary flex flex-col  md:flex-wrap md:flex-row  md:items-center bg-orange-200">
         <div class="md:flex-1">
             <h3>About</h3>
             <ul>
@@ -381,7 +397,7 @@
                 </li>
             </ul>
         </div>
-    </footer>
+    </footer> -->
 </body>
 
 </html>
