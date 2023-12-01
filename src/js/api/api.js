@@ -158,6 +158,39 @@ export const listings = async (limit) => {
 
 
 
+export const singleListing = async (id) => {
+    const url =
+        `https://api.noroff.dev/api/v1/auction/listings/${id}?_seller=true&_bids=true&_active=true`;
+
+    try {
+
+        const res = await fetch(url, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (res.ok) {
+            const data = await res.json();
+            console.log(data)
+            return data;
+        } else {
+            throw new Error("Failed to fetch data")
+        }
+        /*       const res = await fetch(url, options)
+              if (res.ok) {
+                  const data = await res.json();
+                  return data;
+              } else {
+                  throw new Error("Failed to fetch data")
+              } */
+
+    } catch (error) {
+        console.log(error.message)
+    }
+} 
+
+
 
 
 export const createListing = async (title, description, tags, image, date) => {

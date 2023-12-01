@@ -162,10 +162,10 @@ async function getData(value) {
       const searchData6 = await listings(100, 500); */
     const dataArray = [...searchData1/* , ...searchData2, ...searchData3, ...searchData4, ...searchData5, ...searchData6 */];
     currentSearchResults = dataArray.filter(data => {
-        const { title, media } = data;
+        const { title } = data;
         const lowerCaseTitle = title.toLowerCase();
         const lowerCaseValue = value.toLowerCase();
-        return lowerCaseTitle.startsWith(lowerCaseValue);
+        return lowerCaseTitle.startsWith(lowerCaseValue) ;
     })
 
     renderSearchResults(currentSearchResults)
@@ -185,8 +185,9 @@ const renderSearchResults = async (result) => {
     const searchFormContainerResults = document.querySelector("[data-search='search-container-results']");
     searchFormContainerResults.innerHTML = "";
     result.forEach(item => {
-        const { title, media } = item;
-        const article = createCardElement("article", "flex");
+        const { title, media, id } = item;
+        console.log(id)
+        const article = createCardElement("article", "flex relative");
         const articleImageContainer = createCardElement("div");
         const articleImageImg = createCardElement("img", "w-[3rem] h-[3rem] rounded-full");
         articleImageImg.src = media;
@@ -195,7 +196,11 @@ const renderSearchResults = async (result) => {
         const articleTitleP = createCardElement("p");
         articleTitleP.textContent = title;
         articleTitleContainer.append(articleTitleP)
-        article.append(articleImageContainer, articleTitleContainer)
+        const aHref = createCardElement("a", "absolute w-full h-full cursor-pointer")
+        aHref.href = `/specific.html?id=${id}`
+        console.log(aHref)
+        
+        article.append(aHref,articleImageContainer, articleTitleContainer)
         searchFormContainerResults.appendChild(article)
     })
 }
