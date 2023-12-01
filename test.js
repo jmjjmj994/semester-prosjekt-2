@@ -1,3 +1,4 @@
+
 const testSearch = document.querySelector(".test-search");
 
 
@@ -25,9 +26,21 @@ const dataArray = [
 ];
 
 
+/* const lowerCaseTitle = title.toLowerCase();
+const lowerCaseValue = value.toLowerCase();
+return lowerCaseTitle.startsWith(lowerCaseValue); */
 
+function filterByStart (value) {
+    const filteredData = dataArray.filter(data => {
+     /*    const lowerCaseTitle = data.title.toLowerCase();
+        const lowerCaseValue = value.toLowerCase();
+        return lowerCaseTitle.startsWith(lowerCaseValue) */
+        return data.title.toLowerCase().startsWith(value.toLowerCase())
+    })
+    console.log(filteredData)
+}
 
-function filter (value) {
+/* function filter (value) {
 
     const filteredData = dataArray.filter(data => {
         return data.title.toLowerCase().includes(value.toLowerCase())
@@ -37,12 +50,13 @@ function filter (value) {
    
   
 }
-
+ */
 
 
 
  testSearch.addEventListener("input", (e) => {
     const testValue = testSearch.value;
     console.log(testValue)
-    filter(testValue)
-}) 
+    filterByStart(testValue)
+})  
+

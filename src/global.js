@@ -107,6 +107,9 @@ loginLogout[1].addEventListener("click", (e) => {
 const searchForm = document.querySelector("[data-search='search-form']");
 const searchFormInput = document.querySelector("[data-search='search-form-input']");
 const searchFormButton = document.querySelector("[data-search='search-form-button']");
+
+const searchFormContainer = document.querySelector("[data-search='search-container']")
+const searchFormInputClear = document.querySelector("[data-search='search-input-clear']")
 searchFormInput.value = "";
 
 
@@ -122,92 +125,78 @@ searchFormInput.value = "";
 
 searchForm.addEventListener("click", (e) => {
     e.preventDefault();
+
 })
 
 
 
-
-const searchValue = async () => {
-    const closeSearch = document.querySelector("[data-search='search-container-close']")
-    const inputValue = searchFormInput.value.trim();
-    const searchFormContainer = document.querySelector("[data-search='search-container']");
-    if(inputValue === "") {
-        console.log(inputValue, "blank")
-        searchFormContainer.className ="hidden"
+searchFormInput.addEventListener("input", (e) => {
+    const inputValue = e.target.value.trim();
+    if (inputValue === "") {
+        console.log("no hit")
+        searchFormContainer.className = "hidden"
+        renderSearchResults([])
     } else {
-       await getData(inputValue) 
-       searchFormContainer.className = "block"
+        getData(inputValue)
+        searchFormContainer.className = "block"
+
     }
-    closeSearch.addEventListener("click", () => {
-        searchFormContainer.className ="hidden";
-        searchFormInput.value = "";
-        inputValue === "";
-    })
- /*   await getData(inputValue) */
-}
 
 
-searchFormInput.addEventListener("keyup", searchValue)
+})
+
+searchFormInputClear.addEventListener("click", (e) => {
+    searchFormInput.value = "";
+    searchFormContainer.className = "hidden "
+    renderSearchResults([])
+})
 
 
-let currentSearchresults = [];
-async function getData (value) {
+let currentSearchResults = [];
+async function getData(value) {
     const searchData1 = await listings(100, 0);
-    const searchData2 = await listings(100, 100);
-    const searchData3 = await listings(100, 200);
-    const searchData4 = await listings(100, 300);
-    const searchData5 = await listings(100, 400);
-    const searchData6 = await listings(100, 500);
-    const dataArray = [...searchData1, ...searchData2, ...searchData3, ...searchData4, ...searchData5, ...searchData6];
-    const filterData = dataArray.filter(data => {
-        const {title, media} = data;
-       /*  if (title.toLowerCase().includes(value.toLowerCase())) {
-          console.log(title)
-           createSearchResults(title, media)
-        } */
-const use = title.toLowerCase() === value.toLowerCase()
-createSearchResults(use)
-      /*   return title.toLowerCase() === value.toLowerCase() */
+    /*   const searchData2 = await listings(100, 100);
+      const searchData3 = await listings(100, 200);
+      const searchData4 = await listings(100, 300);
+      const searchData5 = await listings(100, 400);
+      const searchData6 = await listings(100, 500); */
+    const dataArray = [...searchData1/* , ...searchData2, ...searchData3, ...searchData4, ...searchData5, ...searchData6 */];
+    currentSearchResults = dataArray.filter(data => {
+        const { title, media } = data;
+        const lowerCaseTitle = title.toLowerCase();
+        const lowerCaseValue = value.toLowerCase();
+        return lowerCaseTitle.startsWith(lowerCaseValue);
     })
 
-
-   
-}
-
-
-
-
-
-
-
-const createSearchResults = (title, media) => {
-const article = createCardElement("article", "flex");
-const articleImageContainer = createCardElement("div");
-const articleImageImg = createCardElement("img", "w-[3rem] h-[3rem] rounded-full" );
-articleImageImg.src = media;
-articleImageContainer.append(articleImageImg);
-const articleTitleContainer = createCardElement("div");
-const articleTitleP = createCardElement("p");
-articleTitleP.textContent = title;
-articleTitleContainer.append(articleTitleP)
-article.append(articleImageContainer, articleTitleContainer)
-    renderSearchResults(article)
-
+    renderSearchResults(currentSearchResults)
 
 }
 
 
 
 
- const renderSearchResults = (cards) => {
-/* const limitData = data.slice(0, 30)  */
-/* const cards = createSearchResults() */
 
 
-const searchFormContainerResults = document.querySelector("[data-search='search-container-results']");
 
-searchFormContainerResults.appendChild(cards)
-/* console.log(limitData)  */
+
+
+
+const renderSearchResults = async (result) => {
+    const searchFormContainerResults = document.querySelector("[data-search='search-container-results']");
+    searchFormContainerResults.innerHTML = "";
+    result.forEach(item => {
+        const { title, media } = item;
+        const article = createCardElement("article", "flex");
+        const articleImageContainer = createCardElement("div");
+        const articleImageImg = createCardElement("img", "w-[3rem] h-[3rem] rounded-full");
+        articleImageImg.src = media;
+        articleImageContainer.append(articleImageImg);
+        const articleTitleContainer = createCardElement("div");
+        const articleTitleP = createCardElement("p");
+        articleTitleP.textContent = title;
+        articleTitleContainer.append(articleTitleP)
+        article.append(articleImageContainer, articleTitleContainer)
+        searchFormContainerResults.appendChild(article)
+    })
 }
 
- 
