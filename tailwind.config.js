@@ -31,8 +31,8 @@ module.exports = {
           special: 'hsl(var(--color-special))',},
 
         typography:{
-          standard: 'hsl(var(--color-text))',
-          special:`hsl(var(--color-text-special))`
+          primary: 'hsl(var(--color-text-primary))',
+          accent:`hsl(var(--color-text-accent))`
         },
 
 

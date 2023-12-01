@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Condensed:wght@500&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/868d223859.js" crossorigin="anonymous"></script>
-
     <script src="/src/js/mode/lightmode.js" defer></script>
     <script src="/src/js/header/header.js" type="module"></script>
     <script src="/src/js/pages/index.js" type="module"></script>
@@ -23,28 +22,29 @@
 
 
 <body class="bg-custom-background  flex flex-col">
-    <header data-header class="bg-custom-secondary   h-auto ">
+    <header data-header class="bg-custom-secondary     h-auto ">
         <!--Top header section-->
         <section class="top  gap-5 justify-end   min-h-[2.5rem] hidden lg:flex">
             <article class="flex items-center  gap-2 max-[1024px]:hidden bg-orange-600">
                 <div class="w-[2.5rem] h-[2.5rem] bg-white rounded-full">
                     <img data-avatar class="w-full h-full rounded-full" alt="" />
                 </div>
-                <span><i class="fa-solid fa-coins"></i>
-                    <span data-credit class="text-typography-standard"></span>
+                <span><i class="fa-solid fa-coins text-typography-primary"></i>
+                    <span data-credit class="text-typography-primary"></span>
                 </span>
             </article>
 
         </section>
         <!--Top header section-->
 
-        <section class="flex justify-between lg:items-center flex-col lg:flex-row">
+        <section class="flex justify-between lg:items-center flex-col lg:flex-row py-1">
             <!--Block parent component-->
             <!--Header hamburger & logo section-->
 
-            <article class="flex items-center ">
+            <article class="flex items-center   gap-3">
                 <button data-hamburger class="min-[1024px]:hidden">
-                    <i class="fa-solid fa-bars text-typography-standard"></i>
+
+                    <i class="fa-solid fa-bars text-typography-primary"></i>
                 </button>
                 <div>
                     <svg width="102" height="33" viewBox="0 0 102 33" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,11 +68,35 @@
 
 
 
-            <form action="" class="bg-black max-w-[50%] w-full flex items-center justify-center">
-                <input class="w-full ring-1 ring-black" type="text" placeholder="Søk...">
-            </form>
+            <section class="bg-black max-w-[100%] w-full lg:w-[50%] h-[2rem] z-[1]">
+                <form data-search="search-form" class="bg-black w-full flex h-full">
+                    <input data-search="search-form-input" class="w-full ring-1 ring-black h-full" type="text"
+                        placeholder="Søk...">
+                    <button data-search="search-form-button" type="submit"
+                        class="text-typography-primary bg-custom-special px-4 h-full ring-1">
+                        <span class="hidden lg:block">Søk</span>
+                        <span class="lg:hidden">
+                            <i class="fa-solid fa-magnifying-glass text-typography-primary "></i>
+                        </span>
+                    </button>
+                </form>
 
 
+                <div data-search="search-container" class="bg-orange-300 w-full h-[25rem] hidden">
+                    <div class="bg-slate-700 flex justify-end">
+                        <button data-search="search-container-close" class="text-typography-primary">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <ul data-search="search-container-results" class="bg-green-500 h-[25rem] overflow-scroll">
+
+                    </ul>
+
+                </div>
+
+
+            </section>
 
 
 
@@ -83,7 +107,7 @@
 
             <article class="flex">
                 <article class="flex items-center gap-2">
-                  
+
                     <a data-login-logout class="underline text-purple-600 hidden lg:block"></a>
                     <a data-signup href="/signup.html" class="underline text-purple-600 hidden lg:block"></a>
                 </article>
@@ -110,12 +134,12 @@
             <section class="lg:hidden">
                 <article class="flex items-center justify-between lg:flex-col lg:justify-start ">
                     <img data-avatar class="w-[2rem] h-[2rem] rounded-full" />
-                    <span data-navbar-name class="text-typography-standard"></span>
+                    <span data-navbar-name class="text-typography-primary"></span>
                 </article>
             </section>
             <!--Account section-->
 
-            <ul data-navbar-ul class="lg:flex lg:justify-evenly flex-1 bg-accent text-typography-standard">
+            <ul data-navbar-ul class="lg:flex lg:justify-evenly flex-1 bg-accent text-typography-primary">
 
                 <li>
                     <a href="/index.html">Hjem</a>
@@ -150,7 +174,7 @@
 
             </ul>
 
- 
+
         </section>
 
 
@@ -173,12 +197,12 @@
             <section class="w-full  h-[50vh] flex flex-col justify-center items-center md:flex-row p-4">
                 <!--Hero-->
                 <div class="flex flex-col items-center gap-5 ring-1">
-                    <h1 class="cta-header text-center">
+                    <h1 class="cta-header text-center text-typography-accent">
                         Stig inn og opplev spennende auksjoner
                     </h1>
 
                     <button
-                        class="bg-custom-accent uppercase flex justify-center items-center cta-btn-sm md:cta-btn-md lg:cta-featuredbtn-lg">
+                        class="bg-custom-accent text-typography-primary uppercase flex justify-center items-center cta-btn-sm md:cta-btn-md lg:cta-featuredbtn-lg">
                         utforsk
                     </button>
                 </div>

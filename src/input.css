@@ -24,18 +24,19 @@ svg {
     --color-background: 0, 0%, 95%;
     --color-secondary: 0, 0%, 100%;
     --color-accent: 210, 100%, 60%;
-    --color-special: 52, 100%, 75%;
-    --color-text: 0, 0%, 8%;
-    --color-text-special: 52, 100%, 75%;
+    --color-special:144, 80%, 52%; 
+
+    --color-text-primary: 0, 0%, 8%;
+    --color-text-accent: 0, 0%, 9%;
   }
 
   :root[data-theme="dark"] {
-    --color-background: 0, 0%, 8%;
+    --color-background:240, 8%, 9%;
     --color-secondary: 0, 0%, 11%;
     --color-accent: 260, 100%, 66%;
-    --color-special: 180, 46%, 56%;
-    --color-text: 0, 0%, 100%;
-    --color-text-special: 180, 46%, 56%;
+       --color-special:227, 93%, 18%; 
+    --color-text-primary: 0, 0%, 91%;
+    --color-text-accent: 60, 100%, 100%;
   }
 
 
