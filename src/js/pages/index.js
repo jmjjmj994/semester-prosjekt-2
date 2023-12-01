@@ -99,7 +99,7 @@ const renderFeaturedCards = async () => {
 
 
 }
- renderFeaturedCards()    
+/*  renderFeaturedCards()     */
  
 
 

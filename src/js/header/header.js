@@ -5,33 +5,11 @@ const searchContainer = document.querySelector(".search-container")
 const searchInput = document.getElementById("search-input")
 const clearSearchInput = document.querySelector("[data-clear-search")
 
-openSearchContainer.onclick = () => searchContainerToggler(true);
-closeSearchContainer.onclick = () => searchContainerToggler(false);
-const searchContainerToggler = (value) => {
-    if (value) {
-        searchContainer.classList.add("isActive");
-        searchInput.focus()
-
-    } else {
-        searchContainer.classList.remove("isActive");
-
-
-    }
-}
 
 
 
 
 
-searchInput.addEventListener("input", (e) => {
-    clearSearchInput.onclick = () => clearValue(true)
-
-})
-const clearValue = (state) => {
-    if (state) {
-        searchInput.value = "";
-    }
-}
 
 /* ==== Search modal ==== */
 

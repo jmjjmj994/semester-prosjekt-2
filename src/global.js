@@ -3,9 +3,9 @@ import { singleProfile } from "./js/api/api.js";
 
 const profileAvatar = document.querySelectorAll("[data-avatar]");
 const profileCredit = document.querySelector("[data-credit]");
-const loginLogout = document.querySelector("[data-login-logout ]")
+const loginLogout = document.querySelectorAll("[data-login-logout ]")
 const navbarName = document.querySelector("[data-navbar-name]")
-export const register = document.querySelector("[data-signup ]")
+export const register = document.querySelectorAll("[data-signup ]")
 
 //Modal
 const modalProfile = document.querySelector("[data-profile-modal]");
@@ -19,12 +19,19 @@ const profileModalSettings = document.querySelector("[data-profile-modal-setting
 const hasToken = () => {
 
     if (localStorageItems.token) {
-        loginLogout.textContent = "Logg ut"
-        loginLogout.href = "./login.html"
-        register.textContent = "Min profil"
-        profileCredit.textContent = `Kreddit: ${localStorageItems.userData.credits}`
-        register.href = "/profile.html"
-        register.role = "button"
+        loginLogout[0].textContent = "Logg ut"
+        loginLogout[0].href = "./login.html"
+        loginLogout[1].textContent = "Logg ut"
+        loginLogout[1].href = "./login.html"
+        register[0].textContent = "Min profil"
+        register[0].href = "/profile.html"
+        register[0].role = "button"
+        register[1].textContent = "Min profil"
+        register[1].href = "/profile.html"
+        register[1].role = "button"
+
+
+        profileCredit.textContent = `${localStorageItems.userData.credits}`
 
     }
 
@@ -50,9 +57,12 @@ const noToken = () => {
     profileAvatar[1].src = "dist/assets/blank-avatar.png"
     profileAvatar[0].alt = "";
     profileAvatar[1].alt = "";
-    loginLogout.textContent = "Logg inn"
-    loginLogout.href = "./login.html"
-    register.textContent = "Registrer"
+    loginLogout[0].textContent = "Logg inn"
+    loginLogout[0].href = "./login.html"
+    loginLogout[1].textContent = "Logg inn"
+    loginLogout[1].href = "./login.html"
+    register[0].textContent = "Registrer"
+    register[1].textContent = "Registrer"
 
 }
 
@@ -81,8 +91,10 @@ const monitorPage = () => {
 
 }
 monitorPage()
-loginLogout.addEventListener("click", (e) => {
+loginLogout[0].addEventListener("click", (e) => {
     localStorage.removeItem("user-token")
 })
-
+loginLogout[1].addEventListener("click", (e) => {
+    localStorage.removeItem("user-token")
+})
 
