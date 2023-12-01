@@ -22,7 +22,7 @@
 
 
 
-<body class="bg-primary flex flex-col ">
+<body class="bg-custom-background flex flex-col ">
     <header data-header class=" bg-accent h-[5rem] ">
 
 
@@ -216,20 +216,6 @@
 
 
 
-
-
-        <!--Navbar-->
-
-
-
-
-
-
-        <!--Navbar-->
-
-
-
-
     </header>
 
     <section class="search-container">
@@ -266,30 +252,27 @@
 
 
     <main class="flex flex-grow">
-
-
-        <section class="ring-1 flex-grow flex items-center justify-center flex-col min-h-[100vh] ">
+        <section class=" ring-1 flex-grow flex items-center justify-center flex-col min-h-[100vh] "> <!--Wrapper-->
             <div data-loader class="loader"></div>
-            <section class="text-white max-w-[40rem] w-full h-[40rem]  flex flex-col items-center relative ">
+            <section class=" text-white max-w-[40rem] w-full h-[40rem]  flex flex-col items-center relative ">
                 <span class="loader"></span>
                 <section class="px-2  flex items-center">
                     <h1>Logg inn</h1>
                 </section>
-
-
                 <form data-form-type="log-in"
-                    class="ring-1 h-[30rem] max-w-[28rem] w-[100%] flex flex-col px-2 justify-center gap-5">
+                    class="bg-black h-[30rem] max-w-[28rem] w-[100%] flex flex-col px-2 justify-center gap-5">
 
                     <label for="email">Email:</label>
                     <input type="text" data-input-type="email" placeholder="E-post adresse" name="email"
-                        class="py-[0.5rem] rounded-md bg-accent pl-2 w-full">
+                        class="py-[0.5rem] rounded-md bg-custom-secondary pl-2 w-full placeholder:text-black text-black">
                     <label for="password">Passord:</label>
                     <input type="password" data-input-type="password" placeholder="Passord" name="passord"
-                        class="py-[0.5rem] rounded-md bg-accent pl-2">
+                        class="py-[0.5rem] rounded-md  pl-2 bg-custom-secondary placeholder:text-black text-black">
 
                     <span data-form-type="error" class="text-white block ring-1 min-h-[2rem]"></span>
 
-                    <button type="submit" data-action="submit" class="bg-accent rounded-md py-5 ">Fullfør</button>
+                    <button type="submit" data-action="submit"
+                        class="bg-custom-special rounded-md py-5 ">Fullfør</button>
 
 
 
@@ -297,11 +280,6 @@
                 </form>
             </section>
         </section>
-
-
-
-
-
     </main>
 
     <footer class="flex-shrink flex flex-col md:flex-wrap md:flex-row md:items-center text-white">
