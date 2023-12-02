@@ -32,6 +32,7 @@ const listings = async (limit, offset) => {
 
 const updateUrl = (pageNum) => {
     const offset = (pageNum) * 10;
+    console.log(pageNum)
     const params = new URLSearchParams(window.location.search); //search url
     params.set("offset", offset); //set offset=num as url 
     const url = `${window.location.pathname}?${params.toString()} ` //create url params and convert it to string
@@ -39,29 +40,33 @@ const updateUrl = (pageNum) => {
     return offset;
  }
 
-const pageNum = updateUrl(1);
+
 
 
 
 const buttonPrev = document.querySelector("[data-type-section='listings-prev-btn']")
 const buttonNext = document.querySelector("[data-type-section='listings-next-btn']")
 
-buttonPrev.addEventListener("click", (e) => {
+buttonPrev.addEventListener("click",  (e) => {
+
+    
 
 })
 
 buttonNext.addEventListener("click", (e) => {
- 
+
+
+
 })
 
-const listingsTest = await listings(10, pageNum);
-console.log(listingsTest)
+/* const listingsTest = await listings(10, pageNum);
+console.log(listingsTest) */
 
 
 const test = () => {
     const params = new URLSearchParams(window.location.search);
     let curr = params.get("offset")
-    console.log(curr)
+
 }
 
 
