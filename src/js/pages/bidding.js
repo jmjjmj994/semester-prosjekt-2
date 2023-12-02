@@ -25,98 +25,52 @@ const listings = async (limit, offset) => {
     }
 }
 
+
 //1fd16e0d #ef788
 
-const container = document.querySelector("[data-type-section='listings']")
 
 
-let num = 1;
-let itemsPerPage = 10;
-let offset = localStorage.getItem('offset') ? parseInt(localStorage.getItem('offset')) : 0;
+const updateUrl = (pageNum) => {
+    const offset = (pageNum) * 10;
+    const params = new URLSearchParams(window.location.search); //search url
+    params.set("offset", offset); //set offset=num as url 
+    const url = `${window.location.pathname}?${params.toString()} ` //create url params and convert it to string
+    history.pushState(null, "", url) //push state to browser history
+    return offset;
+ }
 
-const nextPage = document.querySelector("[data-type-pagination='next-page']");
-const prevPage = document.querySelector("[data-type-pagination='prev-page']");
-
-nextPage.addEventListener("click", (e) => {
-    if (num < 5) {
-        num++;
-        paginationNumbers(num);
-        offset += itemsPerPage;
-        localStorage.setItem('offset', offset);
-        hashNumber(num);
-        container.innerHTML = ""
-        fetchData(itemsPerPage, offset);
-    }
-});
-
-prevPage.addEventListener("click", (e) => {
-    if (num > 1) {
-        num--;
-        paginationNumbers(num);
-        offset -= itemsPerPage;
-        localStorage.setItem('offset', offset);
-        hashNumber(num);
-        container.innerHTML = "";
-        fetchData(itemsPerPage, offset);
-    }
-});
-
-const hashNumber = (num) => {
-    location.hash = `?page=${num}`;
-};
-
-const paginationNumbers = (number) => {
-    const numberBar = document.querySelectorAll("[data-type-pagination='numbers'] > span");
-    numberBar.forEach((span) => {
-        span.classList.remove("highlight");
-        if (parseInt(span.textContent) === number) {
-            span.classList.add("highlight");
-        }
-    });
-};
-
-const fetchData = async (offset, limit) => {
-
-    const myData = await listings(offset, limit);
-    const data = myData.filter(item => {
-
-        return item.id && item.title && item.description && item.media && item.endsAt && item._count;
-    }).forEach(item => {
-        const { id, title, description, media, endsAt, bids } = item;
-        const norwegianDate = dateConverter(endsAt)
-        console.log(media)
-        const article = createCardElement("article", "flex flex-col  bg-slate-300")
-        const articleHeader = createCardElement("div", "h-[70%] relative ");
-        const articleHeaderImage = createCardElement("img", "absolute w-full h-full object-cover");
-        articleHeaderImage.src = media[0]
-        const articleBody = createCardElement("div",);
-        const articleBodyEndsAt = document.createElement("p");
-        const articleBodyTitle = createCardElement("p");
-       /*  const articleBodyDescription = createCardElement("p"); */
-        const articleBodyBids = document.createElement("p")
-        articleBodyEndsAt.textContent = norwegianDate
-        articleBodyTitle.textContent = title
-      /*   articleBodyDescription.textContent = description */
-        articleBodyBids.textContent =
-            articleBody.append(articleBodyEndsAt, articleBodyTitle, /* articleBodyDescription, */ articleBodyBids)
-        articleHeader.append(articleHeaderImage)
-        article.append(articleHeader, articleBody)
-        container.append(article)
-    });
-
-};
+const pageNum = updateUrl(1);
 
 
-const initializePagination = () => {
-    const currentPage = location.hash.split("=")[1];
-    const currentNum = parseInt(currentPage);
-    if (!isNaN(currentNum) && currentNum >= 1 && currentNum <= 5) {
-        num = currentNum;
-        paginationNumbers(num);
-    }
-};
 
-window.addEventListener("DOMContentLoaded", () => {
-    initializePagination();
-    fetchData(itemsPerPage, offset);
-});
+const buttonPrev = document.querySelector("[data-type-section='listings-prev-btn']")
+const buttonNext = document.querySelector("[data-type-section='listings-next-btn']")
+
+buttonPrev.addEventListener("click", (e) => {
+
+})
+
+buttonNext.addEventListener("click", (e) => {
+ 
+})
+
+const listingsTest = await listings(10, pageNum);
+console.log(listingsTest)
+
+
+const test = () => {
+    const params = new URLSearchParams(window.location.search);
+    let curr = params.get("offset")
+    console.log(curr)
+}
+
+
+window.addEventListener("load", (e) => {
+
+    test()
+
+})
+
+window.addEventListener("popstate", () => { //remember 
+    console.log("hei")
+})
