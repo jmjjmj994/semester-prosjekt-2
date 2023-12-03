@@ -172,18 +172,11 @@ export const singleListing = async (id) => {
         });
         if (res.ok) {
             const data = await res.json();
-            console.log(data)
             return data;
         } else {
             throw new Error("Failed to fetch data")
         }
-        /*       const res = await fetch(url, options)
-              if (res.ok) {
-                  const data = await res.json();
-                  return data;
-              } else {
-                  throw new Error("Failed to fetch data")
-              } */
+     
 
     } catch (error) {
         console.log(error.message)
