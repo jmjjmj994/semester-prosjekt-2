@@ -1,9 +1,16 @@
 import { createCardElement, createButtonElement,dateConverter } from "../utils/utils.js";
 
+const listingsContainer = document.querySelector("[data-type-section='listings']")
 
 const listings = async (pageNum) => {
+   
+
+
     const url =
         `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&limit=10&offset=${pageNum}`;
+
+    
+
 
     try {
         const res = await fetch(url, {
@@ -14,7 +21,7 @@ const listings = async (pageNum) => {
         });
         if (res.ok) {
             const data = await res.json();
-            testCallback(data)
+            renderListings(data)
         } else {
             throw new Error("Failed to fetch data")
         }
@@ -25,14 +32,12 @@ const listings = async (pageNum) => {
     }
 }
 
-function testCallback (data) {
-    console.log(data)
-}
+
 
 //1fd16e0d #ef788
 
 
-const renderListings =  (pageNum) => {
+const dynamicUrl =  (pageNum) => {
     const offset = (pageNum) * 10;
     const params = new URLSearchParams(window.location.search);
     params.set("offset", offset)
@@ -47,40 +52,76 @@ const renderListings =  (pageNum) => {
 const updatePage = async () => {
     const params = new URLSearchParams(window.location.search)
     let num = Number(params.get("offset")) / 10 || 0;
-  
-    const buttonContainer = document.querySelector("[data-type-section='listings']")
+    const buttonContainer = document.querySelector("[data-type-section='pagination-buttons']")
     const buttonNext = createButtonElement("bg-primary-500 w-[1rem] h-[1rem]")
     const buttonPrev = createButtonElement("bg-primary-500 w-[1rem] h-[1rem]")
     buttonNext.textContent = "next"
-    buttonContainer.append(buttonNext, buttonPrev)
-    const currentPage = renderListings;
+    buttonPrev.textContent = "Previous"
+    buttonContainer.append(buttonPrev, buttonNext)
+    const currentPage = dynamicUrl;
 
-    const addListener = () => {
-        buttonNext.addEventListener("click", (e) => {
+
+    
+    const listeners =  () => {
+        buttonNext.addEventListener("click",  async (e) => {
             num++
             console.log(num)
-         /*    fetchData(num) */
-           const currentPage = renderListings(num)
+           const currentPage = dynamicUrl(num)
+           await listings(currentPage)
+           
+        })
+        buttonPrev.addEventListener("click", async (e) => {
+            num--
+            console.log(num)
+            const currentPage = dynamicUrl(num)
+            await listings(currentPage)
+
         })
 
-        const fetchData = async (page) => {
-            //0 initializer
-            await listings(page)
-          
-
-
-        }
+  
 
     }
-    addListener()
+   
+    listeners()
 
 }
 
 
 
 
+
 updatePage()
 
-window.addEventListener("popstate", (e) => {
-    window.location.reload()
-})
+
+function createCards (media)  {
+const article = createCardElement("article", "w-[5rem] h-[5rem]")
+const articleHeader = createCardElement("div", "relative h-full w-full")
+const articleImage = createCardElement("img")
+articleImage.src = media;
+articleHeader.append(articleImage)
+const articleBody = createCardElement("div")
+const articleFooter = createCardElement("div")
+article.append(articleHeader) 
+return article
+}
+
+function renderListings(data) {
+    console.log(data)
+    listingsContainer.innerHTML ="";
+data.forEach(item => {
+    const {media} = item;
+    const cards = createCards(media)
+listingsContainer.append(cards)
+
+}) 
+}
+
+/* 
+window.addEventListener("popstate", async (e) => {
+    
+    const params = new URLSearchParams(window.location.search)
+    let num = Number(params.get("offset")) / 10 || 0;
+    listingsContainer.innerHTML ="";
+   await listings(num)
+
+})  */
