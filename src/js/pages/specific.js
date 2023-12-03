@@ -18,7 +18,8 @@ const id = param.get("id")
 const prevBtn = document.querySelector("[data-type-specific='prev-btn']")
 const nextBtn = document.querySelector("[data-type-specific='next-btn']")
 const sliderContainer = document.querySelector("[data-type-specific='slider']")
-const slide = document.querySelectorAll("[data-type-specific='slide']")
+const previewContainer = document.querySelector("[data-type-specific='preview-container']")
+/* const slide = document.querySelectorAll("[data-type-specific='slide']") */
 const previewSlide = document.querySelectorAll("[data-type-specific='slide-preview']")
 
 
@@ -50,31 +51,23 @@ const fetchData = async (callback) => {
 
 
 
-const renderItem =  async () => {
+const handleData = async () => {
     const object = await fetchData();
-    console.log(object)
-    const media = object.media.forEach(img =>  {
-   /*      const imageContainer = createCardElement("div", "flex-1 w-full h-full relative");
-        imageContainer.setAttribute("data-type-specific", "slide");
-        const image = createCardElement("img", "absolute w-full h-full object-cover" );
-        console.log(imageContainer)
-        image.src = img;
-        imageContainer.append(image)
-        console.log(image)
- sliderContainer.append(imageContainer)
-         */
+    const id = object.id
+    const title = object.title
+    const description = object.description
+    const bids = object.bids;
+    const media = object.media;
 
-    })
+
+
+
+    renderSlides(id, title, description, bids, media)
+
 
 }
-renderItem()
 
-
-
-
-
-let curSlide = 0;
-let maxSlide = slide.length - 1;
+handleData()
 
 
 
@@ -82,51 +75,107 @@ let maxSlide = slide.length - 1;
 
 
 
+const renderSlides = (id, title, description, bids, media) => {
+    let curSlide = 0;
+    let maxSlide = media.length - 1;
+    const slideArray = [];
+    const slidePreviewArray = [];
+    const mediaArray = [];
+    mediaArray.push(media);
+    const slides = () => {
+        for (let i = 0; i <= maxSlide; i++) {
+            const slide = createCardElement("div", "flex-1 w-full h-full absolute");
+            const slideImage = createCardElement("img", "w-full h-full absolute object-cover");
+          
+            console.log()
+            slideImage.src = media[i];
+            slide.append(slideImage)
+            slide.setAttribute("data-type-specific", "slide");
+          
+            const slidePreview = createCardElement("div", "flex-1 relative")
+            const previewImage = createCardElement("img", "absolute h-full w-full object-cover")
+            previewImage.src = media[i]
+            slidePreview.append(previewImage)
+            slidePreview.setAttribute("data-type-specific", "slide-preview")
+            slidePreviewArray.push(slidePreview);
+            slideArray.push(slide)
+        }
+
+    }
+
+
+    slides()
 
 
 
 
-
-
-
-nextBtn.addEventListener("click", (e) => {
-    curSlide === maxSlide ? (curSlide = 0) : curSlide++;
-    moveSlides();
-});
-
-prevBtn.addEventListener("click", (e) => {
-    curSlide === 0 ? (curSlide = maxSlide) : curSlide--;
-    moveSlides();
-});
-
-
-function moveSlides() {
-    slide.forEach((slide, index) => {
-        slide.style.transform = `translateX(${100 * (index - curSlide)}%)`;
-    });
-}
-
-
-
-
-slide.forEach((slide, index) => {
-    slide.style.transform = `translateX(${index * 100}%)`;
-    slide.style.cssText = "transition:0.2s ease-in-out; opacity:0.5s;";
-})
-previewSlide.forEach((preview, index) => {
-    preview.addEventListener("click", (e) => {
-        const currentIndex = index;
-        curSlide = index
-        moveSlidesOnClick(currentIndex)
+    //Append slides/
+    slideArray.forEach(slide => {
+        sliderContainer.append(slide)
     })
-})
+    slidePreviewArray.forEach(preview => {
+    previewContainer.append(preview)
+    })/*  */
+    //Append slides/
 
 
 
-function moveSlidesOnClick(num) {
-    slide.forEach((slide, index) => {
-        slide.style.transform = `translateX(${100 * (index - num)}%)`;
 
+
+
+    nextBtn.addEventListener("click", (e) => {
+        curSlide === maxSlide ? (curSlide = 0) : curSlide++;
+        moveSlides();
     });
 
+    prevBtn.addEventListener("click", (e) => {
+        curSlide === 0 ? (curSlide = maxSlide) : curSlide--;
+        moveSlides();
+    });
+
+
+    function moveSlides() {
+        slideArray.forEach((slide, index) => {
+            slide.style.transform = `translateX(${100 * (index - curSlide)}%)`;
+        });
+    }
+
+
+
+
+    slideArray.forEach((slide, index) => {
+        slide.style.transform = `translateX(${index * 100}%)`;
+        slide.style.cssText = "transition:0.2s ease-in-out; opacity:0.5s;";
+    })
+        slidePreviewArray.forEach((preview, index) => {
+        preview.addEventListener("click", (e) => {
+            const currentIndex = index;
+            curSlide = index
+            moveSlidesOnClick(currentIndex)
+        })
+    })
+
+
+
+    function moveSlidesOnClick(num) {
+        slideArray.forEach((slide, index) => {
+            slide.style.transform = `translateX(${100 * (index - num)}%)`;
+
+        });
+
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
