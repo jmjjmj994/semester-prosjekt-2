@@ -1,15 +1,15 @@
-import { createCardElement, createButtonElement,dateConverter } from "../utils/utils.js";
+import { createCardElement, createButtonElement, dateConverter } from "../utils/utils.js";
 
 const listingsContainer = document.querySelector("[data-type-section='listings']")
 
 const listings = async (pageNum) => {
-   
+
 
 
     const url =
         `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&limit=10&offset=${pageNum}`;
 
-    
+
 
 
     try {
@@ -37,7 +37,7 @@ const listings = async (pageNum) => {
 //1fd16e0d #ef788
 
 
-const dynamicUrl =  (pageNum) => {
+const dynamicUrl = (pageNum) => {
     const offset = (pageNum) * 10;
     const params = new URLSearchParams(window.location.search);
     params.set("offset", offset)
@@ -46,6 +46,7 @@ const dynamicUrl =  (pageNum) => {
     return offset
 
 }
+const currentPage = dynamicUrl;
 /* const currentPage = renderListings(0); */
 
 
@@ -59,17 +60,16 @@ const updatePage = async () => {
     buttonNext.textContent = "next"
     buttonPrev.textContent = "Previous"
     buttonContainer.append(buttonPrev, buttonNext)
-    const currentPage = dynamicUrl;
-
 
     
-    const listeners =  () => {
-        buttonNext.addEventListener("click",  async (e) => {
+
+
+    const listeners = () => {
+        buttonNext.addEventListener("click", async (e) => {
             num++
             console.log(num)
-           const currentPage = dynamicUrl(num)
-           await listings(currentPage)
-           
+            const currentPage = dynamicUrl(num)
+            await listings(currentPage)
         })
         buttonPrev.addEventListener("click", async (e) => {
             num--
@@ -78,44 +78,53 @@ const updatePage = async () => {
             await listings(currentPage)
 
         })
-
-  
-
     }
-   
+
     listeners()
 
 }
 
-
-
-
-
 updatePage()
 
 
-function createCards (media)  {
-const article = createCardElement("article", "w-[5rem] h-[5rem]")
-const articleHeader = createCardElement("div", "relative h-full w-full")
-const articleImage = createCardElement("img")
-articleImage.src = media;
-articleHeader.append(articleImage)
-const articleBody = createCardElement("div")
-const articleFooter = createCardElement("div")
-article.append(articleHeader) 
-return article
+
+
+function createCards(media) {
+    const article = createCardElement("article", "w-[5rem] h-[5rem]")
+    const articleHeader = createCardElement("div", "relative h-full w-full")
+    const articleImage = createCardElement("img")
+    articleImage.src = media;
+    articleImage.loading = "lazy"
+    articleHeader.append(articleImage)
+    const articleBody = createCardElement("div")
+    const articleFooter = createCardElement("div")
+    article.append(articleHeader)
+    return article
 }
 
 function renderListings(data) {
     console.log(data)
-    listingsContainer.innerHTML ="";
-data.forEach(item => {
-    const {media} = item;
-    const cards = createCards(media)
-listingsContainer.append(cards)
+    listingsContainer.innerHTML = "";
+    data.forEach(item => {
+        const { media } = item;
+        const cards = createCards(media)
+        listingsContainer.append(cards)
 
-}) 
+    })
 }
+
+
+
+
+
+const maintainData = () => {
+    if (window.location.reload) {
+        console.log("hei")
+    } else {
+        console.log("what")
+    }
+}
+maintainData()
 
 /* 
 window.addEventListener("popstate", async (e) => {
