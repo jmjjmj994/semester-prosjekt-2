@@ -1,9 +1,9 @@
-import { createCardElement, dateConverter } from "../utils/utils.js";
+import { createCardElement, createButtonElement,dateConverter } from "../utils/utils.js";
 
 
-const listings = async (limit, offset) => {
+const listings = async (pageNum) => {
     const url =
-        `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&limit=${limit}&offset=${offset}`;
+        `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&limit=10&offset=${pageNum}`;
 
     try {
         const res = await fetch(url, {
@@ -14,7 +14,7 @@ const listings = async (limit, offset) => {
         });
         if (res.ok) {
             const data = await res.json();
-            return data;
+            testCallback(data)
         } else {
             throw new Error("Failed to fetch data")
         }
@@ -25,57 +25,62 @@ const listings = async (limit, offset) => {
     }
 }
 
+function testCallback (data) {
+    console.log(data)
+}
 
 //1fd16e0d #ef788
 
 
-
-const updateUrl = (pageNum) => {
+const renderListings =  (pageNum) => {
     const offset = (pageNum) * 10;
-    console.log(pageNum)
-    const params = new URLSearchParams(window.location.search); //search url
-    params.set("offset", offset); //set offset=num as url 
-    const url = `${window.location.pathname}?${params.toString()} ` //create url params and convert it to string
-    history.pushState(null, "", url) //push state to browser history
-    return offset;
- }
-
-
-
-
-
-const buttonPrev = document.querySelector("[data-type-section='listings-prev-btn']")
-const buttonNext = document.querySelector("[data-type-section='listings-next-btn']")
-
-buttonPrev.addEventListener("click",  (e) => {
-
-    
-
-})
-
-buttonNext.addEventListener("click", (e) => {
-
-
-
-})
-
-/* const listingsTest = await listings(10, pageNum);
-console.log(listingsTest) */
-
-
-const test = () => {
     const params = new URLSearchParams(window.location.search);
-    let curr = params.get("offset")
+    params.set("offset", offset)
+    const newUrl = `${window.location.pathname}?${params.toString()}`
+    history.pushState(null, "", newUrl)
+    return offset
+
+}
+/* const currentPage = renderListings(0); */
+
+
+const updatePage = async () => {
+    const params = new URLSearchParams(window.location.search)
+    let num = Number(params.get("offset")) / 10 || 0;
+  
+    const buttonContainer = document.querySelector("[data-type-section='listings']")
+    const buttonNext = createButtonElement("bg-primary-500 w-[1rem] h-[1rem]")
+    const buttonPrev = createButtonElement("bg-primary-500 w-[1rem] h-[1rem]")
+    buttonNext.textContent = "next"
+    buttonContainer.append(buttonNext, buttonPrev)
+    const currentPage = renderListings;
+
+    const addListener = () => {
+        buttonNext.addEventListener("click", (e) => {
+            num++
+            console.log(num)
+         /*    fetchData(num) */
+           const currentPage = renderListings(num)
+        })
+
+        const fetchData = async (page) => {
+            //0 initializer
+            await listings(page)
+          
+
+
+        }
+
+    }
+    addListener()
 
 }
 
 
-window.addEventListener("load", (e) => {
 
-    test()
 
-})
+updatePage()
 
-window.addEventListener("popstate", () => { //remember 
-    console.log("hei")
+window.addEventListener("popstate", (e) => {
+    window.location.reload()
 })
