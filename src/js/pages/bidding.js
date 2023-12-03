@@ -51,7 +51,8 @@ const dynamicUrl =  (pageNum) => {
 
 const updatePage = async () => {
     const params = new URLSearchParams(window.location.search)
-    let num = Number(params.get("offset")) / 10 || 0;
+    let num = Number(params.get("offset")) || 0;
+    console.log(num)
     const buttonContainer = document.querySelector("[data-type-section='pagination-buttons']")
     const buttonNext = createButtonElement("bg-primary-500 w-[1rem] h-[1rem]")
     const buttonPrev = createButtonElement("bg-primary-500 w-[1rem] h-[1rem]")
