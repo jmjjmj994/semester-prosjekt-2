@@ -68,7 +68,6 @@ a {
     width: 100%;
     transform: translateX(-100%);
     opacity: 0;
-
     transition: 250ms ease-in-out;
     z-index: 1;
   }
@@ -83,7 +82,8 @@ a {
 }
 @media screen and (min-width: 1024px) {
   nav {
-    flex-grow: 1;
+   
+    background-color: orange;
     width: 100%;
   }
 }

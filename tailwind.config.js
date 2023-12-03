@@ -9,7 +9,8 @@ module.exports = {
     './login.html',
     './profile.html',
     './listing.html',
-    "./bidding.html"
+    "./bidding.html",
+    "./specific.html"
   ],
 
   theme: {
