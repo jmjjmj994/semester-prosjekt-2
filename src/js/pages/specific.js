@@ -64,15 +64,13 @@ const renderSlides = (media) => {
         for (let i = 0; i <= maxSlide; i++) {
             const slide = createCardElement("div", "flex-1 w-full h-full absolute border-inherit");
             const slideImage = createCardElement("img", "h-full max-w-[100%] w-full  block object-cover md:absolute md:w-full border-inherit");
-/*             const slideImage = createCardElement("img", "w-full h-full  absolute object-cover");
- */
             slideImage.src = image[i];
             slide.append(slideImage)
             slide.setAttribute("data-type-specific", "slide");
-            const slidePreview = createCardElement("div", " relative h-[5rem] w-[5rem]")
-            const previewImage = createCardElement("img", "absolute h-full w-full object-cover")
-            previewImage.src = image[i]
-            slidePreview.append(previewImage)
+            const slidePreview = createCardElement("div", " relative h-[5rem] w-[5rem] md:w-[10rem] md:h-[5.5rem] lg:w-[11rem] bg-orange-500 border-inherit cursor-pointer")
+          const previewImage = createCardElement("img", "absolute h-full w-full object-cover border-inherit") 
+            previewImage.src = image[i] 
+             slidePreview.append(previewImage) 
             slidePreview.setAttribute("data-type-specific", "slide-preview")
             slidePreviewArray.push(slidePreview);
             slideArray.push(slide)
@@ -91,7 +89,7 @@ const renderSlides = (media) => {
     })
     slidePreviewArray.forEach(preview => {
         previewContainer.append(preview)
-    })/*  */
+    })
 
 
 
@@ -160,12 +158,14 @@ const initializer = async () => {
     const data = await fetchData();
     const media = data.media.length;
     if (media <= 1) {
-        
+        sliderWrapper.className ="flex flex-col shadow-sm    h-[30rem]  w-full md:w-[80%] md:h-[35rem] lg:w-[70%] lg:h-[40rem] p-2 bg-custom-secondary rounded-md"
         prevBtnContainer.className = "hidden";
         nextBtnContainer.className = "hidden";
-        previewContainer.className = "hidden"
+        previewContainer.className = "hidden";
         renderSingleSlide()
     } else if (media > 1) {
+        sliderWrapper.className = "flex flex-col shadow-sm    h-[35rem]  w-full md:w-[80%] md:h-[40rem] lg:w-[70%] lg:h-[45rem] p-2 bg-custom-secondary rounded-md"
+
         handleSlides()
     }
 
