@@ -61,14 +61,14 @@ const renderSlides = (media) => {
     mediaArray.push(image);
     const slides = () => {
         for (let i = 0; i <= maxSlide; i++) {
-            const slide = createCardElement("div", "flex-1 w-full h-full absolute");
-            const slideImage = createCardElement("img", "h-full max-w-[100%] w-full  block object-cover md:absolute md:w-full");
+            const slide = createCardElement("div", "flex-1 w-full h-full absolute border-inherit");
+            const slideImage = createCardElement("img", "h-full max-w-[100%] w-full  block object-cover md:absolute md:w-full border-inherit");
 /*             const slideImage = createCardElement("img", "w-full h-full  absolute object-cover");
  */
             slideImage.src = image[i];
             slide.append(slideImage)
             slide.setAttribute("data-type-specific", "slide");
-            const slidePreview = createCardElement("div", "flex-1 relative")
+            const slidePreview = createCardElement("div", " relative h-[5rem] w-[5rem]")
             const previewImage = createCardElement("img", "absolute h-full w-full object-cover")
             previewImage.src = image[i]
             slidePreview.append(previewImage)

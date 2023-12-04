@@ -22,7 +22,7 @@
 <!-- <div data-loader class="loader"></div>
 <div class="loader-sm"></div> -->
 
-<body class="bg-primary flex flex-col">
+<body class="bg-custom-background flex flex-col">
     <header data-header class="bg-custom-secondary     h-auto ">
         <!--Top header section-->
         <section class="top  gap-5 justify-end   min-h-[2.5rem] hidden lg:flex">
@@ -34,17 +34,17 @@
                     <span data-credit class="text-typography-primary"></span>
                 </span>
             </article>
-    
+
         </section>
         <!--Top header section-->
-    
+
         <section class="flex justify-between lg:items-center flex-col lg:flex-row py-1">
             <!--Block parent component-->
             <!--Header hamburger & logo section-->
-    
+
             <article class="flex items-center   gap-3">
                 <button data-hamburger class="min-[1024px]:hidden">
-    
+
                     <i class="fa-solid fa-bars text-typography-primary"></i>
                 </button>
                 <div>
@@ -65,10 +65,10 @@
                 </div>
             </article>
             <!--Header hamburger & logo section-->
-    
-    
-    
-    
+
+
+
+
             <section class="bg-black max-w-[100%] w-full lg:w-[50%] h-[2rem] z-[1]">
                 <form data-search="search-form" class="bg-black w-full flex h-full">
                     <input data-search="search-form-input" class="w-full ring-1 ring-black h-full" type="text"
@@ -81,43 +81,43 @@
                         </span>
                     </button>
                 </form>
-    
-    
+
+
                 <div data-search="search-container" class="bg-orange-300 w-full h-[25rem] max-h-[20rem] hidden">
                     <div class="bg-slate-700 flex justify-end">
                         <button data-search="search-input-clear" class="text-typography-primary">
                             <i class="fa-solid fa-xmark"></i>
                         </button>
                     </div>
-    
+
                     <ul data-search="search-container-results" class="bg-green-500 h-[25rem] overflow-scroll">
-    
+
                     </ul>
-    
+
                 </div>
-    
-    
+
+
             </section>
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
             <article class="flex">
                 <article class="flex items-center gap-2">
-    
+
                     <a data-login-logout class="underline text-purple-600 hidden lg:block"></a>
                     <a data-signup href="/signup.html" class="underline text-purple-600 hidden lg:block"></a>
                 </article>
             </article>
-    
-    
+
+
         </section>
-    
-    
+
+
     </header>
     <nav data-navbar class="fixed top-0 left-0 bg-custom-secondary   h-full lg:static  ">
         <!--Navbar content wrapper-->
@@ -130,7 +130,7 @@
                     </svg>
                 </button>
             </section>
-    
+
             <!--Account section-->
             <section class="lg:hidden">
                 <article class="flex items-center justify-between lg:flex-col lg:justify-start ">
@@ -139,46 +139,46 @@
                 </article>
             </section>
             <!--Account section-->
-    
+
             <ul data-navbar-ul class="lg:flex lg:justify-evenly flex-1 bg-accent text-typography-primary">
-    
+
                 <li>
                     <a href="/index.html">Hjem</a>
                 </li>
-    
+
                 <li>
                     <a href="/bidding.html">Auksjoner</a>
                 </li>
-    
+
                 <li>
                     <a href="#">Kjøp</a>
                 </li>
-    
+
                 <li>
                     <a href="/listing.html">Selg</a>
                 </li>
-    
+
                 <li>
                     <a href="#">Informasjon</a>
                 </li>
-    
+
                 <li>
                     <a href="#">Om oss</a>
                 </li>
-    
+
                 <li class="lg:hidden">
                     <a data-login-logout class="underline text-purple-600"></a>
                 </li>
                 <li class="lg:hidden">
                     <a data-signup href="/signup.html" class="underline text-purple-600"></a>
                 </li>
-    
+
             </ul>
-    
-    
+
+
         </section>
-    
-    
+
+
         <!--Navbar content wrapper-->
     </nav>
 
@@ -190,25 +190,27 @@
 
     <main class="flex flex-grow ">
 
-        <section class="flex-grow flex items-center justify-center height-calc flex-col gap-[10rem] relative">
+        <section class=" flex-grow flex items-center justify-center height-calc flex-col gap-[5rem] relative my-8 px-2">
 
-            <section class="flex flex-col bg-orange-400 h-[30rem]  w-full md:w-[80%]"> <!--Wrapper-->
+            <section class="flex flex-col  h-[30rem]  w-full md:w-[80%] "> <!--Wrapper-->
 
-                <div class=" relative flex-1 flex justify-center"> <!--Header-->
+                <div class=" relative flex-1 flex justify-center rounded-md "> <!--Header-->
 
-                    <div data-type-specific="prev-btn-container" class="flex items-center  px-5 absolute left-0 z-10 h-full">
+                    <div data-type-specific="prev-btn-container"
+                        class="flex items-center  px-5 absolute left-0 z-10 h-full ">
                         <button data-type-specific="prev-btn"
                             class="bg-custom-accent p-3 w-[2rem] h-[2rem] rounded-full flex items-center justify-center">
                             <i class="fa-solid fa-arrow-left"></i>
                         </button>
                     </div>
 
-                    <div data-type-specific="slider" class=" flex flex-1  relative overflow-hidden ">
-                   
+                    <div data-type-specific="slider" class=" flex flex-1  relative overflow-hidden border-inherit">
+
                     </div>
 
 
-                    <div data-type-specific="next-btn-container" class="flex items-center  px-5 absolute right-0 z-10 h-full">
+                    <div data-type-specific="next-btn-container"
+                        class="flex items-center  px-5 absolute right-0 z-10 h-full">
                         <button data-type-specific="next-btn"
                             class="bg-custom-accent p-3 w-[2rem] h-[2rem] rounded-full flex items-center justify-center">
                             <i class="fa-solid fa-arrow-right"></i>
@@ -217,7 +219,8 @@
 
 
                 </div>
-                <div data-type-specific="preview-container" class="bg-custom-special basis-[10rem] flex justify-center items-center gap-5">
+                <div data-type-specific="preview-container" 
+                    class="bg-custom-special basis-15rem flex   justify-between flex-wrap  gap-5 py-5 rounded-md">
 
                 </div>
 
@@ -226,7 +229,7 @@
 
 
 
-            <section class="flex justify-between ring-1 max-w-[80%] h-[30] w-full"> <!--Product details ui wrapper-->
+            <section class="flex justify-between ring-1 w-full md:w-[80%] bg-custom-secondary shadow-lg rounded-md"> <!--Product details ui wrapper-->
                 <article data-type-specific="description" class="ring-1 flex flex-col">
                 </article>
             </section>
@@ -236,38 +239,38 @@
 
 
 
-            <section class="bg-black max-w-[80%] w-full p-2"> <!--Product bids ui-->
+            <section class="bg-custom-secondary w-full md:w-[80%] p-2 rounded-md"> <!--Product bids ui-->
                 <article data-type-specific="product-status"
                     class="bg-white flex flex-col min-h-[5rem] h-[10rem] overflow-scroll">
 
                 </article>
 
 
-                <article>
 
+            </section>
 
-
-                    <form data-type-specific="form" class="bg-orange-300">
-                        <div>
-                          
-                            <button data-type-specific="decrease-bid-btn"
-                                class="bg-red-500 w-[2rem] h-[2rem] rounded-full">-</button>
-                            <label for="bid-input" class="label-hidden">Sum:</label>
-                            <input data-type-specific="input" type="text" readonly>
-                            <button data-type-specific="increase-bid-btn"
-                                class="bg-custom-accent  w-[2rem] h-[2rem] rounded-full">+</button>
-                            <button data-type-specific="max-bid-btn"
-                                class="bg-custom-accent  w-[2rem] h-[2rem] rounded-full">Maks</button>
-                        </div>
-                        <div>
-                            <button data-type-specific="submit-bid-btn" class="bg-custom-accent">
-                                Fullfør
-                            </button>
-                        </div>
-
-                    </form>
-                </article>
-
+            <section class="w-full md:w-[80%] bg-custom-secondary rounded-md">
+            
+            
+            
+                <form data-type-specific="form">
+                    <div>
+            
+                        <button data-type-specific="decrease-bid-btn" class="bg-red-500 w-[2rem] h-[2rem] rounded-full">-</button>
+                        <label for="bid-input" class="label-hidden">Sum:</label>
+                        <input data-type-specific="input" type="text" readonly>
+                        <button data-type-specific="increase-bid-btn"
+                            class="bg-custom-accent  w-[2rem] h-[2rem] rounded-full">+</button>
+                        <button data-type-specific="max-bid-btn"
+                            class="bg-custom-accent  w-[2rem] h-[2rem] rounded-full">Maks</button>
+                    </div>
+                    <div>
+                        <button data-type-specific="submit-bid-btn" class="bg-custom-accent">
+                            Fullfør
+                        </button>
+                    </div>
+            
+                </form>
             </section>
 
         </section>

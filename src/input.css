@@ -63,22 +63,20 @@ padding: 11px 30px 11px 31px;
 
   }
   .cta-btn-lg {
-
 width: 9.375rem;
 height: 2.8125rem;
 padding: 13px 36px 14px 35px;
 
   }
 
-
+.border-inherit {
+  border-radius: inherit;
+}
   .card-grid {
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
  grid-auto-rows: 25rem;
  justify-content: space-between;
-
-/*  justify-content: space-around;
- align-content: space-around; */
  gap: 5px;
 padding-block: 5px;
 
