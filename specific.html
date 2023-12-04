@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/src/global.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://kit.fontawesome.com/868d223859.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
     <script src="/src/js/header/header.js" type="module"></script>
     <script src="/src/global.js" type="module"></script>
@@ -188,63 +189,45 @@
 
     <main class="flex flex-grow ">
 
-<section class="bg-slate-500 flex-grow flex items-center justify-center height-calc">
+        <section class="flex-grow flex items-center justify-center height-calc">
 
-    <section class="flex flex-col bg-custom-accent h-[30rem] max-w-[80%] w-full"> <!--Wrapper-->
-      
-<div class=" relative flex-1 flex justify-center"> <!--Header-->
- 
- <div class="flex items-center z-1 custom-z">
-<button data-type-specific="prev-btn">Prev</button>
- </div>   
+            <section class="flex flex-col  h-[30rem] max-w-[80%] w-full"> <!--Wrapper-->
 
+                <div class=" relative flex-1 flex justify-center"> <!--Header-->
 
-
-    <div data-type-specific="slider" class="bg-green-500 flex flex-1 relative overflow-hidden ">
-
-<!--         <div data-type-specific="slide" class="bg-red-500 flex-1 w-full h-full absolute test">
-h
-        </div>
-        <div data-type-specific="slide" class="bg-pink-400 flex-1 w-full h-full absolute test">
-            h
-        </div>
-        <div data-type-specific="slide" class="bg-green-700 flex-1 w-full h-full absolute test">
-            h
-        </div> -->
-<!--  <img src="/src/assets/liquid-cheese.png absolute w-full h-full" alt="">  -->
- 
-</div>
+                    <div class="flex items-center  px-5">
+                        <button data-type-specific="prev-btn" class="bg-custom-accent p-3 w-[2rem] h-[2rem] rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                    </div>
 
 
-<div class="flex items-center custom-z">
-<button data-type-specific="next-btn">Next</button>
-</div>
+
+                    <div data-type-specific="slider" class=" flex flex-1 relative overflow-hidden ">
 
 
-</div>
-<div data-type-specific="preview-container" class="bg-custom-special basis-[10rem] flex gap-5"> <!--Rows-->
-
-<!-- 
-<div data-type-specific="slide-preview" class="flex-1">
-    <img src="/src/assets/liquid-cheese.png" class="block h-full max-w-[100%] w-full" alt="">
-</div>
-
-<div data-type-specific="slide-preview" class="flex-1"> 
-    <img src="/src/assets/liquid-cheese.png" class="block h-full max-w-[100%] w-full" alt="">
-</div>
-
-<div data-type-specific="slide-preview" class="flex-1">
-    <img src="/src/assets/liquid-cheese.png" class="block h-full max-w-[100%] w-full" alt="">
-</div>
- -->
+                    </div>
 
 
-</div>
+                    <div class="flex items-center  px-5">
+                        <button data-type-specific="next-btn" class="bg-custom-accent p-3 w-[2rem] h-[2rem] rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
 
 
-    </section>
+                </div>
+                <div data-type-specific="preview-container" class="bg-custom-special basis-[10rem] flex gap-5">
+                    <!--Rows-->
 
-</section>
+
+
+                </div>
+
+
+            </section>
+
+        </section>
 
 
 
