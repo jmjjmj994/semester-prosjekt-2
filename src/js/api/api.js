@@ -4,7 +4,7 @@ export const userAuthEndpoints = {
     login: "https://api.noroff.dev/api/v1/auction/auth/login",
 }
 
-const options = {
+export const options = {
     headers: {
         Authorization: `Bearer ${localStorage.getItem("user-token")}`,
         'Content-Type': 'application/json'

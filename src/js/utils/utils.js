@@ -18,6 +18,8 @@ const blockElements = {
 
 
 
+
+
 const createCardElement = (tagName, classNames) => {
     const element = document.createElement(tagName)
     element.className = classNames

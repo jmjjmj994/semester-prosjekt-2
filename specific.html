@@ -189,7 +189,7 @@
 
     <main class="flex flex-grow ">
 
-        <section class="flex-grow flex items-center justify-center height-calc">
+        <section class="flex-grow flex items-center justify-center height-calc flex-col gap-[10rem]">
 
             <section class="flex flex-col  h-[30rem] max-w-[80%] w-full"> <!--Wrapper-->
 
@@ -224,6 +224,60 @@
 
                 </div>
 
+
+            </section>
+
+
+
+            <section class="flex justify-between ring-1 max-w-[80%] h-[30] w-full" >  <!--Product details ui wrapper-->
+             <article data-type-specific="description" class="ring-1 flex flex-col">
+         <!--        <h1>Sykkel</h1>
+                <div  class="flex items-center">
+                <img src="/src/assets/blank-avatar.png" class="w-[5rem] h-[5rem] rounded-full" alt="">
+                <p>jon@noroff.no</p>
+                </div>
+                <p>Litt fylltekst angående beskrivelsen av produktet</p>
+                <span>Lagt til: <span>01.02.2023</span></span>
+                <span>Sist oppdatert: <span>01.05.2023</span></span>
+                <span>Slutter: <span>01.02.2023</span></span> -->
+             </article>
+
+
+
+
+            </section>
+
+
+
+
+
+
+            <section class="bg-black max-w-[80%] w-full p-2"> <!--Product bids ui-->
+<article data-type-specific="product-status" class="bg-white flex flex-col min-h-[5rem] h-[10rem] overflow-scroll">
+
+</article>
+
+
+<article>
+    
+
+
+<form data-type-specific="form" class="bg-orange-300">
+    <div> 
+        <label for="bid-input " class="label-hidden">Sum:</label>
+        <button data-type-specific="decrease-bid-btn" class="bg-red-500 w-[2rem] h-[2rem] rounded-full">-</button>
+        <input data-type-specific="input"   type="text" readonly>
+        <button data-type-specific="increase-bid-btn" class="bg-custom-accent  w-[2rem] h-[2rem] rounded-full">+</button>
+        <button data-type-specific="max-bid-btn" class="bg-custom-accent  w-[2rem] h-[2rem] rounded-full">Maks</button>
+    </div>
+<div>
+    <button data-type-specific="submit-bid-btn" class="bg-custom-accent">
+        Fullfør
+    </button>
+</div>
+
+</form>
+</article>
 
             </section>
 
