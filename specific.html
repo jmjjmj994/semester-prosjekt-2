@@ -23,7 +23,7 @@
 <div class="loader-sm"></div> -->
 
 <body class="bg-custom-background flex flex-col">
-    <header data-header class="bg-custom-secondary     h-auto ">
+    <header data-header class="     h-auto ">
         <!--Top header section-->
         <section class="top  gap-5 justify-end   min-h-[2.5rem] hidden lg:flex">
             <article class="flex items-center  gap-2 max-[1024px]:hidden bg-orange-600">
@@ -71,10 +71,10 @@
 
             <section class="bg-black max-w-[100%] w-full lg:w-[50%] h-[2rem] z-[1]">
                 <form data-search="search-form" class="bg-black w-full flex h-full">
-                    <input data-search="search-form-input" class="w-full ring-1 ring-black h-full" type="text"
+                    <input data-search="search-form-input" class="w-full  ring-black h-full" type="text"
                         placeholder="Søk...">
                     <button data-search="search-form-button" type="submit"
-                        class="text-typography-primary bg-custom-special px-4 h-full ring-1">
+                        class="text-typography-primary bg-custom-special px-4 h-full ">
                         <span class="hidden lg:block">Søk</span>
                         <span class="lg:hidden">
                             <i class="fa-solid fa-magnifying-glass text-typography-primary "></i>
@@ -119,7 +119,7 @@
 
 
     </header>
-    <nav data-navbar class="fixed top-0 left-0 bg-custom-secondary   h-full lg:static  ">
+    <nav data-navbar class="fixed top-0 left-0  bg-custom-secondary lg:bg-custom-background  h-full lg:static ">
         <!--Navbar content wrapper-->
         <section class=" h-full w-full lg:flex p-2 lg:p-0">
             <section class="flex justify-end py-1 pr-1 lg:hidden">
@@ -192,7 +192,7 @@
 
         <section class=" flex-grow flex items-center justify-center height-calc flex-col gap-[5rem] relative my-8 px-2">
 
-            <section class="flex flex-col  h-[30rem]  w-full md:w-[80%] "> <!--Wrapper-->
+            <section data-type-specific="slider-wrapper" class="flex flex-col shadow-sm  h-[30rem]  w-full md:w-[80%] md:h-[35rem] lg:w-[70%] lg:h-[40rem]  "> <!--Wrapper-->
 
                 <div class=" relative flex-1 flex justify-center rounded-md "> <!--Header-->
 
@@ -229,8 +229,8 @@
 
 
 
-            <section class="flex justify-between ring-1 w-full md:w-[80%] bg-custom-secondary shadow-lg rounded-md"> <!--Product details ui wrapper-->
-                <article data-type-specific="description" class="ring-1 flex flex-col">
+            <section class="flex justify-between  w-full md:w-[80%] bg-custom-secondary shadow-sm rounded-md px-1"> <!--Product details ui wrapper-->
+                <article data-type-specific="description" class=" flex flex-col">
                 </article>
             </section>
 
@@ -239,9 +239,9 @@
 
 
 
-            <section class="bg-custom-secondary w-full md:w-[80%] p-2 rounded-md"> <!--Product bids ui-->
+            <section class="bg-custom-secondary w-full md:w-[80%] p-2 shadow-sm rounded-md "> <!--Product bids ui-->
                 <article data-type-specific="product-status"
-                    class="bg-white flex flex-col min-h-[5rem] h-[10rem] overflow-scroll">
+                    class="bg-white flex flex-col min-h-[5rem] h-[10rem] gap-2 px-1 overflow-scroll">
 
                 </article>
 
@@ -249,7 +249,7 @@
 
             </section>
 
-            <section class="w-full md:w-[80%] bg-custom-secondary rounded-md">
+            <section class="w-full md:w-[80%] bg-custom-secondary rounded-md shadow-sm">
             
             
             

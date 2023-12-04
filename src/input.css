@@ -21,7 +21,7 @@ svg {
 
 @layer base {
   :root {
-    --color-background: 0, 0%, 95%;
+    --color-background:0, 0%, 98%;
     --color-secondary: 0, 0%, 100%;
     --color-accent: 210, 100%, 60%;
     --color-special:144, 80%, 52%; 
@@ -31,7 +31,7 @@ svg {
   }
 
   :root[data-theme="dark"] {
-    --color-background:240, 8%, 9%;
+    --color-background:0, 0%, 13%;
     --color-secondary: 0, 0%, 11%;
     --color-accent: 260, 100%, 66%;
        --color-special:227, 93%, 18%; 

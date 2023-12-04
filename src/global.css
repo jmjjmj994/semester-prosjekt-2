@@ -69,7 +69,7 @@ a {
     transform: translateX(-100%);
     opacity: 0;
     transition: 250ms ease-in-out;
-    z-index: 1;
+    z-index: 15;
   }
 
   nav.isActive {

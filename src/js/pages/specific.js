@@ -8,6 +8,7 @@ const prevBtnContainer = document.querySelector("[data-type-specific='prev-btn-c
 const nextBtnContainer = document.querySelector("[data-type-specific='next-btn-container']")
 const prevBtn = document.querySelector("[data-type-specific='prev-btn']")
 const nextBtn = document.querySelector("[data-type-specific='next-btn']")
+const sliderWrapper = document.querySelector("[ data-type-specific='slider-wrapper' ]")
 const sliderContainer = document.querySelector("[data-type-specific='slider']")
 const previewContainer = document.querySelector("[data-type-specific='preview-container']")
 
@@ -159,6 +160,7 @@ const initializer = async () => {
     const data = await fetchData();
     const media = data.media.length;
     if (media <= 1) {
+        
         prevBtnContainer.className = "hidden";
         nextBtnContainer.className = "hidden";
         previewContainer.className = "hidden"
@@ -201,7 +203,7 @@ const renderProductStatus = async () => {
     const bids = data.bids;
     bids.sort((a, b) => b.amount - a.amount)
     bids.forEach((({ id, amount, bidderName }) => {
-        const bidderContainer = createCardElement("div", "flex items-center gap-5 ring-1 max-w-[20rem]");
+        const bidderContainer = createCardElement("div", "flex items-center gap-5  max-w-[20rem]");
         const bidderColor = createCardElement("span", "bg-green-500 w-[0.3rem] h-[0.3rem] rounded-full");
         const sellerName = createCardElement("span");
         const sellerBid = createCardElement("span", "ml-auto");
