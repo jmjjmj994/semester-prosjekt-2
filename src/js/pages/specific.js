@@ -4,7 +4,8 @@ const queryString = document.location.search;
 const param = new URLSearchParams(queryString)
 const id = param.get("id")
 
-
+const prevBtnContainer = document.querySelector("[data-type-specific='prev-btn-container']")
+const nextBtnContainer = document.querySelector("[data-type-specific='next-btn-container']")
 const prevBtn = document.querySelector("[data-type-specific='prev-btn']")
 const nextBtn = document.querySelector("[data-type-specific='next-btn']")
 const sliderContainer = document.querySelector("[data-type-specific='slider']")
@@ -61,7 +62,9 @@ const renderSlides = (media) => {
     const slides = () => {
         for (let i = 0; i <= maxSlide; i++) {
             const slide = createCardElement("div", "flex-1 w-full h-full absolute");
-            const slideImage = createCardElement("img", "w-full h-full absolute object-cover");
+            const slideImage = createCardElement("img", "h-full max-w-[100%] w-full  block object-cover md:absolute md:w-full");
+/*             const slideImage = createCardElement("img", "w-full h-full  absolute object-cover");
+ */
             slideImage.src = image[i];
             slide.append(slideImage)
             slide.setAttribute("data-type-specific", "slide");
@@ -156,8 +159,8 @@ const initializer = async () => {
     const data = await fetchData();
     const media = data.media.length;
     if (media <= 1) {
-        prevBtn.className = "hidden";
-        nextBtn.className = "hidden";
+        prevBtnContainer.className = "hidden";
+        nextBtnContainer.className = "hidden";
         previewContainer.className = "hidden"
         renderSingleSlide()
     } else if (media > 1) {
@@ -179,7 +182,7 @@ const renderDescription = async () => {
     const descriptionContainer = document.querySelector("[data-type-specific='description']");
     const sellerContainer = createCardElement("div", "flex items-center")
     const data = await fetchData();
-    const header = createCardElement("h1")
+    const header = createCardElement("p")
     const productDescription = createCardElement("p");
     const sellerAvatar = createCardElement("img", "w-[5rem] h-[5rem] rounded-full")
     const sellerName = createCardElement("p");
@@ -275,9 +278,9 @@ const createBid = async () => {
         e.preventDefault();
         const finalBid = getInput(defaultBid);
         if (finalBid > 0) {
-          await  setBid(finalBid)
-          clearProductStatus()
-          renderProductStatus()
+            await setBid(finalBid)
+            clearProductStatus()
+            renderProductStatus()
         }
 
     });
