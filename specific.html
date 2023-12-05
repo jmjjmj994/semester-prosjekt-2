@@ -192,7 +192,7 @@
 
         <section class=" flex-grow flex items-center justify-center height-calc flex-col gap-[5rem] relative my-8 px-2">
 
-            <section data-type-specific="slider-wrapper" > <!--Wrapper-->
+            <section data-type-specific="slider-wrapper"> <!--Wrapper-->
 
                 <div class=" relative flex-1 flex justify-center rounded-md "> <!--Header-->
 
@@ -219,7 +219,7 @@
 
 
                 </div>
-                <div data-type-specific="preview-container" 
+                <div data-type-specific="preview-container"
                     class=" basis-15rem flex  justify-between  flex-wrap  gap-5 py-5 rounded-md">
 
                 </div>
@@ -229,7 +229,9 @@
 
 
 
-            <section class="flex justify-between  w-full md:w-[80%]  lg:w-[50%]  p-2 text-typography-primary   bg-custom-secondary shadow-sm rounded-md "> <!--Product details ui wrapper-->
+            <section
+                class="flex justify-between  w-full md:w-[80%]  lg:w-[50%]  p-2 text-typography-primary   bg-custom-secondary shadow-sm rounded-md ">
+                <!--Product details ui wrapper-->
                 <article data-type-specific="description" class=" flex flex-col">
                 </article>
             </section>
@@ -239,7 +241,9 @@
 
 
 
-            <section class="bg-custom-secondary  w-full md:w-[80%]  lg:w-[50%] text-typography-primary  p-2 shadow-sm rounded-md "> <!--Product bids ui-->
+            <section
+                class="bg-custom-secondary  w-full md:w-[80%]  lg:w-[50%] text-typography-primary  p-2 shadow-sm rounded-md ">
+                <!--Product bids ui-->
                 <article data-type-specific="product-status"
                     class=" flex flex-col min-h-[5rem] h-[10rem] gap-2 px-1 overflow-scroll">
 
@@ -249,31 +253,44 @@
 
             </section>
 
-            <section class="w-full md:w-[80%]  lg:w-[50%]  p-2 bg-custom-secondary rounded-md shadow-sm">
-            
-            
-            
-                <form data-type-specific="form">
-                    <div>
+            <section class="w-full md:w-[80%]  lg:w-[50%]  py-5 bg-custom-secondary rounded-md shadow-sm">
 
-                        
-            
-                        <button data-type-specific="decrease-bid-btn" class="bg-red-500 w-[2rem] h-[2rem] rounded-full">-</button>
-                        <label for="bid-input" class="label-hidden">Sum:</label>
-                        <input data-type-specific="input" type="text" readonly>
-                        <button data-type-specific="increase-bid-btn"
 
-                        
-                            class="bg-custom-accent  w-[2rem] h-[2rem] rounded-full">+</button>
-                        <button data-type-specific="max-bid-btn"
-                            class="bg-custom-accent  w-[2rem] h-[2rem] rounded-full">Maks</button>
+
+                <form data-type-specific="form" class="flex justify-center flex-col items-center gap-2 px-2">
+                    <div class=" max-w-[35rem] w-full">
+
+
+                        <div class=" mt-2 flex justify-between">
+                            <button data-type-specific="reset-bid-btn" class="bg-custom-special px-1 h-[2rem] w-[7rem] md:w-[10rem] rounded-md">Tilbakestill</button>
+                            <button data-type-specific="max-bid-btn"
+                                class="bg-custom-special  px-1 h-[2rem] w-[7rem] md:w-[10rem] border-inherit rounded-md">Maks</button>
+                        </div>
+
+
+                        <div class=" flex mt-2 gap-2">
+                            <button data-type-specific="decrease-bid-btn"
+                                class="bg-custom-accent w-[2rem] h-[2rem] rounded-tl-md rounded-bl-md">-</button>
+                            <label for="bid-input" class="label-hidden">Sum:</label>
+                            <input class=" flex-1 text-typography-primary custom-input-style rounded-md"
+                                data-type-specific="input" type="text" readonly>
+                            <button data-type-specific="increase-bid-btn"
+                                class="bg-custom-accent  w-[2rem] h-[2rem] rounded-br-md rounded-tr-md">+</button>
+                        </div> <!--main buttons-->
+
+
+
+
+
+                        <div class="mt-2 mb-2">
+                            <button data-type-specific="submit-bid-btn" class="bg-custom-accent w-full py-2 rounded-md">
+                                Fullfør
+                            </button>
+                        </div>
+
+
+
                     </div>
-                    <div>
-                        <button data-type-specific="submit-bid-btn" class="bg-custom-accent">
-                            Fullfør
-                        </button>
-                    </div>
-            
                 </form>
             </section>
 

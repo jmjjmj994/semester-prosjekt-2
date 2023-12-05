@@ -34,7 +34,7 @@ svg {
     --color-background:0, 0%, 13%;
     --color-secondary: 0, 0%, 11%;
     --color-accent: 260, 100%, 66%;
-       --color-special:227, 93%, 18%; 
+       --color-special:144, 80%, 52%; 
     --color-text-primary: 0, 0%, 91%;
     --color-text-accent: 60, 100%, 100%;
   }
@@ -89,5 +89,12 @@ padding-block: 5px;
 
   .custom-z {
     z-index: 2;
+  }
+
+  .custom-input-style {
+
+    background-color: lightgrey;
+
+
   }
 }

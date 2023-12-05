@@ -234,6 +234,7 @@ const createBid = async () => {
     const increaseBtn = document.querySelector("[data-type-specific='increase-bid-btn']");
     const decreaseBtn = document.querySelector("[data-type-specific='decrease-bid-btn']");
     const maxBidBtn = document.querySelector("[data-type-specific='max-bid-btn']");
+    const resetBidBtn = document.querySelector("[data-type-specific='reset-bid-btn']")
 
     const bid = (number) => {
         defaultBid = number;
@@ -259,11 +260,16 @@ const createBid = async () => {
         defaultBid = highestBid;
         bid(defaultBid)
     }
+    const resetBid = (e) => {
+        defaultBid = 0;
+        bid(defaultBid)
+    }
 
     const alterBid = () => {
         increaseBtn.addEventListener("click", increaseBid)
         decreaseBtn.addEventListener("click", decreaseBid)
         maxBidBtn.addEventListener("click", maxBid)
+        resetBidBtn.addEventListener("click", resetBid)
     }
 
 
@@ -325,7 +331,7 @@ const setBid = async (amount) => {
 
 }
 
-createBid();
+createBid()
 renderDescription()
 renderProductStatus()
 initializer()  
