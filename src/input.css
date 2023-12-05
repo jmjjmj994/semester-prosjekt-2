@@ -105,7 +105,10 @@ grid-auto-rows:75vh;
 justify-content: center;
 align-content: center;
 gap: 1rem;
-
-
   }
+
+  .table-grid-modal-z {
+    z-index: 1;
+  }
+
 }
