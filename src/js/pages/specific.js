@@ -158,13 +158,13 @@ const initializer = async () => {
     const data = await fetchData();
     const media = data.media.length;
     if (media <= 1) {
-        sliderWrapper.className ="flex flex-col shadow-sm    h-[30rem]  w-full md:w-[80%] md:h-[35rem] lg:w-[70%] lg:h-[40rem] p-2 bg-custom-secondary rounded-md"
+        sliderWrapper.className ="flex flex-col shadow-sm    h-[25rem]  w-full md:w-[80%] md:h-[35rem] lg:w-[50%] lg:h-[40rem] p-2 bg-custom-secondary rounded-md"
         prevBtnContainer.className = "hidden";
         nextBtnContainer.className = "hidden";
         previewContainer.className = "hidden";
         renderSingleSlide()
     } else if (media > 1) {
-        sliderWrapper.className = "flex flex-col shadow-sm    h-[35rem]  w-full md:w-[80%] md:h-[40rem] lg:w-[70%] lg:h-[45rem] p-2 bg-custom-secondary rounded-md"
+        sliderWrapper.className = "flex flex-col shadow-sm    h-[35rem]  w-full md:w-[80%] md:h-[40rem] lg:w-[50%] lg:h-[45rem] p-2 bg-custom-secondary rounded-md"
 
         handleSlides()
     }

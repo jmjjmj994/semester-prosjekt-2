@@ -229,7 +229,7 @@
 
 
 
-            <section class="flex justify-between  w-full md:w-[80%] bg-custom-secondary shadow-sm rounded-md px-1"> <!--Product details ui wrapper-->
+            <section class="flex justify-between  w-full md:w-[80%]  lg:w-[50%]  p-2 text-typography-primary   bg-custom-secondary shadow-sm rounded-md "> <!--Product details ui wrapper-->
                 <article data-type-specific="description" class=" flex flex-col">
                 </article>
             </section>
@@ -239,9 +239,9 @@
 
 
 
-            <section class="bg-custom-secondary w-full md:w-[80%] p-2 shadow-sm rounded-md "> <!--Product bids ui-->
+            <section class="bg-custom-secondary  w-full md:w-[80%]  lg:w-[50%] text-typography-primary  p-2 shadow-sm rounded-md "> <!--Product bids ui-->
                 <article data-type-specific="product-status"
-                    class="bg-white flex flex-col min-h-[5rem] h-[10rem] gap-2 px-1 overflow-scroll">
+                    class=" flex flex-col min-h-[5rem] h-[10rem] gap-2 px-1 overflow-scroll">
 
                 </article>
 
@@ -249,17 +249,21 @@
 
             </section>
 
-            <section class="w-full md:w-[80%] bg-custom-secondary rounded-md shadow-sm">
+            <section class="w-full md:w-[80%]  lg:w-[50%]  p-2 bg-custom-secondary rounded-md shadow-sm">
             
             
             
                 <form data-type-specific="form">
                     <div>
+
+                        
             
                         <button data-type-specific="decrease-bid-btn" class="bg-red-500 w-[2rem] h-[2rem] rounded-full">-</button>
                         <label for="bid-input" class="label-hidden">Sum:</label>
                         <input data-type-specific="input" type="text" readonly>
                         <button data-type-specific="increase-bid-btn"
+
+                        
                             class="bg-custom-accent  w-[2rem] h-[2rem] rounded-full">+</button>
                         <button data-type-specific="max-bid-btn"
                             class="bg-custom-accent  w-[2rem] h-[2rem] rounded-full">Maks</button>
