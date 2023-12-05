@@ -66,24 +66,25 @@ const createTableHeader = (title) => {
     thead.appendChild(theadRow)
     return thead
 }
-
-
 const createTableBody = (media, createdDate, endDate, bids) => {
     const norwegianDateCreated = dateConverter(createdDate)
     const norwegianDateEnd = dateConverter(endDate)
-    const tbody = createCardElement('tbody');
+    const tbody = createCardElement('tbody'," table");
     const tbodyRow = createCardElement('tr');
     const tbodyData = createCardElement('td', "flex flex-col");
-    const img = createCardElement('img', "rounded-sm shadow-md");
+    const imageContainer = createCardElement("div", "h-[18rem]  relative");
+    const img = createCardElement('img', " rounded-sm shadow-md absolute object-cover h-full w-full");
     img.src = media;
     img.alt = '';
+    imageContainer.append(img)
     const createdText = createCardElement('span');
     createdText.textContent = `Opprettet : ${norwegianDateCreated}`;
     const endsAtText = createCardElement('span');
     endsAtText.textContent = `Slutter:${norwegianDateEnd}`;
     const bidsText = createCardElement('span');
     bidsText.textContent = `Antall bud:${bids}`; 
-    tbodyData.appendChild(img);
+    
+    tbodyData.appendChild(imageContainer);
     tbodyData.appendChild(createdText);
     tbodyData.appendChild(endsAtText);
     tbodyData.appendChild(bidsText);
@@ -102,9 +103,6 @@ const createTableFoot = () => {
     const updateButton = createCardElement('button', "bg-custom-special p-1 px-5");
     updateButton.textContent = 'Oppdater';
     updateButton.setAttribute("data-type-table", "update-btn")
-
-
-
     tfootData.appendChild(deleteButton);
     tfootData.appendChild(updateButton);
     tfootRow.appendChild(tfootData);
@@ -115,7 +113,7 @@ const createTableFoot = () => {
 
 
 const createTable = async (tableId,title, media, createdDate, endDate, bids) => {
-    const table = createCardElement("table", "flex flex-col");
+    const table = createCardElement("table", "flex flex-col ");
     table.setAttribute("data-type-table-id", `${tableId}`)
     const tableHead = createTableHeader(title);
     const tableBody = createTableBody(media, createdDate, endDate, bids);
@@ -141,13 +139,15 @@ const renderListingsTable = async () => {
   
     const listingTableData = await listingsByProfile(localStorageItems.userData.name)
     const tableGridCol2 = document.querySelector("[data-type-table='table-grid-col-2']")
+    const tableGridHeader = createCardElement("h2", "text-typography-primary text-center")
+    tableGridHeader.textContent ="Mine salg"
      tableGridCol2.innerHTML = "";
  if(Array.isArray(listingTableData)) {
     const promises = listingTableData.map(async (data) => {
         const { id, title, media, created, endsAt, _count } = data;
         const bids = _count.bids;
         const table = await createTable(id, title, media, created, endsAt, bids);
-        tableGridCol2.append(table)
+        tableGridCol2.append(tableGridHeader,table)
     })
     await Promise.all(promises)
  } else {
