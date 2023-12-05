@@ -69,6 +69,8 @@ const createTableHeader = (title) => {
 
 
 const createTableBody = (media, createdDate, endDate, bids) => {
+    const norwegianDateCreated = dateConverter(createdDate)
+    const norwegianDateEnd = dateConverter(endDate)
     const tbody = createCardElement('tbody');
     const tbodyRow = createCardElement('tr');
     const tbodyData = createCardElement('td', "flex flex-col");
@@ -76,9 +78,9 @@ const createTableBody = (media, createdDate, endDate, bids) => {
     img.src = media;
     img.alt = '';
     const createdText = createCardElement('span');
-    createdText.textContent = `Opprettet : ${createdDate}`;
+    createdText.textContent = `Opprettet : ${norwegianDateCreated}`;
     const endsAtText = createCardElement('span');
-    endsAtText.textContent = `Slutter:${endDate}`;
+    endsAtText.textContent = `Slutter:${norwegianDateEnd}`;
     const bidsText = createCardElement('span');
     bidsText.textContent = `Antall bud:${bids}`; 
     tbodyData.appendChild(img);
@@ -99,6 +101,10 @@ const createTableFoot = () => {
     deleteButton.textContent = 'Slett';
     const updateButton = createCardElement('button', "bg-custom-special p-1 px-5");
     updateButton.textContent = 'Oppdater';
+    updateButton.setAttribute("data-type-table", "update-btn")
+
+
+
     tfootData.appendChild(deleteButton);
     tfootData.appendChild(updateButton);
     tfootRow.appendChild(tfootData);
@@ -107,12 +113,22 @@ const createTableFoot = () => {
 }
 
 
-const createTable = (title, media, createdDate, endDate, bids) => {
-console.log(title)
+
+const createTable = async (tableId,title, media, createdDate, endDate, bids) => {
     const table = createCardElement("table", "flex flex-col");
+    table.setAttribute("data-type-table-id", `${tableId}`)
     const tableHead = createTableHeader(title);
     const tableBody = createTableBody(media, createdDate, endDate, bids);
     const tableFoot = createTableFoot();
+    table.addEventListener("click", async (e) => {
+    const deleteBtn = e.target.getAttribute("data-type-table") === "delete-btn";
+        if (deleteBtn) {
+            await deleteListing(tableId);
+            renderListingsTable(); 
+        }
+
+    })
+
     table.append(tableHead, tableBody, tableFoot)
     return table;
 }
@@ -121,61 +137,30 @@ console.log(title)
 
 
 
-const renderListingsTable = async (callback) => {
+const renderListingsTable = async () => {
   
     const listingTableData = await listingsByProfile(localStorageItems.userData.name)
-    
-    const tableGridCol1 = document.querySelector("[data-type='table-grid-col-1]");
     const tableGridCol2 = document.querySelector("[data-type-table='table-grid-col-2']")
- tableGridCol2.innerHTML = "";
-
-
-    if (typeof listingTableData !== "string") {
-     listingTableData.forEach(data => {
-         const { id, title, description, media, created, endsAt, _count } = data;
-         const norwegianDateCreated = dateConverter(created)
-         const norwegianDateEnd = dateConverter(endsAt)
-         const table = createTable();
-         console.log(table)
-         
-
-        
-
-
-
-/* 
-table.addEventListener("click", async (e) => {
-   if(e.target.getAttribute("data-type-table") === "delete-btn") {
-    const tableId = table.getAttribute("data-table-id")
-     await  deleteListing(tableId)
-       renderListingsTable()
-   }
-}) */
-
-
-     })
-    }
-
-    mockData.forEach(data => {
-        const { id, title, description, media, created, endsAt, _count } = data;
+     tableGridCol2.innerHTML = "";
+ if(Array.isArray(listingTableData)) {
+    const promises = listingTableData.map(async (data) => {
+        const { id, title, media, created, endsAt, _count } = data;
         const bids = _count.bids;
-       
-        const table = createTable(title, media, created, endsAt, bids );
-        console.log(table)
+        const table = await createTable(id, title, media, created, endsAt, bids);
         tableGridCol2.append(table)
-
     })
-
+    await Promise.all(promises)
+ } else {
+     tableGridCol2.className = "flex flex-col items-center justify-center bg-custom-secondary "
+     tableGridCol2.innerHTML = `<span>${listingTableData}</span>`
+ }
 
 }
 
 
 
 
-
-
-
- const initializer = () => {
+ const initializer =  () => {
     renderListingsTable()
 }
 initializer()  

@@ -38,14 +38,6 @@ module.exports = {
         },
 
 
-        /*        background: "hsl(--background)",
-               secondary: "hsl(--secondary)",
-               accent:"hsl(--accent)",
-               special:"hsl(--special)",
-               text:"hsl(--text)",
-                */
-
-
 
       },
 
