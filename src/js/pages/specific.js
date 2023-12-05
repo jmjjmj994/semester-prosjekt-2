@@ -68,9 +68,9 @@ const renderSlides = (media) => {
             slide.append(slideImage)
             slide.setAttribute("data-type-specific", "slide");
             const slidePreview = createCardElement("div", " relative h-[5rem] w-[5rem] md:w-[10rem] md:h-[5.5rem] lg:w-[11rem] bg-orange-500 border-inherit cursor-pointer")
-          const previewImage = createCardElement("img", "absolute h-full w-full object-cover border-inherit") 
-            previewImage.src = image[i] 
-             slidePreview.append(previewImage) 
+            const previewImage = createCardElement("img", "absolute h-full w-full object-cover border-inherit")
+            previewImage.src = image[i]
+            slidePreview.append(previewImage)
             slidePreview.setAttribute("data-type-specific", "slide-preview")
             slidePreviewArray.push(slidePreview);
             slideArray.push(slide)
@@ -158,7 +158,7 @@ const initializer = async () => {
     const data = await fetchData();
     const media = data.media.length;
     if (media <= 1) {
-        sliderWrapper.className ="flex flex-col shadow-sm    h-[25rem]  w-full md:w-[80%] md:h-[35rem] lg:w-[50%] lg:h-[40rem] p-2 bg-custom-secondary rounded-md"
+        sliderWrapper.className = "flex flex-col shadow-sm    h-[25rem]  w-full md:w-[80%] md:h-[35rem] lg:w-[50%] lg:h-[40rem] p-2 bg-custom-secondary rounded-md"
         prevBtnContainer.className = "hidden";
         nextBtnContainer.className = "hidden";
         previewContainer.className = "hidden";
@@ -235,6 +235,8 @@ const createBid = async () => {
     const decreaseBtn = document.querySelector("[data-type-specific='decrease-bid-btn']");
     const maxBidBtn = document.querySelector("[data-type-specific='max-bid-btn']");
     const resetBidBtn = document.querySelector("[data-type-specific='reset-bid-btn']")
+
+
 
     const bid = (number) => {
         defaultBid = number;
