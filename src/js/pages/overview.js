@@ -83,7 +83,6 @@ const createTableBody = (media, createdDate, endDate, bids) => {
     endsAtText.textContent = `Slutter:${norwegianDateEnd}`;
     const bidsText = createCardElement('span');
     bidsText.textContent = `Antall bud:${bids}`; 
-    
     tbodyData.appendChild(imageContainer);
     tbodyData.appendChild(createdText);
     tbodyData.appendChild(endsAtText);
@@ -93,16 +92,18 @@ const createTableBody = (media, createdDate, endDate, bids) => {
     return tbody
 }
 
-const createTableFoot = () => {
+const createTableFoot = (id) => {
     const tfoot = createCardElement('tfoot');
     const tfootRow = createCardElement('tr');
     const tfootData = createCardElement('td');
-    const deleteButton = createCardElement('button', "bg-red-500 p-1 px-5 rounded-sm mr-5");
+    const deleteButton = createButtonElement("bg-red-500  px-5 rounded-sm mr-5");
+    console.log(deleteButton)
     deleteButton.setAttribute("data-type-table", "delete-btn")
     deleteButton.textContent = 'Slett';
-
-    const updateButton = createCardElement('button', "bg-custom-special p-1 px-5");
+    const updateButton = createCardElement("a","bg-custom-special  py-1 px-5 rounded-sm  ");
+    updateButton.role ="button"
     updateButton.textContent = 'Oppdater';
+    updateButton.href = `/edit.html?id=${id}`
     updateButton.setAttribute("data-type-table", "update-btn")
     tfootData.appendChild(deleteButton);
     tfootData.appendChild(updateButton);
@@ -118,7 +119,7 @@ const createTable = async (tableId,title, media, createdDate, endDate, bids) => 
     table.setAttribute("data-type-table-id", `${tableId}`)
     const tableHead = createTableHeader(title);
     const tableBody = createTableBody(media, createdDate, endDate, bids);
-    const tableFoot = createTableFoot();
+    const tableFoot = createTableFoot(tableId);
     table.addEventListener("click", async (e) => {
     const deleteBtn = e.target.getAttribute("data-type-table") === "delete-btn";
         if (deleteBtn) {
@@ -180,56 +181,3 @@ initializer()
 
 
 
-
-const fetchSingleEntry =  async ( ) => {
-   
-    const singleEntry = await singleListing("3b313a00-da01-4d56-b508-70791675a779");
-  
-    const singleEntryData = {
-        title:singleEntry.title,
-        description:singleEntry.description,
-        tags:singleEntry.tags,
-        media:singleEntry.media
-    }
-return singleEntryData
-}
-
-
-
-/* const displayColBefore = async () => {
-  const singleEntryData = await fetchSingleEntry();
-    const formContainerCol1 = document.querySelector("[data-type-overview='form-container-col-1']")
-    const colTitle = document.querySelector("[data-type-overview='col-1-title']")
-    colTitle.textContent = "Før:" 
-    const colHeader = document.querySelector("[data-type-overview='form-container-col-1-header']")
-colHeader.textContent = singleEntryData.title
-    const colBody = document.querySelector("[data-type-overview='form-container-col-1-body']")
-    const colImage = document.querySelector("[data-type-overview='form-container-col-1-body--img']")
-    colImage.src = singleEntryData.media
-   
-} */
-
-
-
-
-
-
-const openModal = async () => {
-    //id 3b313a00-da01-4d56-b508-70791675a779
-    const modal = document.querySelector("[data-type-overview='modal']")
-    const form = document.querySelector("[data-type-overview='form']")
-    const inputTitle = document.querySelector("[data-type-overview='form-title-input']")
-    const inputDescription = document.querySelector("[data-type-overview='form-description-input']")
-    const inputTags = document.querySelector("[data-type-overview='form-tags-input']")
-    const inputMedia = document.querySelector("[data-type-overview='form-media-input']")
-    const submitBtn = document.querySelector("[data-type-overview='form-submit-btn']")
-
-
-/* fetchSingleEntry() */
- /*    displayColBefore() */
-}
-openModal()
-
-
-/* const updateEntr = await updateEntry("3b313a00-da01-4d56-b508-70791675a779");
-console.log(updateEntr) */

@@ -12,6 +12,7 @@ module.exports = {
     "./bidding.html",
     "./specific.html",
     "./overview.html",
+    "./edit.html"
 
   ],
 
