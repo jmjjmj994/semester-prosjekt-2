@@ -11,7 +11,8 @@ module.exports = {
     './listing.html',
     "./bidding.html",
     "./specific.html",
-    "./overview.html"
+    "./overview.html",
+
   ],
 
   theme: {

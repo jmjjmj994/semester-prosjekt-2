@@ -127,29 +127,29 @@ const auctionProfiles = async (name, param) => {
 
 export const listings = async (limit) => {
     const url =
-        `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_bids=true&_active=true&limit=${limit}` ;
+        `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_bids=true&_active=true&limit=${limit}`;
 
     try {
 
         const res = await fetch(url, {
-            method:"GET",
+            method: "GET",
             headers: {
-                'Content-Type' : 'application/json'
+                'Content-Type': 'application/json'
             }
         });
-        if(res.ok) {
-            const data = await res.json();
-            return data;
-        } else {
-            throw new Error("Failed to fetch data")
-        }
-  /*       const res = await fetch(url, options)
         if (res.ok) {
             const data = await res.json();
             return data;
         } else {
             throw new Error("Failed to fetch data")
-        } */
+        }
+        /*       const res = await fetch(url, options)
+              if (res.ok) {
+                  const data = await res.json();
+                  return data;
+              } else {
+                  throw new Error("Failed to fetch data")
+              } */
 
     } catch (error) {
         console.log(error.message)
@@ -176,19 +176,19 @@ export const singleListing = async (id) => {
         } else {
             throw new Error("Failed to fetch data")
         }
-     
+
 
     } catch (error) {
         console.log(error.message)
     }
-} 
+}
 
 
 
 
 export const createListing = async (title, description, tags, image, date) => {
     let url = `https://api.noroff.dev/api/v1/auction/listings?_bids`
-/* const norwegianDate = dateConverter(date); */
+    /* const norwegianDate = dateConverter(date); */
 
     const requestOptions = {
         method: "POST",
@@ -209,7 +209,7 @@ export const createListing = async (title, description, tags, image, date) => {
         const data = await res.json()
         console.log(data)
         return data;
-       
+
     }
     catch (error) {
 
@@ -220,3 +220,30 @@ export const createListing = async (title, description, tags, image, date) => {
 }
 
 
+export const updateEntry = async (id, title, description, tags, image) => {
+    const url = `https://api.noroff.dev/api/v1/auction/listings/${id}`;
+    const requestOptions = {
+        method: "PUT",
+        headers: options.headers,
+        body: JSON.stringify({
+            "title": title,
+            "description": description,
+            "tags": tags,
+            "media": [image]
+        })
+    };
+
+    try {
+        const response = await fetch(url, requestOptions);
+        if (response.ok) {
+            const updatedListing = await response.json();
+            console.log('Listing updated:', updatedListing);
+
+        } else {
+            const errorData = await response.json();
+            console.error('Error updating listing:', errorData);
+        }
+    } catch (error) {
+        console.error('Error updating listing:', error);
+    }
+};

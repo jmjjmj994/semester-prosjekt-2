@@ -1,5 +1,5 @@
 import { localStorageItems, createCardElement, createButtonElement , dateConverter} from "../utils/utils.js";
-import { options } from "../api/api.js";
+import { options, singleListing, updateEntry } from "../api/api.js";
 
 const listingsByProfile = async (name) => {
     const url =
@@ -100,6 +100,7 @@ const createTableFoot = () => {
     const deleteButton = createCardElement('button', "bg-red-500 p-1 px-5 rounded-sm mr-5");
     deleteButton.setAttribute("data-type-table", "delete-btn")
     deleteButton.textContent = 'Slett';
+
     const updateButton = createCardElement('button', "bg-custom-special p-1 px-5");
     updateButton.textContent = 'Oppdater';
     updateButton.setAttribute("data-type-table", "update-btn")
@@ -165,4 +166,70 @@ const renderListingsTable = async () => {
 }
 initializer()  
 
+/*********************************************** */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+const fetchSingleEntry =  async ( ) => {
+   
+    const singleEntry = await singleListing("3b313a00-da01-4d56-b508-70791675a779");
+  
+    const singleEntryData = {
+        title:singleEntry.title,
+        description:singleEntry.description,
+        tags:singleEntry.tags,
+        media:singleEntry.media
+    }
+return singleEntryData
+}
+
+
+
+/* const displayColBefore = async () => {
+  const singleEntryData = await fetchSingleEntry();
+    const formContainerCol1 = document.querySelector("[data-type-overview='form-container-col-1']")
+    const colTitle = document.querySelector("[data-type-overview='col-1-title']")
+    colTitle.textContent = "Før:" 
+    const colHeader = document.querySelector("[data-type-overview='form-container-col-1-header']")
+colHeader.textContent = singleEntryData.title
+    const colBody = document.querySelector("[data-type-overview='form-container-col-1-body']")
+    const colImage = document.querySelector("[data-type-overview='form-container-col-1-body--img']")
+    colImage.src = singleEntryData.media
+   
+} */
+
+
+
+
+
+
+const openModal = async () => {
+    //id 3b313a00-da01-4d56-b508-70791675a779
+    const modal = document.querySelector("[data-type-overview='modal']")
+    const form = document.querySelector("[data-type-overview='form']")
+    const inputTitle = document.querySelector("[data-type-overview='form-title-input']")
+    const inputDescription = document.querySelector("[data-type-overview='form-description-input']")
+    const inputTags = document.querySelector("[data-type-overview='form-tags-input']")
+    const inputMedia = document.querySelector("[data-type-overview='form-media-input']")
+    const submitBtn = document.querySelector("[data-type-overview='form-submit-btn']")
+
+
+/* fetchSingleEntry() */
+ /*    displayColBefore() */
+}
+openModal()
+
+
+/* const updateEntr = await updateEntry("3b313a00-da01-4d56-b508-70791675a779");
+console.log(updateEntr) */
