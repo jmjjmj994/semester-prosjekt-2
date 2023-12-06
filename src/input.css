@@ -76,7 +76,9 @@ padding: 13px 36px 14px 35px;
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
  grid-auto-rows: 25rem;
- justify-content: space-between;
+justify-content: center;
+align-content: center;
+gap: 1rem;
  gap: 5px;
 padding-block: 5px;
 
