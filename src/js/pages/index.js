@@ -22,7 +22,7 @@ const sortListingsByBids = () => {
 
 
 const featuredCards = (image, bids, date, id) => {
-console.log(id)
+/* console.log(id) */
     const article = createCardElement("article", "text-white   flex flex-col items-center relative   bg-custom-secondary rounded-md py-2 cursor-pointer");
     const linkHref = createCardElement("a", "absolute h-full w-full bg-orange-500")
     linkHref.href = `/specific.html?id=${id}`

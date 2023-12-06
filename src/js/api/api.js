@@ -156,6 +156,36 @@ export const listings = async (limit) => {
     }
 }
 
+export const listingsByTags = async (tag, offset) => {
+  
+    const url = `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_tag=${tag}&_bids=true&_active=true&_limit=25&_offset=${offset}`;
+
+    try {
+
+        const res = await fetch(url, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (res.ok) {
+            const data = await res.json();
+            return data;
+        } else {
+            throw new Error("Failed to fetch data")
+        }
+        /*       const res = await fetch(url, options)
+              if (res.ok) {
+                  const data = await res.json();
+                  return data;
+              } else {
+                  throw new Error("Failed to fetch data")
+              } */
+
+    } catch (error) {
+        console.log(error.message)
+    }
+}
 
 
 export const singleListing = async (id) => {

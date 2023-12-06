@@ -15,6 +15,7 @@
     <script src="/src/js/header/header.js" type="module"></script>
     <script src="/src/js/pages/index.js" type="module"></script>
     <script src="/src/global.js" type="module"></script>
+   
 
     <title>Home</title>
 </head>
@@ -68,8 +69,8 @@
 
 
 
-            <section class="bg-black max-w-[100%] w-full lg:w-[50%] h-[2rem] z-[1]">
-                <form data-search="search-form" class="bg-black w-full flex h-full">
+            <section class="bg-black max-w-[100%] w-full lg:w-[50%] h-[auto]  z-[1] flex flex-col relative">
+                <form  autocomplete="off" data-search="search-form" class="bg-black w-full flex h-[2rem]">
                     <input data-search="search-form-input" class="w-full ring-1 ring-black h-full" type="text"
                         placeholder="Søk...">
                     <button data-search="search-form-button" type="submit"
@@ -80,22 +81,6 @@
                         </span>
                     </button>
                 </form>
-
-
-                <div data-search="search-container" class="bg-orange-300 w-full h-[25rem] max-h-[20rem] hidden">
-                    <div class="bg-slate-700 flex justify-end">
-                        <button data-search="search-input-clear" class="text-typography-primary">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
-                    </div>
-
-                    <ul data-search="search-container-results" class="bg-green-500 h-[25rem] overflow-scroll">
-
-                    </ul>
-
-                </div>
-
-
             </section>
 
 
