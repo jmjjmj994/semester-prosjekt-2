@@ -101,13 +101,9 @@ loginLogout[1].addEventListener("click", (e) => {
 
 
 
-
-
-
 const searchForm = document.querySelector("[data-search='search-form']");
 const searchFormInput = document.querySelector("[data-search='search-form-input']");
 const searchFormButton = document.querySelector("[data-search='search-form-button']");
-
 const searchFormContainer = document.querySelector("[data-search='search-container']")
 const searchFormInputClear = document.querySelector("[data-search='search-input-clear']")
 searchFormInput.value = "";
@@ -130,6 +126,7 @@ searchForm.addEventListener("click", (e) => {
 
 
 
+
 searchFormInput.addEventListener("input", (e) => {
     const inputValue = e.target.value.trim();
     if (inputValue === "") {
@@ -137,7 +134,8 @@ searchFormInput.addEventListener("input", (e) => {
         searchFormContainer.className = "hidden"
         renderSearchResults([])
     } else {
-        getData(inputValue)
+     /*    getData(inputValue) */
+searchInputValue(inputValue)
         searchFormContainer.className = "block"
 
     }
@@ -152,14 +150,27 @@ searchFormInputClear.addEventListener("click", (e) => {
 })
 
 
+
+
+function searchInputValue (value) {
+console.log(value)
+    return value;
+}
+
+
 let currentSearchResults = [];
 async function getData(value) {
-    const searchData1 = await listings(100, 0);
+  /*    const searchData1 = await listings(10, 0);  */
     /*   const searchData2 = await listings(100, 100);
       const searchData3 = await listings(100, 200);
       const searchData4 = await listings(100, 300);
       const searchData5 = await listings(100, 400);
       const searchData6 = await listings(100, 500); */
+ /*      while({
+        const data = await listings(100, x)
+        currentSearchResults  = [currentSearchResults, ...data]
+        if (data.length < 100) break
+      }) */
     const dataArray = [...searchData1/* , ...searchData2, ...searchData3, ...searchData4, ...searchData5, ...searchData6 */];
     currentSearchResults = dataArray.filter(data => {
         const { title } = data;

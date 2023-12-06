@@ -10,8 +10,6 @@ const listings = async (pageNum) => {
         `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&limit=10&offset=${pageNum}`;
 
 
-
-
     try {
         const res = await fetch(url, {
             method: "GET",
@@ -38,7 +36,7 @@ const listings = async (pageNum) => {
 
 
 const dynamicUrl = (pageNum) => {
-    const offset = (pageNum) * 10;
+    const offset = (pageNum) * 10; //
     const params = new URLSearchParams(window.location.search);
     params.set("offset", offset)
     const newUrl = `${window.location.pathname}?${params.toString()}`
@@ -47,23 +45,19 @@ const dynamicUrl = (pageNum) => {
 
 }
 const currentPage = dynamicUrl;
-/* const currentPage = renderListings(0); */
+/*  const currentPage = renderListings(0); */
 
 
 const updatePage = async () => {
     const params = new URLSearchParams(window.location.search)
     let num = Number(params.get("offset")) || 0;
-    console.log(num)
+    console.log(typeof num)
     const buttonContainer = document.querySelector("[data-type-section='pagination-buttons']")
     const buttonNext = createButtonElement("bg-primary-500 w-[1rem] h-[1rem]")
     const buttonPrev = createButtonElement("bg-primary-500 w-[1rem] h-[1rem]")
     buttonNext.textContent = "next"
     buttonPrev.textContent = "Previous"
     buttonContainer.append(buttonPrev, buttonNext)
-
-    
-
-
     const listeners = () => {
         buttonNext.addEventListener("click", async (e) => {
             num++
@@ -76,7 +70,6 @@ const updatePage = async () => {
             console.log(num)
             const currentPage = dynamicUrl(num)
             await listings(currentPage)
-
         })
     }
 
@@ -126,12 +119,12 @@ const maintainData = () => {
 }
 maintainData()
 
-/* 
-window.addEventListener("popstate", async (e) => {
+
+/* window.addEventListener("popstate", async (e) => {
     
     const params = new URLSearchParams(window.location.search)
     let num = Number(params.get("offset")) / 10 || 0;
     listingsContainer.innerHTML ="";
    await listings(num)
 
-})  */
+})    */
