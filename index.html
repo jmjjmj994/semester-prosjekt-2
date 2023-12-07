@@ -17,32 +17,31 @@
     <script src="/src/js/pages/index.js" type="module"></script>
     <script src="/src/global.js" type="module"></script>
     <script src="/src/js/search/search.js" type="module"></script>
-
-    <title>Home</title>
+    <title>Hjem</title>
 </head>
 
 
 
 <body class="bg-custom-background  flex flex-col ">
-    <header data-header class="bg-custom-secondary     h-auto ">
+    <header data-header class="bg-custom-secondary     h-auto global-padding">
         <!--Top header section-->
         <section class="top  gap-5 justify-end   min-h-[2.5rem] hidden lg:flex">
-            <article class="flex items-center  gap-2 max-[1024px]:hidden bg-orange-600">
+            <article class="flex items-center  gap-2 max-[1024px]:hidden ">
+                <div data-type="theme-btn-container">
+                    <button data-type="btn-mode-switcher" class="flex"></button>
+                </div>
                 <div class="w-[2.5rem] h-[2.5rem] bg-white rounded-full">
                     <img data-avatar class="w-full h-full rounded-full" alt="" />
                 </div>
                 <span><i class="fa-solid fa-coins text-typography-primary"></i>
                     <span data-credit class="text-typography-primary"></span>
                 </span>
+
             </article>
 
         </section>
-        <!--Top header section-->
-
+        
         <section class="flex justify-between lg:items-center flex-col lg:flex-row py-1">
-            <!--Block parent component-->
-            <!--Header hamburger & logo section-->
-
             <article class="flex items-center   gap-3">
                 <button data-hamburger class="min-[1024px]:hidden">
 
@@ -61,9 +60,7 @@
                             fill="#8B52FF" />
                     </svg>
                 </div>
-                <div data-type="theme-btn-container">
-                    <button data-type="btn-mode-switcher" class="flex"></button>
-                </div>
+               
             </article>
             <!--Header hamburger & logo section-->
 

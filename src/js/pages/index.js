@@ -30,11 +30,7 @@ const sortListingsByBids = () => {
 
 
 
-const featuredCards = (title, image, bids, date, id) => {
-    /* console.log(id) */
-    /*  const createBidArray = bids.map(bid => {
-         return bid.amount
-     }) */
+    const featuredCards = (title, image, bids, date, id) => {
     const createBidArray = bids.map(bid => bid.amount)
     const highestBid = Math.max(...createBidArray);
     const totalBids = createBidArray.reduce((accumulator, bidObj) => accumulator + bidObj)
