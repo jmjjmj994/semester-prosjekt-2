@@ -35,8 +35,10 @@ module.exports = {
           btnBgAccent: 'hsl(var(--color-btn-bg--accent))',
           btnBgSpecial: 'hsl(var(--color-btn-bg--special))',
           btnBgSmall: 'hsl(var(--color-btn-bg--small))',
-          textHeaders: 'hsl(var(--color-text-headers))',
-          textRegular: 'hsl(var(--color-text))',},
+          textDark: 'hsl(var(--color-text-dark))',
+          textWhite: 'hsl(var(--color-text-white))',
+          textLink: 'hsl(var(--color-text-links))',
+        },
 
         typography:{
           primary: 'hsl(var(--color-text-primary))',
