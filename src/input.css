@@ -23,25 +23,27 @@ svg {
   :root {
     --color-background: 0, 0%, 98%;
     --color-secondary: 0, 0%, 100%;
+    --color-card:0, 0%, 100%;
     --color-tertiary: 33, 100%, 88%;
     --color-btn-bg--accent: 230, 7%, 16%;
     --color-btn-bg--special: 46, 90%, 61%;
     --color-btn-bg--small: 0, 0%, 80%;
     --color-text-dark: 0, 0%, 15%;
     --color-text-white: 0, 0%, 89%;
-    --color-text-links: 195, 100%, 50%;
+    --color-text-grey: 0, 0%, 35%;
   }
 
   :root[data-theme="dark"] {
     --color-background: 0, 0%, 9%;
-    --color-secondary: 0, 0%, 27%;
+    --color-secondary:0, 0%, 17%;
+    --color-card:0, 0%, 25%;
     --color-tertiary: 4, 90%, 61%;
     --color-btn-bg--accent: 255, 81%, 69%;
     --color-btn-bg--special: 46, 90%, 61%;
     --color-btn-bg--small: 0, 0%, 80%;
     --color-text-dark: 0, 0%, 100%;
     --color-text-white: 0, 0%, 89%;
-    --color-text-links: 0, 0%, 67%;
+    --color-text-grey: 0, 0%, 80%;
   }
 }
 

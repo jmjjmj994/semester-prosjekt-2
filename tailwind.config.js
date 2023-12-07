@@ -32,12 +32,13 @@ module.exports = {
           background: 'hsl(var(--color-background))',
           secondary: 'hsl(var(--color-secondary))',
           tertiary: 'hsl(var(--color-tertiary))',
+          card: 'hsl(var(--color-card))',
           btnBgAccent: 'hsl(var(--color-btn-bg--accent))',
           btnBgSpecial: 'hsl(var(--color-btn-bg--special))',
           btnBgSmall: 'hsl(var(--color-btn-bg--small))',
           textDark: 'hsl(var(--color-text-dark))',
           textWhite: 'hsl(var(--color-text-white))',
-          textLink: 'hsl(var(--color-text-links))',
+          textGrey: 'hsl(var(--color-text-grey))',
         },
 
         typography:{

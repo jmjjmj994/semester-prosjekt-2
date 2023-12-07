@@ -39,7 +39,7 @@ const featuredCards = (title, image, bids, date, id) => {
     const highestBid = Math.max(...createBidArray);
     const totalBids = createBidArray.reduce((accumulator, bidObj) => accumulator + bidObj)
     console.log(totalBids)
-    const article = createCardElement("article", "flex flex-col  relative  bg-custom-secondary relative shadow-md text-custom-textDark");
+    const article = createCardElement("article", "flex flex-col  relative  bg-custom-card relative shadow-md text-custom-textGrey");
     const articleLink = createCardElement("a", "absolute h-full w-full custom-z-low");
     articleLink.href = `/specific.html?id=${id}`
     const articleHeader = createCardElement("div", " h-[70%] relative")
@@ -106,30 +106,21 @@ const featuredSkeletonCards = () => {
 
 const renderFeaturedCards = async () => {
     const items = sortListingsByBids();
-
     const articleCard = featuredCards;
-    let bidArray = [];
     featuredSection.innerHTML = "";
     for (let i = 0; i < items.length; i++) {
         const skeletonCard = featuredSkeletonCards();
         featuredSection.append(skeletonCard);
     }
-
     try {
-
-
-
-
-            await new Promise((resolve => setTimeout(resolve, 3000)))  
-   /*      featuredSection.innerHTML = ""
+        featuredSection.innerHTML = "";
         items.forEach(item => {
-            const norwegianTime = norwegianEndDate(item.endsAt)
-            featuredSection.append(articleCard(item.title, item.media, item.bids, norwegianTime, item.id))
-        }) */
+            const norwegianTime = norwegianEndDate(item.endsAt);
+            featuredSection.append(articleCard(item.title, item.media, item.bids, norwegianTime, item.id));
+        });
     } catch (error) {
-
+        console.error(error);
     }
-
 
 
 }
