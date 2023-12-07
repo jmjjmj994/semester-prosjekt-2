@@ -34,7 +34,6 @@ const sortListingsByBids = () => {
     const createBidArray = bids.map(bid => bid.amount)
     const highestBid = Math.max(...createBidArray);
     const totalBids = createBidArray.reduce((accumulator, bidObj) => accumulator + bidObj)
-    console.log(totalBids)
     const article = createCardElement("article", "flex flex-col  relative  bg-custom-card relative shadow-md text-custom-textGrey");
     const articleLink = createCardElement("a", "absolute h-full w-full custom-z-low");
     articleLink.href = `/specific.html?id=${id}`
@@ -120,7 +119,7 @@ const renderFeaturedCards = async () => {
 
 
 }
-renderFeaturedCards()
+
 
 
 
@@ -152,3 +151,6 @@ function moveSlides() {
     });
 }
 
+
+/* 
+renderFeaturedCards() */

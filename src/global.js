@@ -1,14 +1,14 @@
 import { localStorageItems, createCardElement } from "./js/utils/utils.js";
 import { singleProfile } from "./js/api/api.js";
 
-
+/* 
 const profileAvatar = document.querySelectorAll("[data-avatar]");
 const profileCredit = document.querySelector("[data-credit]");
 const loginLogout = document.querySelectorAll("[data-login-logout ]")
 const navbarName = document.querySelector("[data-navbar-name]")
 export const register = document.querySelectorAll("[data-signup ]")
 
-//Modal
+
 const modalProfile = document.querySelector("[data-profile-modal]");
 const closeProfileModal = document.querySelector("[data-profile-modal-close]");
 const profileModalSettings = document.querySelector("[data-profile-modal-settings]");
@@ -107,7 +107,7 @@ loginLogout[1].addEventListener("click", (e) => {
 
 
 
-
+ */
 
 
 

@@ -1,5 +1,6 @@
 
-const btnLightMode = document.querySelector("[data-type='btn-mode-switcher']");
+const btnLightMode = document.querySelector("[data-type-button='btn-mode-switcher']");
+console.log(btnLightMode)
 const root = document.documentElement;
 const setInitialTheme = () => {
     const savedTheme = localStorage.getItem("current-theme");

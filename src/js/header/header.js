@@ -1,33 +1,20 @@
-/* ==== Search modal ==== */
-const openSearchContainer = document.querySelector("[data-open-search]");
-const closeSearchContainer = document.querySelector("[data-close-search]");
-const searchContainer = document.querySelector(".search-container")
-const searchInput = document.getElementById("search-input")
-const clearSearchInput = document.querySelector("[data-clear-search")
 
 
 
+const navbar = document.querySelector("[data-type-component='navbar']")
+const header = document.querySelector("header")
+ const navbarListeners = () => {
+    const hamburgerBtn = document.querySelector('[data-header="hamburger-menu"]');
+    const closeNavbar = document.querySelector("[data-type-navbar='close-menu']")
+    hamburgerBtn.onclick = () => navbarToggler(true);
+    closeNavbar.onclick = () => navbarToggler(false);
+}
 
-
-
-
-/* ==== Search modal ==== */
-
-
-
-const hamburger = document.querySelector("[data-hamburger]")
-const navClose = document.querySelector("[data-close-nav]")
-
-hamburger.onclick = () => navbarToggler(true);
-navClose.onclick = () => navbarToggler(false)
 
 
 const navbarToggler = (value) => {
-    const navbar = document.querySelector("[data-navbar]")
-    if (value) {
+    if(value) {
         navbar.classList.add("isActive")
-
-
     } else {
         navbar.classList.remove("isActive")
     }
@@ -35,3 +22,8 @@ const navbarToggler = (value) => {
 
 
 
+const initializer = () => {
+    navbarListeners()
+
+}
+initializer()
