@@ -14,22 +14,82 @@ li {
   margin-block: 10px;
 }
 
+/*Headers Size */
 h1 {
-  /*     font-size: 2.438rem;
- */
-  font-size: 1.938rem;
+  font-size: 1.875rem;
   letter-spacing: -0.025rem;
 }
 @media screen and (min-width: 768px) {
   h1 {
-    font-size: 3.062rem;
+    font-size: 2.25rem;
   }
 }
 @media screen and (min-width: 1024px) {
   h1 {
-    font-size: 3.812rem;
+    font-size: 2.5rem;
   }
 }
+
+
+
+
+h2 {
+  font-size: 1.1rem;
+  letter-spacing: -0.025rem;
+}
+@media screen and (min-width: 768px) {
+  h2 {
+    font-size: 1.335rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+
+
+h3 {
+  font-size: 1.1rem;
+  letter-spacing: -0.025rem;
+}
+@media screen and (min-width: 768px) {
+  h3 {
+    font-size: 1.335rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+
+
+h4 {
+  font-size: 1.1rem;
+  letter-spacing: -0.025rem;
+}
+@media screen and (min-width: 768px) {
+  h4 {
+    font-size: 1.335rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  h4 {
+    font-size: 1.5rem;
+  }
+}
+
+
+
+
+
+/*Headers Size */
+
+
+
 
 h1,
 h2,

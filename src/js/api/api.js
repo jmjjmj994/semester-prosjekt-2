@@ -127,7 +127,7 @@ const auctionProfiles = async (name, param) => {
 
 export const listings = async (limit) => {
     const url =
-        `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_bids=true&_active=true&limit=${limit}`;
+        `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_bids=true&_count&_active=true&limit=${limit}`;
 
     try {
 
