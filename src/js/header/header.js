@@ -1,6 +1,3 @@
-
-
-
 const navbar = document.querySelector("[data-type-component='navbar']")
 const header = document.querySelector("header")
  const navbarListeners = () => {
@@ -9,8 +6,6 @@ const header = document.querySelector("header")
     hamburgerBtn.onclick = () => navbarToggler(true);
     closeNavbar.onclick = () => navbarToggler(false);
 }
-
-
 
 const navbarToggler = (value) => {
     if(value) {
@@ -24,6 +19,7 @@ const navbarToggler = (value) => {
 
 const initializer = () => {
     navbarListeners()
+
 
 }
 initializer()
