@@ -31,8 +31,12 @@ module.exports = {
         custom: {
           background: 'hsl(var(--color-background))',
           secondary: 'hsl(var(--color-secondary))',
-          accent: 'hsl(var(--color-accent))',
-          special: 'hsl(var(--color-special))',},
+          tertiary: 'hsl(var(--color-tertiary))',
+          btnBgAccent: 'hsl(var(--color-btn-bg--accent))',
+          btnBgSpecial: 'hsl(var(--color-btn-bg--special))',
+          btnBgSmall: 'hsl(var(--color-btn-bg--small))',
+          textHeaders: 'hsl(var(--color-text-headers))',
+          textRegular: 'hsl(var(--color-text))',},
 
         typography:{
           primary: 'hsl(var(--color-text-primary))',

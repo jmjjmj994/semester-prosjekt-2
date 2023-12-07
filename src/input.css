@@ -23,20 +23,23 @@ svg {
   :root {
     --color-background:0, 0%, 98%;
     --color-secondary: 0, 0%, 100%;
-    --color-accent: 210, 100%, 60%;
-    --color-special:144, 80%, 52%; 
-
-    --color-text-primary: 0, 0%, 8%;
-    --color-text-accent: 0, 0%, 9%;
+    --color-tertiary:33, 100%, 88%;
+    --color-btn-bg--accent: 230, 7%, 16%;
+    --color-btn-bg--special:46, 90%, 61%; 
+    --color-btn-bg--small:0, 0%, 80%;
+    --color-text-headers: 0, 0%, 15%;
+    --color-text: 0, 0%, 20%;
   }
 
   :root[data-theme="dark"] {
-    --color-background:0, 0%, 13%;
-    --color-secondary: 0, 0%, 11%;
-    --color-accent: 260, 100%, 66%;
-       --color-special:144, 80%, 52%; 
-    --color-text-primary: 0, 0%, 91%;
-    --color-text-accent: 60, 100%, 100%;
+    --color-background:0, 0%, 9%;
+    --color-secondary: 0, 0%, 27%;
+    --color-tertiary:4, 90%, 61%;
+    --color-btn-bg--accent: 255, 81%, 69%;
+    --color-btn-bg--special:46, 90%, 61%; 
+    --color-btn-bg--small:0, 0%, 80%;
+    --color-text-headers: 0, 0%, 89%;
+    --color-text: 0, 0%, 67%;
   }
 
 
