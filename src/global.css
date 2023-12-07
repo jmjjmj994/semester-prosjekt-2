@@ -1,9 +1,9 @@
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Lato", sans-serif;
   min-height: 100vh;
   line-height: 1.5;
+  font-size: 1rem;
 }
-
 
 nav > ul > li > button,
 [data-credit] {
@@ -14,23 +14,22 @@ li {
   margin-block: 10px;
 }
 
-
-
+h1 {
+  /*     font-size: 2.438rem;
+ */
+  font-size: 1.938rem;
+  letter-spacing: -0.025rem;
+}
+@media screen and (min-width: 768px) {
   h1 {
-/*     font-size: 2.438rem;
- */    font-size: 1.938rem;
-   letter-spacing: -0.025rem;
+    font-size: 3.062rem;
   }
-  @media screen and (min-width: 768px) {
-    h1 {
-   font-size: 3.062rem;
-    }
-  }
-  @media screen and (min-width:1024px) {
-    h1 {
+}
+@media screen and (min-width: 1024px) {
+  h1 {
     font-size: 3.812rem;
-    }
   }
+}
 
 h1,
 h2,
@@ -38,16 +37,15 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Roboto Condensed", sans-serif;
-  
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
 }
-
 
 a {
- 
-     font-family: "Roboto", sans-serif;
+ font-family: 'Roboto', sans-serif;
+  font-weight: semibold;
+  letter-spacing: -0.020rem;
 }
-
 
 .label-hidden {
   position: absolute;
@@ -60,8 +58,6 @@ a {
   border: 0;
 }
 
-
-
 @media screen and (min-width: 300px) and (max-width: 1024px) {
   nav {
     max-width: 15rem;
@@ -70,7 +66,6 @@ a {
     opacity: 0;
     transition: 250ms ease-in-out;
     z-index: 15;
-   
   }
 
   nav.isActive {
@@ -83,11 +78,9 @@ a {
 }
 @media screen and (min-width: 1024px) {
   nav {
-   
     background-color: orange;
     width: 100%;
-     border-bottom: 0.2px solid rgb(228, 227, 227);
-    
+    border-bottom: 0.2px solid rgb(228, 227, 227);
   }
 }
 
@@ -201,7 +194,6 @@ a {
   display: flex;
 }
 
-
 [data-avatar-overlay] {
   opacity: 0;
   visibility: hidden;
@@ -225,4 +217,3 @@ header.modalClosed {
 }
 
 /*================== Color changes================== */
-

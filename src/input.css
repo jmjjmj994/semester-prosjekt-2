@@ -44,9 +44,24 @@ svg {
 
 
 
+
 }
 
 @layer components {
+ 
+  /*Typography*/
+
+
+
+.links-typography {
+  font-family: 'Roboto', sans-serif;
+  font-weight: semibold;}
+
+
+
+
+
+  /*Typography*/
     .height-calc {
     min-height: calc(100vh - 8.5rem);
   }
