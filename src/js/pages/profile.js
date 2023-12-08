@@ -76,7 +76,6 @@ avatarOverlayForm.addEventListener("submit", async (e) => {
     const avatarFormInputValue = avatarOverlayFormInput.value.trim();
     if (urlRegex.test(avatarFormInputValue)) {
         changeUserAvatar(avatarFormInputValue);
-
         avatarOverlayFormInput.value = "";
         avatarOverlay.classList.remove("isActive");
     }

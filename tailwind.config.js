@@ -32,6 +32,7 @@ module.exports = {
           background: 'hsl(var(--color-background))',
           secondary: 'hsl(var(--color-secondary))',
           tertiary: 'hsl(var(--color-tertiary))',
+          ctaSecondary:'hsl(var(--color-cta--sec))',
           card: 'hsl(var(--color-card))',
           btnBgAccent: 'hsl(var(--color-btn-bg--accent))',
           btnBgSpecial: 'hsl(var(--color-btn-bg--special))',
