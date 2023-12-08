@@ -101,7 +101,6 @@ const handleData = (data) => {
 
 
 const auctionCards = (title, image, bids, date, id) => {
-    console.log(title)
     const createBidArray = bids.map(bid => bid.amount)
     const highestBid = Math.max(...createBidArray);
     const totalBids = createBidArray.reduce((accumulator, bidObj) => accumulator + bidObj)

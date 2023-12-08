@@ -6,14 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/dist/output.css" />
     <link rel="stylesheet" href="/src/global.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@700&family=Roboto:wght@500&display=swap"
+        rel="stylesheet">
     <script src="https://kit.fontawesome.com/868d223859.js" crossorigin="anonymous"></script>
-    <!-- <script src="/src/js/header/header.js" type="module"></script> -->
-     <script src="/src/js/pages/bidding.js" type="module"></script> 
+    <script src="/src/js/header/header.js" type="module"></script>
+    <script src="/src/js/pages/bidding.js" type="module"></script>
     <script src="/src/global.js" type="module"></script>
-    <!--    <script src="/src/js/search/search.js" type="module"></script> -->
+    <script src="/src/js/search/search.js" type="module"></script>
 
 
 
@@ -22,7 +24,127 @@
 
 
 <body class="bg-primary flex flex-col">
+    <header class="bg-custom-secondary flex   h-auto   gap-1  z-10 py-5">
 
+        <section class="flex ring-1 lg:">
+            <button class="lg:hidden" data-header="hamburger-menu" aria-label="open menu">
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+            <div data-header="logo-svg" class="flex items-center lg:hidden">
+                <img src="/src/assets/budhjørnet-hvit.svg" alt="">
+
+
+            </div>
+        </section>
+
+
+
+        <nav data-type-component="navbar"
+            class="flex flex-col  gap-2  bg-custom-secondary  fixed top-0 left-0 h-full w-[15rem] md:w-[20rem]  lg:flex-row      lg:static lg:h-[2.5rem]  lg:w-full lg:justify-between lg:gap-0 isActive ">
+            <div data-header="logo-svg" class="items-center hidden  lg:flex">
+                <img class="w-full h-full block" src="/src/assets/budhjørnet-hvit.svg" alt="">
+
+            </div>
+            <section data-type-component="navbar-child" class=" flex justify-end lg:hidden">
+                <button data-type-navbar="close-menu" type="button" aria-label="close menu">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </section>
+
+
+            <section data-type-component="navbar-child" class="flex text-custom-textDark  gap-2  lg:order-4 ">
+                <div class="flex items-center ">
+                    <img class="h-[2.5rem] w-[2.5rem] rounded-full" src="/src/assets/placeholder-cards.jpg" alt="">
+
+                </div>
+
+
+                <div class="text-sm  flex flex-col justify-center lg:hidden">
+                    <span>NeonNebula</span>
+                    <span>NeonNebula@noroff.no</span>
+                </div>
+
+
+
+
+
+
+
+
+            </section>
+
+
+
+
+
+            <form data-type-component="navbar-form"
+                class=" flex lg:items-center lg:order-3 h-[2rem]  lg:h-auto lg:basis-[20%]">
+                <div class="h-full lg:h-[60%] w-full relative lg:flex">
+                    <label for="search" class="label-hidden">
+                        søk
+                    </label>
+                    <input data-type-component="navbar-form-input"
+                        class="placeholder:text-black links-typography h-full w-full" type="text" id="search"
+                        placeholder="Søk...">
+                    <button data-type-component="navbar-form-submit-btn"
+                        class="absolute top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2   text-xs   bg-custom-btnBgAccent text-custom-textWhite uppercase py-1 px-2  lg:static lg:translate-x-0 lg:translate-y-0 lg:h-full lg:py-0 ">SØK</button>
+                </div>
+
+            </form>
+
+
+            <!--nav-links-Ul-->
+            <ul data-type-component="navbar-child"
+                class="flex flex-col lg:flex-row items-center justify-between uppercase text-custom-textDark  lg:margin-centered   lg:basis-[40%]">
+                <li class="w-full lg:w-auto">
+                    <a href="/index.html">hjem</a>
+                </li>
+                <li class="w-full lg:w-auto">
+                    <a href="/bidding.html">auksjoner</a>
+                </li>
+                <li class="w-full lg:w-auto">
+                    <a href="/listing.html">selg</a>
+                </li>
+                <li class="w-full lg:w-auto ">
+                    <a href="#">hjelp</a>
+                </li>
+
+            </ul>
+            <!--nav-links-Ul-->
+
+
+            <!--Nav useractions-->
+            <ul data-type-component="navbar-child"
+                class="flex flex-col lg:flex-row items-center justify-between uppercase text-custom-textDark  lg:order-3  lg:justify-end lg:gap-2 lg:ml-auto ">
+
+                <li class="w-full lg:w-auto ">
+                    <a href="/login.html">logg inn</a>
+                </li>
+
+                <li class="w-full lg:w-auto">
+                    <a href="/profile.html">profil</a>
+                </li>
+
+                <li class="w-full lg:w-auto flex">
+                    <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode">
+                    </button>
+                </li>
+                <!--Nav useractions-->
+            </ul>
+
+
+
+
+        </nav>
+
+
+
+
+
+
+    </header>
 
 
 
@@ -30,7 +152,7 @@
 
     <main class="flex flex-col flex-grow ">
 
-        <section class="bg-slate-400 flex-1 flex flex-col z-10"> <!--Wrapper-->
+        <section class="flex-1 flex flex-col"> <!--Wrapper-->
 
             <section data-type-section="listings" class="flex-1 height-calc featured-card-grid "> <!--Card container-->
 
