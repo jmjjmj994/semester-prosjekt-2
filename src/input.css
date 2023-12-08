@@ -158,9 +158,16 @@ svg {
   }
 
   /*Z-INDEX*/
-  .custom-input-style {
-    background-color: lightgrey;
-  }
+
+/*Margins */
+
+
+.margin-centered {
+  margin: 0 auto;
+}
+
+/*Margins*/
+
 
   .table-grid {
     display: grid;
