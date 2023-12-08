@@ -42,7 +42,7 @@
 
 
         <nav data-type-component="navbar"
-            class="flex flex-col  gap-2  bg-custom-secondary  fixed top-0 left-0 h-full w-[15rem] md:w-[20rem]  lg:flex-row      lg:static lg:h-[2.5rem]  lg:w-full lg:justify-between lg:gap-0 isActive ">
+            class="flex flex-col  gap-2  bg-custom-secondary  fixed top-0 left-0 h-full w-[15rem] md:w-[20rem]  lg:flex-row      lg:static lg:h-[2.5rem]  lg:w-full lg:justify-between lg:gap-0 ">
             <div data-header="logo-svg" class="items-center hidden  lg:flex">
                 <img class="w-full h-full block" src="/src/assets/budhjørnet-hvit.svg" alt="">
 
@@ -158,17 +158,17 @@
        </article>
 
 
-            <section data-type-section="listings" class="flex-1 height-calc featured-card-grid "> 
+            <section data-type-section="listings" class="flex-1  featured-card-grid "> 
                                  <!--Card container-->
 
             </section>
 
 
             <!--Pagination buttons-->
-            <div data-type-section="pagination-buttons"
-                class="bg-purple-500 basis-[auto] w-[20rem] flex justify-between">
-                <a data-type-section="pagination-prev-btn" class="hidden">Previous</a>
-                <a data-type-section="pagination-next-btn" class="hidden">Next</a>
+            <div data-type-section="pagination-buttons" 
+                class=" basis-[auto] w-full md:w-[20rem] flex justify-between lg:items-center">
+                <a data-type-section="pagination-prev-btn" class="hidden cursor-pointer  bg-custom-secondary px-2 py-1 rounded-md bg-orange-300 ">Tilbake</a>
+                <a data-type-section="pagination-next-btn" class="hidden cursor-pointer px-2 py-1 rounded-md bg-orange-300 ">Neste</a>
             </div>
 
 

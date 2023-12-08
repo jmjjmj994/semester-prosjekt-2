@@ -77,25 +77,27 @@ const handleData = (data) => {
     const nextButton = document.querySelector("[data-type-section='pagination-next-btn']");
     const prevButton = document.querySelector("[data-type-section='pagination-prev-btn']");
 
-
-    if (data.length < 10) {
-        nextButton.classList.add('hidden');
-        buttonContainer.classList.add('hidden');
-    } else {
-        prevButton.classList.remove('hidden');
-        nextButton.classList.remove('hidden');
-    }
-
     if (data.length === 0) {
-        prevButton.classList.add('hidden');
-        nextButton.classList.add('hidden');
+        console.log("Data length is 0");
         renderAuctionCards("No more data");
+        buttonContainer.classList.add("hidden");
+        nextButton.classList.add("hidden");
+        prevButton.classList.add("hidden");
+    } else if (data.length < 10) {
+        nextButton.classList.add('hidden');
+        prevButton.classList.remove('hidden');
+       
+    } else if (getPageNum === 0) {
+        nextButton.classList.remove("hidden");
+        prevButton.classList.add("hidden");
+    } else {
+        nextButton.classList.remove("hidden");
+        prevButton.classList.remove("hidden");
     }
 
-    if (getPageNum === 0) {
-        prevButton.classList.add('hidden');
-    }
-    renderAuctionCards(data)
+renderAuctionCards(data)
+    
+
 };
 
 
@@ -104,11 +106,12 @@ const handleData = (data) => {
 
 
 
-const auctionCards = (title, image, bids, date, id) => {
-    const createBidArray = bids.map(bid => bid.amount)
-    const highestBid = Math.max(...createBidArray);
-    const totalBids = createBidArray.reduce((accumulator, bidObj) => accumulator + bidObj)
-    const article = createCardElement("article", "flex flex-col  relative  bg-custom-card relative shadow-md text-custom-textGrey");
+const auctionCards = async (title, image, bids, date, id) => {
+
+     const createBidArray = bids.map(bid => bid.amount)
+    const highestBid =  createBidArray.length > 0 ? Math.max(...createBidArray) : 0;
+    const totalBids = createBidArray.reduce((accumulator, bidObj) => accumulator + bidObj,0)  
+    const article = createCardElement("article", "flex flex-col  relative  bg-custom-card relative shadow-md text-custom-textGrey ");
     const articleLink = createCardElement("a", "absolute h-full w-full custom-z-low");
     articleLink.href = `/specific.html?id=${id}`
     const articleHeader = createCardElement("div", " h-[70%] relative")
@@ -116,14 +119,14 @@ const auctionCards = (title, image, bids, date, id) => {
     image.length === 0 ? articleHeaderImage.src = "src/assets/no-image.jpg" : articleHeaderImage.src = image;
     articleHeaderImage.alt = "Auksjons-produkt";
     articleHeader.append(articleHeaderImage)
-    const articleBody = createCardElement("div", "basis-[auto] flex   p-1");
+    const articleBody = createCardElement("div", "basis-[auto] flex   p-1 overflow-hidden");
     const articleBodyTitle = createCardElement("span", "card-title-typography mt-6");
     articleBodyTitle.textContent = title;
     articleBody.append(articleBodyTitle)
     const articleFooter = createCardElement("div", "flex basis-[auto] py-3 justify-between items-end p-1 ");
     const articleFooterCol1 = createCardElement("div", "flex flex-col ")
     const articleFooterCol1TotalBids = createCardElement("span", "mb-3")
-    articleFooterCol1TotalBids.textContent = `Totale bud:${totalBids}`
+    articleFooterCol1TotalBids.textContent = `Totale bud:${totalBids}` 
     const articleFooterCol1HighestBid = createCardElement("span", "")
     articleFooterCol1HighestBid.textContent = `Høyeste bud:${highestBid}`
     articleFooterCol1.append(articleFooterCol1TotalBids, articleFooterCol1HighestBid)
@@ -134,12 +137,35 @@ const auctionCards = (title, image, bids, date, id) => {
     articleFooterCol2.append(articleFooterCol2Icon, articleFooterCol2EndDate)
     articleFooter.append(articleFooterCol1, articleFooterCol2)
     article.append(articleLink)
-    article.append(articleHeader, articleBody, articleFooter)
+    article.append(articleHeader, articleBody, articleFooter) 
     return article;
 }
 
 
 const renderAuctionCards = async (data) => {
+
+    try {
+   
+        if(typeof data === "string" || data.length === 0) {
+            auctionContainer.innerHTML = `<span> Ingen data tilgjengelig. Trykk <a class="text-purple-600 underline" href="/bidding.html">her</a> for å gå tilbake. </span>`;
+        } else {
+            auctionContainer.innerHTML = "";
+            const cardPromises = data.map(async (item) => {
+                const { title, media, bids, endsAt, id } = item;
+                const norwegianTime = norwegianEndDate(endsAt);
+                return auctionCards(title, media, bids, norwegianTime, id);
+            });
+
+            const cards = await Promise.all(cardPromises);
+            cards.forEach(card => auctionContainer.appendChild(card));
+        }
+        
+    } finally{}
+}
+
+
+/* const renderAuctionCards = async (data) => {
+    console.log(data)
     try {
         if (typeof data === "string") {
             auctionContainer.innerHTML = "No data available.";
@@ -147,21 +173,17 @@ const renderAuctionCards = async (data) => {
         } else {
             const articleCard = auctionCards;
             auctionContainer.innerHTML = "";
-            const auctionData = data.filter(item =>
-                item.title && item.media && item._count && item._count.bids &&
-                item.bids && Array.isArray(item.bids)
-            ).map(({ title, media, _count, endsAt, id, bids }) => ({
-                title,
-                media,
-                bids,
-                endsAt,
-                id
-            }));
+        
 
-            if (auctionData.length > 0) {
-                auctionData.forEach(item => {
-                    const norwegianTime = norwegianEndDate(item.endsAt);
-                    auctionContainer.append(articleCard(item.title, item.media, item.bids, norwegianTime, item.id));
+
+          
+            if (data.length > 0) {
+                data.forEach(item => {
+                    const {title, media, bids, endsAt, id} = item;
+                    console.log(title)
+                    const bidsArray = bids || [];
+                     const norwegianTime = norwegianEndDate(endsAt);
+                 auctionContainer.append(articleCard(title, media, bids, norwegianTime, id));  
                 });
             } else {
                 auctionContainer.innerHTML = "No data available.";
@@ -173,7 +195,7 @@ const renderAuctionCards = async (data) => {
 
     }
 };
-
+ */
 
 
 initializer();
