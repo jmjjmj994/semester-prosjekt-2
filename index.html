@@ -16,14 +16,14 @@
     <script src="/src/js/header/header.js" type="module"></script> 
     <script src="/src/js/pages/index.js" type="module"></script>
     <script src="/src/global.js" type="module"></script>
-<!--     <script src="/src/js/search/search.js" type="module"></script> -->
+   <script src="/src/js/search/search.js" type="module"></script> 
     <title>Hjem</title>
 </head>
 
 
 
 <body class="bg-custom-background  flex flex-col ">
-    <header class="bg-custom-secondary flex   h-auto   gap-1  z-10 lg:py-5">
+    <header class="bg-custom-secondary flex   h-auto   gap-1  z-10 py-5">
 
         <section class="flex ring-1 lg:">
         <button class="lg:hidden" data-header="hamburger-menu" aria-label="open menu">
@@ -73,22 +73,14 @@
 
             </section>
 
-<form data-type-component="navbar-child" class=" flex lg:items-center lg:order-3 h-[2rem]  lg:h-auto lg:basis-[20%]">
+<form data-type-component="navbar-form" class=" flex lg:items-center lg:order-3 h-[2rem]  lg:h-auto lg:basis-[20%]">
     <div class="h-full lg:h-[60%] w-full relative lg:flex">
             <label for="search" class="label-hidden">
                 søk
             </label>
-            <input  class="placeholder:text-custom-textDark links-typography h-full w-full" type="text" id="search" placeholder="Søk...">
-            <button class="absolute top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2   text-xs   bg-custom-btnBgAccent text-custom-textWhite uppercase py-1 px-2  lg:static lg:translate-x-0 lg:translate-y-0 lg:h-full lg:py-0 ">submit</button>
+            <input  data-type-component="navbar-form-input" class="placeholder:text-black links-typography h-full w-full" type="text" id="search" placeholder="Søk...">
+            <button data-type-component="navbar-form-submit-btn" class="absolute top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2   text-xs   bg-custom-btnBgAccent text-custom-textWhite uppercase py-1 px-2  lg:static lg:translate-x-0 lg:translate-y-0 lg:h-full lg:py-0 ">SØK</button>
             </div>
-
-            <div class="flex items-center">
-
-
-            </div>
-           
- 
-
 
 </form>
 

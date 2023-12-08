@@ -3,6 +3,7 @@ import { createCardElement, createButtonElement, dateConverter } from "../utils/
 
 
 const params = new URLSearchParams(window.location.search);
+console.log(params)
 const currentPage = params.get("page")
 let getPageNum;
 

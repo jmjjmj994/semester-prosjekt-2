@@ -5,14 +5,7 @@ body {
   font-size: 1rem;
 }
 
-nav > ul > li > button,
-[data-credit] {
-  font-size: 1rem;
-  letter-spacing: 1px;
-}
-li {
-  margin-block: 10px;
-}
+
 
 /*Headers Size */
 h1 {
@@ -104,7 +97,7 @@ h6 {
 a {
  font-family: 'Roboto', sans-serif;
   font-weight: semibold;
-  letter-spacing: -0.020rem;
+  letter-spacing: -0.025rem;
 }
 
 .label-hidden {
