@@ -1,5 +1,5 @@
 import { userAuthEndpoints } from "../api/api.js";
-
+const wrapper = document.querySelector("[data-type-section='login-wrapper']")
 const form = document.querySelector("[data-form-type='log-in']");
 const email = document.querySelector("[data-input-type='email']");
 const password = document.querySelector("[data-input-type='password']");
@@ -27,6 +27,10 @@ form.addEventListener("submit", async (e) => {
         login(emailValue, passwordValue)
         email.value = "";
         password.value = "";
+/*         form.remove()
+        wrapper.innerHTML = `<div class="loader"></div>` */
+       
+       
 
     } else {
         const fetchError = await login();
@@ -39,7 +43,6 @@ form.addEventListener("submit", async (e) => {
 
 
 async function login(email, password) {
-
     try {
         const res = await fetch(`${userAuthEndpoints.login}`, {
             method: "POST",
@@ -50,14 +53,19 @@ async function login(email, password) {
         })
 
 
+     
         if (res.ok) {
+         
             const data = await res.json()
+            
             localStorage.setItem("user-token", data.accessToken)
             localStorage.setItem("user-data", JSON.stringify(data))
-            window.location.href = "/index.html"
+            wrapper.innerHTML = `<div class="loader"></div>`
+            window.location.href = "/index.html" 
 
 
         } else {
+            
             const errorMessage = "Dette gikk ikke. Vennligst prøv igjen";
             throw new Error(`${errorMessage}`);
         }

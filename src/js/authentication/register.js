@@ -1,5 +1,6 @@
 import { userAuthEndpoints } from "../api/api.js";
 
+const wrapper = document.querySelector("[data-type-section='register-wrapper']");
 const form = document.querySelector("[data-form-type='sign-up']");
 const btnSubmit = document.querySelector("[data-action='submit']")
 const nameInput = document.querySelector("[data-input-type='name']")
@@ -12,11 +13,9 @@ const nameMsg = document.querySelector(".input-name-msg");
 const passwordMsg = document.querySelector(".input-password-msg");
 const emailMsg = document.querySelector(".input-email-msg");
 const displayError = () => {
-
     nameInput.style.cssText = "outline:1px solid red";
     emailInput.style.cssText = "outline:1px solid red";
     passwordInput.style.cssText = "outline:1px solid red";
-
     setTimeout(() => {
         nameInput.style.cssText = "";
         emailInput.style.cssText = "";
@@ -130,6 +129,8 @@ form.addEventListener("submit", async (e) => {
             nameInput.value = "";
             emailInput.value = ""
             passwordInput.value = ""
+            form.remove()
+            wrapper.innerHTML = `<div class="loader"></div>` 
         } catch (error) {
 
         }
