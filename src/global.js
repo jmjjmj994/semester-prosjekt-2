@@ -1,6 +1,54 @@
 import { localStorageItems, createCardElement } from "./js/utils/utils.js";
 import { singleProfile } from "./js/api/api.js";
 
+
+console.log(localStorageItems.token)
+
+
+
+/* 
+window.addEventListener('storage', function (e) {
+  console.log("something")
+}); */
+
+
+const userAvatar = () => {
+    const profileImage = document.querySelector("[data-type-navbar='profile-avatar']")
+    if (localStorageItems.userData && localStorageItems.userData.userAvatar) {
+        profileImage.src = localStorageItems.userData.userAvatar;
+    } else {
+        profileImage.src = "src/assets/blank-avatar.png";
+    }
+}
+
+const navbarLinks = () => {
+    const logInLogOut = document.querySelector("[data-type-navbar='login-logout-link']")
+    const listingLink = document.querySelector("[data-type-navbar='listing-link']")
+    const profileLink = document.querySelector("[data-type-navbar='profile-link']")
+    if (localStorageItems.token ) {
+      logInLogOut.textContent ="Logg ut"
+      logInLogOut.href ="/index.html"
+      logInLogOut.onclick = () => clearToken()
+    } else {
+       logInLogOut.textContent = "Logg inn"
+        logInLogOut.href = "/login.html"
+    }
+
+}
+
+function clearToken () {
+    localStorage.removeItem("user-data")
+    localStorage.removeItem("user-token")
+}
+
+const initializer = () => {
+    navbarLinks()
+  userAvatar()
+}
+initializer()
+
+
+
 /* 
 const profileAvatar = document.querySelectorAll("[data-avatar]");
 const profileCredit = document.querySelector("[data-credit]");

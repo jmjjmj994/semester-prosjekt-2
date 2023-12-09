@@ -8,14 +8,15 @@ const errorEl = document.querySelector("[data-form-type='error']")
 
 const displayError = (fetchError) => {
     errorEl.innerHTML = `<p class="text-red-500">${fetchError}</p>`;
-    email.style.cssText="outline:1px solid red";
+    email.style.cssText = "outline:1px solid red";
     password.style.cssText = "outline:1px solid red";
-    
+
     setTimeout(() => {
         email.style.cssText = ""
         password.style.cssText = ""
         errorEl.textContent = ""
-    }, 2000);}
+    }, 2000);
+}
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -27,10 +28,8 @@ form.addEventListener("submit", async (e) => {
         login(emailValue, passwordValue)
         email.value = "";
         password.value = "";
-/*         form.remove()
-        wrapper.innerHTML = `<div class="loader"></div>` */
-       
-       
+
+
 
     } else {
         const fetchError = await login();
@@ -53,19 +52,17 @@ async function login(email, password) {
         })
 
 
-     
+
         if (res.ok) {
-         
             const data = await res.json()
-            
             localStorage.setItem("user-token", data.accessToken)
             localStorage.setItem("user-data", JSON.stringify(data))
             wrapper.innerHTML = `<div class="loader"></div>`
-            window.location.href = "/index.html" 
+            window.location.href = "/index.html"
 
 
         } else {
-            
+
             const errorMessage = "Dette gikk ikke. Vennligst prøv igjen";
             throw new Error(`${errorMessage}`);
         }
