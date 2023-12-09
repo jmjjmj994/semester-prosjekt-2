@@ -6,13 +6,22 @@ const password = document.querySelector("[data-input-type='password']");
 const submitBtn = document.querySelector("[data-action='submit']");
 const errorEl = document.querySelector("[data-form-type='error']")
 
-
-
+const displayError = (fetchError) => {
+    errorEl.innerHTML = `<p class="text-red-500">${fetchError}</p>`;
+    email.style.cssText="outline:1px solid red";
+    password.style.cssText = "outline:1px solid red";
+    
+    setTimeout(() => {
+        email.style.cssText = ""
+        password.style.cssText = ""
+        errorEl.textContent = ""
+    }, 2000);}
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const emailValue = email.value.trim();
     const passwordValue = password.value.trim();
+
 
     if (emailValue && passwordValue) {
         login(emailValue, passwordValue)
@@ -20,7 +29,8 @@ form.addEventListener("submit", async (e) => {
         password.value = "";
 
     } else {
-        console.log("Please enter a valid email")
+        const fetchError = await login();
+        displayError(fetchError)
         return
 
     }
@@ -48,15 +58,14 @@ async function login(email, password) {
 
 
         } else {
-
-            const errorMessage = "Invalid username or password";
-            console.log(errorMessage);
+            const errorMessage = "Dette gikk ikke. Vennligst prøv igjen";
             throw new Error(`${errorMessage}`);
         }
 
     } catch (error) {
         errorEl.textContent = error.message
-        console.log(error.message)
+        return error.message
+
 
     }
 }

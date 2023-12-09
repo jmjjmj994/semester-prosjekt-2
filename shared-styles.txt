@@ -4,5 +4,5 @@ wrapper max-w-[40rem] h-[40rem] flex flex-col
 form ring-1 flex-1 max-w-[28rem] w-full flex flex-col px-2 justify-center gap-3
 input pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md
 
-btn :bg-custom-btnBgSpecial rounded-md py-3 shadow-md
+btn :
 /*===================Form width /signup/register =============*
