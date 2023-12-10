@@ -1,5 +1,10 @@
 import { singleListing, options } from "../api/api.js";
 import { createCardElement } from "../utils/utils.js";
+import { localStorageItems } from "../utils/utils.js";
+
+/* const test = getUserData() */
+
+
 const queryString = document.location.search;
 const param = new URLSearchParams(queryString)
 const id = param.get("id")
@@ -213,8 +218,22 @@ const renderProductStatus = async () => {
         productStatusContainer.append(bidderContainer)
     }))
 
+}
+
+const updateHeaderCredits = async (bid) => {
+    const credits = document.querySelector("[data-type-navbar='credits']")
+    if (localStorageItems.userData && localStorageItems.userData.credits) {
+        credits.textContent = localStorageItems.userData.credits
+    } else {
+        credits.textContent = "0"
+    }
+    if (!localStorageItems.token) {
+        credits.innerHTML = ""
+    }
 
 }
+
+
 const clearProductStatus = () => {
     const productStatusContainer = document.querySelector("[data-type-specific='product-status']");
     productStatusContainer.innerHTML = "";
@@ -235,7 +254,7 @@ const createBid = async () => {
     const decreaseBtn = document.querySelector("[data-type-specific='decrease-bid-btn']");
     const maxBidBtn = document.querySelector("[data-type-specific='max-bid-btn']");
     const resetBidBtn = document.querySelector("[data-type-specific='reset-bid-btn']")
-
+    
 
 
     const bid = (number) => {
@@ -289,6 +308,7 @@ const createBid = async () => {
         const finalBid = getInput(defaultBid);
         if (finalBid > 0) {
             await setBid(finalBid)
+            updateHeaderCredits()
             clearProductStatus()
             renderProductStatus()
         }

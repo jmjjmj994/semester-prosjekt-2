@@ -1,22 +1,16 @@
-
-//Needed in several actions
-/* import { register } from "../../global.js"; */
 import { localStorageItems } from "../utils/utils.js";
-console.log(localStorageItems.userData.userAvatar)
 import { updateMedia, singleProfile } from "../api/api.js";
 const avatarOverlay = document.querySelector("[data-type-overlay='overlay']");
-const avatarOverlayForm = document.querySelector("[data-avatar-overlay-form ]");
+const avatarOverlayForm = document.querySelector("[data-type-overlay='form']");
 const avatarOverlayFormInput = document.querySelector("[data-avatar-overlay-form--input ]");
-//Needed in several actions
 
 
 
-
-const getUserData = async () => {
+export const getUserData = async () => {
     if (localStorageItems.token) {
         const data = await singleProfile(localStorageItems.userData.name);
         const dataObj = { ...data }
-        
+
         return dataObj;
     } else {
         return false;
@@ -27,8 +21,7 @@ const getUserData = async () => {
 
 
 const renderUserInformation = async (data) => {
-
-    const imageEl = document.querySelector("[data-type-user='avatar']")
+    const imageEl = document.querySelectorAll("[data-type-user='avatar']")
     const usernameEl = document.querySelector("[data-type-user='username']");
     const emailEl = document.querySelector("[data-type-user='email']");
     const creditEl = document.querySelector("[data-type-user='credit']");
@@ -36,11 +29,17 @@ const renderUserInformation = async (data) => {
     const winningsEl = document.querySelector("[data-type-user='biddings-won']");
 
 
-     if (data) {
-        imageEl.src = data.avatar
+    if (data) {
+        imageEl.forEach(img => {
+            img.src = data.avatar
+
+        })
     } else {
-        imageEl.src = "src/assets/blank-avatar.png"
-    } 
+        imageEl.forEach(img => {
+            img.src = "src/assets/blank-avatar.png"
+        })
+
+    }
 
 
 
