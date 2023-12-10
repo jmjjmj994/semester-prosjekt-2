@@ -11,9 +11,10 @@
     <script src="https://kit.fontawesome.com/868d223859.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet" />
     <script src="/src/js/mode/lightmode.js" defer></script>
+    <script src="/src/js/pages/specific.js" type="module"></script>
     <script src="/src/js/header/header.js" type="module"></script>
     <script src="/src/global.js" type="module"></script>
-    <script src="/src/js/pages/specific.js" type="module"></script>
+
 
 
     <title>SingleItem</title>
@@ -166,11 +167,16 @@
 
     <main class="flex flex-grow ">
 
-        <section class=" flex-grow flex items-center justify-center height-calc flex-col gap-[5rem] relative my-8 px-2">
+        <section data-type-section="specific-parent-container" class="flex-grow flex items-center justify-center height-calc flex-col  relative">
+<div class="loader hidden"></div>
+
+<section data-type-section="fade-in" class="">
+
+
 
             <section data-type-specific="slider-wrapper"> <!--Wrapper-->
 
-                <div class=" relative flex-1 flex justify-center rounded-md "> <!--Header-->
+                <div class="relative flex-1 flex justify-center rounded-md "> <!--Header-->
 
                     <div data-type-specific="prev-btn-container"
                         class="flex items-center  px-5 absolute left-0 z-10 h-full ">
@@ -180,7 +186,7 @@
                         </button>
                     </div>
 
-                    <div data-type-specific="slider" class=" flex flex-1  relative overflow-hidden border-inherit">
+                    <div data-type-specific="slider" class=" flex flex-1   relative overflow-hidden border-inherit ">
 
                     </div>
 
@@ -206,7 +212,7 @@
 
 
             <section
-                class="flex justify-between  w-full md:w-[80%]  lg:w-[50%]  p-2 text-typography-primary   bg-custom-secondary shadow-sm rounded-md ">
+                class="flex justify-between  w-full md:w-[80%] min-h-[12rem]  lg:w-[50%]  p-2 text-typography-primary   bg-custom-secondary shadow-sm rounded-sm ">
                 <!--Product details ui wrapper-->
                 <article data-type-specific="description" class=" flex flex-col">
                 </article>
@@ -218,10 +224,10 @@
 
 
             <section
-                class="bg-custom-secondary  w-full md:w-[80%]  lg:w-[50%] text-typography-primary  p-2 shadow-sm rounded-md ">
+                class="bg-custom-secondary  w-full md:w-[80%]  lg:w-[50%] text-typography-primary  p-2 shadow-sm rounded-sm overflow-scroll">
                 <!--Product bids ui-->
                 <article data-type-specific="product-status"
-                    class=" flex flex-col min-h-[5rem] h-[10rem] gap-2 px-1 overflow-scroll">
+                    class=" flex flex-col min-h-[5rem] h-[10rem] gap-2 px-1  ">
 
                 </article>
 
@@ -229,7 +235,7 @@
 
             </section>
 
-            <section class="w-full md:w-[80%]  lg:w-[50%]  py-5 bg-custom-secondary rounded-md shadow-sm">
+            <section class="w-full md:w-[80%]  lg:w-[50%]  py-5 bg-custom-secondary rounded-sm shadow-sm">
 
 
 
@@ -272,7 +278,7 @@
 
         </section>
 
-
+</section>
 
     </main>
 

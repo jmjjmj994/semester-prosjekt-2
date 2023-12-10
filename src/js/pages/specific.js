@@ -2,8 +2,6 @@ import { singleListing, options } from "../api/api.js";
 import { createCardElement } from "../utils/utils.js";
 import { localStorageItems } from "../utils/utils.js";
 
-/* const test = getUserData() */
-
 
 const queryString = document.location.search;
 const param = new URLSearchParams(queryString)
@@ -16,9 +14,7 @@ const nextBtn = document.querySelector("[data-type-specific='next-btn']")
 const sliderWrapper = document.querySelector("[ data-type-specific='slider-wrapper' ]")
 const sliderContainer = document.querySelector("[data-type-specific='slider']")
 const previewContainer = document.querySelector("[data-type-specific='preview-container']")
-
-
-
+const loader = document.querySelector(".loader")
 
 
 
@@ -42,7 +38,29 @@ const fetchData = async () => {
 }
 
 
+const showLoader = () => {
 
+    loader.style.display = "block";
+}
+
+const hideLoader = () => {
+    loader.style.display = "none";
+}
+
+
+const delay = () => {
+    const parentContainer = document.querySelector("[data-type-section='specific-parent-container']");
+    const section = document.querySelector("[data-type-section='fade-in']");
+    showLoader()
+    section.className = "opacity-0";
+
+    setTimeout(() => {
+        section.className = "flex opacity-1   items-center flex-col w-full h-full my-8 px-2 gap-[3rem]";
+        hideLoader()
+    }, 550)
+
+}
+delay()
 
 
 
@@ -65,6 +83,8 @@ const renderSlides = (media) => {
     const slidePreviewArray = [];
     const mediaArray = [];
     mediaArray.push(image);
+    const parentContainer = document.querySelector("[data-type-section='specific-parent-container']")
+
     const slides = () => {
         for (let i = 0; i <= maxSlide; i++) {
             const slide = createCardElement("div", "flex-1 w-full h-full absolute border-inherit");
@@ -219,7 +239,7 @@ const renderProductStatus = async () => {
     }))
 
 }
-
+/* 
 const updateHeaderCredits = async (bid) => {
     const credits = document.querySelector("[data-type-navbar='credits']")
     if (localStorageItems.userData && localStorageItems.userData.credits) {
@@ -231,7 +251,7 @@ const updateHeaderCredits = async (bid) => {
         credits.innerHTML = ""
     }
 
-}
+} */
 
 
 const clearProductStatus = () => {
@@ -254,7 +274,7 @@ const createBid = async () => {
     const decreaseBtn = document.querySelector("[data-type-specific='decrease-bid-btn']");
     const maxBidBtn = document.querySelector("[data-type-specific='max-bid-btn']");
     const resetBidBtn = document.querySelector("[data-type-specific='reset-bid-btn']")
-    
+
 
 
     const bid = (number) => {
