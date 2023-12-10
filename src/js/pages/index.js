@@ -1,5 +1,5 @@
 import { listings } from "../api/api.js";
-import { createCardElement, createButtonElement, dateConverter, norwegianEndDate } from "../utils/utils.js";
+import { createCardElement, createButtonElement, dateConverter, norwegianEndDate, localStorageItems } from "../utils/utils.js";
 
 const featuredSection = document.querySelector("[data-featured-section='grid-container']");
 const carouselContainer = document.querySelector("[data-carousel-container]");
@@ -30,7 +30,7 @@ const sortListingsByBids = () => {
 
 
 
-    const featuredCards = (title, image, bids, date, id) => {
+const featuredCards = (title, image, bids, date, id) => {
     const createBidArray = bids.map(bid => bid.amount)
     const highestBid = Math.max(...createBidArray);
     const totalBids = createBidArray.reduce((accumulator, bidObj) => accumulator + bidObj)
@@ -91,7 +91,7 @@ const featuredSkeletonCards = () => {
     skeletonArticleFooterCol2.append(skeletonArticleFooterCol2Icon, skeletonArticleFooterCol2EndDate);
     skeletonArticleFooter.append(skeletonArticleFooterCol1, skeletonArticleFooterCol2);
 
-   return skeletonArticle
+    return skeletonArticle
 
 }
 
@@ -154,3 +154,27 @@ function moveSlides() {
 
 /* 
 renderFeaturedCards() */
+
+
+; (() => {
+    const CTAButtons = () => {
+        const CTABtnContainer = document.querySelector("[data-type-cta='btn-container']")
+        const CTALoginBtn = createCardElement("a", "bg-custom-btnBgAccent text-custom-textWhite uppercase  flex justify-center items-center cta-btn-sm md:cta-btn-md lg:cta-btn-lg")
+        CTALoginBtn.textContent = "Logg inn"
+        CTALoginBtn.href = "/login.html"
+        CTALoginBtn.role = "button"
+        CTALoginBtn.ariaLabel = "Logg inn"
+        const CTARegisterBtn = createCardElement("a", "bg-custom-btnBgSpecial text-custom-textDark uppercase  flex justify-center items-center cta-btn-sm md:cta-btn-md lg:cta-btn-lg")
+        CTARegisterBtn.textContent = "Registrer"
+        CTARegisterBtn.href = "/signup.html"
+        CTARegisterBtn.role = "button"
+        CTARegisterBtn.ariaLabel = "Registrer"
+
+
+        if (!localStorageItems.token) {
+            CTABtnContainer.append(CTALoginBtn, CTARegisterBtn)
+        }
+
+    }
+    CTAButtons()
+})();

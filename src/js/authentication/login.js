@@ -77,7 +77,7 @@ async function login(email, password) {
 
 
 
-;(function(){
+; (() => {
     const navbarLinks = () => {
         const logInLogOut = document.querySelector("[data-type-navbar='login-logout-link']")
         console.log(logInLogOut)
@@ -86,21 +86,17 @@ async function login(email, password) {
         if (localStorageItems.token) {
             logInLogOut.textContent = "Logg ut"
             logInLogOut.href = "/index.html"
-            logInLogOut.onclick = () => clearToken()
+         
         } else {
-            profileLink.href="/login.html"
+            profileLink.href = "/login.html"
             listingLink.href = "/login.html"
             logInLogOut.textContent = "Logg inn"
             logInLogOut.href = "/login.html"
         }
 
     }
-    
 
-    function clearToken() {
-        localStorage.removeItem("user-data")
-        localStorage.removeItem("user-token")
-    }
+
 
     navbarLinks()
 })();

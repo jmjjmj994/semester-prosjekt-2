@@ -38,39 +38,12 @@ console.log(localStorageItems.token)
 
         }
 
-        const CTAButtons = () => {
-            const CTABtnContainer = document.querySelector("[data-type-cta='btn-container']")
-            const CTALoginBtn = createCardElement("a", "bg-custom-btnBgAccent text-custom-textWhite uppercase  flex justify-center items-center cta-btn-sm md:cta-btn-md lg:cta-btn-lg")
-            CTALoginBtn.textContent = "Logg inn"
-            CTALoginBtn.href ="/login.html"
-            CTALoginBtn.role ="button"
-            CTALoginBtn.ariaLabel ="Logg inn"
-            const CTARegisterBtn = createCardElement("a", "bg-custom-btnBgSpecial text-custom-textDark uppercase  flex justify-center items-center cta-btn-sm md:cta-btn-md lg:cta-btn-lg")
-            CTARegisterBtn.textContent = "Registrer"
-            CTARegisterBtn.href = "/signup.html"
-            CTARegisterBtn.role = "button"
-            CTARegisterBtn.ariaLabel = "Registrer"
-           
-
-            if(!localStorageItems.token) {
-                CTABtnContainer.append(CTALoginBtn, CTARegisterBtn)
-            }
-      /*       const CTALoginBtn = document.querySelector("[data-type-cta='log-in-btn' ]")
-            const CTARegisterBtn = document.querySelector("[data-type-cta='register-btn']")
-
-            if(localStorageItems.token) {
-                CTALoginBtn.remove();
-                CTARegisterBtn.remove();
-            } else {
-
-            } */
-        }
-
+    
         function clearToken() {
             localStorage.removeItem("user-data")
             localStorage.removeItem("user-token")
         }
-        CTAButtons()
+      
         userAvatar()
         navbarLinks()
 
