@@ -77,7 +77,7 @@ async function login(email, password) {
 
 
 
-(function(){
+;(function(){
     const navbarLinks = () => {
         const logInLogOut = document.querySelector("[data-type-navbar='login-logout-link']")
         console.log(logInLogOut)
@@ -103,4 +103,4 @@ async function login(email, password) {
     }
 
     navbarLinks()
-})()
+})();
