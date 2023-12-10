@@ -1,4 +1,5 @@
 import { userAuthEndpoints } from "../api/api.js";
+import { localStorageItems } from "../utils/utils.js";
 const wrapper = document.querySelector("[data-type-section='login-wrapper']")
 const form = document.querySelector("[data-form-type='log-in']");
 const email = document.querySelector("[data-input-type='email']");
@@ -51,8 +52,6 @@ async function login(email, password) {
             }), headers: { "content-type": "application/json" },
         })
 
-
-
         if (res.ok) {
             const data = await res.json()
             localStorage.setItem("user-token", data.accessToken)
@@ -74,3 +73,34 @@ async function login(email, password) {
 
     }
 }
+
+
+
+
+(function(){
+    const navbarLinks = () => {
+        const logInLogOut = document.querySelector("[data-type-navbar='login-logout-link']")
+        console.log(logInLogOut)
+        const listingLink = document.querySelector("[data-type-navbar='listing-link']")
+        const profileLink = document.querySelector("[data-type-navbar='profile-link']")
+        if (localStorageItems.token) {
+            logInLogOut.textContent = "Logg ut"
+            logInLogOut.href = "/index.html"
+            logInLogOut.onclick = () => clearToken()
+        } else {
+            profileLink.href="/login.html"
+            listingLink.href = "/login.html"
+            logInLogOut.textContent = "Logg inn"
+            logInLogOut.href = "/login.html"
+        }
+
+    }
+    
+
+    function clearToken() {
+        localStorage.removeItem("user-data")
+        localStorage.removeItem("user-token")
+    }
+
+    navbarLinks()
+})()
