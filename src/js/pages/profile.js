@@ -1,9 +1,10 @@
 
 //Needed in several actions
-import { register } from "../../global.js";
+/* import { register } from "../../global.js"; */
 import { localStorageItems } from "../utils/utils.js";
+console.log(localStorageItems.userData.userAvatar)
 import { updateMedia, singleProfile } from "../api/api.js";
-const avatarOverlay = document.querySelector("[data-avatar-overlay]");
+const avatarOverlay = document.querySelector("[data-type-overlay='overlay']");
 const avatarOverlayForm = document.querySelector("[data-avatar-overlay-form ]");
 const avatarOverlayFormInput = document.querySelector("[data-avatar-overlay-form--input ]");
 //Needed in several actions
@@ -15,7 +16,7 @@ const getUserData = async () => {
     if (localStorageItems.token) {
         const data = await singleProfile(localStorageItems.userData.name);
         const dataObj = { ...data }
-        console.log(data)
+        
         return dataObj;
     } else {
         return false;
@@ -26,20 +27,29 @@ const getUserData = async () => {
 
 
 const renderUserInformation = async (data) => {
-    console.log(data)
-    const imageEl = document.querySelector("[data-avatar-image]")
-    const usernameEl = document.querySelector("[data-username]");
-    const emailEl = document.querySelector("[data-email]");
-    const creditEl = document.querySelector("[data-profile-credit]");
-    const listingsEl = document.querySelector("[data-listings]");
-    const winningsEl = document.querySelector("[data-wins]")
+
+    const imageEl = document.querySelector("[data-type-user='avatar']")
+    const usernameEl = document.querySelector("[data-type-user='username']");
+    const emailEl = document.querySelector("[data-type-user='email']");
+    const creditEl = document.querySelector("[data-type-user='credit']");
+    const listingsEl = document.querySelector("[data-type-user='listings']");
+    const winningsEl = document.querySelector("[data-type-user='biddings-won']");
+
+
+     if (data) {
+        imageEl.src = data.avatar
+    } else {
+        imageEl.src = "src/assets/blank-avatar.png"
+    } 
+
+
+
     if (localStorageItems.token) {
-        imageEl.src = data.avatar || "dist/assets/blank-avatar.png"
-        usernameEl.textContent = data.name;
-        emailEl.textContent = data.email;
-        creditEl.textContent = `${data.credits},-`
-        listingsEl.textContent = data._count.listings;
-        winningsEl.textContent = data.wins.length === 0 ? "0" : userData.wins
+        usernameEl.textContent = `Navn: ${data.name}`;
+        emailEl.textContent = `E-post: ${data.email}`;
+        creditEl.textContent = `Kreditt: ${data.credits},-`
+        listingsEl.textContent = `Oppføringer: ${data._count.listings}`;
+        winningsEl.textContent = data.wins.length === 0 ? "Vunnet: 0" : `Vunnet ${userData.wins}`
     } else {
 
         usernameEl.textContent = "";
@@ -51,17 +61,18 @@ const renderUserInformation = async (data) => {
 
 
 
+
+
 }
 
 const overlayListeners = () => {
-    const avatarOverlayOpenBtn = document.querySelector("[data-open-avatar-overlay]");
-    const avatarOverlayCloseBtn = document.querySelector("[data-close-avatar-overlay]");
+    const avatarOverlayOpenBtn = document.querySelector("[data-type-overlay='prompt-overlay'");
+    const avatarOverlayCloseBtn = document.querySelector("[data-type-overlay='remove-overlay']");
     avatarOverlayOpenBtn.onclick = () => toggleOverlay(true);
     avatarOverlayCloseBtn.onclick = () => toggleOverlay(false);
 
 }
 const toggleOverlay = (value) => {
-   
     if (value) {
         avatarOverlay.classList.add("isActive");
     } else {
@@ -70,6 +81,8 @@ const toggleOverlay = (value) => {
 
 
 }
+
+
 avatarOverlayForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
@@ -93,8 +106,6 @@ const changeUserAvatar = async (imageUrl) => {
 
 async function init() {
     overlayListeners();
-
-
     const userData = await getUserData()
     renderUserInformation(userData)
 }

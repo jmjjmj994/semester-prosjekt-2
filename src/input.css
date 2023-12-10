@@ -12,7 +12,7 @@ svg {
     --color-secondary: 0, 0%, 100%;
     --color-card: 0, 0%, 100%;
     --color-tertiary: 33, 100%, 88%;
-     --color-cta--sec:230, 7%, 16%;
+    --color-cta--sec: 230, 7%, 16%;
     --color-btn-bg--accent: 230, 7%, 16%;
     --color-btn-bg--special: 46, 90%, 61%;
     --color-btn-bg--small: 0, 0%, 80%;
@@ -26,7 +26,7 @@ svg {
     --color-secondary: 0, 0%, 17%;
     --color-card: 0, 0%, 25%;
     --color-tertiary: 4, 90%, 61%;
-    --color-cta--sec:259, 32%, 41%;
+    --color-cta--sec: 259, 32%, 41%;
     --color-btn-bg--accent: 255, 81%, 69%;
     --color-btn-bg--special: 46, 90%, 61%;
     --color-btn-bg--small: 0, 0%, 80%;
@@ -56,6 +56,21 @@ svg {
 
   /*navigation*/
 
+  /*Profile overlay */
+  [data-type-overlay="overlay"] {
+    opacity: 0;
+    visibility: hidden;
+    will-change: opacity;
+    transition: 150ms ease-in-out;
+  }
+  [data-type-overlay="overlay"].isActive {
+    opacity: 1;
+    visibility: visible;
+    transition: 150ms ease-in-out;
+  }
+
+  /*Profile overlay */
+
   /*Typography*/
 
   .cta-header {
@@ -80,7 +95,7 @@ svg {
 
   /*Typography*/
   .height-calc {
-    min-height: calc(100vh - 8.5rem);
+    min-height: calc(100vh - 5rem);
   }
   .cta-btn-sm {
     width: 7.5rem;
