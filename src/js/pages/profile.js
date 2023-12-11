@@ -27,8 +27,6 @@ const renderUserInformation = async (data) => {
     const creditEl = document.querySelector("[data-type-user='credit']");
     const listingsEl = document.querySelector("[data-type-user='listings']");
     const winningsEl = document.querySelector("[data-type-user='biddings-won']");
-
-
     if (data) {
         imageEl.forEach(img => {
             img.src = data.avatar
@@ -41,8 +39,6 @@ const renderUserInformation = async (data) => {
 
     }
 
-
-
     if (localStorageItems.token) {
         usernameEl.textContent = `Navn: ${data.name}`;
         emailEl.textContent = `E-post: ${data.email}`;
@@ -50,17 +46,12 @@ const renderUserInformation = async (data) => {
         listingsEl.textContent = `Oppføringer: ${data._count.listings}`;
         winningsEl.textContent = data.wins.length === 0 ? "Vunnet: 0" : `Vunnet ${userData.wins}`
     } else {
-
         usernameEl.textContent = "";
         emailEl.textContent = "";
         creditEl.textContent = "";
         listingsEl.textContent = "";
         winningsEl.textContent = "";
     }
-
-
-
-
 
 }
 
