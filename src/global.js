@@ -1,4 +1,5 @@
 import { localStorageItems, createCardElement, createButtonElement } from "./js/utils/utils.js";
+import { singleProfile } from "./js/api/api.js";
 
 
 
@@ -43,12 +44,14 @@ const creditIcon = {
             }
         }
 
-        const userCredits = () => {
+        const userCredits =  async () => {
+            const data = await singleProfile(localStorageItems.userData.name);
+        
             const creditsContainer = document.querySelector("[data-type-navbar='user-credit-container']")
-            if (localStorageItems.userData && localStorageItems.userData.credits) {
+            if (localStorageItems.token) {
                 creditsContainer.innerHTML = creditIcon.icon
                 const credits = createCardElement("span")
-                credits.textContent = localStorageItems.userData.credits
+                credits.textContent = data.credits
                 creditsContainer.append(credits)
             } else {
                 creditsContainer.innerHTML = creditIcon.icon

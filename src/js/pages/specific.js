@@ -231,11 +231,17 @@ const clearProductStatus = () => {
 
 
 
-const headerCredits = async (bid) => {
-const credits = await singleProfile(localStorageItems.userData.name);
-console.log(credits.credits)
- /*    clearCredits() */
 
+const clearCredits = () => {
+    const creditsContainer = document.querySelector("[data-type-navbar='user-credit-container']")
+    creditsContainer.innerHTML = "";
+
+}
+
+
+
+const userCredits = async () => {
+    clearCredits()
     const creditIcon = {
         icon: `
   <svg  height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
@@ -257,11 +263,13 @@ console.log(credits.credits)
 
 `
     }
+    const data = await singleProfile(localStorageItems.userData.name);
+
     const creditsContainer = document.querySelector("[data-type-navbar='user-credit-container']")
     if (localStorageItems.token) {
         creditsContainer.innerHTML = creditIcon.icon
         const credits = createCardElement("span")
-        credits.textContent = credits.credits
+        credits.textContent = data.credits
         creditsContainer.append(credits)
     } else {
         creditsContainer.innerHTML = creditIcon.icon
@@ -272,17 +280,7 @@ console.log(credits.credits)
     if (!localStorageItems.token) {
         creditsContainer.innerHTML = ""
     }
-
 }
-
-const clearCredits = () => {
-    const creditsContainer = document.querySelector("[data-type-navbar='user-credit-container']")
-    creditsContainer.innerHTML = "";
-
-}
-headerCredits()
-
-
 
 
 
@@ -317,7 +315,9 @@ const setBid = async (amount) => {
         if (res.ok) {
             const data = await res.json();
             renderProductStatus()
-            headerCredits()
+            clearCredits()
+            userCredits()
+          
         } else {
             const errorData = await res.json();
             const errorsArr = errorData.errors;
