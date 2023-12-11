@@ -7,7 +7,7 @@ searchFormInput.value = "";
 
 
 const fetchData = async () => {
-    const inputValue = searchFormInput.value.trim();
+    const inputValue = searchFormInput.value.trim().toLowerCase();
     const fetchListings = await listingsByTags(inputValue, 0)
     if (inputValue === "") {
         displayError("Søkefeltet kan ikke være tomt", "Søk...")
@@ -17,7 +17,7 @@ const fetchData = async () => {
         displayError("Søket ga ingen resultater", "Søk...")
         return;
     } else {
-      return fetchListings
+        return fetchListings
     }
 }
 
@@ -25,23 +25,23 @@ const displayError = (error, placeholder) => {
     searchFormInput.placeholder = error
     setTimeout(() => {
         searchFormInput.placeholder = placeholder;
-    }, 4000)}
+    }, 4000)
+}
 
 
-    searchForm.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const inputValue = searchFormInput.value.trim();
-        console.log(inputValue)
-        const data = await fetchData();
-        if (data) {
-window.location.href = `/bidding.html?results=${inputValue}`
-searchFormInput.value = ""
-        } else {
-            searchFormInput.value = ""
-           return
-        }
+searchForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const inputValue = searchFormInput.value.trim().toLowerCase();
+    const data = await fetchData();
+    if (data) {
+        window.location.href = `/bidding.html?results=${inputValue}`
+        searchFormInput.value = ""
+    } else {
+        searchFormInput.value = ""
+        return
+    }
 
 
-    })
+})
 
 
