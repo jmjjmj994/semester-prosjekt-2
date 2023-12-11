@@ -142,139 +142,143 @@
 
 
 
-    <main class="flex flex-grow flex-col bg-custom-background py-10 over">
+    <main class="flex flex-grow flex-col bg-custom-background global-padding">
+
+        <section class="height-calc global-margin-block "> <!--Parent wrapper-->
 
 
-        <article class="header-secondary text-custom-textDark margin-centered">
-            <h1>Selg</h1>
-        </article>
-        <section class="flex flex-col lg:flex-row justify-center  min-h-[100vh] py-10  lg:px-10 "> <!--Wrapper-->
+            <article class="header-secondary text-custom-textDark   text-center headers-margin">
+                <h1>Selg</h1>
+            </article>
+            <section class="flex flex-col lg:flex-row    min-h-[100vh]"> <!--Wrapper-->
 
-            <section class="flex-1 h-auto flex flex-col items-center "> <!--Wrapper-->
+                <section class="flex-1 h-auto flex flex-col items-center "> <!--Wrapper-->
 
-                <!--Header-->
-
-
-
-
-                <form data-form-type="listing-form"
-                    class="flex-1 max-w-[45rem] w-full flex flex-col px-2 justify-center gap-5">
-
-                    <div class="flex flex-col text-custom-textDark">
-                        <label for="produkt-title">PRODUKT TITTEL*:</label>
-                        <input data-input-type="product-title"
-                            class="basis-full pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md type="
-                            text" name="product-title" placeholder="Produkt navn:">
-                    </div>
+                    <!--Header-->
 
 
 
 
+                    <form data-form-type="listing-form"
+                        class="flex-1 max-w-[45rem] w-full flex flex-col px-2 justify-center gap-5">
+
+                        <div class="flex flex-col text-custom-textDark">
+                            <label for="produkt-title">PRODUKT TITTEL*:</label>
+                            <input data-input-type="product-title"
+                                class="basis-full pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md type="
+                                text" name="product-title" placeholder="Produkt navn:">
+                        </div>
 
 
-                    <div class="flex flex-col gap-5 text-custom-textDark">
-                        <div data-container-="preview"
-                            class="border-dashed border-2 h-[32.5rem] flex items-center justify-center relative pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md">
-                            <div data-container-="image-container" class="flex flex-col ">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                                    viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                    <style>
-                                        svg {
-                                            fill: #000000
-                                        }
-                                    </style>
-                                    <path
-                                        d="M448 80c8.8 0 16 7.2 16 16V415.8l-5-6.5-136-176c-4.5-5.9-11.6-9.3-19-9.3s-14.4 3.4-19 9.3L202 340.7l-30.5-42.7C167 291.7 159.8 288 152 288s-15 3.7-19.5 10.1l-80 112L48 416.3l0-.3V96c0-8.8 7.2-16 16-16H448zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z" />
-                                </svg>
-                                <span>Forhåndsvis bilde</span>
-                                <img data-container-="image-container-img"
-                                    class="w-full h-full absolute object-cover top-0 left-0 ronded-md"
-                                    alt="Produkt bilde" />
+
+
+
+
+                        <div class="flex flex-col gap-5 text-custom-textDark">
+                            <div data-container-="preview"
+                                class="border-dashed border-2 h-[32.5rem] flex items-center justify-center relative pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md">
+                                <div data-container-="image-container" class="flex flex-col ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                        viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                        <style>
+                                            svg {
+                                                fill: #000000
+                                            }
+                                        </style>
+                                        <path
+                                            d="M448 80c8.8 0 16 7.2 16 16V415.8l-5-6.5-136-176c-4.5-5.9-11.6-9.3-19-9.3s-14.4 3.4-19 9.3L202 340.7l-30.5-42.7C167 291.7 159.8 288 152 288s-15 3.7-19.5 10.1l-80 112L48 416.3l0-.3V96c0-8.8 7.2-16 16-16H448zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z" />
+                                    </svg>
+                                    <span>Forhåndsvis bilde</span>
+                                    <img data-container-="image-container-img"
+                                        class="w-full h-full absolute object-cover top-0 left-0 ronded-md"
+                                        alt="Produkt bilde" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col text-custom-textDark">
+                                <label for="product-image">BILDE*:</label>
+                                <input data-input-type="product-image"
+                                    class="pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md"
+                                    type="text" name="product-image" placeholder="Last opp bilde">
                             </div>
                         </div>
+
                         <div class="flex flex-col text-custom-textDark">
-                            <label for="product-image">BILDE*:</label>
-                            <input data-input-type="product-image"
-                                class="pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md"
-                                type="text" name="product-image" placeholder="Last opp bilde">
+                            <label for="product-tags">TAGGER*:</label>
+                            <input data-input-type="product-tags"
+                                class="basis-full pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md"
+                                type="text" name="product-tags" placeholder="Kategorier">
                         </div>
-                    </div>
-
-                    <div class="flex flex-col text-custom-textDark">
-                        <label for="product-tags">TAGGER*:</label>
-                        <input data-input-type="product-tags"
-                            class="basis-full pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md"
-                            type="text" name="product-tags" placeholder="Kategorier">
-                    </div>
-                    <div class="text-custom-textDark">
-                        <label for="product-description">BESKRIVELSE*:</label>
-                        <textarea data-input-type="product-textarea"
-                            class="w-full min-h-[20rem] pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md resize-y"
-                            name="product-description" placeholder="Beskrivelse"></textarea>
-                    </div>
+                        <div class="text-custom-textDark">
+                            <label for="product-description">BESKRIVELSE*:</label>
+                            <textarea data-input-type="product-textarea"
+                                class="w-full min-h-[20rem] pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md resize-y"
+                                name="product-description" placeholder="Beskrivelse"></textarea>
+                        </div>
 
 
-                    <div class="flex flex-col text-custom-textDark">
-                        <label for="product-end">VELG EN DATO*:</label>
-                        <input data-input-type="product-end" type="date"
-                            class="basis-full pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md"
-                            min="" max="2025-01-01" name="product-end" placeholder="Slutt dato:">
-                    </div>
+                        <div class="flex flex-col text-custom-textDark">
+                            <label for="product-end">VELG EN DATO*:</label>
+                            <input data-input-type="product-end" type="date"
+                                class="basis-full pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md"
+                                min="" max="2025-01-01" name="product-end" placeholder="Slutt dato:">
+                        </div>
 
 
 
 
-                    <button
-                        class="w-full  pl-2 py-[0.5rem] bg-custom-btnBgSpecial rounded-sm shadow-md">Fullfør</button>
-                </form>
+                        <button
+                            class="w-full  pl-2 py-[0.5rem] bg-custom-btnBgSpecial rounded-sm shadow-md">Fullfør</button>
+                    </form>
 
 
 
+
+                </section>
+
+                <section
+                    class="sticky top-0 hidden md:flex md:items-center md:justify-center max-w-[45rem] w-full md:flex-1 margin-centered lg:m-0  items-center justify-center  h-full  text-custom-textWhite">
+
+                    <article
+                        class="bg-custom-ctaSecondary  w-full min-h-[20rem]  my-6  px-2  py-2 h-full lg:w-full relative   rounded-sm shadow-sm">
+                        <div data-type-preview="body" class=" gap-1 ">
+
+                            <div class=" h-[13rem] sm:h-[23rem]  md:h-[35rem] w-full rounded-sm ">
+                                <img class="h-full max-w-full w-full object-cover inset-0 border-inherit"
+                                    data-type-preview="image" src="" alt="Preview image">
+                            </div>
+
+                            <div class="h-[2rem] flex items-center">
+                                <h2 data-type-preview="body-header">
+
+                                </h2>
+                            </div>
+
+
+                            <div class="">
+                                <p data-type-preview="body-categories" class="max-w-[60ch]">
+
+                                </p>
+                            </div>
+                            <div data-type-preview="body-description"
+                                class="max-64 overflow-auto break-words whitespace-break-spaces">
+                                <p data-type-preview="body-description" class="max-w-[55ch]">
+                                </p>
+                            </div>
+
+                            <div data-type-preview="body-date" class=" ">
+                                <span data-type-preview="body-date"></span>
+                            </div>
+
+                        </div>
+                    </article>
+                </section>
 
             </section>
 
-            <section
-class="sticky top-0 hidden md:flex md:items-center md:justify-center max-w-[45rem] w-full margin-centered lg:m-0  items-center justify-center  h-full  text-custom-textWhite ">   
-
-<article class="bg-custom-ctaSecondary  w-full min-h-[20rem]  my-6  px-2  py-2 h-full lg:w-full relative   rounded-sm shadow-sm">
-                    <div data-type-preview="body" class=" gap-1 ">
-
-                        <div class=" h-[13rem] sm:h-[23rem]  md:h-[35rem] w-full rounded-sm ">
-                            <img class="h-full max-w-full w-full object-cover inset-0 border-inherit" data-type-preview="image" src=""
-                                alt="Preview image">
-                        </div>
-
-                        <div class="h-[2rem] flex items-center">
-                            <h2 data-type-preview="body-header">
-
-                            </h2>
-                        </div>
 
 
-                        <div class="">
-                            <p data-type-preview="body-categories" class="max-w-[60ch]">
-
-                            </p>
-                        </div>
-                        <div data-type-preview="body-description" class="max-64 overflow-auto break-words whitespace-break-spaces">
-                            <p data-type-preview="body-description" class="max-w-[55ch]">
-                            </p>
-                        </div>
-
-                        <div data-type-preview="body-date" class=" ">
-                            <span data-type-preview="body-date"></span>
-                        </div>
-
-                    </div>
-                </article>
-            </section>
 
         </section>
-
-
-
-
-
 
 
 

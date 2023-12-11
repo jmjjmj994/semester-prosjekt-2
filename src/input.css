@@ -180,11 +180,16 @@ svg {
   /*Z-INDEX*/
 
   /*Margins */
-
   .margin-centered {
     margin: 0 auto;
   }
 
+  .global-margin-block {
+    margin-block: 5rem;
+  }
+  .headers-margin {
+    margin-block-end: 2rem;
+  }
   /*Margins*/
 
   .table-grid {
