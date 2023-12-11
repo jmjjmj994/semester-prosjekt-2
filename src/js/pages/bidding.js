@@ -2,7 +2,6 @@ import { createCardElement, norwegianEndDate } from "../utils/utils.js"
 const auctionContainer = document.querySelector("[data-type-section='listings']")
 const auctionHeader = document.querySelector("[data-type-section='result-information']")
 const buttonContainer = document.querySelector("[data-type-section='pagination-buttons']")
-
 const params = new URLSearchParams(window.location.search);
 const currentPage = params.get("page")
 const currentResult = params.get("results")
@@ -29,7 +28,6 @@ async function fetchListings(tag) {
 
         if (res.ok) {
             const data = await res.json()
-            console.log(data)
             return data;
 
         } else {
@@ -51,7 +49,7 @@ const initializer = async () => {
     const prevButton = document.querySelector("[data-type-section='pagination-prev-btn']");
     if (currentResult) {
         const resultsValue = currentResult.substring(" ");
-        auctionHeader.textContent = `Items matching "${resultsValue}"`;
+        auctionHeader.textContent = `Auksjoner som matcher "${resultsValue}"`;
         nextButton.addEventListener("click", (e) => {
             e.target.href = `/bidding.html?results=${resultsValue}&page=${getPageNum + 1}`;
         });
@@ -61,7 +59,7 @@ const initializer = async () => {
         const data = await fetchListings(resultsValue);
         handleData(data);
     } else {
-        auctionHeader.textContent = `All items`;
+        auctionHeader.textContent = `Alle auksjoner`;
         nextButton.addEventListener("click", (e) => {
             e.target.href = `/bidding.html?page=${getPageNum + 1}`;
         });

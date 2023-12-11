@@ -152,8 +152,8 @@ function moveSlides() {
 }
 
 
-/* 
-renderFeaturedCards() */
+ 
+renderFeaturedCards() 
 
 
 ; (() => {

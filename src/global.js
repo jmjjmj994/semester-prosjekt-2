@@ -70,7 +70,7 @@ const creditIcon = {
             if (localStorageItems.token) {
                 logInLogOut.textContent = "Logg ut"
                 logInLogOut.href = "/index.html"
-                listingLink.href = "/bidding.html"
+                listingLink.href = "/listing.html"
                 profileLink.href = "/profile.html"
                 logInLogOut.onclick = () => clearToken()
             } else {
