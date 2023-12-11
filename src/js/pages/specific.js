@@ -173,15 +173,6 @@ const renderSingleSlide = async () => {
 
 
 
-
-
-
-
-
-
-//description
-//title, description, tags, created, updated, endsAt, _count.bids, seller, 
-
 const renderDescription = async () => {
     const descriptionContainer = document.querySelector("[data-type-specific='description']");
     const seller = document.querySelector("[data-type-specific='seller']")
@@ -226,9 +217,6 @@ const clearProductStatus = () => {
     const productStatusContainer = document.querySelector("[data-type-specific='product-status']");
     productStatusContainer.innerHTML = "";
 }
-
-
-
 
 
 
@@ -284,22 +272,6 @@ const userCredits = async () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const setBid = async (amount) => {
     let url = `https://api.noroff.dev/api/v1/auction/listings/${id}/bids?_seller=true&_bids=true&_active=true`
     const requestOptions = {
@@ -317,12 +289,12 @@ const setBid = async (amount) => {
             renderProductStatus()
             clearCredits()
             userCredits()
-          
+
         } else {
             const errorData = await res.json();
-            const errorsArr = errorData.errors;
-            const error = errorsArr[0].message;
-            throw new Error(error)
+            /* const errorsArr = errorData.errors;
+            const error = errorsArr[0].message; */
+            throw new Error("Ikke nok dekning på konto")
 
 
         }

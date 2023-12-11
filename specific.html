@@ -25,23 +25,23 @@
 
 <body class="bg-custom-background flex flex-col">
     <header class="bg-custom-secondary flex items-center   h-[5rem]     z-10 global-padding">
-    
+
         <section class="flex items-center justify-center gap-3 h-[3rem] lg:h-[5rem] ">
             <button class="lg:hidden" data-header="hamburger-menu" aria-label="open menu" class="ring-1">
                 <i class="fa-solid fa-bars text-custom-textDark"></i>
             </button>
-    
-    
+
+
             <img src="/src/assets/budhjørnet-hvit.svg " class="lg:hidden " alt="">
-    
+
         </section>
-    
-    
-    
+
+
+
         <nav data-type-component="navbar"
             class="flex flex-col  gap-2  bg-custom-secondary  fixed top-0 left-0 h-full w-[15rem] md:w-[20rem]  lg:flex-row   lg:static lg:h-[3rem]  lg:w-full lg:justify-between  lg:gap-0 ">
-    
-    
+
+
             <div data-header="logo-svg" class="items-center  hidden lg:flex">
                 <img class="w-full h-full block" src="/src/assets/budhjørnet-hvit.svg" alt="">
             </div>
@@ -50,30 +50,30 @@
                     <i class="fa-solid fa-xmark text-custom-textDark"></i>
                 </button>
             </section>
-    
-    
+
+
             <section class="flex text-custom-textDark  gap-2  lg:order-4 global-padding ">
                 <div class="flex items-center   w-full lg:w-auto">
-                    <img data-type-user="avatar" class="min-h-[2.5rem] h-[2.5rem] min-w-[2.5rem] w-[2.5rem] rounded-full"
-                        src="" alt="avatar">
+                    <img data-type-user="avatar"
+                        class="min-h-[2.5rem] h-[2.5rem] min-w-[2.5rem] w-[2.5rem] rounded-full" src="" alt="avatar">
                     <span class="flex ml-auto">
                         <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode"
                             class="focus:bg-red-600">
                         </button>
-    
+
                         <div data-type-navbar="user-credit-container" class="flex">
                         </div>
-    
+
                     </span>
-    
+
                 </div>
-    
-    
-    
+
+
+
             </section>
-    
-    
-    
+
+
+
             <section
                 class=" flex flex-col w-full    mt-10 gap-8 lg:flex-row lg:w-[70%] lg:mt-0 lg:gap-0 global-padding lg:p-0">
                 <!--Warpper-->
@@ -89,10 +89,10 @@
                         <button data-type-component="navbar-form-submit-btn"
                             class="absolute top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2   text-xs  rounded-sm  bg-custom-btnBgAccent text-custom-textWhite uppercase py-1 px-2  lg:static lg:translate-x-0 lg:translate-y-0 lg:h-full lg:py-0 ">SØK</button>
                     </div>
-    
+
                 </form>
-    
-    
+
+
                 <!--nav-links-Ul-->
                 <ul data-type-component="navbar-child"
                     class="flex flex-col gap-5 lg:flex-row  items-center justify-between uppercase text-custom-textDark  lg:margin-centered   lg:basis-[45%]">
@@ -111,31 +111,31 @@
                     <li class="w-full lg:w-auto">
                         <a data-type-navbar="profile-link" href="">profil</a>
                     </li>
-    
+
                 </ul>
                 <!--nav-links-Ul-->
-    
-    
-    
+
+
+
                 <ul data-type-component="navbar-child"
                     class="flex flex-col lg:flex-row items-center justify-between uppercase text-custom-textDark  lg:order-3  lg:justify-end lg:gap-2">
                     <li class="w-full lg:w-auto ">
                         <a data-type-navbar="login-logout-link" href=""></a>
                     </li>
                 </ul>
-    
+
             </section>
-    
-    
-    
-    
+
+
+
+
         </nav>
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
     </header>
 
 
@@ -147,87 +147,92 @@
 
     <main class="flex flex-grow ">
 
-        <section data-type-section="specific-parent-container" class="flex-grow flex items-center justify-center height-calc flex-col  relative">
-<div class="loader hidden"></div>
+        <section data-type-section="specific-parent-container"
+            class="flex-grow flex items-center justify-center height-calc flex-col  relative">
+            <div class="loader hidden"></div>
 
-<section data-type-section="fade-in" class=""> <!--Remove later-->
-
-
-        <section data-type-specific="slider-wrapper"> 
-<section data-type-specific="seller"  class="text-custom-textDark  w-[min-content]">
+            <section data-type-section="fade-in" class=""> <!--Remove later-->
 
 
-</section>
-                <div class="relative flex-1 flex justify-center rounded-md  ">
+                <section data-type-specific="slider-wrapper">
+                    <section data-type-specific="seller" class="text-custom-textDark  w-[min-content]">
 
-                    <div data-type-specific="prev-btn-container"
-                        class="flex items-center  px-5 absolute left-0 z-10 h-full ">
-                        <button data-type-specific="prev-btn"
-                            class="bg-custom-accent p-3 w-[2rem] h-[2rem] rounded-full flex items-center justify-center">
-                            <i class="fa-solid fa-arrow-left"></i>
-                        </button>
+
+                    </section>
+                    <div class="relative flex-1 flex justify-center rounded-md  ">
+
+                        <div data-type-specific="prev-btn-container"
+                            class="flex items-center  px-5 absolute left-0 z-10 h-full ">
+                            <button data-type-specific="prev-btn"
+                                class="bg-custom-accent p-3 w-[2rem] h-[2rem] rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </button>
+                        </div>
+
+                        <div data-type-specific="slider"
+                            class=" flex flex-1   relative overflow-hidden border-inherit ">
+
+                        </div>
+
+
+                        <div data-type-specific="next-btn-container"
+                            class="flex items-center  px-5 absolute right-0 z-10 h-full">
+                            <button data-type-specific="next-btn"
+                                class="bg-custom-accent p-3 w-[2rem] h-[2rem] rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+
+                    </div>
+                    <div data-type-specific="preview-container"
+                        class=" basis-15rem flex  justify-between  flex-wrap  gap-5 py-5 rounded-md">
+
                     </div>
 
-                    <div data-type-specific="slider" class=" flex flex-1   relative overflow-hidden border-inherit ">
 
-                    </div>
-
-
-                    <div data-type-specific="next-btn-container"
-                        class="flex items-center  px-5 absolute right-0 z-10 h-full">
-                        <button data-type-specific="next-btn"
-                            class="bg-custom-accent p-3 w-[2rem] h-[2rem] rounded-full flex items-center justify-center">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                    </div>
-
-
-                </div>
-                <div data-type-specific="preview-container"
-                    class=" basis-15rem flex  justify-between  flex-wrap  gap-5 py-5 rounded-md">
-
-                </div>
-
-
-            </section> 
+                </section>
 
 
 
-            <section
-                class="flex justify-between  w-full md:w-[80%] min-h-[12rem]  lg:w-[50%]  p-2 text-custom-textDark   bg-custom-secondary shadow-sm rounded-sm ">
-                <article data-type-specific="description" class=" flex flex-col">
-                </article>
-            </section>
+                <section
+                    class="flex justify-between  w-full md:w-[80%] min-h-[12rem]  lg:w-[50%]  p-2 text-custom-textDark   bg-custom-secondary shadow-sm rounded-sm ">
+                    <article data-type-specific="description" class=" flex flex-col px-1">
+                    </article>
+                </section>
 
-            <section
-                class="bg-custom-secondary  w-full md:w-[80%]  lg:w-[50%] text-custom-dark  p-2 shadow-sm rounded-sm overflow-scroll">
-                <article data-type-specific="product-status"
-                    class=" flex flex-col min-h-[5rem] h-[10rem] gap-2 px-1  ">
+                <section
+                    class="bg-custom-secondary  w-full md:w-[80%]  lg:w-[50%] text-custom-textDark  p-2 shadow-sm rounded-sm overflow-scroll">
 
-                </article>
+                    <article data-type-specific="product-status"
+                        class=" flex flex-col min-h-[5rem] h-[10rem] gap-2 px-1  ">
 
-
-
-            </section> 
-
-            <section class="w-full md:w-[80%]  lg:w-[50%]  py-5 bg-custom-secondary rounded-sm shadow-sm">
+                    </article>
 
 
 
-                <form data-type-specific="bid-form" class="flex justify-center flex-col items-center gap-2 ">
+                </section>
+
+                <section class="w-full md:w-[80%]  lg:w-[50%]  py-5 bg-custom-secondary rounded-sm shadow-sm">
 
 
-            
+
+                    <form data-type-specific="bid-form" class="flex justify-center flex-col items-center gap-2 px-2">
+
+
+
                         <div class=" flex flex-col gap-2 max-w-[25rem] w-full">
-                         
-                            <label for="bid-input" class="label-hidden">Sum:</label>
-                            <input class=" flex-1 text-custom-textDark bg-custom-background py-2  rounded-sm shadow-sm pl-2"
-                                data-type-specific="bid-input" type="text" placeholder="Legg til bud" >
 
-                                    <button data-type-specific="submit-bid-btn" class="bg-custom-btnBgSpecial w-full py-2 rounded-sm">
-                                        Fullfør
-                                    </button>
-                         
+                            <label for="bid-input" class="label-hidden">Sum:</label>
+                            <input
+                                class=" flex-1 text-custom-textDark bg-custom-background py-2  rounded-sm shadow-sm pl-2"
+                                data-type-specific="bid-input" type="text" placeholder="Legg til bud">
+
+                            <button data-type-specific="submit-bid-btn"
+                                class="bg-custom-btnBgSpecial w-full py-2 rounded-sm">
+                                Fullfør
+                            </button>
+
                         </div> <!--main buttons-->
 
 
@@ -235,12 +240,12 @@
 
 
 
-                </form>
+                    </form>
+                </section>
+
             </section>
 
         </section>
-
-</section>
 
     </main>
 
