@@ -195,4 +195,17 @@ svg {
   .table-grid-modal-z {
     z-index: 1;
   }
+
+  /*Fancy things */
+
+  .highest-bidder {
+    font-size: 1.3rem;
+    color: hsl(46, 90%, 61%);
+    font-weight: semibold;
+    position: relative;
+
+  }
+
+
+  /*Fancy things*/
 }

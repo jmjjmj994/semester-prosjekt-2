@@ -67,6 +67,7 @@ const handleSlides = async () => {
 
 
 const renderSlides = (media) => {
+   
     let curSlide = 0;
     let maxSlide = media.length - 1;
     const image = media.slice(0, 3)
@@ -95,7 +96,7 @@ const renderSlides = (media) => {
     }
 
 
-
+    slides()
 
 
 
@@ -155,7 +156,7 @@ const renderSlides = (media) => {
 
     }
 
-    slides()
+ 
 
 }
 
@@ -183,6 +184,7 @@ const renderDescription = async () => {
     const sellerAvatar = createCardElement("img", "w-[3.5rem] h-[3.5rem] rounded-full")
     const sellerName = createCardElement("h1");
     header.textContent = data.title;
+    document.title = `Auksjon: ${data.title}`
     productDescription.textContent = data.description;
     sellerAvatar.src = data.seller.avatar
     sellerAvatar.alt = "Avatar"
@@ -201,14 +203,20 @@ const renderProductStatus = async () => {
     bids.sort((a, b) => b.amount - a.amount)
     bids.forEach((({ id, amount, bidderName }) => {
         const bidderContainer = createCardElement("div", "flex items-center gap-5  max-w-[20rem]");
-        const bidderColor = createCardElement("span", "bg-green-500 w-[0.3rem] h-[0.3rem] rounded-full");
+     
         const sellerName = createCardElement("span");
         const sellerBid = createCardElement("span", "ml-auto");
         sellerName.textContent = bidderName;
         sellerBid.textContent = `${amount}`;
-        bidderContainer.append(bidderColor, sellerName, sellerBid)
-        productStatusContainer.append(bidderContainer)
+        bidderContainer.append( sellerName, sellerBid)
+         productStatusContainer.append(bidderContainer)
     }))
+
+    const firstChild = productStatusContainer.firstChild
+  
+    firstChild.classList.add("highest-bidder")
+    
+    console.log(firstChild)
 
 }
 
@@ -292,8 +300,6 @@ const setBid = async (amount) => {
 
         } else {
             const errorData = await res.json();
-            /* const errorsArr = errorData.errors;
-            const error = errorsArr[0].message; */
             throw new Error("Ikke nok dekning på konto")
 
 
