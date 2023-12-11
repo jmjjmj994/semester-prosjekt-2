@@ -2,25 +2,17 @@ import { createListing } from "../api/api.js";
 
 
 
-const form = document.querySelector("[data-form-type='listing-form']")
-
-const productPreviewContainer = document.querySelector("[data-container-='preview']")
-const productPreviewContainerDiv = document.querySelector("[data-container-='image-container']");
-
+const form = document.querySelector("[data-form-type='listing-form']");
 
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const validatedInput = validateInput();
     console.log(validatedInput.end)
- /*    const date = validateInput.endsAt
-    console.log(date) */
-   /*  const date = new Date(validateInput.inputDateVal) */
-   
-    // title: "wqeqwe", description: "qwewqe", category: "qweqwe", image: "wqeweq", date: "10.07.2024" 
     if (validatedInput) {
         await createListing(validatedInput.title, validatedInput.description, validatedInput.tags, validatedInput.image, validatedInput.end)
         console.log("valid")
+        createPreview()
     } else {
         console.log("invalid")
     }
@@ -60,7 +52,7 @@ const validateInput = () => {
         productInputTitle.value = "";
         productTagsInput.value = "";
         productImageInput.value = "";
-        productTextareaInput.value =""
+        productTextareaInput.value = ""
         productDateInput.value = "";
         return inputData
     } else {
@@ -75,14 +67,15 @@ const imagePreview = (image) => {
     img.src = image
     img.alt = image
 
-
-
 }
 
 
 
 productImageInput.addEventListener("input", (e) => {
+
     const inputImageVal = productImageInput.value.trim();
+    const previewImage = document.querySelector("[data-type-preview='image']")
+    previewImage.src = inputImageVal
     imagePreview(inputImageVal);
 
 })
@@ -91,7 +84,7 @@ productImageInput.addEventListener("keydown", (e) => {
     const inputImageVal = productImageInput.value.trim();
     if (e.key === "Delete" || e.key === "Backspace") {
         productImageInput.value = "";
-        
+
         imagePreview(productImageInput.value)
 
 
@@ -99,28 +92,46 @@ productImageInput.addEventListener("keydown", (e) => {
 })
 
 
-/* 
+const createPreview = () => {
 
-Object { id: "65779178-46a4-4f5e-84b6-43766010f061", title: "hei", description: null, media: [], tags: [], created: "2023-11-28T11:03:02.270Z", updated: "2023-11-28T11:03:02.270Z", endsAt: "2024-10-07T00:00:00.000Z", _count: {…} }
-​
-_count: Object { bids: 0 }
-​
-created: "2023-11-28T11:03:02.270Z"
-​
-description: null
-​
-endsAt: "2024-10-07T00:00:00.000Z"
-​
-id: "65779178-46a4-4f5e-84b6-43766010f061"
-​
-media: Array []
-​
-tags: Array []
-​
-title: "hei"
-​
-updated: "2023-11-28T11:03:02.270Z"
- */
+    const productInputTitle = document.querySelector("[data-input-type='product-title']")
+    const productTagsInput = document.querySelector("[data-input-type='product-tags']")
+    const productImageInput = document.querySelector("[data-input-type='product-image']")
+    const productTextareaInput = document.querySelector("[data-input-type='product-textarea']")
+    const productDateInput = document.querySelector("[data-input-type='product-end']")
+    const previewImage = document.querySelector("[data-type-preview='image']")
+    previewImage.src = "src/assets/no-image.jpg" 
+    const previewBodyHeader = document.querySelector("[data-type-preview='body-header']")
+    const previewBodyCategories = document.querySelector("[data-type-preview='body-categories']")
+    const previewBodyDescription = document.querySelector("[data-type-preview='body-description']")
+    const previewBodyDate = document.querySelector("[data-type-preview='body-date']")
+    productInputTitle.addEventListener("input", (e) => {
+        previewBodyHeader.textContent = e.target.value
+    })
+
+    productTagsInput.addEventListener("input", (e) => {
+        previewBodyCategories.textContent = e.target.value
+    })
+    productTextareaInput.addEventListener("input", (e) => {
+        previewBodyDescription.textContent = e.target.value
+    })
+
+    
+    productDateInput.addEventListener("input", (e) => {
+        previewBodyDate.textContent = e.target.value
+    })
+
+    previewBodyHeader.textContent = "";
+    previewBodyCategories.textContent = "";
+    previewBodyDescription.textContent = "";
+    previewBodyDate.textContent = ""
+
+
+}
+
+
+
+createPreview()
 
 
 
