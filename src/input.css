@@ -119,6 +119,10 @@ svg {
     padding-inline: 1rem;
   }
 
+
+  .seller-header {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+  }
   .global-padding {
     padding-inline: 0.5rem;
   }
@@ -205,6 +209,8 @@ svg {
     position: relative;
 
   }
+
+
 
 
   /*Fancy things*/

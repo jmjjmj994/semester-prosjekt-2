@@ -93,7 +93,7 @@ productImageInput.addEventListener("keydown", (e) => {
 
 
 const createPreview = () => {
-
+    const parentContainer = document.querySelector("[data-type-preview='parent-container']")
     const productInputTitle = document.querySelector("[data-input-type='product-title']")
     const productTagsInput = document.querySelector("[data-input-type='product-tags']")
     const productImageInput = document.querySelector("[data-input-type='product-image']")
@@ -105,8 +105,16 @@ const createPreview = () => {
     const previewBodyCategories = document.querySelector("[data-type-preview='body-categories']")
     const previewBodyDescription = document.querySelector("[data-type-preview='body-description']")
     const previewBodyDate = document.querySelector("[data-type-preview='body-date']")
+
+ 
+
+   
+
+
     productInputTitle.addEventListener("input", (e) => {
         previewBodyHeader.textContent = e.target.value
+
+
     })
 
     productTagsInput.addEventListener("input", (e) => {

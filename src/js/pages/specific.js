@@ -177,12 +177,12 @@ const renderSingleSlide = async () => {
 const renderDescription = async () => {
     const descriptionContainer = document.querySelector("[data-type-specific='description']");
     const seller = document.querySelector("[data-type-specific='seller']")
-    const sellerContainer = createCardElement("div", "flex justify-between items-center py-2 w-[11.5rem] md:w-[13rem] lg:w-[14rem] ")
+    const sellerContainer = createCardElement("div", "flex  items-center py-3 pb-3 w-[11.5rem] md:w-[13rem] lg:w-[14rem] relative")
     const data = await fetchData();
     const header = createCardElement("h2")
     const productDescription = createCardElement("p");
-    const sellerAvatar = createCardElement("img", "w-[3.5rem] h-[3.5rem] rounded-full")
-    const sellerName = createCardElement("h1");
+    const sellerAvatar = createCardElement("img", "w-[3rem] h-[3rem] rounded-full absolute")
+    const sellerName = createCardElement("h1", "seller-header pl-[4rem]");
     header.textContent = data.title;
     document.title = `Auksjon: ${data.title}`
     productDescription.textContent = data.description;
