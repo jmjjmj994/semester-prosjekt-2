@@ -77,6 +77,7 @@ svg {
     font-size: 1.938rem;
     letter-spacing: -0.025rem;
   }
+
   @media screen and (min-width: 768px) {
     .cta-header {
       font-size: 3.062rem;
@@ -85,6 +86,23 @@ svg {
     @media screen and (min-width: 1024px) {
       .cta-header {
         font-size: 3.3rem;
+      }
+    }
+  }
+
+    .cta-header-span {
+      font-size: 1.2rem;
+    letter-spacing: -0.025rem;
+  }
+
+    @media screen and (min-width: 768px) {
+    .cta-header-span {
+      font-size: 1.6rem;
+    }
+
+    @media screen and (min-width: 1024px) {
+      .cta-header-span {
+        font-size: 1.7rem;
       }
     }
   }
