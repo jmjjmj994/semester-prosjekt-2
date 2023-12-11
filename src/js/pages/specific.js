@@ -90,11 +90,13 @@ const renderSlides = (media) => {
             const slide = createCardElement("div", "flex-1 w-full h-full absolute border-inherit");
             const slideImage = createCardElement("img", "h-full max-w-[100%] w-full  block object-cover md:absolute md:w-full border-inherit");
             slideImage.src = image[i];
+            slideImage.alt = "Product image"
             slide.append(slideImage)
             slide.setAttribute("data-type-specific", "slide");
             const slidePreview = createCardElement("div", " relative h-[5rem] w-[5rem] md:w-[10rem] md:h-[5.5rem] lg:w-[11rem] bg-orange-500 border-inherit cursor-pointer")
             const previewImage = createCardElement("img", "absolute h-full w-full object-cover border-inherit")
             previewImage.src = image[i]
+            previewImage.alt ="Product image"
             slidePreview.append(previewImage)
             slidePreview.setAttribute("data-type-specific", "slide-preview")
             slidePreviewArray.push(slidePreview);
@@ -207,18 +209,21 @@ const initializer = async () => {
 
 const renderDescription = async () => {
     const descriptionContainer = document.querySelector("[data-type-specific='description']");
-    const sellerContainer = createCardElement("div", "flex items-center")
+    const seller = document.querySelector("[data-type-specific='seller']")
+    const sellerContainer = createCardElement("div", "flex justify-between items-center py-2 w-[11.5rem] md:w-[13rem] lg:w-[14rem] ")
     const data = await fetchData();
-    const header = createCardElement("p")
+    const header = createCardElement("h2")
     const productDescription = createCardElement("p");
-    const sellerAvatar = createCardElement("img", "w-[5rem] h-[5rem] rounded-full")
-    const sellerName = createCardElement("p");
+    const sellerAvatar = createCardElement("img", "w-[3.5rem] h-[3.5rem] rounded-full")
+    const sellerName = createCardElement("h1");
     header.textContent = data.title;
     productDescription.textContent = data.description;
     sellerAvatar.src = data.seller.avatar
+    sellerAvatar.alt ="Avatar"
     sellerName.textContent = data.seller.name;
     sellerContainer.append(sellerAvatar, sellerName)
-    descriptionContainer.append(sellerContainer, header, productDescription)
+    seller.append(sellerContainer)
+    descriptionContainer.append(header, productDescription)
 
 }
 
