@@ -37,6 +37,7 @@ const featuredCards = (title, image, bids, date, id) => {
     const article = createCardElement("article", "flex flex-col  relative  bg-custom-card relative shadow-md text-custom-textGrey");
     const articleLink = createCardElement("a", "absolute h-full w-full custom-z-low");
     articleLink.href = `/specific.html?id=${id}`
+articleLink.ariaLabel ="Go to product"
     const articleHeader = createCardElement("div", " h-[70%] relative")
     const articleHeaderImage = createCardElement("img", "absolute object-cover w-full h-full ");
     image.length === 0 ? articleHeaderImage.src = "src/assets/no-image.jpg" : articleHeaderImage.src = image;

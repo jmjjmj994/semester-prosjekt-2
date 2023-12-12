@@ -31,7 +31,6 @@ const creditIcon = {
 
         const userCredits =  async () => {
             const data = await singleProfile(localStorageItems.userData.name);
-        
             const creditsContainer = document.querySelector("[data-type-navbar='user-credit-container']")
             if (localStorageItems.token) {
                 creditsContainer.innerHTML = creditIcon.icon
