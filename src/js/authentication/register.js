@@ -12,15 +12,17 @@ const emailIcon = document.querySelector(".input-icon-email");
 const nameMsg = document.querySelector(".input-name-msg");
 const passwordMsg = document.querySelector(".input-password-msg");
 const emailMsg = document.querySelector(".input-email-msg");
-const displayError = () => {
-    nameInput.style.cssText = "outline:1px solid red";
-    emailInput.style.cssText = "outline:1px solid red";
-    passwordInput.style.cssText = "outline:1px solid red";
+const existingUser = document.querySelector("[data-type='existing-user-err']")
+
+const displayError = (msg) => {
+    existingUser.textContent = msg
+    existingUser.style.outline = "1px solid red"
+    existingUser.style.borderRadius = "0.5px"
     setTimeout(() => {
-        nameInput.style.cssText = "";
-        emailInput.style.cssText = "";
-        passwordInput.style.cssText = "";
-    }, 2000);
+        existingUser.textContent = ""
+        existingUser.style.outline = ""
+        existingUser.style.borderRadius = ""
+    }, 4000);
 }
 
 
@@ -125,13 +127,12 @@ form.addEventListener("submit", async (e) => {
     e.preventDefault()
     if (feedback()) {
         try {
-            registerUser(nameInput.value, emailInput.value, passwordInput.value)
+            await registerUser(nameInput.value, emailInput.value, passwordInput.value)
             nameInput.value = "";
             emailInput.value = ""
             passwordInput.value = ""
-            form.remove()
-            wrapper.innerHTML = `<div class="loader"></div>` 
         } catch (error) {
+            existingUser.textContent = error.message;
 
         }
     }
@@ -155,17 +156,21 @@ async function registerUser(name, email, password) {
             headers: { "Content-Type": "application/json" },
         })
 
-        if (res.ok) {
+        if (res.status !== 400) {
             const data = await res.json();
             console.log("response", data)
+            form.remove()
+            wrapper.innerHTML = `<div class="loader"></div>`
             window.location.href = "/login.html"
 
 
         } else {
-            throw new Error("Response status not ok")
+            throw new Error("Denne profilen eksisterer allerede")
         }
     } catch (error) {
-        console.log("fetcherror", error.message)
+        const errMsg = error.message
+        displayError(errMsg)
+
     }
 }
 

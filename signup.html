@@ -126,9 +126,16 @@
                     <label for="email">Email:</label>
                     <input data-input-type="email" class="pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md" type="text" id="email"
                         name="email" placeholder="E-post">
-                    <label for="password">Passord:</label>
-                    <input data-input-type="password" class="pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md" type="password"
-                        id="password" name="password" placeholder="Passord">
+
+                        <div class="flex w-full flex-col gap-2">
+    <label for="password">Passord:</label>
+    <input data-input-type="password"
+        class="pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md" type="password"
+        id="password" name="password" placeholder="Passord">
+                         <span data-type="existing-user-err" class=" text-center  text-red-600 min-h-[1rem]"></span>
+
+                        </div>
+              
 
 
                     <div class="text-sm  flex flex-col ">
@@ -143,6 +150,7 @@
                             <span class="input-password-msg">Passordet må være på minst 8 tegn </span>
                         </span>
                     </div>
+
 
                     <button type="submit" data-action="submit" class="bg-custom-btnBgSpecial rounded-md py-3 shadow-md">Fullfør</button>
                 </form> 
