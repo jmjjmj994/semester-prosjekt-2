@@ -33,30 +33,27 @@ const sortListingsByBids = () => {
 const featuredCards = (title, image, bids, date, id) => {
     const createBidArray = bids.map(bid => bid.amount)
     const highestBid = Math.max(...createBidArray);
-    const totalBids = createBidArray.reduce((accumulator, bidObj) => accumulator + bidObj)
-    const article = createCardElement("article", "flex flex-col  relative  bg-custom-card relative shadow-md text-custom-textGrey");
-    const articleLink = createCardElement("a", "absolute h-full w-full custom-z-low");
+    const article = createCardElement("article", "flex flex-col  relative  bg-custom-card relative shadow-sm rounded-sm text-custom-textGrey  card-no-effect card-effect");
+    const articleLink = createCardElement("a", "absolute h-full w-full custom-z-low ");
     articleLink.href = `/specific.html?id=${id}`
     articleLink.ariaLabel = "Go to product"
-    const articleHeader = createCardElement("div", " h-[70%] relative")
-    const articleHeaderImage = createCardElement("img", "absolute object-cover w-full h-full ");
+    const articleHeader = createCardElement("div", " h-[70%] relative border-inherit")
+    const articleHeaderImage = createCardElement("img", "absolute object-cover w-full h-full border-inherit");
     image.length === 0 ? articleHeaderImage.src = "src/assets/no-image.jpg" : articleHeaderImage.src = image;
     articleHeaderImage.alt = "Auksjons-produkt";
     articleHeader.append(articleHeaderImage)
     const articleBody = createCardElement("div", "basis-[auto] flex   p-1");
-    const articleBodyTitle = createCardElement("span", "card-title-typography mt-6");
+    const articleBodyTitle = createCardElement("span", "card-title-typography mt-3");
     articleBodyTitle.textContent = title;
     articleBody.append(articleBodyTitle)
-    const articleFooter = createCardElement("div", "flex basis-[auto] py-3 justify-between items-end p-1 ");
+    const articleFooter = createCardElement("div", "flex basis-[auto] flex-col py-3 justify-between  p-1 ");
     const articleFooterCol1 = createCardElement("div", "flex flex-col ")
-    const articleFooterCol1TotalBids = createCardElement("span", "mb-3")
-    articleFooterCol1TotalBids.textContent = `Totale bud:${totalBids}`
     const articleFooterCol1HighestBid = createCardElement("span", "")
-    articleFooterCol1HighestBid.textContent = `Høyeste bud:${highestBid}`
-    articleFooterCol1.append(articleFooterCol1TotalBids, articleFooterCol1HighestBid)
-    const articleFooterCol2 = createCardElement("div", "");
+    articleFooterCol1HighestBid.textContent = `Høyeste bud :${highestBid}`
+    articleFooterCol1.append( articleFooterCol1HighestBid)
+    const articleFooterCol2 = createCardElement("div", "flex  items-center gap-1 py-1");
     const articleFooterCol2Icon = createCardElement("i", "fa-regular fa-clock")
-    const articleFooterCol2EndDate = createCardElement("span")
+    const articleFooterCol2EndDate = createCardElement("span","")
     articleFooterCol2EndDate.textContent = date
     articleFooterCol2.append(articleFooterCol2Icon, articleFooterCol2EndDate)
     articleFooter.append(articleFooterCol1, articleFooterCol2)
@@ -164,7 +161,7 @@ renderFeaturedCards()
                 primaryCTAText.innerHTML = "Utforsk spennende auksjoner nå!"
                 secondaryCTAText.innerHTML = "Logg inn eller registrer deg for å delta og by på unike varer"
             } else {
-                primaryCTAText.innerHTML = `Velkommen tilbake ${localStorageItems.userData.name}!`
+                primaryCTAText.innerHTML = `Velkommen tilbake, ${localStorageItems.userData.name}!`
             }
         }
 
