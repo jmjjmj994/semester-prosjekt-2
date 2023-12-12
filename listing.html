@@ -150,9 +150,9 @@
             <article class="header-secondary text-custom-textDark   text-center headers-margin">
                 <h1>Selg</h1>
             </article>
-            <section class="flex flex-col lg:flex-row    min-h-[100vh]"> <!--Wrapper-->
+            <section class="flex flex-col lg:flex-row  gap-5   min-h-[100vh]"> <!--Wrapper-->
 
-                <section class="flex-1 h-auto flex flex-col items-center "> <!--Wrapper-->
+                <section class="flex-1 height-calc flex flex-col  items-center lg:items-start   lg:pl-[7rem]"> <!--Wrapper-->
 
                     <!--Header-->
 
@@ -160,7 +160,7 @@
 
 
                     <form data-form-type="listing-form"
-                        class="flex-1 max-w-[45rem] w-full flex flex-col px-2 justify-center gap-5">
+                        class="flex-1 max-w-[45rem] px-2  lg:px-0 w-full flex flex-col  justify-center gap-5">
 
                         <div class="flex flex-col text-custom-textDark">
                             <label for="produkt-title">PRODUKT TITTEL*:</label>
@@ -212,7 +212,7 @@
                             <label for="product-description">BESKRIVELSE*:</label>
                             <textarea data-input-type="product-textarea"
                                 class="w-full min-h-[20rem] pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md resize-y"
-                                name="product-description" placeholder="Beskrivelse"></textarea>
+                                name="product-description" placeholder="Beskrivelse" maxlength="350"></textarea>
                         </div>
 
 
@@ -236,40 +236,43 @@
                 </section>
 
                 <section
-                    class="sticky top-0 hidden md:flex md:items-center md:justify-center max-w-[45rem] w-full md:flex-1 margin-centered lg:m-0  items-center justify-center  h-full  text-custom-textWhite">
+                    class=" lg:height-calc  lg:pr-[7rem]   md:justify-center max-w-[45rem]  w-full  md:flex-1 margin-centered lg:m-0      text-custom-textWhite">
 
                     <article
-                        class="bg-custom-ctaSecondary  w-full min-h-[20rem]  my-6  px-2  py-2 h-full lg:w-full relative   rounded-sm shadow-sm">
-                        <div data-type-preview="body" class=" gap-1 ">
+                        class="bg-custom-secondary lg:top-[20vh]  lg:sticky flex flex-col  w-full  gap-3 my-6  px-2  py-2 min-h-[25rem]  lg:min-h-[30vh]    rounded-sm shadow-sm">
+                      
 
-                            <div class=" h-[13rem] sm:h-[23rem]  md:h-[35rem] w-full rounded-sm ">
-                                <img class="h-full max-w-full w-full object-cover inset-0 border-inherit"
+                            <div class=" h-[25rem] w-full rounded-sm  relative">
+                                <img class="h-full max-w-full w-full object-cover inset-0 border-inherit absolute"
                                     data-type-preview="image" src="" alt="Preview image">
                             </div>
 
-                            <div class="h-[2rem] flex items-center">
-                                <h2 data-type-preview="body-header">
+                            <div class="min-h-[5rem] flex flex-col  overflow-auto break-words whitespace-break-spaces">
+                                <h2 data-type-preview="body-header" class="max-w-[50ch]">
 
                                 </h2>
+                                    <p data-type-preview="body-categories" class="max-w-[50ch] ">
+                                    
+                                    </p>
+                                    <p data-type-preview="body-description" class="max-w-[50ch] ">
+                                    </p>
+                                    <span data-type-preview="body-date"></span>
                             </div>
 
 
-                            <div class="">
-                                <p data-type-preview="body-categories" class="max-w-[60ch]">
-
-                                </p>
+                       <!--      <div class="bg-purple-900">
+                            
                             </div>
                             <div data-type-preview="body-description"
-                                class="max-64 overflow-auto break-words whitespace-break-spaces">
+                                class="max-64 overflow-auto break-words whitespace-break-spaces bg-orange-400 bg-custom-btnBgSpecial">
                                 <p data-type-preview="body-description" class="max-w-[55ch]">
                                 </p>
                             </div>
 
-                            <div data-type-preview="body-date" class=" ">
+                            <div data-type-preview="body-date" class="bg-custom-btnBgAccent ">
                                 <span data-type-preview="body-date"></span>
-                            </div>
+                            </div> -->
 
-                        </div>
                     </article>
                 </section>
 
