@@ -142,9 +142,9 @@
 
 
 
-    <main class="flex flex-col flex-grow bg-custom-background global-padding">
+    <main class="flex flex-col flex-grow bg-custom-background global-padding relative">
   
-        <section class="flex-1 flex flex-col  global-margin-block"> <!--Wrapper-->
+        <section class="flex-1 flex flex-col   height-calc   global-margin-block"> <!--Wrapper-->
        <article class="headers-margin">
         <h1 data-type-section="result-information" class="text-custom-textDark text-center"></h1>
        </article>
@@ -158,9 +158,16 @@
 
             <!--Pagination buttons-->
             <div data-type-section="pagination-buttons" 
-                class=" basis-[auto] w-full md:w-[20rem] flex justify-between lg:items-center">
-                <a data-type-section="pagination-prev-btn" class="hidden cursor-pointer  bg-custom-secondary px-2 py-1 rounded-md bg-orange-300 ">Tilbake</a>
-                <a data-type-section="pagination-next-btn" class="hidden cursor-pointer px-2 py-1 rounded-md bg-orange-300 ">Neste</a>
+                class=" basis-[auto] w-full md:w-[20rem]   absolute bottom-0 flex justify-between lg:items-center left-[50%] transform -translate-x-1/2 -translate-y-1/2 px-1">
+               
+                <a data-type-section="pagination-prev-btn" class="hidden cursor-pointer  bg-custom-secondary px-2 py-1 rounded-md ">
+                    <i class="fa-solid fa-arrow-left pointer-events-none"></i>
+                </a>
+              
+                <a data-type-section="pagination-next-btn" class="hidden cursor-pointer px-2 py-1 rounded-md bg-orange-300 ">
+                    <i class="fa-solid fa-arrow-right pointer-events-none"></i>
+                    
+                </a>
             </div>
 
 

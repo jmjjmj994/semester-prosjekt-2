@@ -42,13 +42,10 @@ const featuredCards = (title, image, bids, date, id) => {
     image.length === 0 ? articleHeaderImage.src = "src/assets/no-image.jpg" : articleHeaderImage.src = image;
     articleHeaderImage.alt = "Auksjons-produkt";
     articleHeader.append(articleHeaderImage)
-
     const articleBody = createCardElement("div", "basis-[auto] flex   p-1");
     const articleBodyTitle = createCardElement("span", "card-title-typography mt-6");
     articleBodyTitle.textContent = title;
-
     articleBody.append(articleBodyTitle)
-
     const articleFooter = createCardElement("div", "flex basis-[auto] py-3 justify-between items-end p-1 ");
     const articleFooterCol1 = createCardElement("div", "flex flex-col ")
     const articleFooterCol1TotalBids = createCardElement("span", "mb-3")

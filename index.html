@@ -50,14 +50,18 @@
             </section>
     
     
-            <section class="flex text-custom-textDark  gap-2  lg:order-4 global-padding ">
-                <div class="flex items-center   w-full lg:w-auto">
-                    <img data-type-user="avatar" class="min-h-[2.5rem] h-[2.5rem] min-w-[2.5rem] w-[2.5rem] rounded-full"
-                        src="" alt="avatar">
+            <section class="flex text-custom-textDark  w-[8rem]  gap-2  lg:order-4 global-padding ">
+                <div class="flex items-center  gap-4 w-full   lg:w-auto">
+
+                    <div class="flex items-center">
+<img data-type-user="avatar"
+    class="min-h-[2.5rem] h-[2.5rem] min-w-[2.5rem] w-[2.5rem] rounded-full text-custom-textDark" src="" alt="avatar">
+<button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode" class="focus:bg-red-600">
+</button>
+                    </div>
+                 
                     <span class="flex ml-auto">
-                        <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode"
-                            class="focus:bg-red-600">
-                        </button>
+                       
     
                         <div data-type-navbar="user-credit-container" class="flex">
                         </div>
@@ -152,19 +156,11 @@
                    
                     </h1>
                     <div data-type-cta="btn-container" class=" flex flex-col md:flex-row  mt-5 gap-3 md:gap-6">
-                        <!--    <a data-type-cta="log-in-btn" href="/login.html" role="link" aria-label="Logg inn"
-                            class="bg-custom-btnBgAccent text-custom-textWhite uppercase  flex justify-center items-center cta-btn-sm md:cta-btn-md lg:cta-btn-lg">
-                            Logg inn
-                        </a> -->
-                        <!--  <a data-type-cta="register-btn" href="/signup.html" role="link" aria-label="Registrer"
-                            class="bg-custom-btnBgSpecial text-custom-textDark uppercase  flex justify-center items-center cta-btn-sm md:cta-btn-md lg:cta-btn-lg">
-                            Registrer
-                        </a> -->
                     </div>
                 </div>
             </section>
             <section class="min-h-[100vh]  global-padding bg-custom-background">
-                <h2 class="text-custom-textDark text-center headers-margin">Toppauksjoner</h2>
+                <h2 class="text-custom-textDark text-center headers-margin">Populære produkter</h2>
                 <section data-featured-section="grid-container" class=" flex-1  gap-[10px] py-2 featured-card-grid">
 
                 </section>
@@ -173,7 +169,7 @@
 
 
             <section class="bg-custom-ctaSecondary text-accent flex flex-col items-center justify-center h-[50vh]">
-                <h2 class="text-custom-textWhite">Bli med! Legg inn ditt første bud</h2>
+                <h2 class="text-custom-textWhite cta-header">Bli med! Legg inn ditt første bud</h2>
                 <a href="/bidding.html"
                     class="bg-custom-btnBgSpecial ring-comp text-accent cta-btn-sm md:cta-btn-md lg:cta-btn-lg mt-5 rounded uppercase flex items-center justify-center cursor-pointer">
                     Utforsk
@@ -204,7 +200,7 @@
                                 </p>
                             </div>
                             <div class="flex flex-col items-center">
-                                <img class="w-[3.5rem] h-[3.5rem] rounded-full"
+                                <img  class="w-[3.5rem] h-[3.5rem] rounded-full"
                                     src="/src/assets/carousel-avatars/aiony-haust-3TLl_97HNJo-unsplash.webp"
                                     alt="avatar" />
                                 <p>Jane Doe</p>
