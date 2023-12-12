@@ -68,7 +68,6 @@ const featuredCards = (title, image, bids, date, id) => {
 }
 const featuredSkeletonCards = () => {
     const skeletonArticle = createCardElement("article", "flex flex-col relative bg-custom-secondary relative shadow-md animate-pulse");
-
     const skeletonArticleHeader = createCardElement("div", "flex flex-col  relative  bg-custom-secondary relative shadow-md text-custom-textDark");
     const skeletonArticleHeaderDiv = createCardElement("div", "h-[70%] bg-orange-500")
     skeletonArticleHeader.append(skeletonArticleHeaderDiv)
@@ -81,7 +80,6 @@ const featuredSkeletonCards = () => {
     const skeletonArticleFooterCol2 = createCardElement("div", "text-custom-textDark");
     const skeletonArticleFooterCol2Icon = createCardElement("i", "fa-regular fa-clock bg-white opacity-0");
     const skeletonArticleFooterCol2EndDate = createCardElement("span", "bg-white opacity-0");
-
     skeletonArticle.append(skeletonArticleHeader, skeletonArticleBody, skeletonArticleFooter);
     skeletonArticleBody.append(skeletonArticleBodyTitle);
     skeletonArticleFooterCol1.append(skeletonArticleFooterCol1TotalBids, skeletonArticleFooterCol1HighestBid);
@@ -154,6 +152,24 @@ renderFeaturedCards()
 
 
 ; (() => {
+
+
+const CTAHeaders = () => {
+const primaryCTAText = document.querySelector("[data-type-cta='primary']");
+const secondaryCTAText = document.querySelector("[data-type-cta='secondary']");
+
+
+if(!localStorageItems.token) {
+    primaryCTAText.innerHTML = "Utforsk spennende auksjoner nå!"
+    secondaryCTAText.innerHTML ="Logg inn eller registrer deg for å delta og by på unike varer"
+} else {
+    primaryCTAText.innerHTML =`Velkommen tilbake ${localStorageItems.userData.name}!`
+}
+}
+
+
+
+
     const CTAButtons = () => {
         const CTABtnContainer = document.querySelector("[data-type-cta='btn-container']")
         const CTALoginBtn = createCardElement("a", "bg-custom-btnBgAccent text-custom-textWhite uppercase  flex justify-center items-center cta-btn-sm md:cta-btn-md lg:cta-btn-lg")
@@ -173,5 +189,6 @@ renderFeaturedCards()
         }
 
     }
+    CTAHeaders()
     CTAButtons()
 })();
