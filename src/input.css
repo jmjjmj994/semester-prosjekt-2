@@ -157,6 +157,21 @@ svg {
     gap: 5px;
     padding-block: 5px;
   }
+
+  .listings-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: auto;
+    gap: 1rem;
+    gap: 5px;
+    padding-block: 5px;
+  }
+
+/* @media screen and (max-width:768px) {
+  .listings-card {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+} */
   .card-title-typography {
     font-family: "Montserrat", sans-serif;
     font-weight: bold;

@@ -1,4 +1,4 @@
-import { localStorageItems, createCardElement, createButtonElement , dateConverter} from "../utils/utils.js";
+import { localStorageItems, createCardElement, createButtonElement, dateConverter, norwegianEndDate } from "../utils/utils.js";
 import { options, singleListing, updateEntry } from "../api/api.js";
 
 const listingsByProfile = async (name) => {
@@ -10,7 +10,7 @@ const listingsByProfile = async (name) => {
             method: "GET",
             headers: options.headers
         });
-      
+
         if (res.ok) {
             const data = await res.json();
             return data;
@@ -24,6 +24,7 @@ const listingsByProfile = async (name) => {
 }
 
 const deleteListing = async (id) => {
+    const container = document.querySelector("[data-type-section='my-listings']")
 
     try {
         const url = `https://api.noroff.dev/api/v1/auction/listings/${id}`;
@@ -32,7 +33,9 @@ const deleteListing = async (id) => {
             headers: options.headers
         });
         if (res.ok) {
+            container.innerHTML = "";
             console.log(`Listing with ID ${id} deleted successfully.`);
+            initializer()
         } else {
             throw new Error(`Failed to delete listing with ID ${id}`);
         }
@@ -42,114 +45,108 @@ const deleteListing = async (id) => {
     }
 }
 
-
-const mockData = [
-
-    {
-id:"123123123213",
-title:"Sykkel",
-media:"bilde",
-created:"2023-123-122",
-endsAt:"213123123",
-_count: {bids:"0"}
-    }
-]
-
-
-
-const createTableHeader = (title) => {
-    const thead = createCardElement("thead", "bg-custom-card");
-    const theadRow = createCardElement("tr", "");
-    const th = createCardElement('th', "");
-    th.textContent = title
-    theadRow.appendChild(th);
-    thead.appendChild(theadRow)
-    return thead
-}
-const createTableBody = (media, createdDate, endDate, bids) => {
-    const norwegianDateCreated = dateConverter(createdDate)
-    const norwegianDateEnd = dateConverter(endDate)
-    const tbody = createCardElement('tbody'," table bg-custom-card");
-    const tbodyRow = createCardElement('tr', "");
-    const tbodyData = createCardElement('td', "flex flex-col");
-    const imageContainer = createCardElement("div", "h-[18rem]  relative");
-    const img = createCardElement('img', " rounded-sm shadow-md absolute object-cover h-full w-full");
-    img.src = media;
-    img.alt = '';
-    imageContainer.append(img)
-    const createdText = createCardElement('span');
-    createdText.textContent = `Opprettet : ${norwegianDateCreated}`;
-    const endsAtText = createCardElement('span');
-    endsAtText.textContent = `Slutter:${norwegianDateEnd}`;
-    const bidsText = createCardElement('span');
-    bidsText.textContent = `Antall bud:${bids}`; 
-    tbodyData.appendChild(imageContainer);
-    tbodyData.appendChild(createdText);
-    tbodyData.appendChild(endsAtText);
-    tbodyData.appendChild(bidsText);
-    tbodyRow.appendChild(tbodyData);
-    tbody.appendChild(tbodyRow);  
-    return tbody
+const listingsCardHeader = (img) => {
+    const cardHeader = createCardElement("div", "relative h-[20rem]");
+    const cardHeaderImg = createCardElement("img", "absolute  w-full h-full object-cover");
+    cardHeaderImg.src = img;
+    cardHeader.alt = "listing";
+    cardHeader.append(cardHeaderImg);
+    return cardHeader
 }
 
-const createTableFoot = (id) => {
-    const tfoot = createCardElement('tfoot', "bg-custom-card");
-    const tfootRow = createCardElement('tr', "");
-    const tfootData = createCardElement('td');
-    const deleteButton = createButtonElement("bg-red-500  px-5 rounded-sm mr-5");
-    console.log(deleteButton)
-    deleteButton.setAttribute("data-type-table", "delete-btn")
-    deleteButton.textContent = 'Slett';
-    const updateButton = createCardElement("a","bg-custom-special  py-1 px-5 rounded-sm  ");
-    updateButton.role ="button"
-    updateButton.textContent = 'Oppdater';
-    updateButton.href = `/edit.html?id=${id}`
-    updateButton.setAttribute("data-type-table", "update-btn")
-    tfootData.appendChild(deleteButton);
-    tfootData.appendChild(updateButton);
-    tfootRow.appendChild(tfootData);
-    tfoot.appendChild(tfootRow);
-   return tfoot
+const listingsCardBody = (title, description, start, end) => {
+    const cardBody = createCardElement("div", "global-padding flex flex-col text-custom-textDark");
+    const cardBodyTitle = createCardElement("h2")
+    cardBodyTitle.textContent = title;
+    const cardBodyDescription = createCardElement("p");
+    cardBodyDescription.textContent = description
+    const cardBodyStart = createCardElement("p");
+    cardBodyStart.textContent = start
+    const cardBodyEnd = createCardElement("p")
+    cardBodyEnd.textContent = end;
+    cardBody.append(cardBodyTitle, cardBodyDescription, cardBodyStart, cardBodyEnd);
+    return cardBody
+
+
 }
+const listingsCardFooter = (id) => {
 
+    const cardFooter = createCardElement("div", "global-padding pb-2 py-2 flex  gap-2 ");
+    const cardDeleteBtn = createButtonElement("bg-custom-btnBgAccent text-custom-textWhite py-1 px-4 relative rounded-sm shadow-sm");
+    cardDeleteBtn.textContent = "Slett";
+    const cardUpdateBtn = createButtonElement("")
+    cardUpdateBtn.textContent = "Oppdater"
+    cardFooter.append(cardDeleteBtn, cardUpdateBtn);
 
-
-
-
-
-
-
-const renderListingsTable = async () => {
-    const listingTableData = await listingsByProfile(localStorageItems.userData.name)
-    const tableGridCol2 = document.querySelector("[data-type-table='table-grid-col-2']")
-    const tableGridHeader = createCardElement("h2", "text-typography-primary text-center absolute p-2 top-[20px] absolute-centered")
-    tableGridHeader.textContent ="Mine salg"
-     tableGridCol2.innerHTML = "";
- 
-     if(Array.isArray(listingTableData) && listingTableData.length > 0 ) {
-    const promises = listingTableData.map(async (data) => {
-        console.log(data)
-        const { id, title, media, created, endsAt, _count } = data;
-        const bids = _count.bids;
-        const table = await createTable(id, title, media, created, endsAt, bids);
-        tableGridCol2.append(tableGridHeader,table)
-        tableGridCol2.className ="bg-custom-secondary shadow-md rounded-md table-grid-tables bg-red-500 overflow-scroll gap-[3rem] py-10 relative"
+    cardDeleteBtn.addEventListener("click", async (e) => {
+        deleteEntry(id)
     })
-    await Promise.all(promises)
- } else {
-     tableGridCol2.className = "flex flex-col items-center justify-center bg-custom-secondary "
-     tableGridCol2.innerHTML = `<h2> Du har ingen varer for salg. Trykk <a href=/listing.html> her  </a> for å selge ett produkt </h2>`
- }
+    return cardFooter
+}
+
+const card = (id, media, title, description, start, end) => {
+    const card = createCardElement("div", "bg-custom-card flex flex-col rounded-sm shadow-sm")
+    card.setAttribute("data-type-card", `${id}`)
+    const cardHeader = listingsCardHeader(media);
+    const cardBody = listingsCardBody(title, description, start, end);
+    const cardFooter = listingsCardFooter(id);
+    card.append(cardHeader, cardBody, cardFooter)
+    return card
+}
+
+
+const renderCards = async () => {
+    const parentContainer = document.querySelector("[data-type-overview='parent-section']");
+    console.log(parentContainer)
+    const container = document.querySelector("[data-type-section='my-listings']")
+    const containerHeader = document.querySelector("[data-type-overview='header']")
+    const containerHeaderH1 = document.querySelector("[data-type-overview='header-h1']")
+    const myListings = await listingsByProfile(localStorageItems.userData.name);
+
+
+    if (myListings.length > 0) {
+        myListings.forEach(listing => {
+            const { id, media, title, description, created, endsAt } = listing
+            const norwegianEnd = norwegianEndDate(endsAt)
+            const listingCard = card(id, media, title, description, norwegianEnd);
+            container.append(listingCard)
+        })
+        container.className = "w-full h-auto listings-card"
+        parentContainer.className = "flex-1 height-calc global-margin-block"
+        containerHeader.className = "text-center"
+        containerHeaderH1.textContent = "Min oversikt"
+
+    } else {
+        container.className = "hidden ";
+        parentContainer.className = "flex-1 items-center "
+        containerHeader.className = "h-full w-full flex items-center justify-center text-center"
+        containerHeaderH1.innerHTML = `
+        
+        <span class=>
+Her var det tomt! Trykk <a class="text-purple-600 underline" href="/listing.html">her</a> for å opprette en annonse
+        <span>
+        
+        
+        
+        `
+    }
+
 
 }
 
 
+const deleteEntry = async (id) => {
+    const deleteCall = await deleteListing(id);
 
-
- const initializer =  () => {
-    renderListingsTable()
 }
-initializer()  
+
+
+const initializer = () => {
+
+    renderCards()
+
+}
+initializer()
 
 /*********************************************** */
 
