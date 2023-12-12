@@ -210,17 +210,37 @@ svg {
   /*Margins*/
 
   .table-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   grid-auto-rows: auto;
+  }
+
+  .table-grid-tables {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-auto-rows: 75vh;
-    justify-content: center;
-    align-content: center;
-    gap: 1rem;
+    grid-auto-rows: auto;
+    gap: 5px;
   }
+
+.subgrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 15rem;
+}
 
   .table-grid-modal-z {
     z-index: 1;
   }
+
+
+
+/*Positioning*/
+.absolute-centered {
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*Positioning*/
 
   /*Fancy things */
 

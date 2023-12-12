@@ -12,6 +12,7 @@ form.addEventListener("submit", async (e) => {
     if (validatedInput) {
         await createListing(validatedInput.title, validatedInput.description, validatedInput.tags, validatedInput.image, validatedInput.end)
         console.log("valid")
+        clearImagePreview()
         createPreview()
     } else {
         console.log("invalid")
@@ -69,10 +70,13 @@ const imagePreview = (image) => {
 
 }
 
-
+const clearImagePreview = () => {
+    const img = document.querySelector("[data-container-='image-container-img']")
+    img.src = ""
+    img.alt = ""
+}
 
 productImageInput.addEventListener("input", (e) => {
-
     const inputImageVal = productImageInput.value.trim();
     const previewImage = document.querySelector("[data-type-preview='image']")
     previewImage.src = inputImageVal
@@ -100,15 +104,15 @@ const createPreview = () => {
     const productTextareaInput = document.querySelector("[data-input-type='product-textarea']")
     const productDateInput = document.querySelector("[data-input-type='product-end']")
     const previewImage = document.querySelector("[data-type-preview='image']")
-    previewImage.src = "src/assets/no-image.jpg" 
+    previewImage.src = "src/assets/no-image.jpg"
     const previewBodyHeader = document.querySelector("[data-type-preview='body-header']")
     const previewBodyCategories = document.querySelector("[data-type-preview='body-categories']")
     const previewBodyDescription = document.querySelector("[data-type-preview='body-description']")
     const previewBodyDate = document.querySelector("[data-type-preview='body-date']")
 
- 
 
-   
+
+
 
 
     productInputTitle.addEventListener("input", (e) => {
@@ -124,7 +128,7 @@ const createPreview = () => {
         previewBodyDescription.textContent = e.target.value
     })
 
-    
+
     productDateInput.addEventListener("input", (e) => {
         previewBodyDate.textContent = e.target.value
     })

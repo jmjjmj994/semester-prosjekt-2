@@ -58,9 +58,9 @@ _count: {bids:"0"}
 
 
 const createTableHeader = (title) => {
-    const thead = createCardElement("thead");
-    const theadRow = createCardElement("tr");
-    const th = createCardElement('th');
+    const thead = createCardElement("thead", "bg-custom-card");
+    const theadRow = createCardElement("tr", "");
+    const th = createCardElement('th', "");
     th.textContent = title
     theadRow.appendChild(th);
     thead.appendChild(theadRow)
@@ -69,8 +69,8 @@ const createTableHeader = (title) => {
 const createTableBody = (media, createdDate, endDate, bids) => {
     const norwegianDateCreated = dateConverter(createdDate)
     const norwegianDateEnd = dateConverter(endDate)
-    const tbody = createCardElement('tbody'," table");
-    const tbodyRow = createCardElement('tr');
+    const tbody = createCardElement('tbody'," table bg-custom-card");
+    const tbodyRow = createCardElement('tr', "");
     const tbodyData = createCardElement('td', "flex flex-col");
     const imageContainer = createCardElement("div", "h-[18rem]  relative");
     const img = createCardElement('img', " rounded-sm shadow-md absolute object-cover h-full w-full");
@@ -93,8 +93,8 @@ const createTableBody = (media, createdDate, endDate, bids) => {
 }
 
 const createTableFoot = (id) => {
-    const tfoot = createCardElement('tfoot');
-    const tfootRow = createCardElement('tr');
+    const tfoot = createCardElement('tfoot', "bg-custom-card");
+    const tfootRow = createCardElement('tr', "");
     const tfootData = createCardElement('td');
     const deleteButton = createButtonElement("bg-red-500  px-5 rounded-sm mr-5");
     console.log(deleteButton)
@@ -114,47 +114,31 @@ const createTableFoot = (id) => {
 
 
 
-const createTable = async (tableId,title, media, createdDate, endDate, bids) => {
-    const table = createCardElement("table", "flex flex-col ");
-    table.setAttribute("data-type-table-id", `${tableId}`)
-    const tableHead = createTableHeader(title);
-    const tableBody = createTableBody(media, createdDate, endDate, bids);
-    const tableFoot = createTableFoot(tableId);
-    table.addEventListener("click", async (e) => {
-    const deleteBtn = e.target.getAttribute("data-type-table") === "delete-btn";
-        if (deleteBtn) {
-            await deleteListing(tableId);
-            renderListingsTable(); 
-        }
-
-    })
-
-    table.append(tableHead, tableBody, tableFoot)
-    return table;
-}
 
 
 
 
 
 const renderListingsTable = async () => {
-  
     const listingTableData = await listingsByProfile(localStorageItems.userData.name)
     const tableGridCol2 = document.querySelector("[data-type-table='table-grid-col-2']")
-    const tableGridHeader = createCardElement("h2", "text-typography-primary text-center")
+    const tableGridHeader = createCardElement("h2", "text-typography-primary text-center absolute p-2 top-[20px] absolute-centered")
     tableGridHeader.textContent ="Mine salg"
      tableGridCol2.innerHTML = "";
- if(Array.isArray(listingTableData)) {
+ 
+     if(Array.isArray(listingTableData) && listingTableData.length > 0 ) {
     const promises = listingTableData.map(async (data) => {
+        console.log(data)
         const { id, title, media, created, endsAt, _count } = data;
         const bids = _count.bids;
         const table = await createTable(id, title, media, created, endsAt, bids);
         tableGridCol2.append(tableGridHeader,table)
+        tableGridCol2.className ="bg-custom-secondary shadow-md rounded-md table-grid-tables bg-red-500 overflow-scroll gap-[3rem] py-10 relative"
     })
     await Promise.all(promises)
  } else {
      tableGridCol2.className = "flex flex-col items-center justify-center bg-custom-secondary "
-     tableGridCol2.innerHTML = `<span>${listingTableData}</span>`
+     tableGridCol2.innerHTML = `<h2> Du har ingen varer for salg. Trykk <a href=/listing.html> her  </a> for å selge ett produkt </h2>`
  }
 
 }
