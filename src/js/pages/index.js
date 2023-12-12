@@ -1,5 +1,5 @@
 import { listings } from "../api/api.js";
-import { createCardElement, createButtonElement, dateConverter, norwegianEndDate, localStorageItems } from "../utils/utils.js";
+import { createCardElement, norwegianEndDate, localStorageItems } from "../utils/utils.js";
 
 const featuredSection = document.querySelector("[data-featured-section='grid-container']");
 const carouselContainer = document.querySelector("[data-carousel-container]");
@@ -37,7 +37,7 @@ const featuredCards = (title, image, bids, date, id) => {
     const article = createCardElement("article", "flex flex-col  relative  bg-custom-card relative shadow-md text-custom-textGrey");
     const articleLink = createCardElement("a", "absolute h-full w-full custom-z-low");
     articleLink.href = `/specific.html?id=${id}`
-articleLink.ariaLabel ="Go to product"
+    articleLink.ariaLabel = "Go to product"
     const articleHeader = createCardElement("div", " h-[70%] relative")
     const articleHeaderImage = createCardElement("img", "absolute object-cover w-full h-full ");
     image.length === 0 ? articleHeaderImage.src = "src/assets/no-image.jpg" : articleHeaderImage.src = image;
@@ -148,48 +148,48 @@ function moveSlides() {
 }
 
 
- 
-renderFeaturedCards() 
+
+renderFeaturedCards()
 
 
-; (() => {
+    ; (() => {
 
 
-const CTAHeaders = () => {
-const primaryCTAText = document.querySelector("[data-type-cta='primary']");
-const secondaryCTAText = document.querySelector("[data-type-cta='secondary']");
+        const CTAHeaders = () => {
+            const primaryCTAText = document.querySelector("[data-type-cta='primary']");
+            const secondaryCTAText = document.querySelector("[data-type-cta='secondary']");
 
 
-if(!localStorageItems.token) {
-    primaryCTAText.innerHTML = "Utforsk spennende auksjoner nå!"
-    secondaryCTAText.innerHTML ="Logg inn eller registrer deg for å delta og by på unike varer"
-} else {
-    primaryCTAText.innerHTML =`Velkommen tilbake ${localStorageItems.userData.name}!`
-}
-}
-
-
-
-
-    const CTAButtons = () => {
-        const CTABtnContainer = document.querySelector("[data-type-cta='btn-container']")
-        const CTALoginBtn = createCardElement("a", "bg-custom-btnBgAccent text-custom-textWhite uppercase  flex justify-center items-center cta-btn-sm md:cta-btn-md lg:cta-btn-lg")
-        CTALoginBtn.textContent = "Logg inn"
-        CTALoginBtn.href = "/login.html"
-        CTALoginBtn.role = "button"
-        CTALoginBtn.ariaLabel = "Logg inn"
-        const CTARegisterBtn = createCardElement("a", "bg-custom-btnBgSpecial text-custom-textDark uppercase  flex justify-center items-center cta-btn-sm md:cta-btn-md lg:cta-btn-lg")
-        CTARegisterBtn.textContent = "Registrer"
-        CTARegisterBtn.href = "/signup.html"
-        CTARegisterBtn.role = "button"
-        CTARegisterBtn.ariaLabel = "Registrer"
-
-
-        if (!localStorageItems.token) {
-            CTABtnContainer.append(CTALoginBtn, CTARegisterBtn)
+            if (!localStorageItems.token) {
+                primaryCTAText.innerHTML = "Utforsk spennende auksjoner nå!"
+                secondaryCTAText.innerHTML = "Logg inn eller registrer deg for å delta og by på unike varer"
+            } else {
+                primaryCTAText.innerHTML = `Velkommen tilbake ${localStorageItems.userData.name}!`
+            }
         }
 
-    }
-    CTAHeaders()
-    CTAButtons()
-})();
+
+
+
+        const CTAButtons = () => {
+            const CTABtnContainer = document.querySelector("[data-type-cta='btn-container']")
+            const CTALoginBtn = createCardElement("a", "bg-custom-btnBgAccent text-custom-textWhite uppercase  flex justify-center items-center cta-btn-sm md:cta-btn-md lg:cta-btn-lg")
+            CTALoginBtn.textContent = "Logg inn"
+            CTALoginBtn.href = "/login.html"
+            CTALoginBtn.role = "button"
+            CTALoginBtn.ariaLabel = "Logg inn"
+            const CTARegisterBtn = createCardElement("a", "bg-custom-btnBgSpecial text-custom-textDark uppercase  flex justify-center items-center cta-btn-sm md:cta-btn-md lg:cta-btn-lg")
+            CTARegisterBtn.textContent = "Registrer"
+            CTARegisterBtn.href = "/signup.html"
+            CTARegisterBtn.role = "button"
+            CTARegisterBtn.ariaLabel = "Registrer"
+
+
+            if (!localStorageItems.token) {
+                CTABtnContainer.append(CTALoginBtn, CTARegisterBtn)
+            }
+
+        }
+        CTAHeaders()
+        CTAButtons()
+    })();

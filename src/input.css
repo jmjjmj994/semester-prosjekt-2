@@ -90,12 +90,12 @@ svg {
     }
   }
 
-    .cta-header-span {
-      font-size: 1.2rem;
+  .cta-header-span {
+    font-size: 1.2rem;
     letter-spacing: -0.025rem;
   }
 
-    @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     .cta-header-span {
       font-size: 1.6rem;
     }
@@ -136,7 +136,6 @@ svg {
     padding-block: 1.3rem;
     padding-inline: 1rem;
   }
-
 
   .seller-header {
     font-size: clamp(1.2rem, 2vw, 1.5rem);
@@ -226,15 +225,19 @@ svg {
   /*Fancy things */
 
   .highest-bidder {
-    font-size: 1.3rem;
-    color: hsl(46, 90%, 61%);
-    font-weight: semibold;
+    font-size: 1rem;
+    font-weight: bold;
     position: relative;
-
+    padding-inline-start: 150px;
   }
 
-
-
+  .highest-bidder::before {
+    content: "Høyeste bud:";
+    position: absolute;
+    left: 0.5px;
+    font-family: "Lato", sans-serif;
+    line-height: 1.5;
+  }
 
   /*Fancy things*/
 }

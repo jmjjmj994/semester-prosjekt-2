@@ -67,7 +67,7 @@ const handleSlides = async () => {
 
 
 const renderSlides = (media) => {
-   
+
     let curSlide = 0;
     let maxSlide = media.length - 1;
     const image = media.slice(0, 3)
@@ -156,7 +156,7 @@ const renderSlides = (media) => {
 
     }
 
- 
+
 
 }
 
@@ -166,6 +166,7 @@ const renderSingleSlide = async () => {
     const slide = createCardElement("div", "flex flex-1 relative");
     const image = createCardElement("img", "h-full w-full absolute object-cover");
     image.src = img.media
+    image.alt ="product image"
     slide.append(image);
     sliderContainer.append(slide);
 
@@ -177,7 +178,6 @@ const renderSingleSlide = async () => {
 const renderDescription = async () => {
     const descriptionContainer = document.querySelector("[data-type-specific='description']");
     const seller = document.querySelector("[data-type-specific='seller']")
-    const sellerContainer = createCardElement("div", "flex  items-center py-3 pb-3 w-[11.5rem] md:w-[13rem] lg:w-[14rem] relative")
     const data = await fetchData();
     const header = createCardElement("h2")
     const productDescription = createCardElement("p");
@@ -189,8 +189,14 @@ const renderDescription = async () => {
     sellerAvatar.src = data.seller.avatar
     sellerAvatar.alt = "Avatar"
     sellerName.textContent = data.seller.name;
-    sellerContainer.append(sellerAvatar, sellerName)
-    seller.append(sellerContainer)
+    if (localStorageItems && localStorageItems.token) {
+        const sellerContainer = createCardElement("div", "flex  items-center py-3 pb-3 w-[11.5rem] md:w-[13rem] lg:w-[14rem] relative")
+        sellerContainer.append(sellerAvatar, sellerName)
+        seller.append(sellerContainer)
+    }
+
+
+
     descriptionContainer.append(header, productDescription)
 
 }
@@ -200,23 +206,27 @@ const renderProductStatus = async () => {
     const productStatusContainer = document.querySelector("[data-type-specific='product-status']")
     const data = await fetchData();
     const bids = data.bids;
-    bids.sort((a, b) => b.amount - a.amount)
-    bids.forEach((({ id, amount, bidderName }) => {
-        const bidderContainer = createCardElement("div", "flex items-center gap-5  max-w-[20rem]");
-     
-        const sellerName = createCardElement("span");
-        const sellerBid = createCardElement("span", "ml-auto");
-        sellerName.textContent = bidderName;
-        sellerBid.textContent = `${amount}`;
-        bidderContainer.append( sellerName, sellerBid)
-         productStatusContainer.append(bidderContainer)
-    }))
+        bids.sort((a, b) => b.amount - a.amount)
+        bids.forEach((({ id, amount, bidderName }) => {
+            const bidderContainer = createCardElement("div", "flex items-center gap-5  max-w-[20rem]");
+            const sellerName = createCardElement("span");
+            const sellerBid = createCardElement("span", "ml-auto");
+            sellerName.textContent = bidderName;
+            sellerBid.textContent = `${amount}`;
+            bidderContainer.append(sellerName, sellerBid)
+            productStatusContainer.className ="flex flex-col min-h-[5rem] h-[10rem] gap-2 px-1"
+            productStatusContainer.append(bidderContainer)
+        }))
 
-    const firstChild = productStatusContainer.firstChild
+        const firstChild = productStatusContainer.firstChild
+        firstChild.classList.add("highest-bidder")
+
+
+
   
-    firstChild.classList.add("highest-bidder")
-    
-    console.log(firstChild)
+ 
+
+
 
 }
 
@@ -334,9 +344,26 @@ const inputError = (msg) => {
 }
 
     ; (() => {
+        const formParent = document.querySelector("[data-type-specific='bid-form-parent']")
         const form = document.querySelector("[data-type-specific='bid-form']");
         const formInput = document.querySelector("[data-type-specific='bid-input']");
         const submitBidBtn = document.querySelector("[data-type-specific='submit-bid-btn']")
+
+
+        if (localStorageItems && localStorageItems.token) {
+            formParent.className ="w-full md:w-[80%]  lg:w-[50%]  py-5 bg-custom-secondary rounded-sm shadow-sm"
+            form.className ="flex justify-center flex-col items-center gap-2 px-2"
+        } else {
+
+            formParent.className = "flex items-center justify-center w-full md:w-[80%]  lg:w-[50%]  py-5 bg-custom-secondary rounded-sm shadow-sm"
+            formParent.innerHTML = `
+            <div class="p-2 text-center text-custom-textDark"> <a class="text-purple-700 underline" href="/login.html">Logg inn</a> eller <a class="text-purple-700 underline" href="/signup.html">registrer</a> deg for å legge inn ett bud </div>
+            ` 
+            form.className = "hidden justify-center flex-col items-center gap-2 px-2"
+
+        }
+
+
         const validateInput = (value) => {
             if (isNaN(value)) {
                 inputError("Kun tall")

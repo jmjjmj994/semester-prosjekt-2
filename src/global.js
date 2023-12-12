@@ -1,4 +1,4 @@
-import { localStorageItems, createCardElement, createButtonElement } from "./js/utils/utils.js";
+import { localStorageItems, createCardElement } from "./js/utils/utils.js";
 import { singleProfile } from "./js/api/api.js";
 
 
@@ -14,22 +14,9 @@ const creditIcon = {
 
 
     ; (function () {
-        const userAvatar = () => {
-            const profileImage = document.querySelectorAll("[data-type-user='avatar']")
-            if (localStorageItems.userData && localStorageItems.media) {
-                profileImage.forEach(img => {
-                    img.src = localStorageItems.media
-                })
-            } else {
 
-                profileImage.forEach(img => {
-                    img.src = "src/assets/blank-avatar.png"
-                })
 
-            }
-        }
-
-        const userCredits =  async () => {
+        const userCredits = async () => {
             const data = await singleProfile(localStorageItems.userData.name);
             const creditsContainer = document.querySelector("[data-type-navbar='user-credit-container']")
             if (localStorageItems.token) {
@@ -45,7 +32,8 @@ const creditIcon = {
             }
             if (!localStorageItems.token) {
                 creditsContainer.innerHTML = ""
-            } }
+            }
+        }
 
         const navbarLinks = () => {
             const logInLogOut = document.querySelector("[data-type-navbar='login-logout-link']")
@@ -73,7 +61,7 @@ const creditIcon = {
             localStorage.removeItem("user-token")
         }
 
-        userAvatar()
+
         userCredits()
         navbarLinks()
 
