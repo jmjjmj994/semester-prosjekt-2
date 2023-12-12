@@ -20,20 +20,18 @@ const navbarToggler = (value) => {
 
 
 const userAvatar =  async () => {
-    const data = await singleProfile(localStorageItems.userData.name)
-    console.log(data)
     const profileImage = document.querySelectorAll("[data-type-user='avatar']")
     if (localStorageItems && localStorageItems.token) {
+        const data = await singleProfile(localStorageItems.userData.name)
         profileImage.forEach(img => {
             img.src = data.avatar
         })
-    } else {
-
+    }  else {
         profileImage.forEach(img => {
             img.src = "src/assets/blank-avatar.png"
         })
-
     }
+
 }
 userAvatar()
 
