@@ -84,6 +84,11 @@ a {
   letter-spacing: -0.025rem;
 }
 
+.footer-text {
+    font-family: "Roboto", sans-serif;
+  font-weight: semibold;
+  letter-spacing: -0.025rem;
+}
 .label-hidden {
   position: absolute;
   width: 1px;
