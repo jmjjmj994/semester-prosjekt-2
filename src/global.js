@@ -40,13 +40,16 @@ const creditIcon = {
             const logInLogOut = document.querySelector("[data-type-navbar='login-logout-link']")
             const listingLink = document.querySelector("[data-type-navbar='listing-link']")
             const profileLink = document.querySelector("[data-type-navbar='profile-link']")
+            const overviewLink = document.querySelector("[data-type-navbar='overview-link']")
             if (localStorageItems.token) {
                 logInLogOut.innerHTML = `<i class="fa-solid fa-right-from-bracket"></i>`
                 logInLogOut.href = "/index.html"
                 listingLink.href = "/listing.html"
                 profileLink.href = "/profile.html"
+                overviewLink.href = "/overview.html"
                 logInLogOut.onclick = () => clearToken()
             } else {
+                overviewLink.href ="/login.html"
                 listingLink.href = "/login.html"
                 profileLink.href = "/login.html"
                 logInLogOut.href = "/login.html"

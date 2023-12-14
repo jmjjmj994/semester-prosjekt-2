@@ -25,85 +25,88 @@
 
 
 <body class="bg-primary flex flex-col scroll-smooth">
-<header class="bg-custom-secondary flex items-center   h-[5rem]     z-10 global-padding">
-    <section class="flex items-center justify-center gap-3 h-[3rem] lg:h-[5rem] ">
+<header class="bg-custom-secondary flex items-center justify-between lg:flex-col   h-[7rem]     z-10 global-padding">
+    <section class="flex items-center justify-center gap-3 h-[3rem] lg:h-[5rem]  ">
         <button class="lg:hidden" data-header="hamburger-menu" aria-label="open menu" class="ring-1">
             <i class="fa-solid fa-bars text-custom-textDark"></i>
         </button>
         <img src="/src/assets/budhjørnet-hvit.svg " class="lg:hidden " alt="">
     </section>
-    <nav data-type-component="navbar"
-        class="flex flex-col  gap-2  bg-custom-secondary  fixed top-0 left-0 h-full w-[15rem] md:w-[20rem]  lg:flex-row   lg:static lg:h-[3rem]  lg:w-full lg:justify-between  lg:gap-0 ">
-        <div data-header="logo-svg" class="items-center  hidden lg:flex">
-            <img class="w-full h-full block" src="/src/assets/budhjørnet-hvit.svg" alt="">
+
+    <section class="flex text-custom-textDark  w-[auto]   gap-1 lg:w-full lg:justify-end  p-1 lg:p-0  h-auto">
+        <div data-type-navbar="user-container" class="">
+            <div class="flex items-center">
+                <img data-type-user="avatar"
+                    class="min-h-[2.5rem] h-[2.5rem] min-w-[2.5rem] w-[2.5rem] rounded-full text-custom-textDark" src=""
+                    alt="avatar">
+
+            </div>
+            <span class="flex ml-auto">
+                <div data-type-navbar="user-credit-container" class="flex">
+                </div>
+            </span>
         </div>
-        <section data-type-component="navbar-child" class=" flex justify-end lg:hidden global-padding">
+    </section>
+    <nav data-type-component="navbar"
+        class="flex flex-col  gap-2  bg-custom-secondary  fixed top-0 left-0 h-full w-[18rem] md:w-[20rem]  lg:flex-row     lg:static lg:h-[auto]   lg:w-full lg:justify-between   lg:gap-5  isActive">
+        <div data-header="logo-svg" class="items-center  hidden lg:flex">
+            <img class="w-[70%] h-full block" src="/src/assets/budhjørnet-hvit.svg" alt="">
+        </div>
+        <section data-type-component="navbar-child" class=" flex justify-end lg:hidden ">
             <button data-type-navbar="close-menu" type="button" aria-label="close menu">
                 <i class="fa-solid fa-xmark text-custom-textDark"></i>
             </button>
         </section>
-        <section class="flex text-custom-textDark  w-[auto]  gap-2  lg:order-4 global-padding ">
-            <div data-type-navbar="user-container" class="">
-                <div class="flex items-center">
-                    <img data-type-user="avatar"
-                        class="min-h-[2.5rem] h-[2.5rem] min-w-[2.5rem] w-[2.5rem] rounded-full text-custom-textDark"
-                        src="" alt="avatar">
-                    <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode"
-                        class="focus:bg-red-600">
-                    </button>
-                </div>
-                <span class="flex ml-auto">
-                    <div data-type-navbar="user-credit-container" class="flex">
-                    </div>
-                </span>
-            </div>
-        </section>
+
         <section
-            class=" flex flex-col w-full    mt-10 gap-8 lg:flex-row lg:w-[70%] lg:mt-0 lg:gap-0 global-padding lg:p-0">
+            class=" flex flex-col w-full  lg:justify-between    mt-10 gap-8 lg:flex-row lg:w-full lg:mt-0 lg:gap-5 p-2 lg:p-0 ">
             <form data-type-component="navbar-form"
-                class=" flex lg:items-center  lg:order-3 h-[2rem]   lg:h-auto lg:basis-[30%] lg:mx-5">
+                class=" flex lg:items-center  lg:order-3 h-[2rem]    lg:h-auto lg:basis-[45%] ">
                 <div class="h-full lg:h-[60%] w-full relative lg:flex lg:gap-1">
                     <label for="search" class="label-hidden">
                         søk
                     </label>
                     <input data-type-component="navbar-form-input"
-                        class="placeholder:text-custom-textDark bg-custom-background text-custom-textDark links-typography h-full w-full rounded-sm py-1 px-2"
+                        class="placeholder:text-custom-textDark placeholder:text-sm  md:placeholder:text-base bg-custom-background text-custom-textDark links-typography h-full w-full rounded-sm py-3 px-2"
                         type="text" id="search" placeholder="Søk...">
                     <button data-type-component="navbar-form-submit-btn"
                         class="absolute top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2   text-xs  rounded-sm  bg-custom-btnBgAccent text-custom-textWhite uppercase py-1 px-2  lg:static lg:translate-x-0 lg:translate-y-0 lg:h-full lg:py-0 ">SØK</button>
                 </div>
             </form>
             <ul data-type-component="navbar-child"
-                class="flex flex-col gap-5 lg:flex-row  items-center justify-between uppercase text-custom-textDark  lg:margin-centered   lg:basis-[45%]">
-                <li class="w-full lg:w-auto">
-                    <a href="/index.html">hjem</a>
+                class="flex flex-col gap-2 lg:flex-row     items-start lg:items-center justify-between  text-custom-textDark  bg-red   lg:basis-[40%]">
+                <li class="w-auto  px-1 py-[0.5px] lg:px-[1rem] lg:py-1 relative nav-links-state" tabindex="0">
+                    <a href="/index.html">Hjem</a>
                 </li>
-                <li class="w-full lg:w-auto">
-                    <a href="/bidding.html">auksjoner</a>
+                <li class="w-auto  px-1 py-[0.5px]   lg:px-[1rem] lg:py-1 relative nav-links-state" tabindex="0">
+                    <a href="/bidding.html">Auksjoner</a>
                 </li>
-                <li class="w-full lg:w-auto">
-                    <a data-type-navbar="listing-link" href="">selg</a>
+                <li class="w-auto  px-1 py-[0.5px]    lg:px-[1rem] lg:py-1 relative nav-links-state" tabindex="0">
+                    <a data-type-navbar="listing-link" href="">Selg</a>
                 </li>
 
-                <li class="w-full lg:w-auto ">
-                    <a href="/overview.html">oversikt</a>
+                <li class="w-auto  px-1 py-[0.5px]   lg:px-[1rem] lg:py-1 relative nav-links-state" tabindex="0">
+                    <a href="" data-type-navbar='overview-link'>Oversikt</a>
                 </li>
             </ul>
 
-            <ul data-type-component="navbar-child"
-                class="flex flex-col lg:flex-row items-center justify-between uppercase text-custom-textDark  lg:order-3  lg:justify-end lg:gap-2">
-                <li class="w-full lg:w-auto ">
+            <ul
+                class="flex flex-col lg:flex-row  items-start  lg:items-center justify-between    text-custom-textDark  lg:order-3  lg:justify-end lg:gap-2 lg:basis-auto">
+                <li class="w-auto  py-[0.5px]    lg:py-1 relative nav-links-state" tabindex="0">
                     <a data-type-navbar="login-logout-link" href=""></a>
                 </li>
-                <li class="w-full lg:w-auto">
+                <li class="py-[0.5px]">
                     <a data-type-navbar="profile-link" aria-label="Go to profile page" href=""><i
                             class="fa-solid fa-user"></i></a>
+                </li>
+                <li class="py-[0.5px] flex items-center">
+                    <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode">
+                    </button>
                 </li>
             </ul>
         </section>
     </nav>
 </header>
-
 
 
 
@@ -120,7 +123,8 @@
             </article>
             <section class="flex flex-col lg:flex-row  gap-5   min-h-[100vh]"> <!--Wrapper-->
 
-                <section class="flex-1 height-calc flex flex-col  items-center lg:items-start   lg:pl-[7rem]"> <!--Wrapper-->
+                <section class="flex-1 height-calc flex flex-col  items-center lg:items-start   lg:pl-[7rem]">
+                    <!--Wrapper-->
 
                     <!--Header-->
 
@@ -134,7 +138,7 @@
                             <label for="produkt-title">PRODUKT TITTEL*:</label>
                             <input data-input-type="product-title"
                                 class="basis-full pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md type="
-                                text" name="product-title" placeholder="Produkt navn:">
+                                type="text" name="product-title" placeholder="Produkt navn:">
                         </div>
 
 
@@ -208,27 +212,27 @@
 
                     <article
                         class="bg-custom-card text-custom-textDark   lg:sticky top-[10vh] flex flex-col  w-full  gap-3 my-6  px-2  py-2 min-h-[25rem]  lg:min-h-[30vh]  lg:max-h-[100vh] overflow-hidden  rounded-sm shadow-sm">
-                      
-
-                            <div class=" h-[27rem] sm:h-[32rem] md:h-[35rem] w-full rounded-sm  relative">
-                                <img class="h-full max-w-full w-full object-cover inset-0 border-inherit absolute"
-                                    data-type-preview="image" src="" alt="Preview image">
-                            </div>
-
-                            <div class="min-h-[5rem] flex flex-col  overflow-auto break-words whitespace-break-spaces">
-                                <h2 data-type-preview="body-header" class="max-w-[50ch]">
-
-                                </h2>
-                                    <p data-type-preview="body-categories" class="max-w-[50ch] ">
-                                    
-                                    </p>
-                                    <p data-type-preview="body-description" class="max-w-[50ch] ">
-                                    </p>
-                                    <span data-type-preview="body-date"></span>
-                            </div>
 
 
-                       <!--      <div class="bg-purple-900">
+                        <div class=" h-[27rem] sm:h-[32rem] md:h-[35rem] w-full rounded-sm  relative">
+                            <img class="h-full max-w-full w-full object-cover inset-0 border-inherit absolute"
+                                data-type-preview="image" src="" alt="Preview image">
+                        </div>
+
+                        <div class="min-h-[5rem] flex flex-col  overflow-auto break-words whitespace-break-spaces">
+                            <h2 data-type-preview="body-header" class="max-w-[50ch]">
+
+                            </h2>
+                            <p data-type-preview="body-categories" class="max-w-[50ch] ">
+
+                            </p>
+                            <p data-type-preview="body-description" class="max-w-[50ch] ">
+                            </p>
+                            <span data-type-preview="body-date"></span>
+                        </div>
+
+
+                        <!--      <div class="bg-purple-900">
                             
                             </div>
                             <div data-type-preview="body-description"
@@ -259,68 +263,123 @@
 
     </main>
 
-    <footer class="bg-secondary flex-shrink flex flex-col md:flex-wrap md:flex-row md:items-center">
-        <div class="md:flex-1">
-            <h3>About</h3>
-            <ul>
-                <li>
-                    <a href="#">Link</a>
-                </li>
-                <li>
-                    <a href="#">Link</a>
-                </li>
-                <li>
-                    <a href="#">Link</a>
-                </li>
-                <li>
-                    <a href="#">Link</a>
-                </li>
-                <li>
-                    <a href="#">Link</a>
-                </li>
-            </ul>
-        </div>
-        <div class="md:flex-1">
-            <h3>Contact</h3>
-            <ul>
-                <li>
-                    <a href="#">Link</a>
-                </li>
-                <li>
-                    <a href="#">Link</a>
-                </li>
-                <li>
-                    <a href="#">Link</a>
-                </li>
-                <li>
-                    <a href="#">Link</a>
-                </li>
-                <li>
-                    <a href="#">Link</a>
-                </li>
-            </ul>
-        </div>
+    <footer
+        class="text-custom-textDark bg-custom-secondary min-h-[50vh] flex-col justify-center   lg:min-h-[80vh] w-full gap-2  global-padding footer-grid  flex lg:items-center   relative ">
 
-        <div class="md:flex-1">
-            <h3>Help</h3>
-            <ul>
+        <section
+            class="h-full w-full  flex flex-col justify-between gap-5 global-margin-block     lg:flex-row lg:items-start ">
+            <!--Wapper-->
+
+            <div class=" flex-0 flex flex-col">
+
+                <div class=" max-w-[15rem]  w-full flex flex-col gap-3  lg:w-[25rem]">
+                    <div class="  ">
+                        <img class="w-full h-[auto] text-custom-textDark" src="/src/assets/budhjørnet-hvit.svg" alt="">
+                    </div>
+                    <div class="flex justify-between">
+                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-x-twitter"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <ul class="flex flex-col gap-3 flex-0 footer-text">
+
                 <li>
-                    <a href="#">Link</a>
+                    <p class="text-lg">Kontakt informasjon</p>
                 </li>
+
                 <li>
-                    <a href="#">Link</a>
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        13C Årstad
+
+                    </p>
+
                 </li>
+
                 <li>
-                    <a href="#">Link</a>
-                </li>
-                <li>
-                    <a href="#">Link</a>
-                </li>
-                <li>
-                    <a href="#">Link</a>
+                    <p><i class="fa-solid fa-envelope"></i>
+
+                        hjelp@budhjørnet.no
+                    </p>
                 </li>
             </ul>
-        </div>
+
+            <ul class="flex flex-col gap-2 flex-0  footer-text">
+                <li>
+                    <p class="text-lg">Navigasjon</p>
+                </li>
+
+                <li class="">
+                    <a href=" /index.html">Hjem</a>
+                </li>
+                <li class="">
+                    <a href="/bidding.html">Auksjoner</a>
+                </li>
+                <li data-type-footer="listing-li" class="">
+                    <a href="/listing.html">Selg</a>
+                </li>
+
+                <li data-type-footer="overview-li">
+                    <a href="/overview.html">Oversikt</a>
+                </li>
+
+                <li data-type-footer="profile-li">
+                    <a href="/profile.html">Profil</a>
+                </li>
+            </ul>
+
+            <ul class="flex flex-col gap-3  footer-text  flex-0">
+                <li>
+                    <p class="text-lg">Ofte stilte spørsmål</p>
+                </li>
+
+
+                <li>
+                    <a href="#">Konto</a>
+                </li>
+
+                <li>
+                    <a href="#">Frakt- og levering</a>
+                </li>
+
+                <li>
+                    <a href="#">Retur- og refusjon</a>
+                </li>
+
+                <li>
+                    <a href="#">Regler</a>
+                </li>
+                <li>
+                    <a href="#">Vilkår og betingelser</a>
+                </li>
+
+
+            </ul>
+
+
+            <div
+                class="w-full  hidden lg:block absolute bottom-[12rem] lg:left-1/2   lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 global-padding">
+
+                <hr class="w-[full] ">
+            </div>
+
+            <p
+                class="text-xs text-custom-textGrey lg:absolute lg:bottom-[0] lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2">
+                &copy;2023 Budhjørnet. Alle rettigheter reservert.
+            </p>
+
+        </section>
+
+
+
+
     </footer>
 </body>
 

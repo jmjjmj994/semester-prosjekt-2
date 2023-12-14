@@ -119,7 +119,7 @@ const renderCards = async () => {
     } else {
         container.className = "hidden ";
         parentContainer.className = "flex-1 items-center "
-        containerHeader.className = "h-full w-full flex items-center justify-center text-center"
+        containerHeader.className = "h-full w-full flex items-center height-calc justify-center text-center"
         containerHeaderH1.innerHTML = `
         
         <span class=>
