@@ -166,7 +166,7 @@ const renderSingleSlide = async () => {
     const slide = createCardElement("div", "flex flex-1 relative");
     const image = createCardElement("img", "h-full w-full absolute object-cover");
     image.src = img.media
-    image.alt ="product image"
+    image.alt = "product image"
     slide.append(image);
     sliderContainer.append(slide);
 
@@ -178,7 +178,6 @@ const renderSingleSlide = async () => {
 const renderDescription = async () => {
     const descriptionContainer = document.querySelector("[data-type-specific='description']");
     const seller = document.querySelector("[data-type-specific='seller']")
-    console.log(seller)
     const data = await fetchData();
     const header = createCardElement("h2")
     const productDescription = createCardElement("p");
@@ -207,12 +206,11 @@ const renderProductStatus = async () => {
     const productStatusContainer = document.querySelector("[data-type-specific='product-status']")
     const data = await fetchData();
     const bids = data.bids;
-    console.log(bids)
-    if(bids.length === 0) {
-        productStatusContainer.innerHTML =`<h3 class="text-custom-textDark"> Ingen aktive bud </h3>`
+    if (bids.length === 0) {
+        productStatusContainer.innerHTML = `<h3 class="text-custom-textDark"> Ingen aktive bud </h3>`
         productStatusContainer.className = "flex flex-col items-center justify-center min-h-[5rem] h-[10rem] gap-2 px-1"
     } else {
-      
+
         bids.sort((a, b) => b.amount - a.amount)
         bids.forEach((({ id, amount, bidderName }) => {
             const bidderContainer = createCardElement("div", "flex items-center gap-5  max-w-[20rem]");
@@ -229,12 +227,12 @@ const renderProductStatus = async () => {
         firstChild.classList.add("highest-bidder")
     }
 
- 
 
 
 
-  
- 
+
+
+
 
 
 
@@ -330,7 +328,6 @@ const setBid = async (amount) => {
 
     } catch (error) {
         inputError(error.message)
-        console.log(error.message)
 
     }
 }
@@ -361,14 +358,14 @@ const inputError = (msg) => {
 
 
         if (localStorageItems && localStorageItems.token) {
-            formParent.className ="w-full md:w-[80%]  lg:w-[50%]  py-5 bg-custom-secondary rounded-sm shadow-sm"
-            form.className ="flex justify-center flex-col items-center gap-2 px-2"
+            formParent.className = "w-full md:w-[80%]  lg:w-[50%]  py-5 bg-custom-secondary rounded-sm shadow-sm"
+            form.className = "flex justify-center flex-col items-center gap-2 px-2"
         } else {
 
             formParent.className = "flex items-center justify-center w-full md:w-[80%]  lg:w-[50%]  py-5 bg-custom-secondary rounded-sm shadow-sm"
             formParent.innerHTML = `
             <div class="p-2 text-center text-custom-textDark"> <a class="text-purple-700 underline" href="/login.html">Logg inn</a> eller <a class="text-purple-700 underline" href="/signup.html">registrer</a> deg for å legge inn ett bud </div>
-            ` 
+            `
             form.className = "hidden justify-center flex-col items-center gap-2 px-2"
 
         }

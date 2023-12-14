@@ -104,12 +104,13 @@ renderAuctionCards(data)
 
 
 
+
 const auctionCards = async (title, image, bids, date, id) => {
 
      const createBidArray = bids.map(bid => bid.amount)
     const highestBid =  createBidArray.length > 0 ? Math.max(...createBidArray) : 0;
     const totalBids = createBidArray.reduce((accumulator, bidObj) => accumulator + bidObj,0)  
-    const article = createCardElement("article", "flex flex-col  relative  bg-custom-card relative shadow-md text-custom-textGrey ");
+    const article = createCardElement("article", "flex flex-col  relative  bg-custom-card relative shadow-md text-custom-textGrey card-no-effect card-effect");
     const articleLink = createCardElement("a", "absolute h-full w-full custom-z-low");
     articleLink.href = `/specific.html?id=${id}`
     const articleHeader = createCardElement("div", " h-[70%] relative")

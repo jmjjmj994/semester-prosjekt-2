@@ -46,8 +46,8 @@ const deleteListing = async (id) => {
 }
 
 const listingsCardHeader = (img) => {
-    const cardHeader = createCardElement("div", "relative h-[20rem]");
-    const cardHeaderImg = createCardElement("img", "absolute  w-full h-full object-cover");
+    const cardHeader = createCardElement("div", "relative h-[15rem] rounded-sm");
+    const cardHeaderImg = createCardElement("img", "absolute  w-full h-full object-cover border-inherit");
     cardHeaderImg.src = img;
     cardHeader.alt = "listing";
     cardHeader.append(cardHeaderImg);
@@ -55,7 +55,7 @@ const listingsCardHeader = (img) => {
 }
 
 const listingsCardBody = (title, description, start, end) => {
-    const cardBody = createCardElement("div", "global-padding flex flex-col text-custom-textDark");
+    const cardBody = createCardElement("div", "flex p-2 flex-col text-custom-textDark ");
     const cardBodyTitle = createCardElement("h2")
     cardBodyTitle.textContent = title;
     const cardBodyDescription = createCardElement("p");
@@ -71,7 +71,7 @@ const listingsCardBody = (title, description, start, end) => {
 }
 const listingsCardFooter = (id) => {
 
-    const cardFooter = createCardElement("div", "global-padding pb-2 py-2 flex  gap-2 ");
+    const cardFooter = createCardElement("div", " p-2 flex  gap-2 ");
     const cardDeleteBtn = createButtonElement("bg-custom-btnBgAccent text-custom-textWhite py-1 px-4 relative rounded-sm shadow-sm");
     cardDeleteBtn.textContent = "Slett";
     const cardUpdateBtn = createButtonElement("")
@@ -85,7 +85,7 @@ const listingsCardFooter = (id) => {
 }
 
 const card = (id, media, title, description, start, end) => {
-    const card = createCardElement("div", "bg-custom-card flex flex-col rounded-sm shadow-sm")
+    const card = createCardElement("div", "bg-custom-card flex flex-col rounded-sm shadow-sm card-effect card-no-effect ")
     card.setAttribute("data-type-card", `${id}`)
     const cardHeader = listingsCardHeader(media);
     const cardBody = listingsCardBody(title, description, start, end);
@@ -97,7 +97,6 @@ const card = (id, media, title, description, start, end) => {
 
 const renderCards = async () => {
     const parentContainer = document.querySelector("[data-type-overview='parent-section']");
-    console.log(parentContainer)
     const container = document.querySelector("[data-type-section='my-listings']")
     const containerHeader = document.querySelector("[data-type-overview='header']")
     const containerHeaderH1 = document.querySelector("[data-type-overview='header-h1']")
@@ -112,7 +111,7 @@ const renderCards = async () => {
             container.append(listingCard)
         })
         container.className = "w-full h-auto listings-card"
-        parentContainer.className = "flex-1 height-calc global-margin-block"
+        parentContainer.className = "flex-1 height-calc global-margin-block global-padding"
         containerHeader.className = "text-center"
         containerHeaderH1.textContent = "Min oversikt"
 
