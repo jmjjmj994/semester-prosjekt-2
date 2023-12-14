@@ -17,7 +17,7 @@ const creditIcon = {
 
 
         const userCredits = async () => {
-         
+
             const creditsContainer = document.querySelector("[data-type-navbar='user-credit-container']")
             if (localStorageItems.token) {
                 const data = await singleProfile(localStorageItems.userData.name);
@@ -56,6 +56,24 @@ const creditIcon = {
 
         }
 
+        const footerLinks = () => {
+            const footerListingLi = document.querySelector("[data-type-footer='listing-li']")
+            const footerOverviewLi = document.querySelector("[data-type-footer='overview-li']")
+            const footerProfileLi = document.querySelector("[data-type-footer='profile-li']")
+
+            if (localStorageItems.token) {
+                footerListingLi.style.display = "block";
+                footerOverviewLi.style.display = "block";
+                footerProfileLi.style.display = "block";
+
+            } else {
+                footerListingLi.style.display = "none";
+                footerOverviewLi.style.display = "none";
+                footerProfileLi.style.display = "none";
+
+            }
+        }
+
 
         function clearToken() {
             localStorage.removeItem("user-data")
@@ -65,7 +83,7 @@ const creditIcon = {
 
         userCredits()
         navbarLinks()
-
+        footerLinks()
 
 
     }());

@@ -34,7 +34,7 @@
         <nav data-type-component="navbar"
             class="flex flex-col  gap-2  bg-custom-secondary  fixed top-0 left-0 h-full w-[15rem] md:w-[20rem]  lg:flex-row   lg:static lg:h-[3rem]  lg:w-full lg:justify-between  lg:gap-0 ">
             <div data-header="logo-svg" class="items-center  hidden lg:flex">
-                <img class="w-full h-full block" src="/src/assets/budhjørnet-hvit.svg" alt="">
+                <img class="w-[70%] h-full block" src="/src/assets/budhjørnet-hvit.svg" alt="">
             </div>
             <section data-type-component="navbar-child" class=" flex justify-end lg:hidden global-padding">
                 <button data-type-navbar="close-menu" type="button" aria-label="close menu">
@@ -73,24 +73,24 @@
                     </div>
                 </form>
                 <ul data-type-component="navbar-child"
-                    class="flex flex-col gap-5 lg:flex-row  items-center justify-between uppercase text-custom-textDark  lg:margin-centered   lg:basis-[45%]">
+                    class="flex flex-col gap-5 lg:flex-row  items-center justify-between  text-custom-textDark  lg:margin-centered   lg:basis-[45%]">
                     <li class="w-full lg:w-auto">
-                        <a href="/index.html">hjem</a>
+                        <a href="/index.html">Hjem</a>
                     </li>
                     <li class="w-full lg:w-auto">
-                        <a href="/bidding.html">auksjoner</a>
+                        <a href="/bidding.html">Auksjoner</a>
                     </li>
                     <li class="w-full lg:w-auto">
-                        <a data-type-navbar="listing-link" href="">selg</a>
+                        <a data-type-navbar="listing-link" href="">Selg</a>
                     </li>
 
                     <li class="w-full lg:w-auto ">
-                        <a href="/overview.html">oversikt</a>
+                        <a href="/overview.html">Oversikt</a>
                     </li>
                 </ul>
 
                 <ul data-type-component="navbar-child"
-                    class="flex flex-col lg:flex-row items-center justify-between uppercase text-custom-textDark  lg:order-3  lg:justify-end lg:gap-2">
+                    class="flex flex-col lg:flex-row items-center justify-between  text-custom-textDark  lg:order-3  lg:justify-end lg:gap-2">
                     <li class="w-full lg:w-auto ">
                         <a data-type-navbar="login-logout-link" href=""></a>
                     </li>
@@ -232,7 +232,9 @@
     <footer
         class="text-custom-textDark bg-custom-secondary min-h-[50vh] flex-col justify-center   lg:min-h-[80vh] w-full gap-2  global-padding footer-grid  flex lg:items-center   relative ">
 
-        <section class="h-full w-full  flex flex-col justify-between gap-5 global-margin-block     lg:flex-row lg:items-start "> <!--Wapper-->
+        <section
+            class="h-full w-full  flex flex-col justify-between gap-5 global-margin-block     lg:flex-row lg:items-start ">
+            <!--Wapper-->
 
             <div class=" flex-0 flex flex-col">
 
@@ -253,6 +255,9 @@
 
             <ul class="flex flex-col gap-3 flex-0 footer-text">
 
+                <li>
+                    <p class="text-lg">Kontakt informasjon</p>
+                </li>
 
                 <li>
 
@@ -272,62 +277,69 @@
                 </li>
             </ul>
 
-            <ul class="flex flex-col gap-2 flex-0 uppercase footer-text">
-                <span class="text-lg">navigasjon</span>
-                <li class="">
-                    <a href=" /index.html">hjem</a>
-                </li>
-                <li class="">
-                    <a href="/bidding.html">auksjoner</a>
-                </li>
-                <li class="">
-                    <a data-type-navbar="listing-link" href="">selg</a>
-                </li>
-
-                <li class="">
-                    <a href="/overview.html">oversikt</a>
-                </li>
-
+            <ul class="flex flex-col gap-2 flex-0  footer-text">
                 <li>
-                    <a data-type-navbar="profile-link" aria-label="Go to profile page" href="">Profil</a>
+                    <p class="text-lg">Navigasjon</p>
+                </li>
+
+                <li class="">
+                    <a href=" /index.html">Hjem</a>
+                </li>
+                <li class="">
+                    <a href="/bidding.html">Auksjoner</a>
+                </li>
+                <li data-type-footer="listing-li" class="">
+                    <a href="/listing.html">Selg</a>
+                </li>
+
+                <li data-type-footer="overview-li">
+                    <a href="/overview.html">Oversikt</a>
+                </li>
+
+                <li data-type-footer="profile-li">
+                    <a href="/profile.html">Profil</a>
                 </li>
             </ul>
 
-            <ul class="flex flex-col gap-3 uppercase footer-text  flex-0">
-                <span class="text-lg">ofte stilte spørsmål</span>
+            <ul class="flex flex-col gap-3  footer-text  flex-0">
+                <li>
+                    <p class="text-lg">Ofte stilte spørsmål</p>
+                </li>
+
 
                 <li>
-                    <a href="#">konto</a>
+                    <a href="#">Konto</a>
                 </li>
 
                 <li>
-                    <a href="#">frakt- og levering</a>
+                    <a href="#">Frakt- og levering</a>
                 </li>
 
                 <li>
-                    <a href="#">retur- og refusjon</a>
+                    <a href="#">Retur- og refusjon</a>
                 </li>
 
                 <li>
-                    <a href="#">regler</a>
+                    <a href="#">Regler</a>
                 </li>
                 <li>
-                    <a href="#">vilkår og betingelser</a>
+                    <a href="#">Vilkår og betingelser</a>
                 </li>
 
 
             </ul>
 
 
-<div class="w-full  hidden lg:block absolute bottom-[12rem] lg:left-1/2   lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 global-padding">
-    
-    <hr class="w-[full] ">
-</div>
+            <div
+                class="w-full  hidden lg:block absolute bottom-[12rem] lg:left-1/2   lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 global-padding">
 
-            <span
+                <hr class="w-[full] ">
+            </div>
+
+            <p
                 class="text-xs text-custom-textGrey lg:absolute lg:bottom-[0] lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2">
                 &copy;2023 Budhjørnet. Alle rettigheter reservert.
-            </span>
+            </p>
 
         </section>
 
