@@ -1,4 +1,4 @@
-import { articleCard, createCardElement, norwegianEndDate } from "../utils/utils.js"
+import { articleCard, skeletonCards } from "../utils/utils.js"
 const params = new URLSearchParams(window.location.search);
 const auctionContainer = document.querySelector("[data-type-section='listings']")
 const auctionHeader = document.querySelector("[data-type-section='result-information']")
@@ -179,9 +179,15 @@ const handleData = (data) => {
 
 
 const renderAuctionCards = async (data) => {
-
+    const skeleton = skeletonCards()
+    for (let i = 0; i < data.length; i++) {
+       auctionContainer.innerHTML += skeleton
+    }
 
     try {
+/* 
+        await new Promise(resolve => setTimeout(resolve, 1000)); */
+
 
         if (typeof data === "string" || data.length === 0) {
             auctionContainer.innerHTML = `<span> Ingen data tilgjengelig. Trykk <a class="text-purple-600 underline" href="/bidding.html">her</a> for å gå tilbake. </span>`;

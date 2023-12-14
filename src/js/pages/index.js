@@ -1,5 +1,5 @@
 import { listings } from "../api/api.js";
-import { createCardElement, norwegianEndDate, localStorageItems } from "../utils/utils.js";
+import { articleCard, skeletonCards,createCardElement, norwegianEndDate, localStorageItems } from "../utils/utils.js";
 
 const featuredSection = document.querySelector("[data-featured-section='grid-container']");
 const carouselContainer = document.querySelector("[data-carousel-container]");
@@ -30,85 +30,41 @@ const sortListingsByBids = () => {
 
 
 
-const featuredCards = (title, image, bids, date, id) => {
-    const createBidArray = bids.map(bid => bid.amount)
-    const highestBid = Math.max(...createBidArray);
-    const article = createCardElement("article", "flex flex-col  relative  bg-custom-card relative shadow-sm rounded-sm text-custom-textGrey  card-no-effect card-effect");
-    const articleLink = createCardElement("a", "absolute h-full w-full custom-z-low ");
-    articleLink.href = `/specific.html?id=${id}`
-    articleLink.ariaLabel = "Go to product"
-    const articleHeader = createCardElement("div", " h-[70%] relative border-inherit")
-    const articleHeaderImage = createCardElement("img", "absolute object-cover w-full h-full border-inherit");
-    image.length === 0 ? articleHeaderImage.src = "src/assets/no-image.jpg" : articleHeaderImage.src = image;
-    articleHeaderImage.alt = "Auksjons-produkt";
-    articleHeader.append(articleHeaderImage)
-    const articleBody = createCardElement("div", "basis-[auto] flex   p-1");
-    const articleBodyTitle = createCardElement("span", "card-title-typography mt-3");
-    articleBodyTitle.textContent = title;
-    articleBody.append(articleBodyTitle)
-    const articleFooter = createCardElement("div", "flex basis-[auto] flex-col py-3 justify-between  p-1 ");
-    const articleFooterCol1 = createCardElement("div", "flex flex-col ")
-    const articleFooterCol1HighestBid = createCardElement("span", "")
-    articleFooterCol1HighestBid.textContent = `Høyeste bud :${highestBid}`
-    articleFooterCol1.append( articleFooterCol1HighestBid)
-    const articleFooterCol2 = createCardElement("div", "flex  items-center gap-1 py-1");
-    const articleFooterCol2Icon = createCardElement("i", "fa-regular fa-clock")
-    const articleFooterCol2EndDate = createCardElement("span","")
-    articleFooterCol2EndDate.textContent = date
-    articleFooterCol2.append(articleFooterCol2Icon, articleFooterCol2EndDate)
-    articleFooter.append(articleFooterCol1, articleFooterCol2)
-    article.append(articleLink)
-    article.append(articleHeader, articleBody, articleFooter)
-    return article;
-
-
-
-}
-const featuredSkeletonCards = () => {
-    const skeletonArticle = createCardElement("article", "flex flex-col relative bg-custom-secondary relative shadow-md animate-pulse");
-    const skeletonArticleHeader = createCardElement("div", "flex flex-col  relative  bg-custom-secondary relative shadow-md text-custom-textDark");
-    const skeletonArticleHeaderDiv = createCardElement("div", "h-[70%] bg-orange-500")
-    skeletonArticleHeader.append(skeletonArticleHeaderDiv)
-    const skeletonArticleBody = createCardElement("div", "basis-full flex items-center text-custom-textDark");
-    const skeletonArticleBodyTitle = createCardElement("span", "bg-white opacity-0 card-title-typography");
-    const skeletonArticleFooter = createCardElement("div", "flex justify-between items-end pb-2");
-    const skeletonArticleFooterCol1 = createCardElement("div", "flex flex-col text-custom-textDark");
-    const skeletonArticleFooterCol1TotalBids = createCardElement("span", "bg-white opacity-0");
-    const skeletonArticleFooterCol1HighestBid = createCardElement("span", "bg-white opacity-0");
-    const skeletonArticleFooterCol2 = createCardElement("div", "text-custom-textDark");
-    const skeletonArticleFooterCol2Icon = createCardElement("i", "fa-regular fa-clock bg-white opacity-0");
-    const skeletonArticleFooterCol2EndDate = createCardElement("span", "bg-white opacity-0");
-    skeletonArticle.append(skeletonArticleHeader, skeletonArticleBody, skeletonArticleFooter);
-    skeletonArticleBody.append(skeletonArticleBodyTitle);
-    skeletonArticleFooterCol1.append(skeletonArticleFooterCol1TotalBids, skeletonArticleFooterCol1HighestBid);
-    skeletonArticleFooterCol2.append(skeletonArticleFooterCol2Icon, skeletonArticleFooterCol2EndDate);
-    skeletonArticleFooter.append(skeletonArticleFooterCol1, skeletonArticleFooterCol2);
-
-    return skeletonArticle
-
-}
 
 
 
 
 
 const renderFeaturedCards = async () => {
+const skeleton = skeletonCards()
     const items = sortListingsByBids();
-    const articleCard = featuredCards;
-    featuredSection.innerHTML = "";
     for (let i = 0; i < items.length; i++) {
-        const skeletonCard = featuredSkeletonCards();
-        featuredSection.append(skeletonCard);
+        featuredSection.innerHTML += skeleton
     }
     try {
-        featuredSection.innerHTML = "";
-        items.forEach(item => {
-            const norwegianTime = norwegianEndDate(item.endsAt);
-            featuredSection.append(articleCard(item.title, item.media, item.bids, norwegianTime, item.id));
-        });
-    } catch (error) {
-        console.error(error);
-    }
+  /*       await new Promise(resolve => setTimeout(resolve, 1000)); */
+  
+    
+
+        if (typeof items === "string" || items.length === 0) {
+            featuredSection.innerHTML = `<span> Vi har problemet med å hente dataen. Vennligst prøv igjen </span>`;
+        } else {
+            featuredSection.innerHTML = "";
+            const cardPromises = items.map(async (item) => {
+                const { media, title, bids, endsAt, id } = item;
+                const createBidArray = bids.map(bid => bid.amount)
+                const highestBid = createBidArray.length > 0 ? Math.max(...createBidArray) : 0;
+                const card = articleCard(media, title, highestBid, endsAt, id);
+                return card
+
+            });
+
+            const cards = await Promise.all(cardPromises);
+            featuredSection.innerHTML = ""
+            cards.forEach(card => featuredSection.appendChild(card));
+        }
+
+    } finally { } 
 
 
 }

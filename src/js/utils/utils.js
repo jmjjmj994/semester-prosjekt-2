@@ -95,7 +95,6 @@ const cardFooter = (bids, endsAt) => {
     const cardFooterBids = createCardElement("p", "")
     cardFooterBids.textContent = `Høyeste bud: ${bids}`
     cardFooterCol_1.append(cardFooterBids)
-   
     const cardFooterCol_2 = createCardElement("div", "flex gap-1 px-1 shadow-xl bg-custom-background")
     const cardFooterCol_2Icon = createCardElement("span", "")
     cardFooterCol_2Icon.innerHTML = `<i class="fa-regular fa-clock"></i>`
@@ -112,6 +111,9 @@ const cardFooter = (bids, endsAt) => {
 
 
 
+
+
+
 export const articleCard = (image, title, bids, endsAt,id) => {
     const article = createCardElement("article", "flex flex-col justify-between relative  bg-custom-card relative shadow-md text-custom-textGrey card-no-effect card-effect relative");
     const link = createCardElement("a", "inset-0 absolute  custom-z-low");
@@ -122,4 +124,22 @@ export const articleCard = (image, title, bids, endsAt,id) => {
     article.append(link,articleHeader, articleBody, articleFooter)
     return article
 
+}
+
+export const skeletonCards = () => {
+    const skeletonCard = `
+        <div class="flex flex-col justify-between bg-custom-card  rounded-sm shadow-lg  card-no-effect card-effect relative">
+            <div class="card-header h-[70%] relative  animate-pulse">
+                <div class=" h-[full]  absolute inset-0  bg-gray-200 rounded-md"></div>
+            </div>
+            <div class="card-body p-4 ">
+                <div class=" h-[2rem] bg-gray-200 rounded-md mb-2 w-full animate-pulse"></div>
+            </div>
+            <div class="basis-[auto] flex gap-4   p-1 overflow-hidden">
+                <div class="skeleton-bids w-20 h-6 flex-1 bg-gray-200 animate-pulse rounded-md"></div>
+                <div class="skeleton-ends-at w-24 h-6 flex-1 bg-gray-200 animate-pulse rounded-md"></div>
+            </div>
+        </div>
+    `;
+    return skeletonCard;
 }
