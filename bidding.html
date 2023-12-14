@@ -17,6 +17,7 @@
     <script src="/src/js/pages/bidding.js" type="module"></script>
     <script src="/src/global.js" type="module"></script>
     <script src="/src/js/search/search.js" type="module"></script>
+    <script src="/test.js" type="module"></script>
 
 
 
@@ -117,11 +118,30 @@
 
     <main class="flex flex-col flex-grow bg-custom-background global-padding relative">
 
-        <section class="flex-1 flex flex-col   height-calc   global-margin-block"> <!--Wrapper-->
+        <section class="flex-1 flex flex-col justify-center  height-calc   global-margin-block"> <!--Wrapper-->
             <article class="headers-margin">
                 <h1 data-type-section="result-information" class="text-custom-textDark text-center"></h1>
             </article>
 
+            <section class="h-[auto] headers-margin ">
+           <details class="bg-custom-secondary  md:w-[18rem]  text-custom-textDark  custom-z-low top-0 rounded-sm shadow-sm px-2 py-2 cursor-pointer" open="true">
+            <summary class=" text-lg text-bold">
+         
+       Filtrer
+   
+            </summary>
+
+         <ul class="mt-2 flex flex-col gap-2">
+            <li class="flex items-center text-md gap-1">
+            <p>Nyeste</p>
+            </li>
+            <li class="flex items-center text-md gap-1">
+             
+                <p>Eldste</p>
+            </li>
+         </ul>
+           </details>
+            </section>
 
             <section data-type-section="listings" class="flex-1  featured-card-grid ">
                 <!--Card container-->
