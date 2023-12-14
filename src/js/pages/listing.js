@@ -4,11 +4,9 @@ import { createListing } from "../api/api.js";
 
 const form = document.querySelector("[data-form-type='listing-form']");
 
-
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const validatedInput = validateInput();
-    console.log(validatedInput.end)
     if (validatedInput) {
         await createListing(validatedInput.title, validatedInput.description, validatedInput.tags, validatedInput.image, validatedInput.end)
         console.log("valid")
@@ -31,7 +29,9 @@ productTagsInput.value = "";
 productImageInput.value = "";
 productTextareaInput.value = ""
 productDateInput.value = "";
+
 const validateInput = () => {
+
     const productInputTitle = document.querySelector("[data-input-type='product-title']")
     const productTagsInput = document.querySelector("[data-input-type='product-tags']")
     const productImageInput = document.querySelector("[data-input-type='product-image']")
@@ -62,7 +62,7 @@ const validateInput = () => {
 
 }
 
-
+validateInput()
 const imagePreview = (image) => {
     const img = document.querySelector("[data-container-='image-container-img']")
     img.src = image
@@ -110,11 +110,6 @@ const createPreview = () => {
     const previewBodyDescription = document.querySelector("[data-type-preview='body-description']")
     const previewBodyDate = document.querySelector("[data-type-preview='body-date']")
 
-
-
-
-
-
     productInputTitle.addEventListener("input", (e) => {
         previewBodyHeader.textContent = e.target.value
 
@@ -144,6 +139,8 @@ const createPreview = () => {
 
 
 createPreview()
+
+
 
 
 

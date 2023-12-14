@@ -1,10 +1,9 @@
 
 
-
 //https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&_tag=test&sort=createdAt&sortOrder=asc
-const listings = async (limit) => {
+/* const listings = async (order, offset) => {
     const url =
-        `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_bids=true&_count&_active=true&sort=createdAt&sortOrder=asc&limit=10`;
+        `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_bids=true&_count&_active=true&sort=endsAt&sortOrder=${order}&limit=100&offset=${offset}`;
   
 
 
@@ -30,7 +29,6 @@ const listings = async (limit) => {
     }
 }
 
-console.log("hei")
 
-const test = await listings();
-console.log(test)
+const test = await listings("desc", 0);
+ */

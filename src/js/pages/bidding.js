@@ -1,11 +1,29 @@
 import { createCardElement, norwegianEndDate } from "../utils/utils.js"
+const params = new URLSearchParams(window.location.search);
 const auctionContainer = document.querySelector("[data-type-section='listings']")
 const auctionHeader = document.querySelector("[data-type-section='result-information']")
 const buttonContainer = document.querySelector("[data-type-section='pagination-buttons']")
-const params = new URLSearchParams(window.location.search);
 const currentPage = params.get("page")
 const currentResult = params.get("results")
+const ascendingOrder = params.get("order")
+const descendingOrder = params.get("order")
+const allBtn = document.querySelector("[data-type-bidding-sort='all']")
+const ascendingBtn = document.querySelector("[data-type-bidding-sort='asc']")
+const descendingBtn = document.querySelector("[data-type-bidding-sort='desc']")
 let getPageNum;
+ascendingBtn.addEventListener("click",(e)  => {
+   let url = `/bidding.html?order=asc`
+   window.location.href = url
+})
+descendingBtn.addEventListener("click", (e) => {
+    let url = `/bidding.html?order=desc`
+    window.location.href = url
+})
+
+allBtn.addEventListener("click", (e) => {
+    let url = `/bidding.html`
+    window.location.href = url
+})
 
 if (!isNaN(parseInt(currentPage))) {
     getPageNum = parseInt(currentPage);
@@ -41,6 +59,36 @@ async function fetchListings(tag) {
 }
 
 
+const sortListings = async (order, offset) => {
+    const url =
+        `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_bids=true&_count&_active=true&sort=endsAt&sortOrder=${order}&limit=100&offset=${getPageNum * 10}`;
+
+
+
+    try {
+
+        const res = await fetch(url, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (res.ok) {
+            const data = await res.json();
+            console.log(data)
+            return data;
+        } else {
+            throw new Error("Failed to fetch data")
+        }
+
+
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+
+
 
 
 
@@ -69,6 +117,32 @@ const initializer = async () => {
         const data = await fetchListings("");
         handleData(data);
     }
+
+  if(ascendingOrder) {
+        const asc = ascendingOrder.substring(" ")
+        auctionHeader.textContent = `Sortert høyest`
+      nextButton.addEventListener("click", (e) => {
+          e.target.href = `/bidding.html?order=${asc}&page=${getPageNum + 1}`;
+      });
+      prevButton.addEventListener("click", (e) => {
+          e.target.href = `/bidding.html?order=${asc}&page=${getPageNum - 1}`;
+      });
+      const data = await sortListings(asc);
+      handleData(data)
+    } else if (descendingOrder) {
+      const desc = descendingOrder.substring(" ")
+      auctionHeader.textContent = `Sortert lavest`
+      nextButton.addEventListener("click", (e) => {
+          e.target.href = `/bidding.html?order=${desc}&page=${getPageNum + 1}`;
+      });
+      prevButton.addEventListener("click", (e) => {
+          e.target.href = `/bidding.html?order=${desc}&page=${getPageNum - 1}`;
+      });
+      const data = await sortListings(desc);
+      handleData(data)
+    }
+ 
+
 };
 
 const handleData = (data) => {
@@ -163,38 +237,7 @@ const renderAuctionCards = async (data) => {
 }
 
 
-/* const renderAuctionCards = async (data) => {
-    console.log(data)
-    try {
-        if (typeof data === "string") {
-            auctionContainer.innerHTML = "No data available.";
 
-        } else {
-            const articleCard = auctionCards;
-            auctionContainer.innerHTML = "";
-        
-
-
-          
-            if (data.length > 0) {
-                data.forEach(item => {
-                    const {title, media, bids, endsAt, id} = item;
-                    console.log(title)
-                    const bidsArray = bids || [];
-                     const norwegianTime = norwegianEndDate(endsAt);
-                 auctionContainer.append(articleCard(title, media, bids, norwegianTime, id));  
-                });
-            } else {
-                auctionContainer.innerHTML = "No data available.";
-                buttonContainer.display = "none"
-
-            }
-        }
-    } finally {
-
-    }
-};
- */
 
 
 initializer();
