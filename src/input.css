@@ -141,7 +141,7 @@ svg {
     font-size: clamp(1.2rem, 2vw, 1.5rem);
   }
   .global-padding {
-    padding-inline: 0.5rem;
+    padding-inline: 3rem;
   }
 
   .border-inherit {
@@ -166,6 +166,8 @@ svg {
     padding-block: 5px;
   }
 
+
+  
   /* @media screen and (max-width:768px) {
   .listings-card {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
