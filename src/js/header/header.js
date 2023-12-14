@@ -2,6 +2,7 @@ import { singleProfile } from "../api/api.js";
 import { localStorageItems } from "../utils/utils.js";
 const navbar = document.querySelector("[data-type-component='navbar']")
 const header = document.querySelector("header")
+
 const navbarListeners = () => {
     const hamburgerBtn = document.querySelector('[data-header="hamburger-menu"]');
     const closeNavbar = document.querySelector("[data-type-navbar='close-menu']")
@@ -17,6 +18,11 @@ const navbarToggler = (value) => {
     }
 }
 
+document.addEventListener("click", (e) => {
+    if (!navbar.contains(e.target) && !header.contains(e.target)) {
+        navbar.classList.remove('isActive'); 
+    }
+})
 
 
 const userAvatar = async () => {
