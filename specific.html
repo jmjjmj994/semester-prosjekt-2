@@ -126,214 +126,216 @@
             <section data-type-section="fade-in" class=""> <!--Remove later-->
 
 
-                <section data-type-specific="slider-wrapper" ">
-                    <section data-type-specific=" seller" class="text-custom-textDark  w-[min-content]">
+                <section data-type-specific="slider-wrapper">
+                    <section data-type-specific="seller" class="text-custom-textDark  w-[min-content]">
+
+
+                    </section>
+                    <div class="relative flex-1 flex justify-center rounded-md  ">
+
+                        <div data-type-specific="prev-btn-container"
+                            class="flex items-center  px-5 absolute left-0 z-10 h-full ">
+                            <button data-type-specific="prev-btn"
+                                class="bg-custom-accent p-3 w-[2rem] h-[2rem] rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </button>
+                        </div>
+
+                        <div data-type-specific="slider"
+                            class=" flex flex-1    relative overflow-hidden border-inherit ">
+
+                        </div>
+
+
+                        <div data-type-specific="next-btn-container"
+                            class="flex items-center  px-5 absolute right-0 z-10 h-full">
+                            <button data-type-specific="next-btn"
+                                class="bg-custom-accent p-3 w-[2rem] h-[2rem] rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+
+                    </div>
+                    <div data-type-specific="preview-container"
+                        class=" basis-15rem flex  justify-between  flex-wrap  gap-5 py-5 rounded-md">
+
+                    </div>
 
 
                 </section>
-                <div class="relative flex-1 flex justify-center rounded-md  ">
-
-                    <div data-type-specific="prev-btn-container"
-                        class="flex items-center  px-5 absolute left-0 z-10 h-full ">
-                        <button data-type-specific="prev-btn"
-                            class="bg-custom-accent p-3 w-[2rem] h-[2rem] rounded-full flex items-center justify-center">
-                            <i class="fa-solid fa-arrow-left"></i>
-                        </button>
-                    </div>
-
-                    <div data-type-specific="slider" class=" flex flex-1    relative overflow-hidden border-inherit ">
-
-                    </div>
-
-
-                    <div data-type-specific="next-btn-container"
-                        class="flex items-center  px-5 absolute right-0 z-10 h-full">
-                        <button data-type-specific="next-btn"
-                            class="bg-custom-accent p-3 w-[2rem] h-[2rem] rounded-full flex items-center justify-center">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                    </div>
-
-
-                </div>
-                <div data-type-specific="preview-container"
-                    class=" basis-15rem flex  justify-between  flex-wrap  gap-5 py-5 rounded-md">
-
-                </div>
-
-
-            </section>
 
 
 
-            <section
-                class="flex justify-between  w-full md:w-[80%] min-h-[12rem]  lg:w-[50%]  p-2 text-custom-textDark   bg-custom-secondary shadow-sm rounded-sm ">
-                <article data-type-specific="description" class=" flex flex-col px-1">
-                </article>
-            </section>
+                <section
+                    class="flex justify-between  w-full md:w-[80%] min-h-[12rem]  lg:w-[50%]  p-2 text-custom-textDark   bg-custom-secondary shadow-sm rounded-sm ">
+                    <article data-type-specific="description" class=" flex flex-col px-1">
+                    </article>
+                </section>
 
-            <section
-                class="bg-custom-secondary  w-full md:w-[80%]  lg:w-[50%] text-custom-textDark  p-2 shadow-sm rounded-sm overflow-y-scroll">
+                <section
+                    class="bg-custom-secondary  w-full md:w-[80%]  lg:w-[50%] text-custom-textDark  p-2 shadow-sm rounded-sm overflow-y-scroll">
 
-                <article data-type-specific="product-status" class="">
+                    <article data-type-specific="product-status" class="">
 
-                </article>
+                    </article>
 
 
+
+                </section>
+
+                <section data-type-specific="bid-form-parent" class="">
+
+
+
+                    <form data-type-specific="bid-form" class="">
+
+                        <div class=" flex flex-col gap-2 max-w-[25rem] w-full">
+
+                            <label for="bid-input" class="label-hidden">Sum:</label>
+                            <input
+                                class=" flex-1 text-custom-textDark bg-custom-background py-2  rounded-sm shadow-sm pl-2"
+                                data-type-specific="bid-input" type="text" placeholder="Legg til bud">
+
+                            <button data-type-specific="submit-bid-btn"
+                                class="bg-custom-btnBgSpecial w-full py-2 rounded-sm">
+                                Fullfør
+                            </button>
+
+                        </div> <!--main buttons-->
+
+
+
+
+
+
+                    </form>
+                </section>
 
             </section>
-
-            <section data-type-specific="bid-form-parent" class="">
-
-
-
-                <form data-type-specific="bid-form" class="">
-
-                    <div class=" flex flex-col gap-2 max-w-[25rem] w-full">
-
-                        <label for="bid-input" class="label-hidden">Sum:</label>
-                        <input class=" flex-1 text-custom-textDark bg-custom-background py-2  rounded-sm shadow-sm pl-2"
-                            data-type-specific="bid-input" type="text" placeholder="Legg til bud">
-
-                        <button data-type-specific="submit-bid-btn"
-                            class="bg-custom-btnBgSpecial w-full py-2 rounded-sm">
-                            Fullfør
-                        </button>
-
-                    </div> <!--main buttons-->
-
-
-
-
-
-
-                </form>
-            </section>
-
-        </section>
 
         </section>
 
     </main>
 
-<footer
-    class="text-custom-textDark bg-custom-secondary min-h-[50vh] flex-col justify-center   lg:min-h-[80vh] w-full gap-2  global-padding footer-grid  flex lg:items-center   relative ">
+    <footer
+        class="text-custom-textDark bg-custom-secondary min-h-[50vh] flex-col justify-center   lg:min-h-[80vh] w-full gap-2  global-padding footer-grid  flex lg:items-center   relative ">
 
-    <section
-        class="h-full w-full  flex flex-col justify-between gap-5 global-margin-block     lg:flex-row lg:items-start ">
-        <!--Wapper-->
+        <section
+            class="h-full w-full  flex flex-col justify-between gap-5 global-margin-block     lg:flex-row lg:items-start ">
+            <!--Wapper-->
 
-        <div class=" flex-0 flex flex-col">
+            <div class=" flex-0 flex flex-col">
 
-            <div class=" max-w-[15rem]  w-full flex flex-col gap-3  lg:w-[25rem]">
-                <div class="  ">
-                    <img class="w-full h-[auto] text-custom-textDark" src="/src/assets/budhjørnet-hvit.svg" alt="">
+                <div class=" max-w-[15rem]  w-full flex flex-col gap-3  lg:w-[25rem]">
+                    <div class="  ">
+                        <img class="w-full h-[auto] text-custom-textDark" src="/src/assets/budhjørnet-hvit.svg" alt="">
+                    </div>
+                    <div class="flex justify-between">
+                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-x-twitter"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
                 </div>
-                <div class="flex justify-between">
-                    <i class="fa-brands fa-facebook"></i>
-                    <i class="fa-brands fa-x-twitter"></i>
-                    <i class="fa-brands fa-instagram"></i>
-                </div>
+
+
             </div>
 
 
-        </div>
+            <ul class="flex flex-col gap-3 flex-0 footer-text">
+
+                <li>
+                    <p class="text-lg">Kontakt informasjon</p>
+                </li>
+
+                <li>
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        13C Årstad
+
+                    </p>
+
+                </li>
+
+                <li>
+                    <p><i class="fa-solid fa-envelope"></i>
+
+                        hjelp@budhjørnet.no
+                    </p>
+                </li>
+            </ul>
+
+            <ul class="flex flex-col gap-2 flex-0  footer-text">
+                <li>
+                    <p class="text-lg">Navigasjon</p>
+                </li>
+
+                <li class="">
+                    <a href=" /index.html">Hjem</a>
+                </li>
+                <li class="">
+                    <a href="/bidding.html">Auksjoner</a>
+                </li>
+                <li data-type-footer="listing-li" class="">
+                    <a href="/listing.html">Selg</a>
+                </li>
+
+                <li data-type-footer="overview-li">
+                    <a href="/overview.html">Oversikt</a>
+                </li>
+
+                <li data-type-footer="profile-li">
+                    <a href="/profile.html">Profil</a>
+                </li>
+            </ul>
+
+            <ul class="flex flex-col gap-3  footer-text  flex-0">
+                <li>
+                    <p class="text-lg">Ofte stilte spørsmål</p>
+                </li>
 
 
-        <ul class="flex flex-col gap-3 flex-0 footer-text">
+                <li>
+                    <a href="#">Konto</a>
+                </li>
 
-            <li>
-                <p class="text-lg">Kontakt informasjon</p>
-            </li>
+                <li>
+                    <a href="#">Frakt- og levering</a>
+                </li>
 
-            <li>
+                <li>
+                    <a href="#">Retur- og refusjon</a>
+                </li>
 
-                <p>
-                    <i class="fa-solid fa-location-dot"></i>
-                    13C Årstad
-
-                </p>
-
-            </li>
-
-            <li>
-                <p><i class="fa-solid fa-envelope"></i>
-
-                    hjelp@budhjørnet.no
-                </p>
-            </li>
-        </ul>
-
-        <ul class="flex flex-col gap-2 flex-0  footer-text">
-            <li>
-                <p class="text-lg">Navigasjon</p>
-            </li>
-
-            <li class="">
-                <a href=" /index.html">Hjem</a>
-            </li>
-            <li class="">
-                <a href="/bidding.html">Auksjoner</a>
-            </li>
-            <li data-type-footer="listing-li" class="">
-                <a href="/listing.html">Selg</a>
-            </li>
-
-            <li data-type-footer="overview-li">
-                <a href="/overview.html">Oversikt</a>
-            </li>
-
-            <li data-type-footer="profile-li">
-                <a href="/profile.html">Profil</a>
-            </li>
-        </ul>
-
-        <ul class="flex flex-col gap-3  footer-text  flex-0">
-            <li>
-                <p class="text-lg">Ofte stilte spørsmål</p>
-            </li>
+                <li>
+                    <a href="#">Regler</a>
+                </li>
+                <li>
+                    <a href="#">Vilkår og betingelser</a>
+                </li>
 
 
-            <li>
-                <a href="#">Konto</a>
-            </li>
-
-            <li>
-                <a href="#">Frakt- og levering</a>
-            </li>
-
-            <li>
-                <a href="#">Retur- og refusjon</a>
-            </li>
-
-            <li>
-                <a href="#">Regler</a>
-            </li>
-            <li>
-                <a href="#">Vilkår og betingelser</a>
-            </li>
+            </ul>
 
 
-        </ul>
+            <div
+                class="w-full  hidden lg:block absolute bottom-[12rem] lg:left-1/2   lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 global-padding">
 
+                <hr class="w-[full] ">
+            </div>
 
-        <div
-            class="w-full  hidden lg:block absolute bottom-[12rem] lg:left-1/2   lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 global-padding">
+            <p
+                class="text-xs text-custom-textGrey lg:absolute lg:bottom-[0] lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2">
+                &copy;2023 Budhjørnet. Alle rettigheter reservert.
+            </p>
 
-            <hr class="w-[full] ">
-        </div>
-
-        <p
-            class="text-xs text-custom-textGrey lg:absolute lg:bottom-[0] lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2">
-            &copy;2023 Budhjørnet. Alle rettigheter reservert.
-        </p>
-
-    </section>
+        </section>
 
 
 
 
-</footer>
+    </footer>
 </body>
 
 </html>

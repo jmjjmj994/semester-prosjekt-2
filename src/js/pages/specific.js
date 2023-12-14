@@ -178,6 +178,7 @@ const renderSingleSlide = async () => {
 const renderDescription = async () => {
     const descriptionContainer = document.querySelector("[data-type-specific='description']");
     const seller = document.querySelector("[data-type-specific='seller']")
+    console.log(seller)
     const data = await fetchData();
     const header = createCardElement("h2")
     const productDescription = createCardElement("p");
@@ -206,6 +207,12 @@ const renderProductStatus = async () => {
     const productStatusContainer = document.querySelector("[data-type-specific='product-status']")
     const data = await fetchData();
     const bids = data.bids;
+    console.log(bids)
+    if(bids.length === 0) {
+        productStatusContainer.innerHTML =`<h3 class="text-custom-textDark"> Ingen aktive bud </h3>`
+        productStatusContainer.className = "flex flex-col items-center justify-center min-h-[5rem] h-[10rem] gap-2 px-1"
+    } else {
+      
         bids.sort((a, b) => b.amount - a.amount)
         bids.forEach((({ id, amount, bidderName }) => {
             const bidderContainer = createCardElement("div", "flex items-center gap-5  max-w-[20rem]");
@@ -214,12 +221,15 @@ const renderProductStatus = async () => {
             sellerName.textContent = bidderName;
             sellerBid.textContent = `${amount}`;
             bidderContainer.append(sellerName, sellerBid)
-            productStatusContainer.className ="flex flex-col min-h-[5rem] h-[10rem] gap-2 px-1"
+            productStatusContainer.className = "flex flex-col min-h-[5rem] h-[10rem] gap-2 px-1"
             productStatusContainer.append(bidderContainer)
         }))
 
         const firstChild = productStatusContainer.firstChild
         firstChild.classList.add("highest-bidder")
+    }
+
+ 
 
 
 
