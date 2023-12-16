@@ -57,17 +57,17 @@ svg {
   /*navigation*/
 
   /*Profile overlay */
-  [data-type-overlay="overlay"] {
-    opacity: 0;
-    visibility: hidden;
-    will-change: opacity;
-    transition: 150ms ease-in-out;
-  }
-  [data-type-overlay="overlay"].isActive {
+
+  [data-header="overlay"] {
     opacity: 1;
-    visibility: visible;
-    transition: 150ms ease-in-out;
+    transition: 150ms;
   }
+  [data-header="overlay"].isActive {
+    opacity: 1;
+    transition: 150ms;
+  }
+
+
 
   /*Profile overlay */
 

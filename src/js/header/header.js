@@ -2,7 +2,12 @@ import { singleProfile } from "../api/api.js";
 import { localStorageItems } from "../utils/utils.js";
 const navbar = document.querySelector("[data-type-component='navbar']")
 const header = document.querySelector("header")
+const headerOverlay = document.querySelector("[data-header='overlay']")
+const openOverlay = document.querySelector("[data-type-header='open-overlay']")
+const profileImage = document.querySelectorAll("[data-type-user='avatar']")
+const userContainer = document.querySelector("[data-type-navbar='user-container']")
 
+openOverlay.onclick = () => overlayToggler()
 const navbarListeners = () => {
     const hamburgerBtn = document.querySelector('[data-header="hamburger-menu"]');
     const closeNavbar = document.querySelector("[data-type-navbar='close-menu']")
@@ -18,19 +23,26 @@ const navbarToggler = (value) => {
     }
 }
 
+const overlayToggler = () => {
+    headerOverlay.classList.toggle("isActive")
+}
+
+
 document.addEventListener("click", (e) => {
     if (!navbar.contains(e.target) && !header.contains(e.target)) {
-        navbar.classList.remove('isActive'); 
+        navbar.classList.remove('isActive');
+    }
+    if (!headerOverlay.contains(e.target) && !userContainer.contains(e.target)) {
+        headerOverlay.classList.remove("isActive")
     }
 })
 
 
 const userAvatar = async () => {
-    const userContainer = document.querySelector("[data-type-navbar='user-container']")
-    const profileImage = document.querySelectorAll("[data-type-user='avatar']")
+
+
     if (localStorageItems && localStorageItems.token) {
         const data = await singleProfile(localStorageItems.userData.name)
-        userContainer.className = "flex items-center   w-full   lg:min-w-[5rem] lg:w-[8rem]"
         profileImage.forEach(img => {
             img.src = data.avatar
         })

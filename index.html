@@ -15,7 +15,7 @@
     <script src="https://kit.fontawesome.com/868d223859.js" crossorigin="anonymous"></script>
     <script src="/src/js/mode/lightmode.js" defer></script>
     <script src="/src/js/header/header.js" type="module"></script>
-    <script src="/src/js/pages/index.js" type="module"></script>
+    <!--    <script src="/src/js/pages/index.js" type="module"></script> -->
     <script src="/src/global.js" type="module"></script>
     <script src="/src/js/search/search.js" type="module"></script>
     <title>Hjem</title>
@@ -25,29 +25,47 @@
 
 <body class="bg-custom-background  flex flex-col ">
     <header class="bg-custom-secondary flex items-center justify-between   h-[7rem]     z-10 global-padding">
-        <section class="flex items-center justify-center gap-3 h-[3rem] lg:h-[5rem]  ">
+        <section class="flex items-center justify-center bg-orange-700 gap-3 h-[3rem] lg:h-[5rem]  ">
             <button class="" data-header="hamburger-menu" aria-label="open menu" class="ring-1">
                 <i class="fa-solid fa-bars text-custom-textDark"></i>
             </button>
             <img src="/src/assets/budhjørnet-hvit.svg " class=" " alt="">
         </section>
 
-        <section class="flex text-custom-textDark  w-[auto]   gap-1 lg:w-full lg:justify-end  p-1 lg:p-0  h-auto">
-            <div data-type-navbar="user-container" class="">
-                <div class="flex items-center">
-                    <img data-type-user="avatar"
-                        class="min-h-[2.5rem] h-[2.5rem] min-w-[2.5rem] w-[2.5rem] rounded-full text-custom-textDark"
-                        src="" alt="avatar">
+        <section class="flex text-custom-textDark   w-[8rem]  bg-orange-300    p-1  h-auto">
+            <div data-type-navbar="user-container"
+                class="bg-blue-300 w-full relative  h-full flex  items-center justify-between ">
 
-                </div>
-                <span class="flex ml-auto">
+                <img data-type-user="avatar"
+                    class="min-h-[2.5rem] h-[2.5rem] min-w-[2.5rem] w-[2.5rem] rounded-full text-custom-textDark"
+                    src="/src/assets/blank-avatar.png" alt="avatar">
+
+
+                <button data-type-header="open-overlay">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+
+
+                <div data-header="overlay"
+                    class="bg-custom-secondary absolute text-custom-textDark h-[5rem] w-[8rem] top-[50px] shadow-lg rounded-sm ">
+                    <!-- <span class="flex ml-auto"> -->
                     <div data-type-navbar="user-credit-container" class="flex">
                     </div>
-                </span>
+
+                    <a data-type-navbar="profile-link" aria-label="Go to profile page" href=""></a>
+                    <!-- </span> -->
+
+                    <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode">
+                    </button>
+                </div>
+
             </div>
         </section>
+
+
+
         <nav data-type-component="navbar"
-            class="flex flex-col  gap-2  bg-custom-secondary  fixed top-0 left-0 h-full  sm:max-w-[20rem] w-full  md:w-[22rem]   px-1     isActive">
+            class="flex flex-col  gap-2  bg-custom-secondary  fixed top-0 left-0 h-full  sm:max-w-[20rem] w-full  md:w-[22rem]   px-1     ">
 
             <section data-type-component="navbar-child" class=" flex justify-end ">
                 <button data-type-navbar="close-menu" type="button" aria-label="close menu">
@@ -108,18 +126,18 @@
                         <span>
                             <a data-type-navbar="login-logout-link" href=""></a>
                             Logg ut
-                         
+
                         </span>
 
                     </li>
-                    <li class="py-[0.5px]">
+                    <!--    <li class="py-[0.5px]">
                         <a data-type-navbar="profile-link" aria-label="Go to profile page" href=""><i
                                 class="fa-solid fa-user"></i></a>
-                    </li>
-                    <li class="py-[0.5px] flex items-center">
+                    </li> -->
+                    <!--    <li class="py-[0.5px] flex items-center">
                         <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode">
                         </button>
-                    </li>
+                    </li> -->
                 </ul>
             </section>
         </nav>
