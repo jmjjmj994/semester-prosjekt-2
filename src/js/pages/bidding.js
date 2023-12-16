@@ -35,7 +35,7 @@ if (!isNaN(parseInt(currentPage))) {
 
 async function fetchListings(tag) {
     const url =
-        `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&&_bids=true&_tag=${tag}&limit=10&offset=${getPageNum * 10}`;
+        `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&_bids=true&_tag=${tag}&limit=10&offset=${getPageNum * 10}`;
     try {
         const res = await fetch(url, {
             method: "GET",

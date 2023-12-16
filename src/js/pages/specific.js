@@ -67,7 +67,6 @@ const handleSlides = async () => {
 
 
 const renderSlides = (media) => {
-
     let curSlide = 0;
     let maxSlide = media.length - 1;
     const image = media.slice(0, 3)
@@ -180,10 +179,12 @@ const renderDescription = async () => {
     const seller = document.querySelector("[data-type-specific='seller']")
     const data = await fetchData();
     const header = createCardElement("h2")
+    const subHeader = createCardElement("h3")
+    subHeader.textContent =data.title
     const productDescription = createCardElement("p");
     const sellerAvatar = createCardElement("img", "w-[3rem] h-[3rem] rounded-full absolute")
     const sellerName = createCardElement("h1", "seller-header pl-[4rem]");
-    header.textContent = data.title;
+    header.textContent = "Beskrivelse:"
     document.title = `Auksjon: ${data.title}`
     productDescription.textContent = data.description;
     sellerAvatar.src = data.seller.avatar
@@ -191,13 +192,13 @@ const renderDescription = async () => {
     sellerName.textContent = data.seller.name;
     if (localStorageItems && localStorageItems.token) {
         const sellerContainer = createCardElement("div", "flex  items-center py-3 pb-3 w-[11.5rem] md:w-[13rem] lg:w-[14rem] relative")
-        sellerContainer.append(sellerAvatar, sellerName)
+        sellerContainer.append(subHeader,sellerAvatar, sellerName)
         seller.append(sellerContainer)
     }
 
 
 
-    descriptionContainer.append(header, productDescription)
+    descriptionContainer.append(header,subHeader, productDescription)
 
 }
 
