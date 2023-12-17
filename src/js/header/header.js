@@ -6,8 +6,12 @@ const headerOverlay = document.querySelector("[data-header='overlay']")
 const openOverlay = document.querySelector("[data-type-header='open-overlay']")
 const profileImage = document.querySelectorAll("[data-type-user='avatar']")
 const userContainer = document.querySelector("[data-type-navbar='user-container']")
+const searchFormInput = document.querySelector("[data-type-component='navbar-form-input']");
+const openSearch = document.querySelector("[data-type-header='open-search']")
 
 openOverlay.onclick = () => overlayToggler()
+
+openSearch.onclick = () => navbarSearchInput(true)
 const navbarListeners = () => {
     const hamburgerBtn = document.querySelector('[data-header="hamburger-menu"]');
     const closeNavbar = document.querySelector("[data-type-navbar='close-menu']")
@@ -15,11 +19,18 @@ const navbarListeners = () => {
     closeNavbar.onclick = () => navbarToggler(false);
 }
 
-const navbarToggler = (value) => {
+const navbarToggler = (value, search) => {
     if (value) {
         navbar.classList.add("isActive")
     } else {
         navbar.classList.remove("isActive")
+    }
+}
+
+const navbarSearchInput = (value) => {
+    if(value) {
+        navbar.classList.add("isActive")
+        searchFormInput.focus()
     }
 }
 
@@ -54,6 +65,10 @@ const userAvatar = async () => {
 
 }
 userAvatar()
+
+
+
+
 
 
 

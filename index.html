@@ -40,15 +40,22 @@
                     class="min-h-[2.5rem] h-[2.5rem] min-w-[2.5rem] w-[2.5rem] rounded-full text-custom-textDark"
                     src="/src/assets/blank-avatar.png" alt="avatar">
 
+                    <button data-type-header="open-search" aria-label="open navbar search input">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
 
-                <button data-type-header="open-overlay">
+                <button data-type-header="open-overlay" aria-label="open header overlay">
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 </button>
 
 
+                
                 <div data-header="overlay"
+                
                     class="bg-custom-secondary absolute text-custom-textDark h-[5rem] w-[8rem] top-[50px] shadow-lg rounded-sm ">
                     <!-- <span class="flex ml-auto"> -->
+
+             
                     <div data-type-navbar="user-credit-container" class="flex">
                     </div>
 
@@ -57,7 +64,7 @@
 
                     <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode">
                     </button>
-                </div>
+                </>
 
             </div>
         </section>
@@ -82,7 +89,7 @@
                         <input data-type-component="navbar-form-input"
                             class="placeholder:text-custom-textDark placeholder:text-sm  md:placeholder:text-base bg-custom-background text-custom-textDark links-typography h-full w-full rounded-sm py-3 px-2"
                             type="text" id="search" placeholder="Søk...">
-                        <button data-type-component="navbar-form-submit-btn"
+                        <button data-type-component="navbar-form-submit-btn" aria-label="navbar search form submit button"
                             class=" absolute top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2   text-xs  rounded-sm  bg-custom-btnBgAccent text-custom-textWhite uppercase py-1 px-2 md:px-4  lg:static lg:translate-x-0 lg:translate-y-0 lg:h-full lg:py-0 "><i
                                 class="fa-solid fa-magnifying-glass text-custom-textDark"></i></button>
                     </div>
