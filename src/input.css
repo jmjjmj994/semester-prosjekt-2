@@ -59,7 +59,7 @@ svg {
   /*Profile overlay */
 
   [data-header="overlay"] {
-    opacity: 1;
+    opacity: 0;
     transition: 150ms;
   }
   [data-header="overlay"].isActive {

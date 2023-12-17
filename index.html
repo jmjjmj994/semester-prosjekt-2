@@ -25,16 +25,16 @@
 
 <body class="bg-custom-background  flex flex-col ">
     <header class="bg-custom-secondary flex items-center justify-between   h-[7rem]     z-10 global-padding">
-        <section class="flex items-center justify-center bg-orange-700 gap-3 h-[3rem] lg:h-[5rem]  ">
+        <section class="flex items-center justify-center gap-3 h-[3rem] lg:h-[5rem]  ">
             <button class="" data-header="hamburger-menu" aria-label="open menu" class="ring-1">
                 <i class="fa-solid fa-bars text-custom-textDark"></i>
             </button>
             <img src="/src/assets/budhjørnet-hvit.svg " class=" " alt="">
         </section>
 
-        <section class="flex text-custom-textDark   w-[8rem]  bg-orange-300    p-1  h-auto">
+        <section class="flex text-custom-textDark   w-[8rem]     p-1  h-auto">
             <div data-type-navbar="user-container"
-                class="bg-blue-300 w-full relative  h-full flex  items-center justify-between ">
+                class=" w-full relative  h-full flex  items-center justify-between ">
 
                 <img data-type-user="avatar"
                     class="min-h-[2.5rem] h-[2.5rem] min-w-[2.5rem] w-[2.5rem] rounded-full text-custom-textDark"
@@ -52,19 +52,17 @@
                 
                 <div data-header="overlay"
                 
-                    class="bg-custom-secondary absolute text-custom-textDark h-[5rem] w-[8rem] top-[50px] shadow-lg rounded-sm ">
+                    class="bg-custom-secondary absolute text-custom-textDark h-[5rem] flex flex-col w-[8rem] top-[50px]  shadow-lg rounded-sm border-2 border-custom-background ">
                     <!-- <span class="flex ml-auto"> -->
 
              
-                    <div data-type-navbar="user-credit-container" class="flex">
+                    <div data-type-navbar="user-credit-container" class="flex items-center justify-between">
                     </div>
 
-                    <a data-type-navbar="profile-link" aria-label="Go to profile page" href=""></a>
+                    <a data-type-navbar="profile-link" class=" text-purple-500 underline" aria-label="Go to profile page" href="">Gå til profil</a>
                     <!-- </span> -->
 
-                    <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode">
-                    </button>
-                </>
+                </div>
 
             </div>
         </section>
@@ -72,7 +70,7 @@
 
 
         <nav data-type-component="navbar"
-            class="flex flex-col  gap-2  bg-custom-secondary  fixed top-0 left-0 h-full  sm:max-w-[20rem] w-full  md:w-[22rem]   px-1     ">
+            class="flex flex-col  gap-2  bg-custom-secondary  fixed top-0 left-0 h-full  sm:max-w-[20rem] w-full  md:w-[22rem]   px-1">
 
             <section data-type-component="navbar-child" class=" flex justify-end ">
                 <button data-type-navbar="close-menu" type="button" aria-label="close menu">
@@ -126,25 +124,25 @@
 
                         </span>
                     </li>
+                    
                 </ul>
 
                 <ul class="flex flex-col  items-start  justify-between    text-custom-textDark   ">
                     <li class="w-auto  py-[0.5px]     relative nav-links-state" tabindex="0">
-                        <span>
-                            <a data-type-navbar="login-logout-link" href=""></a>
-                            Logg ut
+                        <span >
+                            <a data-type-navbar="login-logout-link" class="px-1 text-purple-500 underline" href=""></a>
+                            
 
                         </span>
 
+
                     </li>
-                    <!--    <li class="py-[0.5px]">
-                        <a data-type-navbar="profile-link" aria-label="Go to profile page" href=""><i
-                                class="fa-solid fa-user"></i></a>
-                    </li> -->
-                    <!--    <li class="py-[0.5px] flex items-center">
-                        <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode">
+
+                    <li>
+                        <button data-type-button="btn-mode-switcher"  type="button" aria-label="light-mode">
                         </button>
-                    </li> -->
+                    </li>
+               
                 </ul>
             </section>
         </nav>
