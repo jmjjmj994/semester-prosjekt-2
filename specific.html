@@ -25,89 +25,122 @@
 
 
 <body class="bg-custom-background flex flex-col">
-    <header
-        class="bg-custom-secondary flex items-center justify-between lg:flex-col   h-[7rem]     z-10 global-padding">
-        <section class="flex items-center justify-center gap-3 h-[3rem] lg:h-[5rem]  ">
-            <button class="lg:hidden" data-header="hamburger-menu" aria-label="open menu" class="ring-1">
-                <i class="fa-solid fa-bars text-custom-textDark"></i>
+<header class="bg-custom-secondary flex items-center justify-between   h-[7rem] sticky top-0    z-10 global-padding">
+    <section class="flex items-center justify-center gap-3 h-[3rem] lg:h-[5rem]  ">
+        <button class="" data-header="hamburger-menu" aria-label="open menu" class="ring-1">
+            <i class="fa-solid fa-bars text-custom-textDark"></i>
+        </button>
+        <img src="/src/assets/budhjørnet-hvit.svg " class=" " alt="">
+    </section>
+
+    <section class="flex text-custom-textDark   w-[8rem]     p-1  h-auto">
+        <div data-type-navbar="user-container" class=" w-full relative  h-full flex  items-center justify-between ">
+
+            <img data-type-user="avatar"
+                class="min-h-[2.5rem] h-[2.5rem] min-w-[2.5rem] w-[2.5rem] rounded-full text-custom-textDark"
+                src="/src/assets/blank-avatar.png" alt="avatar">
+
+            <button data-type-header="open-search" aria-label="open navbar search input">
+                <i class="fa-solid fa-magnifying-glass"></i>
             </button>
-            <img src="/src/assets/budhjørnet-hvit.svg " class="lg:hidden " alt="">
-        </section>
 
-        <section class="flex text-custom-textDark  w-[auto]   gap-1 lg:w-full lg:justify-end  p-1 lg:p-0  h-auto">
-            <div data-type-navbar="user-container" class="">
-                <div class="flex items-center">
-                    <img data-type-user="avatar"
-                        class="min-h-[2.5rem] h-[2.5rem] min-w-[2.5rem] w-[2.5rem] rounded-full text-custom-textDark"
-                        src="" alt="avatar">
+            <button data-type-header="open-overlay" aria-label="open header overlay">
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+            </button>
 
+
+            <!--CHANGES-->
+            <div data-header="overlay"
+                class="bg-custom-secondary absolute text-custom-textDark h-[5rem] flex flex-col w-[8rem] top-[50px]  shadow-lg rounded-sm border-2 border-custom-background ">
+                <div data-type-navbar="user-credit-container" class="flex items-center justify-between">
                 </div>
-                <span class="flex ml-auto">
-                    <div data-type-navbar="user-credit-container" class="flex">
-                    </div>
-                </span>
+                <a data-type-navbar="profile-link" class=" text-purple-500 underline" aria-label="Go to profile page"
+                    href="">Gå til profil</a>
             </div>
+        </div>
+    </section>
+    <!--CHANGES-->
+
+
+    <nav data-type-component="navbar"
+        class="flex flex-col  gap-2  bg-custom-secondary  fixed top-0 left-0 h-full  sm:max-w-[20rem] w-full  md:w-[22rem]   px-1">
+
+        <section data-type-component="navbar-child" class=" flex justify-end ">
+            <button data-type-navbar="close-menu" type="button" aria-label="close menu">
+                <i class="fa-solid fa-xmark text-custom-textDark"></i>
+            </button>
         </section>
-        <nav data-type-component="navbar"
-            class="flex flex-col  gap-2  bg-custom-secondary  fixed top-0 left-0 h-full w-[18rem] md:w-[20rem]  lg:flex-row     lg:static lg:h-[auto]   lg:w-full lg:justify-between   lg:gap-5">
-            <div data-header="logo-svg" class="items-center  hidden lg:flex">
-                <img class="w-[70%] h-full block" src="/src/assets/budhjørnet-hvit.svg" alt="">
-            </div>
-            <section data-type-component="navbar-child" class=" flex justify-end lg:hidden ">
-                <button data-type-navbar="close-menu" type="button" aria-label="close menu">
-                    <i class="fa-solid fa-xmark text-custom-textDark"></i>
-                </button>
-            </section>
 
-            <section
-                class=" flex flex-col w-full  lg:justify-between    mt-10 gap-8 lg:flex-row lg:w-full lg:mt-0 lg:gap-5 p-2 lg:p-0 ">
-                <form data-type-component="navbar-form"
-                    class=" flex lg:items-center  lg:order-3 h-[2rem]    lg:h-auto lg:basis-[45%] ">
-                    <div class="h-full lg:h-[60%] w-full relative lg:flex lg:gap-1">
-                        <label for="search" class="label-hidden">
-                            søk
-                        </label>
-                        <input data-type-component="navbar-form-input"
-                            class="placeholder:text-custom-textDark placeholder:text-sm  md:placeholder:text-base bg-custom-background text-custom-textDark links-typography h-full w-full rounded-sm py-3 px-2"
-                            type="text" id="search" placeholder="Søk...">
-                        <button data-type-component="navbar-form-submit-btn"
-                            class="absolute top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2   text-xs  rounded-sm  bg-custom-btnBgAccent text-custom-textWhite uppercase py-1 px-2  lg:static lg:translate-x-0 lg:translate-y-0 lg:h-full lg:py-0 ">SØK</button>
-                    </div>
-                </form>
-                <ul data-type-component="navbar-child"
-                    class="flex flex-col gap-2 lg:flex-row     items-start lg:items-center justify-between  text-custom-textDark  bg-red   lg:basis-[40%]">
-                    <li class="w-auto  px-1 py-[0.5px] lg:px-[1rem] lg:py-1 relative nav-links-state" tabindex="0">
+        <section class=" flex flex-col w-full     mt-10 gap-8   ">
+            <form data-type-component="navbar-form" class=" flex  h-[2rem] md:h-[2.2rem]">
+                <div class="h-full  flex w-full relative lg:gap-1">
+                    <label for="search" class="label-hidden">
+                        søk
+                    </label>
+                    <input data-type-component="navbar-form-input"
+                        class="placeholder:text-custom-textDark placeholder:text-sm  md:placeholder:text-base bg-custom-background text-custom-textDark links-typography h-full w-full rounded-sm py-3 px-2"
+                        type="text" id="search" placeholder="Søk...">
+                    <button data-type-component="navbar-form-submit-btn" aria-label="navbar search form submit button"
+                        class=" absolute top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2   text-xs  rounded-sm  bg-custom-btnBgAccent text-custom-textWhite uppercase py-1 px-2 md:px-4  lg:static lg:translate-x-0 lg:translate-y-0 lg:h-full lg:py-0 "><i
+                            class="fa-solid fa-magnifying-glass "></i></button>
+                </div>
+            </form>
+            <ul data-type-component="navbar-child"
+                class="flex flex-col gap-2    items-start  justify-between  text-custom-textDark  bg-red  ">
+                <li class="w-auto  px-1 py-[0.5px] relative nav-links-state" tabindex="0">
+                    <span>
+
+                        <i class="fa-solid fa-house"></i>
                         <a href="/index.html">Hjem</a>
-                    </li>
-                    <li class="w-auto  px-1 py-[0.5px]   lg:px-[1rem] lg:py-1 relative nav-links-state" tabindex="0">
-                        <a href=" /bidding.html">Auksjoner</a>
-                    </li>
-                    <li class="w-auto  px-1 py-[0.5px]    lg:px-[1rem] lg:py-1 relative nav-links-state" tabindex="0">
+                    </span>
+
+                </li>
+                <li class="w-auto  px-1 py-[0.5px]   relative nav-links-state" tabindex="0">
+                    <span>
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <a href="/bidding.html">Auksjoner</a>
+                    </span>
+
+                </li>
+                <li class="w-auto  px-1 py-[0.5px]    relative nav-links-state" tabindex="0">
+                    <span>
+                        <i class="fa-solid fa-sack-dollar"></i>
                         <a data-type-navbar="listing-link" href="">Selg</a>
-                    </li>
 
-                    <li class="w-auto  px-1 py-[0.5px]   lg:px-[1rem] lg:py-1 relative nav-links-state" tabindex="0">
+                    </span>
+                </li>
+
+                <li class="w-auto  px-1 py-[0.5px]  relative nav-links-state" tabindex="0">
+                    <span>
+                        <i class="fa-solid fa-glasses"></i>
                         <a href="" data-type-navbar='overview-link'>Oversikt</a>
-                    </li>
-                </ul>
 
-                <ul
-                    class="flex flex-col lg:flex-row  items-start  lg:items-center justify-between    text-custom-textDark  lg:order-3  lg:justify-end lg:gap-2 lg:basis-auto">
-                    <li class="w-auto  py-[0.5px]    lg:py-1 relative nav-links-state" tabindex="0">
-                        <a data-type-navbar="login-logout-link" href=""></a>
-                    </li>
-                    <li class="py-[0.5px]">
-                        <a data-type-navbar="profile-link" aria-label="Go to profile page" href=""><i
-                                class="fa-solid fa-user"></i></a>
-                    </li>
-                    <li class="py-[0.5px] flex items-center">
-                        <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode">
-                        </button>
-                    </li>
-                </ul>
-            </section>
-        </nav>
-    </header>
+                    </span>
+                </li>
+
+            </ul>
+
+            <ul class="flex flex-col  items-start  justify-between    text-custom-textDark   ">
+                <li class="w-auto  py-[0.5px]     relative nav-links-state" tabindex="0">
+                    <span>
+                        <a data-type-navbar="login-logout-link" class="px-1 text-purple-500 underline" href=""></a>
+
+
+                    </span>
+
+
+                </li>
+
+                <li>
+                    <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode">
+                    </button>
+                </li>
+
+            </ul>
+        </section>
+    </nav>
+</header>
+
 
 
 
