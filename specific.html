@@ -152,44 +152,44 @@
 
     <main class="flex flex-grow justify-center">
         <!--main-wrapper-->
-<section class="height-calc global-margin-block max-w-[50rem] w-full flex flex-col items-center bg-purple-400"> 
+<section class="height-calc global-margin-block max-w-[50rem] w-full flex flex-col items-center "> 
 
 
 
 
 <!--first column-->
-<section class="flex-1 w-full bg-red-600 flex flex-col gap-5 md:global-padding"> 
+<section class="flex-1 w-full  flex flex-col gap-5 md:global-padding"> 
 <!--SliderWrapper-->
-    <section data-type-specific="slider-wrapper" class="bg-blue-400 flex flex-col  relative">
+    <section data-type-specific="slider-wrapper" class="flex bg-custom-secondary flex-col rounded-sm shadow-sm relative">
 
-        <button data-type-specific="next-btn" class=" w-[3rem] h-[3rem] bg-orange-500 absolute custom-z-low top-[50%] right-[5px] rounded-full"><i class="fa-solid fa-arrow-right"></i></button>
-        <button data-type-specific="prev-btn" class=" w-[3rem] h-[3rem] bg-orange-500 absolute custom-z-low top-[50%] left-[5px]  rounded-full"><i class="fa-solid fa-arrow-left"></i></button>
-<section data-type-specific="slider" class="w-full h-[40vh] flex flex-col  bg-red-600 relative overflow-hidden">
+        <button data-type-specific="next-btn" class=" w-[3rem] h-[3rem]  absolute custom-z-low top-[50%] right-[5px] rounded-full"><i class="fa-solid fa-arrow-right"></i></button>
+        <button data-type-specific="prev-btn" class=" w-[3rem] h-[3rem]  absolute custom-z-low top-[50%] left-[5px]  rounded-full"><i class="fa-solid fa-arrow-left"></i></button>
+<section data-type-specific="slider" class="w-full h-[40vh] flex flex-col  relative overflow-hidden">
 
 
 </section>
-<section data-type-specific="preview-container" class=" flex  bg-orange-400 w-full">
+<section data-type-specific="preview-container" class=" flex rounded-sm shadow-sm  w-full">
 </section>
 
 
 </section>
 <!--SliderWrapper-->
 <!--Description Wrapper-->
-<section data-type-specific="description-container" class="flex flex-col justify-between bg-red-300 min-h-[15vh]">
+<section data-type-specific="description-container" class="flex flex-col justify-between rounded-sm shadow-sm  bg-custom-secondary text-custom-textDark px-1 py-1 min-h-[15vh]">
 
-<div class="flex items-center gap-1">
-   <span class="w-[3rem] h-[3rem] rounded-full relative block"> 
+<div class="flex items-center gap-2 ">
+   <span class="w-[2rem] h-[2rem] rounded-full relative block"> 
 <img data-type-specific="description-avatar" class="absolute w-full h-full border-inherit" src="" alt="avatar">
    </span> 
 <p data-type-specific="description-seller"><p>
 </div>
 
-<div class="flex-1">
+<div class="flex-1 py-1">
 <span data-type-specific="description">
 </span>
 </div>
 
-<div class="ring-1 flex flex-col text-xs">
+<div class=" flex flex-col text-xs gap-1">
     <span data-type-specific="description-created-date"></span>
     <span data-type-specific="description-update-date"></span>
     <span data-type-specific="description-end-date"></span>
@@ -203,7 +203,7 @@
 
 
 
-<section data-type-specific="product-status" class="bg-green-500 h-[20vh] overflow-y-scroll">
+<section data-type-specific="product-status" class=" h-[20vh] text-custom-textDark bg-custom-secondary rounded-sm shadow-sm overflow-y-scroll">
 <div class="flex justify-between px-2">
     <p>
         Navn
@@ -222,8 +222,8 @@
 
 
 
-<section data-type-specific="form-container">
-    <form  data-type-specific="form" class="flex flex-col">
+<section data-type-specific="form-container" class=" bg-custom-secondary px-10 py-4">
+    <form  data-type-specific="form" class="flex flex-col gap-2">
         <label for="bid-input" class="label-hidden">Sum:</label>
         <input class=" flex-1 text-custom-textDark bg-custom-background py-2  rounded-sm shadow-sm pl-2"
             data-type-specific="bid-input" type="text" placeholder="Legg til bud">

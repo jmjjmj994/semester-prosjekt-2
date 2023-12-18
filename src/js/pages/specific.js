@@ -56,7 +56,7 @@ const renderSlides = (media) => {
                 slideImage.alt = "Product image"
                 slide.append(slideImage)
                 slide.setAttribute("data-type-specific", "slide");
-                const slidePreview = createCardElement("div", " relative max-w-[20rem] w-full h-[5rem] bg-orange-500 border-inherit cursor-pointer overflow-x-scroll")
+                const slidePreview = createCardElement("div", " relative max-w-[20rem] w-full h-[7rem]  border-inherit cursor-pointer overflow-x-scroll")
                 const previewImage = createCardElement("img", "absolute h-full w-full object-cover border-inherit")
                 previewImage.src = img
                 previewImage.alt = "Product image"
@@ -188,7 +188,7 @@ const renderStatus = async () => {
     } else {
         bids.sort((a, b) => b.amount - a.amount)
         bids.forEach(({ id, amount, bidderName }) => {
-            const li = createCardElement("li", "flex justify-between bg-orange-500 px-2")
+            const li = createCardElement("li", "flex justify-between  px-2")
             const primary = createCardElement("p", "")
             const secondary = createCardElement("p", "")
             primary.textContent = `${bidderName}`
