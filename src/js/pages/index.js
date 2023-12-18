@@ -42,8 +42,6 @@ const skeleton = skeletonCards()
         featuredSection.innerHTML += skeleton
     }
     try {
-  /*       await new Promise(resolve => setTimeout(resolve, 1000)); */
-  
     
 
         if (typeof items === "string" || items.length === 0) {
@@ -68,7 +66,7 @@ const skeleton = skeletonCards()
 
 
 }
-
+    
 
 
 

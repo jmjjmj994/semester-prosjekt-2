@@ -3,22 +3,6 @@ export { localStorageItems, createCardElement, createButtonElement, blockElement
 
 
 
-export const validImgUrl = (url, callback) => {
-    const img = new Image()
-    img.onload = () => {
-        callback(true)
-    }
-    img.onerror = () => {
-        callback(false)
-    }
-    img.src = url
-   return img
-}
-export const confirmValidUrl = (value) => {
-    console.log(value)
-}
-validImgUrl("https://cdn.pixabay.com/photo/2023/05/26/15/52/buttterfly-8019730_960_720.jpg", confirmValidUrl)
-
 
 const localStorageItems = {
     userData: JSON.parse(localStorage.getItem("user-data")),
@@ -90,14 +74,39 @@ export const norwegianEndDate = (endDate) => {
 
 
 
+ const validImgUrl = (url, callback) => {
+    const img = new Image()
+    img.onload = () => {
+        callback(true)
+    }
+    img.onerror = () => {
+        callback(false)
+    }
+    img.src = url
+    return img
+}
+
+
 
 const cardHeader = (image) => {
-    const cardHeader = createCardElement("div", "h-[70%] relative") /**Header */
+   
+    const cardHeader = createCardElement("div", "h-[70%] relative") 
     const cardHeaderImage = createCardElement("img", "absolute object-cover w-full h-full ")
-    image.length === 0 ? cardHeaderImage.src = "src/assets/no-image.jpg" : cardHeaderImage.src = image;
-  
-    cardHeaderImage.alt = "Image of product"
-    cardHeader.append(cardHeaderImage)
+    validImgUrl(image, (isValid) => {
+        if (isValid) {
+            cardHeaderImage.src = image;
+            cardHeaderImage.alt = "Image of product";
+        } else {
+            cardHeaderImage.src = "src/assets/no-image.jpg";
+            cardHeaderImage.alt = "Image placeholder";
+        }
+    });
+
+
+    cardHeader.appendChild(cardHeaderImage);
+
+
+
     return cardHeader;
 }
 
