@@ -185,7 +185,7 @@ export const listingsByTags = async (tag, offset) => {
 
 export const singleListing = async (id) => {
     const url =
-        `https://api.noroff.dev/api/v1/auction/listings/${id}?_seller=true&_bids=true&_active=true`;
+        `https://api.noroff.dev/api/v1/auction/listings/${id}?_seller=true&_bids=true&_active=true&tags=true`;
 
     try {
 
