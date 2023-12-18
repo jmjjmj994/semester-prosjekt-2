@@ -228,7 +228,6 @@ const userCredits = async () => {
     clearCredits()
 
     const data = await singleProfile(localStorageItems.userData.name);
-
     const creditsContainer = document.querySelector("[data-type-navbar='user-credit-container']")
     if (localStorageItems.token) {
         creditsContainer.innerHTML = `<i class="fa-regular fa-credit-card"></i>`
@@ -260,24 +259,15 @@ const setBid = async (amount) => {
 
     try {
         const res = await fetch(url, requestOptions);
-
         if (res.ok) {
             const data = await res.json();
-    
             renderStatus()
             clearCredits()
             userCredits()
 
         } else {
-            const errorData = await res.json();
-            console.log(errorData)
             throw new Error("Ikke nok dekning på konto")
-
-
         }
-
-
-
 
     } catch (error) {
         inputError(error.message)
@@ -298,29 +288,31 @@ const inputError = (msg) => {
         formInput.placeholder = "Legg til bud"
         formInput.style.border = ""
 
-    }, 2000)
-
-
-}
+    }, 2000)}
 
     ; (() => {
+        const formContainer = document.querySelector("[data-type-specific='form-container']")
         const form = document.querySelector("[data-type-specific='form']")
         const formInput = document.querySelector("[data-type-specific='bid-input']");
         const submitBidBtn = document.querySelector("[data-type-specific='submit-bid-btn']")
+   console.log(localStorageItems)
+ if(localStorageItems && localStorageItems.token) {
+    console.log("NO token", localStorageItems, localStorageItems.token)
+ } else {
+  form.remove()
+  formContainer.className ="flex items-center justify-center"
+  formContainer.innerHTML = `
+  
+  <h3>
+Vennligst <a aria-label="to login page" class=" text-purple-500 underline" href="/login.html">logg inn </a> eller <a aria-label="to register page" class="text-purple-500 underline" href="/signup.html">registrer </a> deg for å delta i budrunden
 
 
-        if (localStorageItems && localStorageItems.token) {
-            form.className = "w-full md:w-[80%]  lg:w-[50%]  py-5 bg-custom-secondary rounded-sm shadow-sm"
-            form.className = "flex justify-center flex-col items-center gap-2 px-2"
-        } else {
-
-            form.className = "flex items-center justify-center w-full md:w-[80%]  lg:w-[50%]  py-5 bg-custom-secondary rounded-sm shadow-sm"
-            form.innerHTML = `
-            <div class="p-2 text-center text-custom-textDark"> <a class="text-purple-700 underline" href="/login.html">Logg inn</a> eller <a class="text-purple-700 underline" href="/signup.html">registrer</a> deg for å legge inn ett bud </div>
-            `
-            form.className = "hidden justify-center flex-col items-center gap-2 px-2"
-
-        }
+  </h3>
+  
+  
+  
+  `
+ }
 
 
         const validateInput = (value) => {
