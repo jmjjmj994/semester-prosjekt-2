@@ -1,34 +1,23 @@
 
 
-//https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&_tag=test&sort=createdAt&sortOrder=asc
-/* const listings = async (order, offset) => {
-    const url =
-        `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_bids=true&_count&_active=true&sort=endsAt&sortOrder=${order}&limit=100&offset=${offset}`;
-  
 
 
-    try {
-
-        const res = await fetch(url, {
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        if (res.ok) {
-            const data = await res.json();
-            console.log(data)
-            return data;
-        } else {
-            throw new Error("Failed to fetch data")
-        }
 
 
-    } catch (error) {
-        console.log(error.message)
+const validImgUrl = (url, callback) => {
+   
+    const img = new Image()
+    
+    img.onload = () => {
+        callback(true)
     }
+    img.onerror = () => {
+        callback(false)
+    }
+   img.src = url
+    console.log(img)
 }
-
-
-const test = await listings("desc", 0);
- */
+const confirm = (value) => {
+    console.log(value)
+}
+validImgUrl("https://cdn.pixabay.com/photo/2023/05/26/15/52/buttterfly-8019730_960_720.jpg", confirm)

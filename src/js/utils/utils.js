@@ -2,6 +2,24 @@ export { localStorageItems, createCardElement, createButtonElement, blockElement
 
 
 
+
+export const validImgUrl = (url, callback) => {
+    const img = new Image()
+    img.onload = () => {
+        callback(true)
+    }
+    img.onerror = () => {
+        callback(false)
+    }
+    img.src = url
+   return img
+}
+export const confirmValidUrl = (value) => {
+    console.log(value)
+}
+validImgUrl("https://cdn.pixabay.com/photo/2023/05/26/15/52/buttterfly-8019730_960_720.jpg", confirmValidUrl)
+
+
 const localStorageItems = {
     userData: JSON.parse(localStorage.getItem("user-data")),
     token: localStorage.getItem("user-token"),
