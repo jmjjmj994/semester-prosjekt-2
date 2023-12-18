@@ -158,21 +158,17 @@
 
 
 <!--first column-->
-<section class="flex-1 w-full bg-red-600 flex flex-col gap-5" > 
+<section class="flex-1 w-full bg-red-600 flex flex-col gap-5 md:global-padding"> 
 <!--SliderWrapper-->
     <section data-type-specific="slider-wrapper" class="bg-blue-400 flex flex-col  relative">
 
         <button data-type-specific="next-btn" class=" w-[3rem] h-[3rem] bg-orange-500 absolute custom-z-low top-[50%] right-[5px] rounded-full"><i class="fa-solid fa-arrow-right"></i></button>
         <button data-type-specific="prev-btn" class=" w-[3rem] h-[3rem] bg-orange-500 absolute custom-z-low top-[50%] left-[5px]  rounded-full"><i class="fa-solid fa-arrow-left"></i></button>
-<section data-type-specific="slider" class="w-full h-[70vh] flex flex-col  bg-red-600 relative overflow-hidden">
+<section data-type-specific="slider" class="w-full h-[40vh] flex flex-col  bg-red-600 relative overflow-hidden">
 
 
 </section>
-<section data-type-specific="preview-container" class="preview-grid">
-<!-- <div class="bg-orange-500 h-[10rem] w-[10rem]">1</div>
-<div class="bg-green-400 h-[10rem] w-[10rem]"></div>
-<div class="bg-pink-500 h-[10rem] w-[10rem]"></div>
-<div class="bg-slate-500 [10rem] w-[10rem]"></div> -->
+<section data-type-specific="preview-container" class=" flex  bg-orange-400 w-full">
 </section>
 
 
@@ -181,7 +177,7 @@
 <!--Description Wrapper-->
 <section data-type-specific="description-container" class="flex flex-col justify-between bg-red-300 min-h-[15vh]">
 
-<div class="flex">
+<div class="flex items-center gap-1">
    <span class="w-[3rem] h-[3rem] rounded-full relative block"> 
 <img data-type-specific="description-avatar" class="absolute w-full h-full border-inherit" src="" alt="avatar">
    </span> 
@@ -207,7 +203,7 @@
 
 
 
-<section data-type-specific="product-status" class="bg-green-500 h-[20vh] overflow-x-scroll">
+<section data-type-specific="product-status" class="bg-green-500 h-[20vh] overflow-y-scroll">
 <div class="flex justify-between px-2">
     <p>
         Navn

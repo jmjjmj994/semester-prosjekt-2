@@ -74,7 +74,7 @@ export const norwegianEndDate = (endDate) => {
 
 
 
- const validImgUrl = (url, callback) => {
+ export const validImgUrl = (url, callback) => {
     const img = new Image()
     img.onload = () => {
         callback(true)
@@ -89,7 +89,6 @@ export const norwegianEndDate = (endDate) => {
 
 
 const cardHeader = (image) => {
-   
     const cardHeader = createCardElement("div", "h-[70%] relative") 
     const cardHeaderImage = createCardElement("img", "absolute object-cover w-full h-full ")
     validImgUrl(image, (isValid) => {

@@ -1,5 +1,5 @@
 import { singleListing, singleProfile, options } from "../api/api.js";
-import { createCardElement, localStorageItems, dateConverter } from "../utils/utils.js";
+import { createCardElement, localStorageItems, dateConverter, validImgUrl } from "../utils/utils.js";
 const queryString = document.location.search;
 const param = new URLSearchParams(queryString)
 const id = param.get("id")
@@ -23,6 +23,7 @@ const fetchData = async () => {
         updated: res.updated,
         media: res.media,
     }
+    document.title = `${res.title}`
     return specificData;
 
 
@@ -54,9 +55,8 @@ const renderSlides = (media) => {
                 slideImage.src = img;
                 slideImage.alt = "Product image"
                 slide.append(slideImage)
-                console.log(slide)
                 slide.setAttribute("data-type-specific", "slide");
-                const slidePreview = createCardElement("div", " relative   bg-orange-500 border-inherit cursor-pointer")
+                const slidePreview = createCardElement("div", " relative max-w-[20rem] w-full h-[5rem] bg-orange-500 border-inherit cursor-pointer overflow-x-scroll")
                 const previewImage = createCardElement("img", "absolute h-full w-full object-cover border-inherit")
                 previewImage.src = img
                 previewImage.alt = "Product image"
@@ -70,18 +70,19 @@ const renderSlides = (media) => {
 
 
         })
+
+        slideArray.forEach(slide => {
+            sliderContainer.append(slide)
+        })
+        slidePreviewArray.forEach(preview => {
+            previewContainer.append(preview)
+        })
+
     }
     slides()
 
 
 
-
-    slideArray.forEach(slide => {
-        sliderContainer.append(slide)
-    })
-    slidePreviewArray.forEach(preview => {
-        previewContainer.append(preview)
-    })
 
 
 
@@ -297,7 +298,7 @@ const inputError = (msg) => {
         const submitBidBtn = document.querySelector("[data-type-specific='submit-bid-btn']")
    console.log(localStorageItems)
  if(localStorageItems && localStorageItems.token) {
-    console.log("NO token", localStorageItems, localStorageItems.token)
+
  } else {
   form.remove()
   formContainer.className ="flex items-center justify-center"
