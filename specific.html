@@ -160,41 +160,41 @@
 <!--first column-->
 <section class="flex-1 w-full  flex flex-col gap-5 md:global-padding"> 
 <!--SliderWrapper-->
-    <section data-type-specific="slider-wrapper" class="flex bg-custom-secondary flex-col rounded-sm shadow-sm relative">
+    <section data-type-specific="slider-wrapper" class="flex bg-custom-secondary flex-col rounded-md shadow-md relative">
 
-        <button data-type-specific="next-btn" class=" w-[3rem] h-[3rem]  absolute custom-z-low top-[50%] right-[5px] rounded-full"><i class="fa-solid fa-arrow-right"></i></button>
-        <button data-type-specific="prev-btn" class=" w-[3rem] h-[3rem]  absolute custom-z-low top-[50%] left-[5px]  rounded-full"><i class="fa-solid fa-arrow-left"></i></button>
+        <button data-type-specific="next-btn" class=" w-[2.5rem] h-[2.5rem]  absolute custom-z-low top-[35%]  right-[5px] rounded-full bg-custom-secondary opacity-[0.9] text-custom-textDark hover:opacity-[1] shadow-xl"><i class="fa-solid fa-arrow-right"></i></button>
+        <button data-type-specific="prev-btn" class=" w-[2.5rem] h-[2.5rem]  absolute custom-z-low top-[35%] left-[5px]  rounded-full bg-custom-secondary opacity-[0.9] text-custom-textDark hover:opacity-[1] shadow-xl"><i class="fa-solid fa-arrow-left"></i></button>
+        <span data-type-specific="description-end-date" class="absolute custom-z-low bg-custom-secondary text-custom-textDark py-1 px-1 opacity-[0.7]  shadow-sm">
+          
+           
+         </span>
 <section data-type-specific="slider" class="w-full h-[40vh] flex flex-col  relative overflow-hidden">
 
 
 </section>
-<section data-type-specific="preview-container" class=" flex rounded-sm shadow-sm  w-full">
+<section data-type-specific="preview-container" class=" flex  shadow-md  w-full">
 </section>
 
 
 </section>
 <!--SliderWrapper-->
 <!--Description Wrapper-->
-<section data-type-specific="description-container" class="flex flex-col justify-between rounded-sm shadow-sm  bg-custom-secondary text-custom-textDark px-1 py-1 min-h-[15vh]">
+<section data-type-specific="description-container" class="flex flex-col justify-between rounded-md shadow-md  bg-custom-secondary text-custom-textDark px-1 py-1 min-h-[15vh]">
 
 <div class="flex items-center gap-2 ">
-   <span class="w-[2rem] h-[2rem] rounded-full relative block"> 
+   <span class="w-[2rem] h-[2rem] rounded-full relative block border-1 border border-custom-btnBgAccent"> 
 <img data-type-specific="description-avatar" class="absolute w-full h-full border-inherit" src="" alt="avatar">
    </span> 
-<p data-type-specific="description-seller"><p>
+<p data-type-specific="description-seller" class="card-title-typography"><p>
 </div>
 
 <div class="flex-1 py-1">
 <span data-type-specific="description">
+
 </span>
 </div>
 
-<div class=" flex flex-col text-xs gap-1">
-    <span data-type-specific="description-created-date"></span>
-    <span data-type-specific="description-update-date"></span>
-    <span data-type-specific="description-end-date"></span>
 
-</div>
    
 
     
@@ -203,14 +203,14 @@
 
 
 
-<section data-type-specific="product-status" class=" h-[20vh] text-custom-textDark bg-custom-secondary rounded-sm shadow-sm overflow-y-scroll">
-<div class="flex justify-between px-2">
+<section data-type-specific="product-status" class=" h-[20vh] text-custom-textDark bg-custom-secondary rounded-md shadow-md overflow-y-scroll">
+<div class="flex justify-between px-2 card-title-typography">
     <p>
         Navn
     </p>
     <p>Verdi</p>
 </div>
-    <ul data-type-specific="product-status-ul" class="flex flex-col h-full">
+    <ul data-type-specific="product-status-ul" class="flex flex-col gap-3 py-1 h-full">
     </ul>
 
 
@@ -222,12 +222,12 @@
 
 
 
-<section data-type-specific="form-container" class=" bg-custom-secondary px-10 py-4">
+<section data-type-specific="form-container" class=" bg-custom-secondary px-[1rem] md:px-[10rem] rounded-md shadow-md  py-4">
     <form  data-type-specific="form" class="flex flex-col gap-2">
         <label for="bid-input" class="label-hidden">Sum:</label>
-        <input class=" flex-1 text-custom-textDark bg-custom-background py-2  rounded-sm shadow-sm pl-2"
+        <input class=" flex-1 text-custom-textDark bg-custom-background py-2  rounded-md shadow-sm pl-2"
             data-type-specific="bid-input" type="text" placeholder="Legg til bud">
-        <button data-type-specific="submit-bid-btn" class="bg-custom-btnBgSpecial w-full py-2 rounded-sm">
+        <button data-type-specific="submit-bid-btn" class="bg-custom-btnBgSpecial w-full btn-bold py-2 rounded-md ">
             Fullfør
         </button>
     </form>

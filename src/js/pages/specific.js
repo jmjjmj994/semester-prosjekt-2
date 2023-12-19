@@ -1,5 +1,5 @@
 import { singleListing, singleProfile, options } from "../api/api.js";
-import { createCardElement, localStorageItems, dateConverter, validImgUrl } from "../utils/utils.js";
+import { createCardElement, localStorageItems, dateConverter,norwegianEndDate, validImgUrl } from "../utils/utils.js";
 const queryString = document.location.search;
 const param = new URLSearchParams(queryString)
 const id = param.get("id")
@@ -56,7 +56,7 @@ const renderSlides = (media) => {
                 slideImage.alt = "Product image"
                 slide.append(slideImage)
                 slide.setAttribute("data-type-specific", "slide");
-                const slidePreview = createCardElement("div", " relative max-w-[20rem] w-full h-[7rem]  border-inherit cursor-pointer overflow-x-scroll")
+                const slidePreview = createCardElement("div", " relative max-w-[20rem] w-full h-[7rem]  border-inherit cursor-pointer")
                 const previewImage = createCardElement("img", "absolute h-full w-full object-cover border-inherit")
                 previewImage.src = img
                 previewImage.alt = "Product image"
@@ -152,21 +152,17 @@ const renderSingleSlide = async () => {
 
 const renderDescription = async () => {
     const data = await fetchData()
-    const norwegianFormattedDate = dateConverter;
-    const descriptionContainer = document.querySelector("[data-type-specific='description-container']")
     const sellerHeader = document.querySelector("[data-type-specific='description-seller']")
     const sellerAvatar = document.querySelector("[data-type-specific='description-avatar']")
     const productDescription = document.querySelector("[data-type-specific='description']")
-    const productCreatedDate = document.querySelector("[data-type-specific='description-created-date']")
-    const productUpdateDate = document.querySelector("[data-type-specific='description-update-date']")
+
     const productEndDate = document.querySelector("[data-type-specific='description-end-date']")
     if (localStorageItems && localStorageItems.token) {
         sellerHeader.textContent = data.seller.name
         sellerAvatar.src = data.seller.avatar
         productDescription.textContent = data.description
-        productCreatedDate.textContent = `Publisert: ${norwegianFormattedDate(data.created)}`
-        productUpdateDate.textContent = `Sist oppdatert: ${norwegianFormattedDate(data.updated)}`
-        productEndDate.textContent = `Slutter: ${norwegianFormattedDate(data.endsAt)}`
+        productEndDate.textContent = `${norwegianEndDate(data.endsAt)}`
+        
     }
     if (!data.description) {
         productDescription.textContent = "Ingen tilgjengelig beskrivelse"
@@ -188,7 +184,7 @@ const renderStatus = async () => {
     } else {
         bids.sort((a, b) => b.amount - a.amount)
         bids.forEach(({ id, amount, bidderName }) => {
-            const li = createCardElement("li", "flex justify-between  px-2")
+            const li = createCardElement("li", "flex justify-between  px-2 border-b-[1px] border-custom-background")
             const primary = createCardElement("p", "")
             const secondary = createCardElement("p", "")
             primary.textContent = `${bidderName}`
@@ -198,10 +194,10 @@ const renderStatus = async () => {
 
         })
 
-        const firstLiEl = ul.querySelector("li")
+     /*    const firstLiEl = ul.querySelector("li")
         if (firstLiEl) {
             firstLiEl.classList.add("highest-bidder")
-        }
+        } */
     }
 
 
@@ -304,7 +300,7 @@ const inputError = (msg) => {
   formContainer.className ="flex items-center justify-center"
   formContainer.innerHTML = `
   
-  <h3>
+  <h3 class="text-center">
 Vennligst <a aria-label="to login page" class=" text-purple-500 underline" href="/login.html">logg inn </a> eller <a aria-label="to register page" class="text-purple-500 underline" href="/signup.html">registrer </a> deg for å delta i budrunden
 
 

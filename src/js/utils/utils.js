@@ -110,7 +110,7 @@ const cardHeader = (image) => {
 }
 
 const cardBody = (title) => {
-    const cardBody = createCardElement("div", "basis-[auto] flex   p-1 overflow-hidden")
+    const cardBody = createCardElement("div", "basis-[auto] flex   p-1 overflow-hidden px-2")
     const cardBodyTitle = createCardElement("p", "card-title-typography")
     cardBodyTitle.textContent = title;
     cardBody.append(cardBodyTitle)
@@ -119,7 +119,7 @@ const cardBody = (title) => {
 
 const cardFooter = (bids, endsAt) => {
     const norwegianFormattedDate = norwegianEndDate(endsAt)
-    const cardFooter = createCardElement("div", "flex basis-[auto]  justify-between items-end p-1 ")
+    const cardFooter = createCardElement("div", "flex basis-[auto] px-2 pb-3 justify-between items-end p-1 ")
     const cardFooterCol_1 = createCardElement("div", "");
     const cardFooterBids = createCardElement("p", "")
     cardFooterBids.textContent = `Høyeste bud: ${bids}`
