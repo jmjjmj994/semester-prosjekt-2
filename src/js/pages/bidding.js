@@ -1,41 +1,127 @@
 import { articleCard, skeletonCards } from "../utils/utils.js"
-const params = new URLSearchParams(window.location.search);
-const auctionContainer = document.querySelector("[data-type-section='listings']")
-const auctionHeader = document.querySelector("[data-type-section='result-information']")
-const buttonContainer = document.querySelector("[data-type-section='pagination-buttons']")
-const currentPage = params.get("page")
-const currentResult = params.get("results")
-const ascendingOrder = params.get("order")
-const descendingOrder = params.get("order")
-const allBtn = document.querySelector("[data-type-bidding-sort='all']")
-const ascendingBtn = document.querySelector("[data-type-bidding-sort='asc']")
-const descendingBtn = document.querySelector("[data-type-bidding-sort='desc']")
-let getPageNum;
-ascendingBtn.addEventListener("click", (e) => {
-    let url = `/bidding.html?order=asc`
-    window.location.href = url
-})
-descendingBtn.addEventListener("click", (e) => {
-    let url = `/bidding.html?order=desc`
-    window.location.href = url
-})
+const params = new URLSearchParams(window.location.search)
+const results = params.get("results");
+const ascDate = params.get("asc")
+const descDate = params.get("desc")
+const ascFilter = document.querySelector("[data-type-bidding-sort='asc']")
+const descFilter = document.querySelector("[data-type-bidding-sort='desc']")
+const titleFilter = document.querySelector("[data-type-bidding-sort='a-å']")
+const pageParams = () => {
+    const page = params.get("page")
+    return currentPage(page)
+}
 
-allBtn.addEventListener("click", (e) => {
-    let url = `/bidding.html`
-    window.location.href = url
-})
-
-if (!isNaN(parseInt(currentPage))) {
-    getPageNum = parseInt(currentPage);
-
-} else {
-    getPageNum = 0;
+const currentPage = (page) => {
+    let getPageNum;
+    if (!isNaN(parseInt(page))) {
+        getPageNum = parseInt(page);
+    } else {
+        getPageNum = 0;
+    }
+    return getPageNum
 }
 
 
-async function fetchListings(tag) {
-    const url =
-        `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&_bids=true&_tag=${tag}&limit=10&offset=${getPageNum * 10}`;
+
+
+
+
+
+const render = async () => {
+    const pageNumber = pageParams();
+    const sortOrder = params.get("sort");
+    const defaultUrl = `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&_bids=true&sort=title&sortOrder=asc&limit=10&offset=${pageNumber * 10}`;
+    let url = defaultUrl;
+    if (results) {
+        url = `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&_bids=true&_tag=${results}&limit=10&offset=${pageNumber * 10}`;
+    }
+    if (sortOrder) {
+        url = `https://api.noroff.dev/api/v1/auction/listings?sort=endsAt&sortOrder=${sortOrder}&_seller=true&_active=true&_bids=true&limit=10&offset=${pageNumber * 10}`;
+    }
+    await listings(url);
+    pagination(results, sortOrder);
+};
+
+
+
+const updateURL = (option, param) => {
+    console.log(option, param)
+    const pageNumber = pageParams();
+    if (option && param) {
+        window.history.pushState({}, "", `/bidding.html?results=${option}&sort=${param}&page=${pageNumber}`);
+    } else if (option) {
+        window.history.pushState({}, "", `/bidding.html?results=${option}&page=${pageNumber}`);
+    } else {
+        window.history.pushState({}, "", `/bidding.html?page=${pageNumber}`);
+    }
+};
+
+
+
+
+
+
+
+
+
+ascFilter.addEventListener("click", async (e) => {
+    e.preventDefault()
+    const queries = params.set("sort", "asc")
+    params.set("sort", "asc");
+    params.set("page", "0");
+    updateURL(results, "asc");
+    await render();
+
+})
+
+
+
+
+
+
+descFilter.addEventListener("click", async (e) => {
+    e.preventDefault()
+    const queries = params.set("sort", "desc")
+    params.set("sort", "desc");
+    params.set("page", "0");
+    updateURL(results, "desc");
+    await render();
+
+})
+
+/* titleFilter.addEventListener("click", async (e) => {
+    e.preventDefault()
+    updateURL("", "")
+    await render()
+}) */
+
+const pagination = async (option, param) => {
+    const pageNumber = pageParams();
+    const prevBtn = document.querySelector("[data-type-section='pagination-prev-btn']");
+    const nextBtn = document.querySelector("[data-type-section='pagination-next-btn']");
+
+    prevBtn.href = (pageNumber > 0) ? `/bidding.html?page=${pageNumber - 1}` : `/bidding.html?page=0`;
+
+    if (option) {
+        nextBtn.href = `/bidding.html?results=${option}&page=${pageNumber + 1}`;
+    } else {
+        nextBtn.href = `/bidding.html?page=${pageNumber + 1}`;
+    }
+
+    if (option && param) {
+        nextBtn.href = `/bidding.html?results=${option}&sort=${param}&page=${pageNumber + 1}`;
+    }
+
+    if (param) {
+        nextBtn.href = `/bidding.html?sort=${param}&page=${pageNumber + 1}`;
+    }
+};
+
+
+
+
+
+async function listings(url) {
     try {
         const res = await fetch(url, {
             method: "GET",
@@ -46,41 +132,10 @@ async function fetchListings(tag) {
 
         if (res.ok) {
             const data = await res.json()
-            return data;
-
+            handleData(data)
         } else {
             throw new Error("Failed to fetch data")
         }
-
-
-    } catch (error) {
-        console.log(error.message)
-    }
-}
-
-
-const sortListings = async (order, offset) => {
-    const url =
-        `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_bids=true&_count&_active=true&sort=endsAt&sortOrder=${order}&limit=100&offset=${getPageNum * 10}`;
-
-
-
-    try {
-
-        const res = await fetch(url, {
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        if (res.ok) {
-            const data = await res.json();
-            console.log(data)
-            return data;
-        } else {
-            throw new Error("Failed to fetch data")
-        }
-
 
     } catch (error) {
         console.log(error.message)
@@ -89,110 +144,53 @@ const sortListings = async (order, offset) => {
 
 
 
+render()
 
 
 
-const initializer = async () => {
-    const nextButton = document.querySelector("[data-type-section='pagination-next-btn']");
-    const prevButton = document.querySelector("[data-type-section='pagination-prev-btn']");
-    if (currentResult) {
-        const resultsValue = currentResult.substring(" ");
-        auctionHeader.textContent = `Auksjoner som matcher "${resultsValue}"`;
-        nextButton.addEventListener("click", (e) => {
-            e.target.href = `/bidding.html?results=${resultsValue}&page=${getPageNum + 1}`;
-        });
-        prevButton.addEventListener("click", (e) => {
-            e.target.href = `/bidding.html?results=${resultsValue}&page=${getPageNum - 1}`;
-        });
-        const data = await fetchListings(resultsValue);
-        handleData(data);
-    } else {
-        auctionHeader.textContent = `Alle auksjoner`;
-        nextButton.addEventListener("click", (e) => {
-            e.target.href = `/bidding.html?page=${getPageNum + 1}`;
-        });
-        prevButton.addEventListener("click", (e) => {
-            e.target.href = `/bidding.html?page=${getPageNum - 1}`;
-        });
-        const data = await fetchListings("");
-        handleData(data);
-    }
 
-    if (ascendingOrder) {
-        const asc = ascendingOrder.substring(" ")
-        auctionHeader.textContent = `Sortert høyest`
-        nextButton.addEventListener("click", (e) => {
-            e.target.href = `/bidding.html?order=${asc}&page=${getPageNum + 1}`;
-        });
-        prevButton.addEventListener("click", (e) => {
-            e.target.href = `/bidding.html?order=${asc}&page=${getPageNum - 1}`;
-        });
-        const data = await sortListings(asc);
-        handleData(data)
-    } else if (descendingOrder) {
-        const desc = descendingOrder.substring(" ")
-        auctionHeader.textContent = `Sortert lavest`
-        nextButton.addEventListener("click", (e) => {
-            e.target.href = `/bidding.html?order=${desc}&page=${getPageNum + 1}`;
-        });
-        prevButton.addEventListener("click", (e) => {
-            e.target.href = `/bidding.html?order=${desc}&page=${getPageNum - 1}`;
-        });
-        const data = await sortListings(desc);
-        handleData(data)
-    }
-
-
-};
-
-const handleData = (data) => {
-    const nextButton = document.querySelector("[data-type-section='pagination-next-btn']");
-    const prevButton = document.querySelector("[data-type-section='pagination-prev-btn']");
-
+const handleData = async (data) => {
+    const buttonContainer = document.querySelector("[data-type-section='pagination-buttons']")
+    const prevBtn = document.querySelector("[data-type-section='pagination-prev-btn']");
+    const nextBtn = document.querySelector("[data-type-section='pagination-next-btn']");
+    const pageNumber = pageParams()
     if (data.length === 0) {
         console.log("Data length is 0");
-        renderAuctionCards("No more data");
-        buttonContainer.classList.add("hidden");
-        nextButton.classList.add("hidden");
-        prevButton.classList.add("hidden");
-    } else if (data.length < 10) {
-        nextButton.classList.add('hidden');
-        prevButton.classList.remove('hidden');
+        renderCards("No more data");
 
-    } else if (getPageNum === 0) {
-        nextButton.classList.remove("hidden");
-        prevButton.classList.add("hidden");
+        nextBtn.classList.add("hidden");
+        prevBtn.classList.add("hidden");
+    } else if (data.length < 10) {
+        nextBtn.classList.add('hidden');
+        prevBtn.classList.remove('hidden');
+
+    } else if (pageNumber === 0) {
+        buttonContainer.className = " basis-[auto] w-full md:w-[20rem]   absolute bottom-0 flex justify-end lg:items-center left-[50%] transform -translate-x-1/2 -translate-y-1/2 px-1"
+        nextBtn.classList.remove("hidden");
+        prevBtn.classList.add("hidden");
     } else {
-        nextButton.classList.remove("hidden");
-        prevButton.classList.remove("hidden");
+        buttonContainer.className = " basis-[auto] w-full md:w-[20rem]   absolute bottom-0 flex justify-between lg:items-center left-[50%] transform -translate-x-1/2 -translate-y-1/2 px-1"
+        nextBtn.classList.remove("hidden");
+        prevBtn.classList.remove("hidden");
     }
 
-    renderAuctionCards(data)
+
+    renderCards(data)
+}
 
 
-};
-
-
-
-
-
-
-
-const renderAuctionCards = async (data) => {
+const renderCards = async (data) => {
+    console.log(data)
+    const container = document.querySelector("[data-type-section='listings-container']")
     const skeleton = skeletonCards()
     for (let i = 0; i < data.length; i++) {
-       auctionContainer.innerHTML += skeleton
+        container.innerHTML += skeleton
     }
-
     try {
-/* 
-        await new Promise(resolve => setTimeout(resolve, 1000)); */
-
-
         if (typeof data === "string" || data.length === 0) {
-            auctionContainer.innerHTML = `<span> Ingen data tilgjengelig. Trykk <a class="text-purple-600 underline" href="/bidding.html">her</a> for å gå tilbake. </span>`;
+            container.innerHTML = `<span> Ingen data tilgjengelig. Trykk <a class="text-purple-600 underline" href="/bidding.html">her</a> for å gå tilbake. </span>`;
         } else {
-            auctionContainer.innerHTML = "";
+            container.innerHTML = "";
             const cardPromises = data.map(async (item) => {
                 const { media, title, bids, endsAt, id } = item;
                 const createBidArray = bids.map(bid => bid.amount)
@@ -203,16 +201,10 @@ const renderAuctionCards = async (data) => {
             });
 
             const cards = await Promise.all(cardPromises);
-            cards.forEach(card => auctionContainer.appendChild(card));
+            container.innerHTML = ""
+            cards.forEach(card => container.appendChild(card));
         }
 
     } finally { }
+
 }
-
-
-
-
-
-initializer();
-
-

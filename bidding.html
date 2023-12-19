@@ -160,26 +160,25 @@
            <details class="bg-custom-secondary  md:w-[18rem]  text-custom-textDark  custom-z-low top-0 rounded-sm shadow-sm px-2 py-2 cursor-pointer">
             <summary class=" text-lg text-bold">
          
-       Filtrer
+     Sorter
    
             </summary>
 
-         <ul class="mt-2 flex flex-col gap-2">
-            <li>
-           <button data-type-bidding-sort="all">Alle</button>
+            <ul class="mt-2 flex flex-col gap-2">
+                <li>
+                   <a data-type-bidding-sort="a-å">A-Å</a>
+                </li>
+            <li class="flex items-center text-md gap-1">
+            <a data-type-bidding-sort="asc">Nylig lagt til</a>
             </li>
             <li class="flex items-center text-md gap-1">
-            <button data-type-bidding-sort="asc">Nyeste</button>
-            </li>
-            <li class="flex items-center text-md gap-1">
-             
-                <button data-type-bidding-sort="desc">Eldste</button>
+                <a data-type-bidding-sort="desc">Slutter snart</a>
             </li>
          </ul>
            </details>
             </section>
 
-            <section data-type-section="listings" class="flex-1  featured-card-grid ">
+            <section data-type-section="listings-container" class="flex-1 featured-card-grid ">
                 <!--Card container-->
 
             </section>
@@ -187,15 +186,15 @@
 
             <!--Pagination buttons-->
             <div data-type-section="pagination-buttons"
-                class=" basis-[auto] w-full md:w-[20rem]   absolute bottom-0 flex justify-between lg:items-center left-[50%] transform -translate-x-1/2 -translate-y-1/2 px-1">
+                class="">
 
                 <a data-type-section="pagination-prev-btn"
-                    class="hidden cursor-pointer  bg-custom-secondary px-2 py-1 rounded-md ">
+                    class=" cursor-pointer  bg-custom-secondary px-2 py-1 rounded-md ">
                     <i class="fa-solid fa-arrow-left pointer-events-none"></i>
                 </a>
 
                 <a data-type-section="pagination-next-btn"
-                    class="hidden cursor-pointer px-2 py-1 rounded-md bg-orange-300 ">
+                    class=" cursor-pointer px-2 py-1 rounded-md bg-orange-300 ">
                     <i class="fa-solid fa-arrow-right pointer-events-none"></i>
 
                 </a>
