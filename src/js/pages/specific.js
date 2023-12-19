@@ -284,7 +284,7 @@ const setBid = async (amount) => {
             userCredits()
 
         } else {
-            throw new Error("Ikke nok dekning på konto")
+            throw new Error("Ikke nok kreditt")
         }
 
     } catch (error) {
@@ -306,7 +306,7 @@ const inputError = (msg) => {
         formInput.placeholder = "Legg til bud"
         formInput.style.border = ""
 
-    }, 2000)
+    }, 3000)
 }
 
     ; (() => {
@@ -335,7 +335,7 @@ Vennligst <a aria-label="to login page" class=" text-purple-500 underline" href=
 
         const validateInput = (value) => {
             if (isNaN(value)) {
-                inputError("Kun tall")
+                inputError("Vennligst skriv inn kun tall")
 
             }
 
