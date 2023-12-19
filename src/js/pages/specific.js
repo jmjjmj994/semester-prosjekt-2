@@ -1,5 +1,5 @@
 import { singleListing, singleProfile, options } from "../api/api.js";
-import { createCardElement, localStorageItems, dateConverter,norwegianEndDate, validImgUrl } from "../utils/utils.js";
+import { createCardElement, localStorageItems, dateConverter, norwegianEndDate, validImgUrl } from "../utils/utils.js";
 const queryString = document.location.search;
 const param = new URLSearchParams(queryString)
 const id = param.get("id")
@@ -139,12 +139,22 @@ const renderSlides = (media) => {
 
 const renderSingleSlide = async () => {
     const img = await fetchData()
+  console.log(img)
     const slide = createCardElement("div", "flex-1 w-full h-full relative");
     const image = createCardElement("img", "absolute w-full h-full object-cover");
-    image.src = img.media
-    image.alt = "product image"
-    slide.append(image);
-    sliderContainer.append(slide);
+    if(img.media.length === 0) {
+        console.log(img)
+        image.src = "src/assets/no-image.jpg";
+        image.alt ="Placeholder image"
+        slide.append(image);
+        sliderContainer.append(slide);
+    } else {
+     
+        image.src = img.media
+        image.alt = "product image"
+        slide.append(image);
+        sliderContainer.append(slide); 
+    }
 
 }
 
@@ -162,7 +172,7 @@ const renderDescription = async () => {
         sellerAvatar.src = data.seller.avatar
         productDescription.textContent = data.description
         productEndDate.textContent = `${norwegianEndDate(data.endsAt)}`
-        
+
     }
     if (!data.description) {
         productDescription.textContent = "Ingen tilgjengelig beskrivelse"
@@ -194,10 +204,10 @@ const renderStatus = async () => {
 
         })
 
-     /*    const firstLiEl = ul.querySelector("li")
+        const firstLiEl = ul.querySelector("li")
         if (firstLiEl) {
             firstLiEl.classList.add("highest-bidder")
-        } */
+        }
     }
 
 
@@ -206,8 +216,8 @@ const renderStatus = async () => {
 
 const clearProductStatus = () => {
     const ul = document.querySelector("[data-type-specific='product-status-ul']")
-    if(ul) {
-        ul.innerHTML =""
+    if (ul) {
+        ul.innerHTML = ""
     }
 }
 
@@ -285,20 +295,20 @@ const inputError = (msg) => {
         formInput.placeholder = "Legg til bud"
         formInput.style.border = ""
 
-    }, 2000)}
+    }, 2000)
+}
 
     ; (() => {
         const formContainer = document.querySelector("[data-type-specific='form-container']")
         const form = document.querySelector("[data-type-specific='form']")
         const formInput = document.querySelector("[data-type-specific='bid-input']");
         const submitBidBtn = document.querySelector("[data-type-specific='submit-bid-btn']")
-   console.log(localStorageItems)
- if(localStorageItems && localStorageItems.token) {
+        if (localStorageItems && localStorageItems.token) {
 
- } else {
-  form.remove()
-  formContainer.className ="flex items-center justify-center"
-  formContainer.innerHTML = `
+        } else {
+            form.remove()
+            formContainer.className = "flex items-center justify-center"
+            formContainer.innerHTML = `
   
   <h3 class="text-center">
 Vennligst <a aria-label="to login page" class=" text-purple-500 underline" href="/login.html">logg inn </a> eller <a aria-label="to register page" class="text-purple-500 underline" href="/signup.html">registrer </a> deg for å delta i budrunden
@@ -309,7 +319,7 @@ Vennligst <a aria-label="to login page" class=" text-purple-500 underline" href=
   
   
   `
- }
+        }
 
 
         const validateInput = (value) => {

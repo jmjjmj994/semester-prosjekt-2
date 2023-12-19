@@ -83,6 +83,7 @@ export const norwegianEndDate = (endDate) => {
         callback(false)
     }
     img.src = url
+    console.log(img)
     return img
 }
 
