@@ -50,9 +50,9 @@ document.addEventListener("click", (e) => {
 
 
 const userAvatar = async () => {
+console.log(localStorageItems.userData)
 
-
-    if (localStorageItems && localStorageItems.token) {
+    if (localStorageItems && localStorageItems.token &&localStorageItems.userData.avatar) {
         const data = await singleProfile(localStorageItems.userData.name)
         profileImage.forEach(img => {
             img.src = data.avatar
@@ -62,6 +62,7 @@ const userAvatar = async () => {
             img.src = "src/assets/blank-avatar.png"
         })
     }
+    
 
 }
 userAvatar()
