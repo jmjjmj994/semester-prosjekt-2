@@ -124,12 +124,12 @@ renderFeaturedCards()
 
         const CTAButtons = () => {
             const CTABtnContainer = document.querySelector("[data-type-cta='btn-container']")
-            const CTALoginBtn = createCardElement("a", "bg-custom-btnBgAccent text-custom-textWhite uppercase  flex justify-center items-center cta-btn-sm md:cta-btn-md lg:cta-btn-lg")
+            const CTALoginBtn = createCardElement("a", "bg-custom-btnBgAccent text-custom-textWhite uppercase btn-bold flex justify-center items-center cta-btn-sm md:cta-btn-md lg:cta-btn-lg")
             CTALoginBtn.textContent = "Logg inn"
             CTALoginBtn.href = "/login.html"
             CTALoginBtn.role = "button"
             CTALoginBtn.ariaLabel = "Logg inn"
-            const CTARegisterBtn = createCardElement("a", "bg-custom-btnBgSpecial text-custom-textDark uppercase  flex justify-center items-center cta-btn-sm md:cta-btn-md lg:cta-btn-lg")
+            const CTARegisterBtn = createCardElement("a", "bg-custom-btnBgSpecial text-black-500 uppercase  btn-bold flex justify-center items-center cta-btn-sm md:cta-btn-md lg:cta-btn-lg")
             CTARegisterBtn.textContent = "Registrer"
             CTARegisterBtn.href = "/signup.html"
             CTARegisterBtn.role = "button"
