@@ -1,4 +1,4 @@
-import { localStorageItems } from "../utils/utils.js";
+import { localStorageItems, validImgUrl } from "../utils/utils.js";
 import { updateMedia, singleProfile } from "../api/api.js";
 const avatarOverlay = document.querySelector("[data-type-overlay='overlay']");
 const avatarOverlayForm = document.querySelector("[data-type-overlay='form']");
@@ -72,23 +72,63 @@ const toggleOverlay = (value) => {
 
 }
 
+console.log(avatarOverlayFormInput)
+const displayError = (error, color) => {
+    avatarOverlayFormInput.placeholder = error
+    avatarOverlayFormInput.style.cssText = `border:1px solid ${color}`;
+
+
+    setTimeout(() => {
+        avatarOverlayFormInput.placeholder ="Legg til bilde url"
+        avatarOverlayFormInput.style.cssText = "";
+      
+    }, 3000);
+}
+
+
+
+
 
 avatarOverlayForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
     const avatarFormInputValue = avatarOverlayFormInput.value.trim();
+    if(avatarFormInputValue === "") {
+        displayError("Vennligst legg til en url", "red")
+        return;
+       }
     if (urlRegex.test(avatarFormInputValue)) {
-        changeUserAvatar(avatarFormInputValue);
-        avatarOverlayFormInput.value = "";
-        avatarOverlay.classList.remove("isActive");
-    }
+        validImgUrl(avatarFormInputValue, async (isValid) => {
+            if (isValid) {
+                try {
+                    await changeUserAvatar(avatarFormInputValue);
+                    displayError("", "green")
+                    avatarOverlayFormInput.value = "";
+                    avatarOverlay.classList.remove("isActive");
+                  
+                } catch (error) {
+                    avatarOverlayFormInput.value = ""
+                    console.error("Problemer med å bytte avatar:", error.message);
+                   
+                }
+            } else {
+                avatarOverlayFormInput.value = ""
+                displayError("Oops! Denne url-adressen er ikke gyldig. Prøv på nytt", "red");
+            }
+        });
+    } 
 })
 
 
 const changeUserAvatar = async (imageUrl) => {
-    await updateMedia(localStorageItems.userData.name, imageUrl);
-    const userData = await getUserData()
-    renderUserInformation(userData)
+    try {
+        await updateMedia(localStorageItems.userData.name, imageUrl);
+        const userData = await getUserData()
+        renderUserInformation(userData)
+    } catch(error) {
+        throw new Error(error.message)
+    }
+   
 
 }
 

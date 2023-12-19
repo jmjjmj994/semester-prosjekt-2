@@ -61,10 +61,22 @@ svg {
   [data-header="overlay"] {
     opacity: 0;
     transition: 150ms;
+    transform: translateX(-100%);
   }
   [data-header="overlay"].isActive {
     opacity: 1;
     transition: 150ms;
+  }
+
+  [data-type-overlay="overlay"] {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 150ms;
+  }
+  [data-type-overlay="overlay"].isActive {
+    opacity: 1;
+    visibility: visible;
+    transition: all 150ms;
   }
 
   /*Profile overlay */
@@ -155,6 +167,7 @@ svg {
   .btn-bold {
     font-family: "Montserrat", sans-serif;
     font-weight: semibold;
+    color: black;
   }
   /*Cards*/
 
@@ -268,23 +281,23 @@ svg {
     transition: 100ms cubic-bezier(0.2, 0.4, 0.5, 0.9);
   }
 
- .preview-effect {
-  transform: scale(1);
-  transition: 100ms cubic-bezier(0.1, 0.5, 0.3, 0.2);
- }
- 
- .preview-effect:hover {
-  transform: scale(1.03);
-    transition: 100ms cubic-bezier(0.1, 0.5, 0.3, 0.7);
- }
- .preview-effect:active {
+  .preview-effect {
+    transform: scale(1);
+    transition: 100ms cubic-bezier(0.1, 0.5, 0.3, 0.2);
+  }
+
+  .preview-effect:hover {
     transform: scale(1.03);
     transition: 100ms cubic-bezier(0.1, 0.5, 0.3, 0.7);
- }
+  }
+  .preview-effect:active {
+    transform: scale(1.03);
+    transition: 100ms cubic-bezier(0.1, 0.5, 0.3, 0.7);
+  }
   .preview-effect:focus {
     transform: scale(1.03);
     transition: 100ms cubic-bezier(0.1, 0.5, 0.3, 0.7);
- }
+  }
 
   /*Fancy things*/
 
