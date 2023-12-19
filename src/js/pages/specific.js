@@ -50,13 +50,14 @@ const renderSlides = (media) => {
     const slides = () => {
         mediaArray.forEach((img, index) => {
             img.forEach(img => {
-                const slide = createCardElement("div", "flex-1 w-full h-full absolute");
-                const slideImage = createCardElement("img", "absolute h-full w-full object-cover");
+                const slide = createCardElement("div", "flex-1 w-full h-full absolute rounded-md");
+                const slideImage = createCardElement("img", "absolute h-full w-full border-inherit object-cover");
                 slideImage.src = img;
                 slideImage.alt = "Product image"
                 slide.append(slideImage)
                 slide.setAttribute("data-type-specific", "slide");
-                const slidePreview = createCardElement("div", " relative max-w-[20rem] w-full h-[7rem]  border-inherit cursor-pointer")
+                const slidePreview = createCardElement("div", " relative max-w-[20rem] w-full h-[7rem] rounded-md   border-inherit cursor-pointer  preview-effect overflow-hidden custom-z-low")
+                slidePreview.setAttribute("tabindex", "0");
                 const previewImage = createCardElement("img", "absolute h-full w-full object-cover border-inherit")
                 previewImage.src = img
                 previewImage.alt = "Product image"
@@ -116,6 +117,7 @@ const renderSlides = (media) => {
     })
     slidePreviewArray.forEach((preview, index) => {
         preview.addEventListener("click", (e) => {
+         
             const currentIndex = index;
             curSlide = index
             moveSlidesOnClick(currentIndex)
@@ -165,18 +167,27 @@ const renderDescription = async () => {
     const sellerHeader = document.querySelector("[data-type-specific='description-seller']")
     const sellerAvatar = document.querySelector("[data-type-specific='description-avatar']")
     const productDescription = document.querySelector("[data-type-specific='description']")
-
     const productEndDate = document.querySelector("[data-type-specific='description-end-date']")
+    productEndDate.textContent = `${norwegianEndDate(data.endsAt)}`
+    productDescription.textContent = data.description
     if (localStorageItems && localStorageItems.token) {
         sellerHeader.textContent = data.seller.name
         sellerAvatar.src = data.seller.avatar
-        productDescription.textContent = data.description
-        productEndDate.textContent = `${norwegianEndDate(data.endsAt)}`
-
+        sellerAvatar.alt = "Profile avatar"
+       
+    } else {
+        sellerHeader.textContent = "Logg inn for å se informasjon om selger"
+        sellerAvatar.src = "src/assets/blank-avatar.png"
+        sellerAvatar.alt = "Profile placeholder"
+        
     }
+
+
     if (!data.description) {
         productDescription.textContent = "Ingen tilgjengelig beskrivelse"
     }
+
+    
 
 
 }
@@ -306,11 +317,11 @@ const inputError = (msg) => {
         if (localStorageItems && localStorageItems.token) {
 
         } else {
-            form.remove()
-            formContainer.className = "flex items-center justify-center"
+            /* form.remove() */
+            formContainer.className = "flex items-center justify-center  bg-custom-secondary px-[1rem] md:px-[10rem] rounded-md shadow-md  py-4"
             formContainer.innerHTML = `
   
-  <h3 class="text-center">
+  <h3 class="text-center text-custom-textDark">
 Vennligst <a aria-label="to login page" class=" text-purple-500 underline" href="/login.html">logg inn </a> eller <a aria-label="to register page" class="text-purple-500 underline" href="/signup.html">registrer </a> deg for å delta i budrunden
 
 

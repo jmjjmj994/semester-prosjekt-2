@@ -158,9 +158,9 @@
 
 
 <!--first column-->
-<section class="flex-1 w-full  flex flex-col gap-5 md:global-padding"> 
+<section class="flex-1 w-full  flex flex-col gap-5 px-2  md:global-padding"> 
 <!--SliderWrapper-->
-    <section data-type-specific="slider-wrapper" class="flex bg-custom-secondary flex-col rounded-md shadow-md relative">
+    <section data-type-specific="slider-wrapper" class="flex flex-col gap-2 rounded-md shadow-md relative slider-ani">
 
         <button data-type-specific="next-btn" class=" w-[2.5rem] h-[2.5rem]  absolute custom-z-low top-[35%]  right-[5px] rounded-full bg-custom-secondary opacity-[0.9] text-custom-textDark hover:opacity-[1] shadow-xl"><i class="fa-solid fa-arrow-right"></i></button>
         <button data-type-specific="prev-btn" class=" w-[2.5rem] h-[2.5rem]  absolute custom-z-low top-[35%] left-[5px]  rounded-full bg-custom-secondary opacity-[0.9] text-custom-textDark hover:opacity-[1] shadow-xl"><i class="fa-solid fa-arrow-left"></i></button>
@@ -168,27 +168,27 @@
           
            
          </span>
-<section data-type-specific="slider" class="w-full h-[40vh] flex flex-col  relative overflow-hidden">
+<section data-type-specific="slider" tabindex="0" class="w-full h-[20vh] sm:h-[35vh] md:h-[60vh] flex flex-col  relative overflow-hidden rounded-sm">
 
 
 </section>
-<section data-type-specific="preview-container" class=" flex  shadow-md  w-full">
+<section data-type-specific="preview-container" class=" flex  shadow-md gap-1 w-full">
 </section>
 
 
 </section>
 <!--SliderWrapper-->
 <!--Description Wrapper-->
-<section data-type-specific="description-container" class="flex flex-col justify-between rounded-md shadow-md  bg-custom-secondary text-custom-textDark px-1 py-1 min-h-[15vh]">
+<section data-type-specific="description-container" class="flex flex-col justify-between rounded-md shadow-md  bg-custom-secondary text-custom-textDark px-2 py-2 min-h-[15vh]">
 
 <div class="flex items-center gap-2 ">
-   <span class="w-[2rem] h-[2rem] rounded-full relative block border-1 border border-custom-btnBgAccent"> 
-<img data-type-specific="description-avatar" class="absolute w-full h-full border-inherit" src="" alt="avatar">
+   <span class="w-[3rem] h-[3rem] rounded-full relative block border border-custom-btnBgAccent"> 
+<img data-type-specific="description-avatar" class="absolute w-full h-full border-inherit" src="src/assets/blank-avatar.png" alt="">
    </span> 
 <p data-type-specific="description-seller" class="card-title-typography"><p>
 </div>
 
-<div class="flex-1 py-1">
+<div class="flex-1 px-2 py-2">
 <span data-type-specific="description">
 
 </span>
@@ -203,7 +203,7 @@
 
 
 
-<section data-type-specific="product-status" class=" h-[20vh] text-custom-textDark bg-custom-secondary rounded-md shadow-md overflow-y-scroll">
+<section data-type-specific="product-status" class=" h-[15vh] text-custom-textDark bg-custom-secondary rounded-md shadow-md overflow-y-scroll px-2 py-2">
 <div class="flex justify-between px-2 card-title-typography">
     <p>
         Navn
