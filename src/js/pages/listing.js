@@ -23,8 +23,8 @@ form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const validatedInput = validateInput(galleryArr);
     if (validatedInput) {
-        await createListing(validatedInput.title, validatedInput.description,  validatedInput.image, validatedInput.end)
-        
+        await createListing(validatedInput.title, validatedInput.description, validatedInput.image, validatedInput.end)
+
         previewGallery.innerHTML = "";
         previewImage.src = "";
         previewImage.alt = "";
@@ -46,7 +46,7 @@ const validateInput = (galleryArr) => {
     const inputTitleVal = productInputTitle.value.trim();
     const inputDateVal = productDateInput.value.trim();
     const inputTextareaVal = productTextareaInput.value.trim();
-    if (inputTitleVal &&  galleryArr.length > 0 && inputTextareaVal) {
+    if (inputTitleVal && galleryArr.length > 0 && inputTextareaVal) {
         const inputData = {
             title: inputTitleVal,
             description: inputTextareaVal,
@@ -54,7 +54,7 @@ const validateInput = (galleryArr) => {
             end: inputDateVal
         }
         productInputTitle.value = "";
-     
+
         productImageInput.value = "";
         productTextareaInput.value = ""
         productDateInput.value = "";
@@ -85,7 +85,7 @@ const clearImagePreview = () => {
 const createPreview = () => {
     galleryArr = []
     const productInputTitle = document.querySelector("[data-input-type='product-title']")
-  
+
     const productImageInput = document.querySelector("[data-input-type='product-image']")
     const productImageInput2 = document.querySelector("[data-input-type='product-image-2']")
     const productImageInput3 = document.querySelector("[data-input-type='product-image-3']")
@@ -130,7 +130,7 @@ const createPreview = () => {
                 setTimeout(() => {
                     if (input.value.trim() === "") {
                         galleryArr[index] = "";
-                        createGallery(galleryArr.filter(Boolean));
+                        createGallery(galleryArr.filter(item => item));
                     }
                 }, 0);
             }
@@ -146,14 +146,13 @@ const createPreview = () => {
                     galleryArr[index] = "";
                     console.log(`Invalid image URL: ${inputVal}`);
                 }
-                createGallery(galleryArr.filter(Boolean));
+                createGallery(galleryArr.filter(item => item));
             }, 0);
         });
     })
 
 
     previewBodyHeader.textContent = "";
-    previewBodyCategories.textContent = "";
     previewBodyDescription.textContent = "";
     previewBodyDate.textContent = ""
 
@@ -182,8 +181,8 @@ function createGallery(arr) {
         validImgUrl(url, (isValid) => {
             if (isValid) {
 
-                const imgContainer = createCardElement("div", "w-[15%] h-[5rem] relative ");
-                const img = createCardElement("img", "max-w-full w-full block absolute object-contain h-full");
+                const imgContainer = createCardElement("div", "w-[20%] h-[5rem] relative rounded-md ");
+                const img = createCardElement("img", "max-w-full w-full block  object-cover h-full rounded-md");
                 img.src = url;
                 imgContainer.append(img);
                 previewGallery.append(imgContainer);
