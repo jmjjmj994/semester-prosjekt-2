@@ -323,16 +323,16 @@ svg {
   }
 
   .auto-slider-anim {
-    animation: slideMan 5s infinite ease-in-out;
+    animation: slideMan 15s infinite ease-in-out;
   }   @keyframes slideMan {
     0%, 20% {
         transform: translateX(0%);
     }
     40%, 60% {
-        transform: translateX(-50%);
+        transform: translateX(-100%);
     }
     80%, 100% {
-        transform: translateX(-100%);
+        transform: translateX(0%);
     }
 }
   /*Fancy things*/
