@@ -1,4 +1,4 @@
-import { listings, singleProfile } from "../api/api.js";
+import { listings, singleProfile, listingsByDate } from "../api/api.js";
 import { articleCard, skeletonCards, createCardElement, norwegianEndDate, localStorageItems } from "../utils/utils.js";
 
 
@@ -100,7 +100,7 @@ import { articleCard, skeletonCards, createCardElement, norwegianEndDate, localS
 
 
 ; (async () => {
-    const featuredListings = await listings(20);
+    const featuredListings = await listingsByDate("asc",31);
     const featuredSection = document.querySelector("[data-featured-section='grid-container']");
     const sortListingsByBids = () => {
         const items = featuredListings;

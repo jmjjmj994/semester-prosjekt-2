@@ -233,7 +233,7 @@ const clearProductStatus = () => {
 }
 
 const clearCredits = () => {
-    const creditsContainer = document.querySelector("[data-type-navbar='user-credit-container']")
+    const creditsContainer = document.querySelector("[data-type-navbar='user-bid-credits']")
     creditsContainer.innerHTML = "";
 
 }
@@ -249,9 +249,9 @@ const userCredits = async () => {
     clearCredits()
 
     const data = await singleProfile(localStorageItems.userData.name);
-    const creditsContainer = document.querySelector("[data-type-navbar='user-credit-container']")
+    const creditsContainer = document.querySelector("[data-type-navbar='user-bid-credits']")
     if (localStorageItems.token) {
-        creditsContainer.innerHTML = `<i class="fa-regular fa-credit-card"></i>`
+        creditsContainer.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 -3.5 30 30"><defs><linearGradient id="a" x1="50%" x2="50%" y1="0%" y2="100%"><stop offset="0%" stop-color="#FFC923"/><stop offset="100%" stop-color="#FFAD41"/></linearGradient></defs><g fill="none" fill-rule="nonzero"><path fill="url(#a)" d="M15.002 0c8.244 0 15.026 3.845 15 8.898a5.777 5.777 0 0 1-.635 2.583c.417.825.64 1.708.634 2.63-.027 5.046-6.805 8.889-15 8.889-8.194 0-14.972-3.843-15-8.889a5.727 5.727 0 0 1 .634-2.63 5.786 5.786 0 0 1-.633-2.583C-.025 3.845 6.757 0 15.002 0Z"/><path fill="#DF960A" d="m30.001 8.882.001 4.776c-2.829 3.56-8.555 5.904-15 5.904-6.51 0-12.234-2.25-15.002-5.792l.001-4.864 30-.024Zm0 .026-30-.01c.028 5.046 6.806 8.89 15 8.89 8.195 0 14.973-3.834 15-8.88Z"/></g></svg>`
         const credits = createCardElement("span")
         credits.textContent = data.credits
         creditsContainer.append(credits)
@@ -268,6 +268,7 @@ const userCredits = async () => {
 
 
 
+
 const setBid = async (amount) => {
     let url = `https://api.noroff.dev/api/v1/auction/listings/${id}/bids?_seller=true&_bids=true&_active=true`
     const requestOptions = {
@@ -280,19 +281,21 @@ const setBid = async (amount) => {
 
     try {
         const res = await fetch(url, requestOptions);
+        console.log(res)
         if (res.ok) {
             const data = await res.json();
+            console.log(data)
             renderStatus()
-            clearCredits()
+             clearCredits() 
             userCredits()
             clearBid()
 
         } else {
-            throw new Error("Ikke nok kreditt")
+         throw new Error("Ikke nok kreditt") 
         }
 
     } catch (error) {
-        inputError(error.message)
+        inputError(error.message) 
 
     }
 }
@@ -368,6 +371,7 @@ Vennligst <a aria-label="to login page" class=" text-purple-500 underline" href=
 const initializer = async () => {
     renderStatus()
     renderDescription()
+    userCredits()
     const data = await fetchData();
     const media = data.media.length;
     if (media <= 1) {

@@ -123,6 +123,32 @@ const auctionProfiles = async (name, param) => {
 
 //Auction-listings related endpoints
 
+export const listingsByDate = async (order,limit) => {
+    const url =
+        `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_bids=true&_count&sort=endsAt&sortOrder=${order}&_active=true&tags=true&limit=${limit}`;
+
+    try {
+
+        const res = await fetch(url, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (res.ok) {
+            const data = await res.json();
+            return data;
+        } else {
+            throw new Error("Failed to fetch data")
+        }
+
+
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+
 export const listings = async (limit) => {
     const url =
         `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_bids=true&_count&sort=title&sortOrder=desc&_active=true&tags=true&limit=${limit}`;
