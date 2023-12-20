@@ -25,121 +25,123 @@
 
 
 <body class="bg-primary flex flex-col scroll-smooth">
-<header class="bg-custom-secondary flex items-center justify-between   h-[7rem] sticky top-0    z-10 global-padding">
-    <section class="flex items-center justify-center gap-3 h-[3rem] lg:h-[5rem]  ">
-        <button class="" data-header="hamburger-menu" aria-label="open menu" class="ring-1">
-            <i class="fa-solid fa-bars text-custom-textDark"></i>
-        </button>
-        <img src="/src/assets/budhjørnet-hvit.svg " class=" " alt="">
-    </section>
-
-    <section class="flex text-custom-textDark   w-[8rem]     p-1  h-auto">
-        <div data-type-navbar="user-container" class=" w-full relative  h-full flex  items-center justify-between ">
-
-            <img data-type-user="avatar"
-                class="min-h-[2.5rem] h-[2.5rem] min-w-[2.5rem] w-[2.5rem] rounded-full text-custom-textDark"
-                src="/src/assets/blank-avatar.png" alt="avatar">
-
-            <button data-type-header="open-search" aria-label="open navbar search input">
-                <i class="fa-solid fa-magnifying-glass"></i>
+    <header
+        class="bg-custom-secondary flex items-center justify-between   h-[7rem] sticky top-0    z-10 global-padding">
+        <section class="flex items-center justify-center gap-3 h-[3rem] lg:h-[5rem]  ">
+            <button class="" data-header="hamburger-menu" aria-label="open menu" class="ring-1">
+                <i class="fa-solid fa-bars text-custom-textDark"></i>
             </button>
+            <img src="/src/assets/budhjørnet-hvit.svg " class=" " alt="">
+        </section>
 
-            <button data-type-header="open-overlay" aria-label="open header overlay">
-                <i class="fa-solid fa-ellipsis-vertical"></i>
-            </button>
+        <section class="flex text-custom-textDark   w-[8rem]     p-1  h-auto">
+            <div data-type-navbar="user-container" class=" w-full relative  h-full flex  items-center justify-between ">
+
+                <img data-type-user="avatar"
+                    class="min-h-[2.5rem] h-[2.5rem] min-w-[2.5rem] w-[2.5rem] rounded-full text-custom-textDark"
+                    src="/src/assets/blank-avatar.png" alt="avatar">
+
+                <button data-type-header="open-search" aria-label="open navbar search input">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+                <button data-type-header="open-overlay" aria-label="open header overlay">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
 
 
-            <!--CHANGES-->
-            <div data-header="overlay"
-                class="bg-custom-secondary absolute text-custom-textDark h-[5rem] flex flex-col w-[8rem] top-[50px]  shadow-lg rounded-sm border-2 border-custom-background ">
-                <div data-type-navbar="user-credit-container" class="flex items-center justify-between">
+                <!--CHANGES-->
+                <div data-header="overlay"
+                    class="bg-custom-secondary absolute text-custom-textDark h-[5rem] flex flex-col w-[8rem] top-[50px]  shadow-lg rounded-sm border-2 border-custom-background ">
+                    <div data-type-navbar="user-credit-container" class="flex items-center justify-between">
+                    </div>
+                    <a data-type-navbar="profile-link" class=" text-purple-500 underline"
+                        aria-label="Go to profile page" href="">Gå til profil</a>
                 </div>
-                <a data-type-navbar="profile-link" class=" text-purple-500 underline" aria-label="Go to profile page"
-                    href="">Gå til profil</a>
             </div>
-        </div>
-    </section>
-    <!--CHANGES-->
-
-
-    <nav data-type-component="navbar"
-        class="flex flex-col  gap-2  bg-custom-secondary  fixed top-0 left-0 h-full  sm:max-w-[20rem] w-full  md:w-[22rem]   px-1">
-
-        <section data-type-component="navbar-child" class=" flex justify-end ">
-            <button data-type-navbar="close-menu" type="button" aria-label="close menu">
-                <i class="fa-solid fa-xmark text-custom-textDark"></i>
-            </button>
         </section>
-
-        <section class=" flex flex-col w-full     mt-10 gap-8   ">
-            <form data-type-component="navbar-form" class=" flex  h-[2rem] md:h-[2.2rem]">
-                <div class="h-full  flex w-full relative lg:gap-1">
-                    <label for="search" class="label-hidden">
-                        søk
-                    </label>
-                    <input data-type-component="navbar-form-input"
-                        class="placeholder:text-custom-textDark placeholder:text-sm  md:placeholder:text-base bg-custom-background text-custom-textDark links-typography h-full w-full rounded-sm py-3 px-2"
-                        type="text" id="search" placeholder="Søk...">
-                    <button data-type-component="navbar-form-submit-btn" aria-label="navbar search form submit button"
-                        class=" absolute top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2   text-xs  rounded-sm  bg-custom-btnBgAccent text-custom-textWhite uppercase py-1 px-2 md:px-4  lg:static lg:translate-x-0 lg:translate-y-0 lg:h-full lg:py-0 "><i
-                            class="fa-solid fa-magnifying-glass "></i></button>
-                </div>
-            </form>
-            <ul data-type-component="navbar-child"
-                class="flex flex-col gap-2    items-start  justify-between  text-custom-textDark  bg-red  ">
-                <li class="w-auto  px-1 py-[0.5px] relative nav-links-state" tabindex="0">
-                    <span>
-
-                        <i class="fa-solid fa-house"></i>
-                        <a href="/index.html">Hjem</a>
-                    </span>
-
-                </li>
-                <li class="w-auto  px-1 py-[0.5px]   relative nav-links-state" tabindex="0">
-                    <span>
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <a href="/bidding.html">Auksjoner</a>
-                    </span>
-
-                </li>
-                <li class="w-auto  px-1 py-[0.5px]    relative nav-links-state" tabindex="0">
-                    <span>
-                        <i class="fa-solid fa-sack-dollar"></i>
-                        <a data-type-navbar="listing-link" href="">Selg</a>
-
-                    </span>
-                </li>
-
-                <li class="w-auto  px-1 py-[0.5px]  relative nav-links-state" tabindex="0">
-                    <span>
-                        <i class="fa-solid fa-glasses"></i>
-                        <a href="" data-type-navbar='overview-link'>Oversikt</a>
-
-                    </span>
-                </li>
-
-            </ul>
-
-            <ul class="flex flex-col  items-start  justify-between    text-custom-textDark   ">
-                <li class="w-auto  py-[0.5px]     relative nav-links-state" tabindex="0">
-                    <span>
-                        <a data-type-navbar="login-logout-link" class="px-1 text-purple-500 underline" href=""></a>
+        <!--CHANGES-->
 
 
-                    </span>
+        <nav data-type-component="navbar"
+            class="flex flex-col  gap-2  bg-custom-secondary  fixed top-0 left-0 h-full  sm:max-w-[20rem] w-full  md:w-[22rem]   px-1">
+
+            <section data-type-component="navbar-child" class=" flex justify-end ">
+                <button data-type-navbar="close-menu" type="button" aria-label="close menu">
+                    <i class="fa-solid fa-xmark text-custom-textDark"></i>
+                </button>
+            </section>
+
+            <section class=" flex flex-col w-full     mt-10 gap-8   ">
+                <form data-type-component="navbar-form" class=" flex  h-[2rem] md:h-[2.2rem]">
+                    <div class="h-full  flex w-full relative lg:gap-1">
+                        <label for="search" class="label-hidden">
+                            søk
+                        </label>
+                        <input data-type-component="navbar-form-input"
+                            class="placeholder:text-custom-textDark placeholder:text-sm  md:placeholder:text-base bg-custom-background text-custom-textDark links-typography h-full w-full rounded-sm py-3 px-2"
+                            type="text" id="search" placeholder="Søk...">
+                        <button data-type-component="navbar-form-submit-btn"
+                            aria-label="navbar search form submit button"
+                            class=" absolute top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2   text-xs  rounded-sm  bg-custom-btnBgAccent text-custom-textWhite uppercase py-1 px-2 md:px-4  lg:static lg:translate-x-0 lg:translate-y-0 lg:h-full lg:py-0 "><i
+                                class="fa-solid fa-magnifying-glass "></i></button>
+                    </div>
+                </form>
+                <ul data-type-component="navbar-child"
+                    class="flex flex-col gap-2    items-start  justify-between  text-custom-textDark  bg-red  ">
+                    <li class="w-auto  px-1 py-[0.5px] relative nav-links-state" tabindex="0">
+                        <span>
+
+                            <i class="fa-solid fa-house"></i>
+                            <a href="/index.html">Hjem</a>
+                        </span>
+
+                    </li>
+                    <li class="w-auto  px-1 py-[0.5px]   relative nav-links-state" tabindex="0">
+                        <span>
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <a href="/bidding.html">Auksjoner</a>
+                        </span>
+
+                    </li>
+                    <li class="w-auto  px-1 py-[0.5px]    relative nav-links-state" tabindex="0">
+                        <span>
+                            <i class="fa-solid fa-sack-dollar"></i>
+                            <a data-type-navbar="listing-link" href="">Selg</a>
+
+                        </span>
+                    </li>
+
+                    <li class="w-auto  px-1 py-[0.5px]  relative nav-links-state" tabindex="0">
+                        <span>
+                            <i class="fa-solid fa-glasses"></i>
+                            <a href="" data-type-navbar='overview-link'>Oversikt</a>
+
+                        </span>
+                    </li>
+
+                </ul>
+
+                <ul class="flex flex-col  items-start  justify-between    text-custom-textDark   ">
+                    <li class="w-auto  py-[0.5px]     relative nav-links-state" tabindex="0">
+                        <span>
+                            <a data-type-navbar="login-logout-link" class="px-1 text-purple-500 underline" href=""></a>
 
 
-                </li>
+                        </span>
 
-                <li>
-                    <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode">
-                    </button>
-                </li>
 
-            </ul>
-        </section>
-    </nav>
-</header>
+                    </li>
+
+                    <li>
+                        <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode">
+                        </button>
+                    </li>
+
+                </ul>
+            </section>
+        </nav>
+    </header>
 
 
 
@@ -169,9 +171,9 @@
                         class="flex-1 max-w-[45rem] px-2  lg:px-0 w-full flex flex-col  justify-center gap-5">
 
                         <div class="flex flex-col text-custom-textDark">
-                            <label for="produkt-title">PRODUKT TITTEL*:</label>
+                            <label for="produkt-title">TITTEL*:</label>
                             <input data-input-type="product-title"
-                                class="basis-full pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md type="
+                                class="basis-full pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-md shadow-md type="
                                 type="text" name="product-title" placeholder="Produkt navn:">
                         </div>
 
@@ -182,7 +184,7 @@
 
                         <div class="flex flex-col gap-5 text-custom-textDark">
                             <div data-container-="preview"
-                                class="border-dashed border-2 h-[35rem] flex items-center justify-center relative pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md">
+                                class="border-dashed border-2 h-[35rem] flex items-center justify-center relative pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-md shadow-md">
                                 <div data-container-="image-container" class="flex flex-col ">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                                         viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -196,35 +198,58 @@
                                     </svg>
                                     <span>Forhåndsvis bilde</span>
                                     <img data-container-="image-container-img"
-                                        class="w-full h-full absolute object-cover top-0 left-0 ronded-md"
-                                        alt="Produkt bilde" />
+                                        class="w-full h-full absolute object-cover top-0 left-0 ronded-md" alt="" />
                                 </div>
                             </div>
                             <div class="flex flex-col  text-custom-textDark ">
-                                <label for="product-image">BILDE*:</label>
-                                <input data-input-type="product-image"
-                                    class="pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md"
-                                    type="text" name="product-image" placeholder="Hovedbilde">
+                                <label for="product-image" class="">BILDER</label>
+                                <!--Bilde1-->
+
+                                <div class="flex flex-col gap-5">
+                                    <input data-input-type="product-image"
+                                        class="pl-2  py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-md shadow-md"
+                                        type="text" name="product-image" placeholder="Hovedbilde*">
+                                    <!--Bilde1-->
+
+                                    <!--Bilde2-->
+                                    <input data-input-type="product-image-2"
+                                        class="pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-md shadow-md"
+                                        type="text" name="product-image" placeholder="Bilde-2">
+                                    <!--Bilde2-->
+
+                                    <!--Bilde3-->
+                                    <input data-input-type="product-image-3"
+                                        class="pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-md shadow-md"
+                                        type="text" name="product-image" placeholder="Bilde-3">
+                                    <!--Bilde3-->
+
+                                    <!--Bilde4-->
+                                    <input data-input-type="product-image-4"
+                                        class="pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-md shadow-md"
+                                        type="text" name="product-image" placeholder="Bilde-4">
+                                    <!--Bilde4-->
+                                </div>
+
                             </div>
                         </div>
 
                         <div class="flex flex-col text-custom-textDark">
-                            <label for="product-tags">TAGGER*:</label>
+                            <label for="product-tags">KATEGORIER*</label>
                             <input data-input-type="product-tags"
-                                class="basis-full pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md"
+                                class="basis-full pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-md shadow-md"
                                 type="text" name="product-tags" placeholder="Kategorier">
 
                         </div>
                         <div class="text-custom-textDark">
-                            <label for="product-description">BESKRIVELSE*:</label>
+                            <label for="product-description">PRODUKT-BESKRIVELSE</label>
                             <textarea data-input-type="product-textarea"
-                                class="w-full min-h-[15rem] pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md resize-y"
+                                class="w-full min-h-[15rem] pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-md shadow-md resize-y"
                                 name="product-description" placeholder="Beskrivelse" maxlength="350"></textarea>
                         </div>
                         <div class="flex flex-col text-custom-textDark">
-                            <label for="product-end">VELG EN DATO*:</label>
+                            <label for="product-end">DATO*</label>
                             <input data-input-type="product-end" type="date"
-                                class="basis-full pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-sm shadow-md"
+                                class="basis-full pl-2 py-[0.5rem] placeholder:text-custom-textDark bg-custom-secondary rounded-md shadow-md"
                                 min="" max="2025-01-01" name="product-end" placeholder="Slutt dato:">
                         </div>
                         <button
@@ -236,17 +261,19 @@
                     class=" lg:height-calc lg:pr-[7rem]    md:justify-center max-w-[45rem]  w-full  md:flex-1 margin-centered lg:m-0      text-custom-textWhite">
 
                     <article
-                        class="bg-custom-card text-custom-textDark   lg:sticky top-[10vh] flex flex-col  w-full  gap-3 my-6  px-2  py-2 min-h-[25rem]  lg:min-h-[30vh]  lg:max-h-[100vh] overflow-hidden  rounded-sm shadow-sm">
+                        class="bg-custom-card text-custom-textDark   lg:sticky top-[10vh] flex flex-col  w-full  gap-3 my-6  px-2  py-2 min-h-[30rem]  lg:min-h-[35vh]  lg:max-h-[80vh] overflow-hidden  rounded-sm shadow-sm">
                         <div class=" h-[27rem] sm:h-[32rem] md:h-[35rem] w-full rounded-sm  relative">
                             <img class="h-full max-w-full w-full object-cover inset-0 border-inherit absolute"
                                 data-type-preview="image" src="" alt="Preview image">
                         </div>
+
+                        <div data-type-preview="gallery" class="flex flex-row gap-1">
+                          
+                        </div>
                         <div class="min-h-[5rem] flex flex-col  overflow-auto break-words whitespace-break-spaces">
                             <h2 data-type-preview="body-header" class="max-w-[50ch]">
-
                             </h2>
                             <p data-type-preview="body-categories" class="max-w-[50ch] ">
-
                             </p>
                             <p data-type-preview="body-description" class="max-w-[50ch] ">
                             </p>

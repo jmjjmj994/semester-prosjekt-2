@@ -13,6 +13,7 @@ const listingsByProfile = async (name) => {
 
         if (res.ok) {
             const data = await res.json();
+            console.log(data)
             return data;
         } else {
             throw new Error("There seem to be an error fetching your data. Please refresh the page")

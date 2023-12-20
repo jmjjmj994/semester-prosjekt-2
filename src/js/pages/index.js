@@ -51,7 +51,7 @@ import { articleCard, skeletonCards, createCardElement, norwegianEndDate, localS
 
 
 
-/*     const username = localStorageItems.userData.name */
+
     if (localStorageItems && localStorageItems.userData && localStorageItems.userData.name) {
          const fetchProfile = await singleProfile(localStorageItems.userData.name); 
         const profileListings = Object.values(fetchProfile._count)[0]
@@ -159,7 +159,7 @@ Web illustrations by Storyset
         } finally { }
     }
 
- /*    renderFeaturedCards() */
+    renderFeaturedCards() 
 })();
 
 
