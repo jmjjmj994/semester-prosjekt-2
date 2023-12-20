@@ -208,7 +208,8 @@ export const singleListing = async (id) => {
 
 
 
-export const createListing = async (title, description, tags, image, date) => {
+export const createListing = async (title, description,  image, date) => {
+    console.log(image)
     let url = `https://api.noroff.dev/api/v1/auction/listings?_bids`
     /* const norwegianDate = dateConverter(date); */
 console.log(image)
@@ -218,7 +219,7 @@ console.log(image)
         body: JSON.stringify({
             title, title,
             description: description,
-            tags: [tags],
+          
             media: image,
             endsAt: date
         })
@@ -229,7 +230,7 @@ console.log(image)
     try {
         const res = await fetch(url, requestOptions)
         const data = await res.json()
-        console.log(data)
+    
         return data;
 
     }

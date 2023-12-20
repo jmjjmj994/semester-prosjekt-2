@@ -24,7 +24,7 @@ form.addEventListener("submit", async (e) => {
     const validatedInput = validateInput(galleryArr);
     if (validatedInput) {
         await createListing(validatedInput.title, validatedInput.description,  validatedInput.image, validatedInput.end)
-        console.log("valid")
+        
         previewGallery.innerHTML = "";
         previewImage.src = "";
         previewImage.alt = "";
@@ -40,12 +40,10 @@ form.addEventListener("submit", async (e) => {
 
 const validateInput = (galleryArr) => {
     const productInputTitle = document.querySelector("[data-input-type='product-title']")
-
     const productImageInput = document.querySelector("[data-input-type='product-image']")
     const productTextareaInput = document.querySelector("[data-input-type='product-textarea']")
     const productDateInput = document.querySelector("[data-input-type='product-end']")
     const inputTitleVal = productInputTitle.value.trim();
-  
     const inputDateVal = productDateInput.value.trim();
     const inputTextareaVal = productTextareaInput.value.trim();
     if (inputTitleVal &&  galleryArr.length > 0 && inputTextareaVal) {

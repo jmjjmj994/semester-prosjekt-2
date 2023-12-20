@@ -71,7 +71,7 @@ const userAvatar = async () => {
     const avatarLink = document.querySelector("[data-type-user='avatar-link']")
 
     const data = await singleProfile(localStorageItems.userData.name)
-    console.log(data)
+  
     if(localStorageItems) {
         avatarLink.href = "/profile.html"
         avatarLink.ariaLabel = "Link to profile page"
