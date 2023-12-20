@@ -1,23 +1,30 @@
 import { createListing } from "../api/api.js";
-import { createCardElement } from "../utils/utils.js";
+import { createCardElement, validImgUrl } from "../utils/utils.js";
 
 const form = document.querySelector("[data-form-type='listing-form']");
-
+let galleryArr = []
 
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const validatedInput = validateInput();
+    const validatedInput = validateInput(galleryArr);
     if (validatedInput) {
         await createListing(validatedInput.title, validatedInput.description, validatedInput.tags, validatedInput.image, validatedInput.end)
         console.log("valid")
+        previewGallery.innerHTML = "";  
+        previewImage.src = "";
+        previewImage.alt = "";
+        galleryArr = []
         clearImagePreview()
         createPreview()
+        window.location.reload()
     } else {
         console.log("invalid")
     }
 })
-
+const previewGallery = document.querySelector("[data-type-preview='gallery']")
+const previewImage = document.querySelector("[data-type-preview='image']")
+previewGallery.innerHTML = ""
 const productInputTitle = document.querySelector("[data-input-type='product-title']")
 const productTagsInput = document.querySelector("[data-input-type='product-tags']")
 const productImageInput = document.querySelector("[data-input-type='product-image']")
@@ -31,15 +38,14 @@ productImageInput.value = "";
 productTextareaInput.value = ""
 productDateInput.value = "";
 
-const validateInput = () => {
-
+const validateInput = (galleryArr) => {
+console.log(galleryArr)
     const productInputTitle = document.querySelector("[data-input-type='product-title']")
     const productTagsInput = document.querySelector("[data-input-type='product-tags']")
     const productImageInput = document.querySelector("[data-input-type='product-image']")
     const productImageInput2 = document.querySelector("[data-input-type='product-image-2']")
     const productImageInput3 = document.querySelector("[data-input-type='product-image-3']")
     const productImageInput4 = document.querySelector("[data-input-type='product-image-4']")
-
     const productTextareaInput = document.querySelector("[data-input-type='product-textarea']")
     const productDateInput = document.querySelector("[data-input-type='product-end']")
     const inputTitleVal = productInputTitle.value.trim();
@@ -50,12 +56,12 @@ const validateInput = () => {
     const inputImageVal4 = productImageInput4.value.trim();
     const inputDateVal = productDateInput.value.trim();
     const inputTextareaVal = productTextareaInput.value.trim();
-    if (inputTitleVal && inputTagsVal && inputImageVal && inputTextareaVal) {
+    if (inputTitleVal && inputTagsVal && galleryArr.length > 0 && inputTextareaVal) {
         const inputData = {
             title: inputTitleVal,
             description: inputTextareaVal,
             tags: inputTagsVal,
-            image: [inputImageVal, inputImageVal2, inputImageVal3, inputImageVal4],
+            image: galleryArr,
             end: inputDateVal
         }
         productInputTitle.value = "";
@@ -89,8 +95,9 @@ const clearImagePreview = () => {
 
 
 const createPreview = () => {
-    const galleryArr = []
-  
+galleryArr = [
+
+]
     const parentContainer = document.querySelector("[data-type-preview='parent-container']")
     const productInputTitle = document.querySelector("[data-input-type='product-title']")
     const productTagsInput = document.querySelector("[data-input-type='product-tags']")
@@ -98,7 +105,7 @@ const createPreview = () => {
     const productImageInput2 = document.querySelector("[data-input-type='product-image-2']")
     const productImageInput3 = document.querySelector("[data-input-type='product-image-3']")
     const productImageInput4 = document.querySelector("[data-input-type='product-image-4']")
-    const inputArr = [productImageInput2, productImageInput3, productImageInput4]
+    const inputArr = [productImageInput, productImageInput2, productImageInput3, productImageInput4]
     const productTextareaInput = document.querySelector("[data-input-type='product-textarea']")
     const productDateInput = document.querySelector("[data-input-type='product-end']")
     const previewImage = document.querySelector("[data-type-preview='image']")
@@ -128,44 +135,39 @@ const createPreview = () => {
 
 
 
-    inputArr.forEach(input => {
+    inputArr.forEach((input, index) => {
         input.value = ""
+        input.setAttribute("index", `${index}`)
+
         input.addEventListener("keydown", (e) => {
-            const inputVal = e.target.value.trim();
             if (e.key === "Delete" || e.key === "Backspace") {
-                input.value = "";
-            }})
+                input.value = ""
+            
 
-            input.addEventListener("input", (e) => {
-                const inputVal = e.target.value.trim();
-                galleryArr.push(inputVal)
-                createGallery(galleryArr)
-                
-               
+                setTimeout(() => {
+                    if (input.value.trim() === "") {
+                        galleryArr[index] = "";
+                        createGallery(galleryArr.filter(Boolean));
+                    }
+                }, 0);
+            }
+        });
 
-            })
-         })
+       input.addEventListener("input", (e) => {
+           const inputVal = e.target.value.trim();
+           validImgUrl(inputVal, (isValid) => {
+               if (isValid) {
+                   galleryArr[index] = inputVal;
+               } else {
+                   input.value = "";
+                   galleryArr[index] = ""; 
+                   console.log(`Invalid image URL: ${inputVal}`);
+               }
+               createGallery(galleryArr.filter(Boolean));
+           },0);
+    });
+    })
 
-productImageInput.addEventListener("input", (e) => {
-    const inputImageVal = productImageInput.value.trim();
-    const previewImage = document.querySelector("[data-type-preview='image']")
-    previewImage.src = inputImageVal
-    imagePreview(inputImageVal);
-
-})
-
-
-
-productImageInput.addEventListener("keydown", (e) => {
-    const inputImageVal = productImageInput.value.trim();
-    if (e.key === "Delete" || e.key === "Backspace") {
-        productImageInput.value = "";
-
-        imagePreview(productImageInput.value)
-
-
-    }
-})
 
     previewBodyHeader.textContent = "";
     previewBodyCategories.textContent = "";
@@ -175,24 +177,47 @@ productImageInput.addEventListener("keydown", (e) => {
 
 }
 
-function createGallery (arr)  {
+
+
+function createGallery(arr) {
+    previewGallery.innerHTML = "";
+   
 console.log(arr)
-const previewGallery = document.querySelector("[data-type-preview='gallery']")
-previewGallery.innerHTML = ""
-for(let i = 0; i < arr.length; i++) {
-    const imgContainer = createCardElement("div", "w-[15%] h-[5rem] relative ring-1")
-    const img = createCardElement("img", " max-w-full w-full block absolute object-contain h-full")
-    img.src = arr[i]
-    imgContainer.append(img)
-    previewGallery.append(imgContainer)
-    console.log(img)
-}
+    
+    if (arr.length > 0) {
+        validImgUrl(arr[0], (isValid) => {
+            if (isValid) {
+                previewImage.src = arr[0];
+                imagePreview(arr[0]);
+            }
+        });
+    } else {
+        previewImage.src = "src/assets/no-image.jpg"
+        imagePreview("")
+    }
+
+    arr.forEach(url => {
+        validImgUrl(url, (isValid) => {
+            if (isValid) {
+         
+                const imgContainer = createCardElement("div", "w-[15%] h-[5rem] relative ring-1");
+                const img = createCardElement("img", "max-w-full w-full block absolute object-contain h-full");
+                img.src = url;
+                imgContainer.append(img);
+                previewGallery.append(imgContainer);
+          
+            } else {
+                displayError("invalid")
+                console.log(`Invalid image URL: ${url}`);
+            }
+        });
+    });
+    validateInput(arr)
+
 }
 
 
 createPreview()
-
-
 
 
 

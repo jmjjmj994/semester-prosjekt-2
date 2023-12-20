@@ -238,7 +238,10 @@ const clearCredits = () => {
 
 }
 
-
+const clearBid = () => {
+    const formInput = document.querySelector("[data-type-specific='bid-input']");
+formInput.value = ""
+}
 
 
 
@@ -282,6 +285,7 @@ const setBid = async (amount) => {
             renderStatus()
             clearCredits()
             userCredits()
+            clearBid()
 
         } else {
             throw new Error("Ikke nok kreditt")
