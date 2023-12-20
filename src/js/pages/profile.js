@@ -28,7 +28,7 @@ const renderUserInformation = async (data) => {
     const listingsEl = document.querySelector("[data-type-user='listings']");
     const winningsEl = document.querySelector("[data-type-user='biddings-won']");
     if (data) {
-      
+
         imageEl.forEach(img => {
             img.src = data.avatar
 
@@ -40,10 +40,10 @@ const renderUserInformation = async (data) => {
 
     }
 
-    if(!data.avatar) {
+    if (!data.avatar) {
         imageEl.forEach(img => {
             img.src = "src/assets/blank-avatar.png"
-        }) 
+        })
     }
 
     if (localStorageItems.token) {
@@ -51,7 +51,8 @@ const renderUserInformation = async (data) => {
         emailEl.textContent = `E-post: ${data.email}`;
         creditEl.textContent = `Kreditt: ${data.credits},-`
         listingsEl.textContent = `Oppføringer: ${data._count.listings}`;
-        winningsEl.textContent = data.wins.length === 0 ? "Vunnet: 0" : `Vunnet ${data.wins}`
+        winningsEl.textContent = data.wins.length === 0 ? "Bud vunnet: 0" : `Bud vunnet: ${data.wins.length}`
+
     } else {
         usernameEl.textContent = "";
         emailEl.textContent = "";
@@ -86,9 +87,9 @@ const displayError = (error, color) => {
 
 
     setTimeout(() => {
-        avatarOverlayFormInput.placeholder ="Legg til bilde url"
+        avatarOverlayFormInput.placeholder = "Legg til bilde url"
         avatarOverlayFormInput.style.cssText = "";
-      
+
     }, 3000);
 }
 
@@ -100,10 +101,10 @@ avatarOverlayForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
     const avatarFormInputValue = avatarOverlayFormInput.value.trim();
-    if(avatarFormInputValue === "") {
+    if (avatarFormInputValue === "") {
         displayError("Vennligst legg til en url", "red")
         return;
-       }
+    }
     if (urlRegex.test(avatarFormInputValue)) {
         validImgUrl(avatarFormInputValue, async (isValid) => {
             if (isValid) {
@@ -112,18 +113,18 @@ avatarOverlayForm.addEventListener("submit", async (e) => {
                     displayError("", "green")
                     avatarOverlayFormInput.value = "";
                     avatarOverlay.classList.remove("isActive");
-                  
+
                 } catch (error) {
                     avatarOverlayFormInput.value = ""
                     console.error("Problemer med å bytte avatar:", error.message);
-                   
+
                 }
             } else {
                 avatarOverlayFormInput.value = ""
                 displayError("Oops! Denne url-adressen er ikke gyldig. Prøv på nytt", "red");
             }
         });
-    } 
+    }
 })
 
 
@@ -132,10 +133,10 @@ const changeUserAvatar = async (imageUrl) => {
         await updateMedia(localStorageItems.userData.name, imageUrl);
         const userData = await getUserData()
         renderUserInformation(userData)
-    } catch(error) {
+    } catch (error) {
         throw new Error(error.message)
     }
-   
+
 
 }
 
