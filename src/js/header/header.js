@@ -8,6 +8,9 @@ const profileImage = document.querySelectorAll("[data-type-user='avatar']")
 const userContainer = document.querySelector("[data-type-navbar='user-container']")
 const searchFormInput = document.querySelector("[data-type-component='navbar-form-input']");
 const openSearch = document.querySelector("[data-type-header='open-search']")
+const navbarUlLi = document.querySelectorAll("[data-type-component='navbar-child-ul'] > li")
+
+
 
 openOverlay.onclick = () => overlayToggler()
 
@@ -18,12 +21,25 @@ const navbarListeners = () => {
     hamburgerBtn.onclick = () => navbarToggler(true);
     closeNavbar.onclick = () => navbarToggler(false);
 }
+/* navbarUlLi.forEach((li, index) => {
+    li.style.transform = `translateX(-${105}%)`
 
+}) */
 const navbarToggler = (value, search) => {
     if (value) {
         navbar.classList.add("isActive")
+        navbarUlLi.forEach((li, index) => {
+            li.style.transform = `translateX(0%)`
+            li.style.transition = `all 250ms linear ${index * 20}ms`
+        
+        })
+
     } else {
         navbar.classList.remove("isActive")
+        navbarUlLi.forEach((li, index) => {
+            li.style.transform = `translateX(-${105}%)`
+           
+        })
     }
 }
 
@@ -50,8 +66,6 @@ document.addEventListener("click", (e) => {
 
 
 const userAvatar = async () => {
-console.log(localStorageItems.userData)
-
     if (localStorageItems && localStorageItems.token &&localStorageItems.userData.avatar) {
         const data = await singleProfile(localStorageItems.userData.name)
         profileImage.forEach(img => {
@@ -66,8 +80,6 @@ console.log(localStorageItems.userData)
 
 }
 userAvatar()
-
-
 
 
 

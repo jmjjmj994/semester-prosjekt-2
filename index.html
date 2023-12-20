@@ -25,7 +25,7 @@
 
 <body class="bg-custom-background  flex flex-col ">
     <header
-        class="bg-custom-secondary flex items-center justify-between   h-[7rem] sticky top-0    z-10 global-padding">
+        class="bg-custom-secondary flex items-center justify-between   h-[5rem] sticky top-0    z-10 global-padding">
         <section class="flex items-center justify-center gap-3 h-[3rem] lg:h-[5rem]  ">
             <button class="" data-header="hamburger-menu" aria-label="open menu" class="ring-1">
                 <i class="fa-solid fa-bars text-custom-textDark"></i>
@@ -63,11 +63,14 @@
 
 
         <nav data-type-component="navbar"
-            class="flex flex-col  gap-2  bg-custom-secondary  fixed top-0 left-0 h-full  sm:max-w-[20rem] w-full  md:w-[22rem]   px-1">
+            class="flex flex-col  gap-2     fixed top-0 left-0 h-full  sm:max-w-[20rem] w-full  md:w-[22rem]  px-5">
 
-            <section data-type-component="navbar-child" class=" flex justify-end ">
+            <section data-type-component="navbar-child" class=" flex justify-between py-2">
+                    <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode">
+                    </button>
+
                 <button data-type-navbar="close-menu" type="button" aria-label="close menu">
-                    <i class="fa-solid fa-xmark text-custom-textDark"></i>
+                    <i class="fa-solid fa-xmark text-custom-textWhite text-xl"></i>
                 </button>
             </section>
 
@@ -78,7 +81,7 @@
                             søk
                         </label>
                         <input data-type-component="navbar-form-input"
-                            class="placeholder:text-custom-textDark placeholder:text-sm  md:placeholder:text-base bg-custom-background text-custom-textDark links-typography h-full w-full rounded-sm py-3 px-2"
+                            class="placeholder:text-custom-textDark placeholder:text-sm  md:placeholder:text-base bg-custom-secondary text-custom-textDark links-typography h-full w-full rounded-sm py-3 px-2"
                             type="text" id="search" placeholder="Søk...">
                         <button data-type-component="navbar-form-submit-btn"
                             aria-label="navbar search form submit button"
@@ -86,42 +89,50 @@
                                 class="fa-solid fa-magnifying-glass "></i></button>
                     </div>
                 </form>
-                <ul data-type-component="navbar-child"
-                    class="flex flex-col gap-2    items-start  justify-between  text-custom-textDark  bg-red  ">
-                    <li class="w-auto  px-1 py-[0.5px] relative nav-links-state" tabindex="0">
+                <ul data-type-component="navbar-child-ul"
+                    class="flex flex-col gap-10 py-10 text-xl    items-start  justify-between  text-custom-textWhite  bg-red  ">
+                    <li class="w-full   px-1 py-[0.5px] relative nav-links-state" tabindex="0">
                         <span>
 
-                            <i class="fa-solid fa-house"></i>
                             <a href="/index.html">Hjem</a>
                         </span>
-
                     </li>
-                    <li class="w-auto  px-1 py-[0.5px]   relative nav-links-state" tabindex="0">
+                    <li class="w-full  px-1 py-[0.5px]   relative nav-links-state" tabindex="0">
                         <span>
-                            <i class="fa-solid fa-bag-shopping"></i>
+
                             <a href="/bidding.html">Auksjoner</a>
                         </span>
-
                     </li>
-                    <li class="w-auto  px-1 py-[0.5px]    relative nav-links-state" tabindex="0">
+                    <li class="w-full  px-1 py-[0.5px]    relative nav-links-state" tabindex="0">
                         <span>
-                            <i class="fa-solid fa-sack-dollar"></i>
-                            <a data-type-navbar="listing-link" href="">Selg</a>
 
+                            <a data-type-navbar="listing-link" href="">Selg</a>
                         </span>
                     </li>
 
-                    <li class="w-auto  px-1 py-[0.5px]  relative nav-links-state" tabindex="0">
+                    <li class="w-full  px-1 py-[0.5px]  relative nav-links-state" tabindex="0">
                         <span>
-                            <i class="fa-solid fa-glasses"></i>
+
                             <a href="" data-type-navbar='overview-link'>Oversikt</a>
 
                         </span>
                     </li>
+                    <li class="w-full  py-[0.5px]     relative nav-links-state" tabindex="0">
+                        <span>
+                            <a data-type-navbar="login-logout-link" class="px-1 text-purple-500 underline" href=""></a>
+                        </span>
 
+
+                    </li>
+
+                    <li class="w-full  py-[0.5px]  flex items-center     relative nav-links-state" tabindex="0">
+                    <!--     <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode">
+                        </button>
+ -->
+                    </li>
                 </ul>
 
-                <ul class="flex flex-col  items-start  justify-between    text-custom-textDark   ">
+                <!--    <ul class="flex flex-col  items-start  justify-between    text-custom-textDark">
                     <li class="w-auto  py-[0.5px]     relative nav-links-state" tabindex="0">
                         <span>
                             <a data-type-navbar="login-logout-link" class="px-1 text-purple-500 underline" href=""></a>
@@ -137,7 +148,7 @@
                         </button>
                     </li>
 
-                </ul>
+                </ul> -->
             </section>
         </nav>
     </header>
@@ -147,7 +158,7 @@
 
 
     <main class="flex-grow">
-        <section class="section-wrapper bg-custom-background">
+        <section class="section-wrapper flex flex-col  bg-custom-background">
             <section
                 class="w-full   h-[60vh] flex flex-col justify-center items-center md:flex-row global-padding bg-custom-background">
                 <div class="flex flex-col items-center  text-center ">
@@ -169,19 +180,18 @@
 
 
 
-            <section class="bg-custom-ctaSecondary text-accent flex flex-col items-center justify-center h-[50vh] ">
-                <h2 class="text-custom-textWhite cta-header text-center">Bli med! Legg inn ditt første bud.</h2>
+            <section data-type-cta="secondary-cta" class="">
+                <!--    <h2 class="text-custom-textWhite cta-header text-center">Bli med! Legg inn ditt første bud.</h2>
                 <a href="/bidding.html"
                     class="bg-custom-btnBgSpecial ring-comp text-accent cta-btn-sm md:cta-btn-md lg:cta-btn-lg mt-5 rounded uppercase flex items-center justify-center cursor-pointer">
                     Utforsk
-                </a>
+                </a> -->
             </section>
 
 
 
-            <section class="h-[50vh] relative">
-
-                <section data-carousel-container class=" h-[50vh] w-full relative m-auto flex overflow-hidden">
+            <section class="h-[65vh]  relative ">
+                <section data-carousel-container class=" h-full w-full relative m-auto flex overflow-hidden">
                     <article data-carousel-slide
                         class=" absolute flex items-center justify-center flex-grow-0 flex-shrink-0 w-full h-full text-custom-textDark text-xl  ">
                         <div class="w-[30rem] h-[30rem] flex flex-col items-center justify-center gap-4 px-1">

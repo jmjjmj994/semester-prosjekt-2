@@ -2,8 +2,6 @@ export { localStorageItems, createCardElement, createButtonElement, blockElement
 
 
 
-
-
 const localStorageItems = {
     userData: JSON.parse(localStorage.getItem("user-data")),
     token: localStorage.getItem("user-token"),
@@ -22,8 +20,6 @@ const blockElements = {
 
 
 
-
-
 const createCardElement = (tagName, classNames) => {
     const element = document.createElement(tagName)
     element.className = classNames
@@ -38,7 +34,6 @@ const createButtonElement = (className) => {
 
 
 const dateConverter = (date) => {
-
     const options = {
         weekday: "long",
         year: "numeric",
@@ -48,9 +43,7 @@ const dateConverter = (date) => {
         minute: "numeric",
         second: "numeric",
     }
-
     const norwegianDate = new Date(date).toLocaleString("no-NO", options)
-
     return norwegianDate;
 }
 
@@ -65,7 +58,6 @@ export const norwegianEndDate = (endDate) => {
     const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
     const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-
     return `${days}d, ${hours}t, ${minutes}m`;
 }
 
@@ -74,7 +66,7 @@ export const norwegianEndDate = (endDate) => {
 
 
 
- export const validImgUrl = (url, callback) => {
+export const validImgUrl = (url, callback) => {
     const img = new Image()
     img.onload = () => {
         callback(true)
@@ -83,14 +75,13 @@ export const norwegianEndDate = (endDate) => {
         callback(false)
     }
     img.src = url
-    console.log(img)
     return img
 }
 
 
 
 const cardHeader = (image) => {
-    const cardHeader = createCardElement("div", "h-[70%] relative") 
+    const cardHeader = createCardElement("div", "h-[70%] relative")
     const cardHeaderImage = createCardElement("img", "absolute object-cover w-full h-full ")
     validImgUrl(image, (isValid) => {
         if (isValid) {
@@ -101,12 +92,7 @@ const cardHeader = (image) => {
             cardHeaderImage.alt = "Image placeholder";
         }
     });
-
-
     cardHeader.appendChild(cardHeaderImage);
-
-
-
     return cardHeader;
 }
 
@@ -144,14 +130,14 @@ const cardFooter = (bids, endsAt) => {
 
 
 
-export const articleCard = (image, title, bids, endsAt,id) => {
+export const articleCard = (image, title, bids, endsAt, id) => {
     const article = createCardElement("article", "flex flex-col justify-between relative  bg-custom-card relative shadow-md text-custom-textGrey card-no-effect card-effect relative");
     const link = createCardElement("a", "inset-0 absolute  custom-z-low");
     link.href = `/specific.html?id=${id}`
     const articleHeader = cardHeader(image)
     const articleBody = cardBody(title)
     const articleFooter = cardFooter(bids, endsAt)
-    article.append(link,articleHeader, articleBody, articleFooter)
+    article.append(link, articleHeader, articleBody, articleFooter)
     return article
 
 }
