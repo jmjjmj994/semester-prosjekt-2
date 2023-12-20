@@ -42,9 +42,9 @@ import { articleCard, skeletonCards, createCardElement, norwegianEndDate, localS
 
 
 ; (async () => {
-    
+
     const illustrations = {
-        illustration_1:"src/assets/Search engines-amico.webp",
+        illustration_1: "src/assets/Search engines-amico.webp",
         illustration_2: "src/assets/Save the Earth-amico.webp",
     }
     const CTASecondaryContainer = document.querySelector("[data-type-cta='secondary-cta']")
@@ -53,33 +53,22 @@ import { articleCard, skeletonCards, createCardElement, norwegianEndDate, localS
 
 
     if (localStorageItems && localStorageItems.userData && localStorageItems.userData.name) {
-         const fetchProfile = await singleProfile(localStorageItems.userData.name); 
+        const fetchProfile = await singleProfile(localStorageItems.userData.name);
         const profileListings = Object.values(fetchProfile._count)[0]
         CTASecondaryContainer.className = " text-accent flex overflow-hidden   items-center justify-center h-[50vh]"
         CTASecondaryContainer.innerHTML = `
-<div class="auto-slide flex-1  h-full relative flex flex-col  auto-slider-anim ">
-<div class="bg-custom-secondary auto-slide-translate text-custom-textDark  global-padding   flex flex-col items-center justify-center  md:flex-row  md:items-center md:justify-between global-padding w-full h-full absolute">
-   <h2 class=" cta-header text-center">Gode muligheter, rett fra stuen din.</h2>
-<a class="h-[25rem] max-w-[25rem] w-full  flex flex-col items-center justify-center right-0 bottom-[20px] text-xs" href="https://storyset.com/web">
-<img class="class=" w-full h-full object-cover" src="${illustrations.illustration_1}" alt="ilustration">
-Web illustrations by Storyset
-</a>
-
+<div class="flex-1 h-full relative flex flex-col">
+  <div class="bg-custom-secondary auto-slide-translate text-custom-textDark global-padding flex flex-col items-center justify-center md:flex-row md:items-center md:justify-between w-full h-full absolute">
+    <h2 class="cta-header text-center">Gode muligheter, rett fra stuen din.</h2>
+    <a class="h-[20rem] max-w-[20rem] w-full flex flex-col items-center justify-center right-0 bottom-[20px] text-xs" href="https://storyset.com/web">
+      <img class="w-full h-full object-cover" src="${illustrations.illustration_1}" alt="Illustration">
+      Web illustrations by Storyset
+    </a>
+  </div>
 </div>
-<div class="bg-custom-btnBgAccent auto-slide-translate text-custom-textWhite  global-padding  flex flex-col items-center justify-center  md:flex-row  md:items-center md:justify-between global-padding w-full h-full absolute"> 
-<a class="h-[25rem] max-w-[25rem] w-full  flex flex-col items-center justify-center right-0 bottom-[20px] text-xs" href="https://storyset.com/web">
-<img class="class=" w-full h-full object-cover" src="${illustrations.illustration_2}" alt="ilustration">
-Web illustrations by Storyset
-</a>   
-<h2 class=" cta-header text-center">Gjennbruk redder planeten vår.</h2>
-</div>
-
          `
-        const slides = document.querySelectorAll(".auto-slide-translate")
-        slides.forEach((slide, index) => {
-            slide.style.transform = `translateX(${index * 100}%)`
-        })
-        } else {
+
+    } else {
         CTASecondaryContainer.className = "bg-custom-ctaSecondary text-accent flex flex-col items-center justify-center h-[50vh]"
         CTASecondaryContainer.innerHTML = `
           <h2 class="text-custom-textWhite cta-header text-center">Bli med! Legg inn ett  bud.</h2>
@@ -87,18 +76,18 @@ Web illustrations by Storyset
                     class="bg-custom-btnBgSpecial ring-comp text-accent cta-btn-sm md:cta-btn-md lg:cta-btn-lg mt-5 rounded uppercase flex items-center justify-center cursor-pointer">
                     Utforsk
                 </a>`
-        }
-   
-
-    
-   
- 
+    }
 
 
- 
 
 
-    
+
+
+
+
+
+
+
 })();
 
 
@@ -159,7 +148,7 @@ Web illustrations by Storyset
         } finally { }
     }
 
-    renderFeaturedCards() 
+    renderFeaturedCards()
 })();
 
 

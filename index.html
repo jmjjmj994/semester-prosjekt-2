@@ -32,48 +32,29 @@
             </button>
             <img src="/src/assets/budhjørnet-hvit.svg " class=" " alt="">
         </section>
-
         <section class="flex text-custom-textDark   w-[8rem]     p-1  h-auto">
-            <div data-type-navbar="user-container" class=" w-full relative  h-full flex  items-center justify-between ">
-
-                <img data-type-user="avatar"
-                    class="min-h-[2.5rem] h-[2.5rem] min-w-[2.5rem] w-[2.5rem] rounded-full text-custom-textDark"
-                    src="/src/assets/blank-avatar.png" alt="avatar">
-
+            <div data-type-navbar="user-container"
+                class=" w-full relative  h-full flex  items-center justify-end gap-5 ">
+                <a href="" data-type-user="avatar-link" class="rounded-full">
+                    <img data-type-user="avatar"
+                        class="min-h-[2.5rem] h-[2.5rem] min-w-[2.5rem] w-[2.5rem] rounded-full text-custom-textDark"
+                        src="/src/assets/blank-avatar.png" alt="avatar">
+                </a>
+                <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode">
+                </button>
                 <button data-type-header="open-search" aria-label="open navbar search input">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
-
-                <button data-type-header="open-overlay" aria-label="open header overlay">
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </button>
-
-
-                <!--CHANGES-->
-                <div data-header="overlay"
-                    class="bg-custom-secondary absolute text-custom-textDark h-[5rem] flex flex-col w-[8rem] top-[50px]  shadow-lg rounded-sm border-2 border-custom-background ">
-                    <div data-type-navbar="user-credit-container" class="flex items-center justify-between">
-                    </div>
-                    <a data-type-navbar="profile-link" class=" text-purple-500 underline"
-                        aria-label="Go to profile page" href="">Gå til profil</a>
-                </div>
             </div>
         </section>
-        <!--CHANGES-->
-
 
         <nav data-type-component="navbar"
-            class="flex flex-col  gap-2     fixed top-0 left-0 h-full  sm:max-w-[20rem] w-full  md:w-[22rem]  px-5">
-
-            <section data-type-component="navbar-child" class=" flex justify-between py-2">
-                    <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode">
-                    </button>
-
+            class="flex flex-col  gap-2     fixed top-0 left-0 h-full  sm:max-w-[20rem] w-full  md:w-[22rem]  px-5 ">
+            <section data-type-component="navbar-child" class=" flex justify-end py-2">
                 <button data-type-navbar="close-menu" type="button" aria-label="close menu">
                     <i class="fa-solid fa-xmark text-custom-textWhite text-xl"></i>
                 </button>
             </section>
-
             <section class=" flex flex-col w-full     mt-10 gap-8   ">
                 <form data-type-component="navbar-form" class=" flex  h-[2rem] md:h-[2.2rem]">
                     <div class="h-full  flex w-full relative lg:gap-1">
@@ -93,62 +74,35 @@
                     class="flex flex-col gap-10 py-10 text-xl    items-start  justify-between  text-custom-textWhite  bg-red  ">
                     <li class="w-full   px-1 py-[0.5px] relative nav-links-state" tabindex="0">
                         <span>
-
                             <a href="/index.html">Hjem</a>
                         </span>
                     </li>
                     <li class="w-full  px-1 py-[0.5px]   relative nav-links-state" tabindex="0">
                         <span>
-
                             <a href="/bidding.html">Auksjoner</a>
                         </span>
                     </li>
                     <li class="w-full  px-1 py-[0.5px]    relative nav-links-state" tabindex="0">
                         <span>
-
                             <a data-type-navbar="listing-link" href="">Selg</a>
                         </span>
                     </li>
-
                     <li class="w-full  px-1 py-[0.5px]  relative nav-links-state" tabindex="0">
                         <span>
-
                             <a href="" data-type-navbar='overview-link'>Oversikt</a>
-
+                        </span>
+                    </li>
+                    <li class="w-full  px-1 py-[0.5px]  relative nav-links-state" tabindex="0">
+                        <span>
+                            <a data-type-navbar="profile-link" class="" href="">Profil</a>
                         </span>
                     </li>
                     <li class="w-full  py-[0.5px]     relative nav-links-state" tabindex="0">
                         <span>
                             <a data-type-navbar="login-logout-link" class="px-1 text-purple-500 underline" href=""></a>
                         </span>
-
-
-                    </li>
-
-                    <li class="w-full  py-[0.5px]  flex items-center     relative nav-links-state" tabindex="0">
-                    <!--     <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode">
-                        </button>
- -->
                     </li>
                 </ul>
-
-                <!--    <ul class="flex flex-col  items-start  justify-between    text-custom-textDark">
-                    <li class="w-auto  py-[0.5px]     relative nav-links-state" tabindex="0">
-                        <span>
-                            <a data-type-navbar="login-logout-link" class="px-1 text-purple-500 underline" href=""></a>
-
-
-                        </span>
-
-
-                    </li>
-
-                    <li>
-                        <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode">
-                        </button>
-                    </li>
-
-                </ul> -->
             </section>
         </nav>
     </header>
@@ -178,17 +132,8 @@
                 </section>
             </section>
 
-
-
             <section data-type-cta="secondary-cta" class="">
-                <!--    <h2 class="text-custom-textWhite cta-header text-center">Bli med! Legg inn ditt første bud.</h2>
-                <a href="/bidding.html"
-                    class="bg-custom-btnBgSpecial ring-comp text-accent cta-btn-sm md:cta-btn-md lg:cta-btn-lg mt-5 rounded uppercase flex items-center justify-center cursor-pointer">
-                    Utforsk
-                </a> -->
             </section>
-
-
 
             <section class="h-[65vh]  relative ">
                 <section data-carousel-container class=" h-full w-full relative m-auto flex overflow-hidden">

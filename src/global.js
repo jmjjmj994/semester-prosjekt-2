@@ -9,29 +9,6 @@ import { singleProfile } from "./js/api/api.js";
     ; (function () {
         //<i class="fa-regular fa-credit-card"></i>
 
-        const userCredits = async () => {
-            const creditsContainer = document.querySelector("[data-type-navbar='user-credit-container']")
-            creditsContainer.innerHTML = `
-                <i class="fa-regular fa-credit-card"></i>
-                `
-           
-            if (localStorageItems.token) {
-                const data = await singleProfile(localStorageItems.userData.name);
-           
-                const credits = createCardElement("span")
-                credits.textContent = data.credits
-              
-                creditsContainer.append(credits)
-            } else {
-              
-                const credits = createCardElement("span")
-                credits.textContent = "0"
-                creditsContainer.append(credits)
-            }
-            if (!localStorageItems.token) {
-                creditsContainer.innerHTML = ""
-            }
-        }
 
         const navbarLinks = () => {
             const logInLogOut = document.querySelector("[data-type-navbar='login-logout-link']")
@@ -81,7 +58,7 @@ import { singleProfile } from "./js/api/api.js";
         }
 
 
-        userCredits()
+     
         navbarLinks()
         footerLinks()
 

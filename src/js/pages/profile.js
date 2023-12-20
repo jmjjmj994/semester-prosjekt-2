@@ -28,6 +28,7 @@ const renderUserInformation = async (data) => {
     const listingsEl = document.querySelector("[data-type-user='listings']");
     const winningsEl = document.querySelector("[data-type-user='biddings-won']");
     if (data) {
+      
         imageEl.forEach(img => {
             img.src = data.avatar
 
@@ -39,12 +40,18 @@ const renderUserInformation = async (data) => {
 
     }
 
+    if(!data.avatar) {
+        imageEl.forEach(img => {
+            img.src = "src/assets/blank-avatar.png"
+        }) 
+    }
+
     if (localStorageItems.token) {
         usernameEl.textContent = `Navn: ${data.name}`;
         emailEl.textContent = `E-post: ${data.email}`;
         creditEl.textContent = `Kreditt: ${data.credits},-`
         listingsEl.textContent = `Oppføringer: ${data._count.listings}`;
-        winningsEl.textContent = data.wins.length === 0 ? "Vunnet: 0" : `Vunnet ${userData.wins}`
+        winningsEl.textContent = data.wins.length === 0 ? "Vunnet: 0" : `Vunnet ${data.wins}`
     } else {
         usernameEl.textContent = "";
         emailEl.textContent = "";
@@ -72,7 +79,7 @@ const toggleOverlay = (value) => {
 
 }
 
-console.log(avatarOverlayFormInput)
+
 const displayError = (error, color) => {
     avatarOverlayFormInput.placeholder = error
     avatarOverlayFormInput.style.cssText = `border:1px solid ${color}`;

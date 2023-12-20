@@ -39,15 +39,10 @@ svg {
 @layer components {
   /*navigation*/
 
-  .header-bg {
-      background: rgba(8, 8, 8, 0.6);
-    box-shadow: 0 8px 32px 0 rgba(6, 6, 6, 0.37);
-    backdrop-filter: blur(9px);
-    -webkit-backdrop-filter: blur(4px);
-  }
+
   nav {
-    background: rgba(8, 8, 8, 0.6);
-    box-shadow: 0 8px 32px 0 rgba(6, 6, 6, 0.37);
+    background: rgba(63, 63, 63, 0.918);
+    box-shadow: 0 8px 32px 0 rgba(10, 10, 10, 0.968);
     backdrop-filter: blur(9px);
     -webkit-backdrop-filter: blur(4px);
   }
@@ -322,19 +317,6 @@ svg {
     transition: 100ms cubic-bezier(0.1, 0.5, 0.3, 0.7);
   }
 
-  .auto-slider-anim {
-    animation: slideMan 15s infinite ease-in-out;
-  }   @keyframes slideMan {
-    0%, 20% {
-        transform: translateX(0%);
-    }
-    40%, 60% {
-        transform: translateX(-100%);
-    }
-    80%, 100% {
-        transform: translateX(0%);
-    }
-}
   /*Fancy things*/
 
   /*focus, hover, active  links*/

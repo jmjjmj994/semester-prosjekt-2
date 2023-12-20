@@ -6,14 +6,14 @@ const previewGallery = document.querySelector("[data-type-preview='gallery']")
 const previewImage = document.querySelector("[data-type-preview='image']")
 previewGallery.innerHTML = ""
 const productInputTitle = document.querySelector("[data-input-type='product-title']")
-const productTagsInput = document.querySelector("[data-input-type='product-tags']")
+
 const productImageInput = document.querySelector("[data-input-type='product-image']")
 const productTextareaInput = document.querySelector("[data-input-type='product-textarea']")
 const productDateInput = document.querySelector("[data-input-type='product-end']")
 const today = new Date().toISOString().split("T")[0];
 productDateInput.min = today;
 productInputTitle.value = "";
-productTagsInput.value = "";
+
 productImageInput.value = "";
 productTextareaInput.value = ""
 productDateInput.value = "";
@@ -23,7 +23,7 @@ form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const validatedInput = validateInput(galleryArr);
     if (validatedInput) {
-        await createListing(validatedInput.title, validatedInput.description, validatedInput.tags, validatedInput.image, validatedInput.end)
+        await createListing(validatedInput.title, validatedInput.description,  validatedInput.image, validatedInput.end)
         console.log("valid")
         previewGallery.innerHTML = "";
         previewImage.src = "";
@@ -40,24 +40,23 @@ form.addEventListener("submit", async (e) => {
 
 const validateInput = (galleryArr) => {
     const productInputTitle = document.querySelector("[data-input-type='product-title']")
-    const productTagsInput = document.querySelector("[data-input-type='product-tags']")
+
     const productImageInput = document.querySelector("[data-input-type='product-image']")
     const productTextareaInput = document.querySelector("[data-input-type='product-textarea']")
     const productDateInput = document.querySelector("[data-input-type='product-end']")
     const inputTitleVal = productInputTitle.value.trim();
-    const inputTagsVal = productTagsInput.value.trim();
+  
     const inputDateVal = productDateInput.value.trim();
     const inputTextareaVal = productTextareaInput.value.trim();
-    if (inputTitleVal && inputTagsVal && galleryArr.length > 0 && inputTextareaVal) {
+    if (inputTitleVal &&  galleryArr.length > 0 && inputTextareaVal) {
         const inputData = {
             title: inputTitleVal,
             description: inputTextareaVal,
-            tags: inputTagsVal,
             image: galleryArr,
             end: inputDateVal
         }
         productInputTitle.value = "";
-        productTagsInput.value = "";
+     
         productImageInput.value = "";
         productTextareaInput.value = ""
         productDateInput.value = "";
@@ -88,7 +87,7 @@ const clearImagePreview = () => {
 const createPreview = () => {
     galleryArr = []
     const productInputTitle = document.querySelector("[data-input-type='product-title']")
-    const productTagsInput = document.querySelector("[data-input-type='product-tags']")
+  
     const productImageInput = document.querySelector("[data-input-type='product-image']")
     const productImageInput2 = document.querySelector("[data-input-type='product-image-2']")
     const productImageInput3 = document.querySelector("[data-input-type='product-image-3']")
@@ -109,9 +108,7 @@ const createPreview = () => {
 
     })
 
-    productTagsInput.addEventListener("input", (e) => {
-        previewBodyCategories.textContent = e.target.value
-    })
+
     productTextareaInput.addEventListener("input", (e) => {
         previewBodyDescription.textContent = e.target.value
     })

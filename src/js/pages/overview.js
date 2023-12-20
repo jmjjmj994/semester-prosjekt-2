@@ -75,9 +75,7 @@ const listingsCardFooter = (id) => {
     const cardFooter = createCardElement("div", " p-2 flex  gap-2 ");
     const cardDeleteBtn = createButtonElement("bg-custom-btnBgAccent text-custom-textWhite py-1 px-4 relative rounded-sm shadow-sm");
     cardDeleteBtn.textContent = "Slett";
-    const cardUpdateBtn = createButtonElement("")
-    cardUpdateBtn.textContent = "Oppdater"
-    cardFooter.append(cardDeleteBtn, cardUpdateBtn);
+    cardFooter.append(cardDeleteBtn);
 
     cardDeleteBtn.addEventListener("click", async (e) => {
         deleteEntry(id)
@@ -107,12 +105,13 @@ const renderCards = async () => {
     if (myListings.length > 0) {
         myListings.forEach(listing => {
             const { id, media, title, description, created, endsAt } = listing
-            const norwegianEnd = norwegianEndDate(endsAt)
+            const norwegianEnd = dateConverter(endsAt)
+        
             const listingCard = card(id, media, title, description, norwegianEnd);
             container.append(listingCard)
         })
-        container.className = "w-full h-auto listings-card"
-        parentContainer.className = "flex-1 height-calc global-margin-block global-padding"
+        container.className = "w-full h-auto featured-card-grid"
+        parentContainer.className = "flex-1 height-calc global-margin-block global-padding "
         containerHeader.className = "text-center"
         containerHeaderH1.textContent = "Min oversikt"
 

@@ -25,52 +25,35 @@
 
 
 <body class="bg-custom-background flex flex-col">
-    <header class="bg-custom-secondary flex items-center justify-between   h-[7rem] sticky top-0    z-10 global-padding">
+    <header class="bg-custom-secondary flex items-center justify-between   h-[5rem] sticky top-0    z-10 global-padding">
         <section class="flex items-center justify-center gap-3 h-[3rem] lg:h-[5rem]  ">
             <button class="" data-header="hamburger-menu" aria-label="open menu" class="ring-1">
                 <i class="fa-solid fa-bars text-custom-textDark"></i>
             </button>
             <img src="/src/assets/budhjørnet-hvit.svg " class=" " alt="">
         </section>
-    
         <section class="flex text-custom-textDark   w-[8rem]     p-1  h-auto">
-            <div data-type-navbar="user-container" class=" w-full relative  h-full flex  items-center justify-between ">
-    
-                <img data-type-user="avatar"
-                    class="min-h-[2.5rem] h-[2.5rem] min-w-[2.5rem] w-[2.5rem] rounded-full text-custom-textDark"
-                    src="/src/assets/blank-avatar.png" alt="avatar">
-    
+            <div data-type-navbar="user-container" class=" w-full relative  h-full flex  items-center justify-end gap-5 ">
+                <a href="" data-type-user="avatar-link" class="rounded-full">
+                    <img data-type-user="avatar"
+                        class="min-h-[2.5rem] h-[2.5rem] min-w-[2.5rem] w-[2.5rem] rounded-full text-custom-textDark"
+                        src="/src/assets/blank-avatar.png" alt="avatar">
+                </a>
+                <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode">
+                </button>
                 <button data-type-header="open-search" aria-label="open navbar search input">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
-    
-                <button data-type-header="open-overlay" aria-label="open header overlay">
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </button>
-    
-    
-                <!--CHANGES-->
-                <div data-header="overlay"
-                    class="bg-custom-secondary absolute text-custom-textDark h-[5rem] flex flex-col w-[8rem] top-[50px]  shadow-lg rounded-sm border-2 border-custom-background ">
-                    <div data-type-navbar="user-credit-container" class="flex items-center justify-between">
-                    </div>
-                    <a data-type-navbar="profile-link" class=" text-purple-500 underline" aria-label="Go to profile page"
-                        href="">Gå til profil</a>
-                </div>
             </div>
         </section>
-        <!--CHANGES-->
-    
     
         <nav data-type-component="navbar"
-            class="flex flex-col  gap-2  bg-custom-secondary  fixed top-0 left-0 h-full  sm:max-w-[20rem] w-full  md:w-[22rem]   px-1">
-    
-            <section data-type-component="navbar-child" class=" flex justify-end ">
+            class="flex flex-col  gap-2     fixed top-0 left-0 h-full  sm:max-w-[20rem] w-full  md:w-[22rem]  px-5 ">
+            <section data-type-component="navbar-child" class=" flex justify-end py-2">
                 <button data-type-navbar="close-menu" type="button" aria-label="close menu">
-                    <i class="fa-solid fa-xmark text-custom-textDark"></i>
+                    <i class="fa-solid fa-xmark text-custom-textWhite text-xl"></i>
                 </button>
             </section>
-    
             <section class=" flex flex-col w-full     mt-10 gap-8   ">
                 <form data-type-component="navbar-form" class=" flex  h-[2rem] md:h-[2.2rem]">
                     <div class="h-full  flex w-full relative lg:gap-1">
@@ -78,64 +61,45 @@
                             søk
                         </label>
                         <input data-type-component="navbar-form-input"
-                            class="placeholder:text-custom-textDark placeholder:text-sm  md:placeholder:text-base bg-custom-background text-custom-textDark links-typography h-full w-full rounded-sm py-3 px-2"
+                            class="placeholder:text-custom-textDark placeholder:text-sm  md:placeholder:text-base bg-custom-secondary text-custom-textDark links-typography h-full w-full rounded-sm py-3 px-2"
                             type="text" id="search" placeholder="Søk...">
                         <button data-type-component="navbar-form-submit-btn" aria-label="navbar search form submit button"
                             class=" absolute top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2   text-xs  rounded-sm  bg-custom-btnBgAccent text-custom-textWhite uppercase py-1 px-2 md:px-4  lg:static lg:translate-x-0 lg:translate-y-0 lg:h-full lg:py-0 "><i
                                 class="fa-solid fa-magnifying-glass "></i></button>
                     </div>
                 </form>
-                <ul data-type-component="navbar-child"
-                    class="flex flex-col gap-2    items-start  justify-between  text-custom-textDark  bg-red  ">
-                    <li class="w-auto  px-1 py-[0.5px] relative nav-links-state" tabindex="0">
+                <ul data-type-component="navbar-child-ul"
+                    class="flex flex-col gap-10 py-10 text-xl    items-start  justify-between  text-custom-textWhite  bg-red  ">
+                    <li class="w-full   px-1 py-[0.5px] relative nav-links-state" tabindex="0">
                         <span>
-    
-                            <i class="fa-solid fa-house"></i>
                             <a href="/index.html">Hjem</a>
                         </span>
-    
                     </li>
-                    <li class="w-auto  px-1 py-[0.5px]   relative nav-links-state" tabindex="0">
+                    <li class="w-full  px-1 py-[0.5px]   relative nav-links-state" tabindex="0">
                         <span>
-                            <i class="fa-solid fa-bag-shopping"></i>
                             <a href="/bidding.html">Auksjoner</a>
                         </span>
-    
                     </li>
-                    <li class="w-auto  px-1 py-[0.5px]    relative nav-links-state" tabindex="0">
+                    <li class="w-full  px-1 py-[0.5px]    relative nav-links-state" tabindex="0">
                         <span>
-                            <i class="fa-solid fa-sack-dollar"></i>
                             <a data-type-navbar="listing-link" href="">Selg</a>
-    
                         </span>
                     </li>
-    
-                    <li class="w-auto  px-1 py-[0.5px]  relative nav-links-state" tabindex="0">
+                    <li class="w-full  px-1 py-[0.5px]  relative nav-links-state" tabindex="0">
                         <span>
-                            <i class="fa-solid fa-glasses"></i>
                             <a href="" data-type-navbar='overview-link'>Oversikt</a>
-    
                         </span>
                     </li>
-    
-                </ul>
-    
-                <ul class="flex flex-col  items-start  justify-between    text-custom-textDark   ">
-                    <li class="w-auto  py-[0.5px]     relative nav-links-state" tabindex="0">
+                    <li class="w-full  px-1 py-[0.5px]  relative nav-links-state" tabindex="0">
+                        <span>
+                            <a data-type-navbar="profile-link" class="" href="">Profil</a>
+                        </span>
+                    </li>
+                    <li class="w-full  py-[0.5px]     relative nav-links-state" tabindex="0">
                         <span>
                             <a data-type-navbar="login-logout-link" class="px-1 text-purple-500 underline" href=""></a>
-    
-    
                         </span>
-    
-    
                     </li>
-    
-                    <li>
-                        <button data-type-button="btn-mode-switcher" type="button" aria-label="light-mode">
-                        </button>
-                    </li>
-    
                 </ul>
             </section>
         </nav>
