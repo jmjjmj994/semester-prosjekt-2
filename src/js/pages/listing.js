@@ -182,7 +182,7 @@ function createGallery(arr) {
         validImgUrl(url, (isValid) => {
             if (isValid) {
 
-                const imgContainer = createCardElement("div", "w-[15%] h-[5rem] relative ring-1");
+                const imgContainer = createCardElement("div", "w-[15%] h-[5rem] relative ");
                 const img = createCardElement("img", "max-w-full w-full block absolute object-contain h-full");
                 img.src = url;
                 imgContainer.append(img);
