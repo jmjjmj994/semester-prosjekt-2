@@ -1,16 +1,47 @@
 import { articleCard, skeletonCards } from "../utils/utils.js"
 const params = new URLSearchParams(window.location.search)
 const results = params.get("results");
-const ascDate = params.get("asc")
-const descDate = params.get("desc")
-const ascFilter = document.querySelector("[data-type-bidding-sort='asc']")
-const descFilter = document.querySelector("[data-type-bidding-sort='desc']")
-const titleFilter = document.querySelector("[data-type-bidding-sort='a-å']")
+let sortOrder = params.get("sort") || "asc";
+const ascFilter = document.querySelector("[data-type-bidding-sort='asc']");
+const descFilter = document.querySelector("[data-type-bidding-sort='desc']");
+
+
+const updateFilterColors = () => {
+    if (sortOrder === "asc") {
+        ascFilter.style.color = "#ccccff";
+        descFilter.style.color = "";
+    } else {
+        descFilter.style.color = "#ccccff";
+        ascFilter.style.color = "";
+    }
+};
+
+; (() => {
+    window.addEventListener('load', () => {
+        if (!sortOrder || sortOrder === "asc") {
+            ascFilter.style.color = "#ccccff";
+            descFilter.style.color = "";
+        } else {
+            descFilter.style.color = "#ccccff";
+            ascFilter.style.color = "";
+        }
+    });
+});
+; (() => {
+    const details = document.querySelector("[data-type-bidding='details']")
+   details.addEventListener("mouseleave", () => {
+    details.open = false
+   })
+
+
+})();
+
+
+
 const pageParams = () => {
     const page = params.get("page")
     return currentPage(page)
 }
-
 const currentPage = (page) => {
     let getPageNum;
     if (!isNaN(parseInt(page))) {
@@ -22,12 +53,7 @@ const currentPage = (page) => {
 }
 
 
-
-
-
-
-
-const render = async () => {
+const setUrl = async () => {
     const pageNumber = pageParams();
     const sortOrder = params.get("sort");
     const defaultUrl = `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&_bids=true&sort=endsAt&sortOrder=asc&limit=10&offset=${pageNumber * 10}`;
@@ -45,15 +71,9 @@ const render = async () => {
 
 
 const updateURL = (option, param) => {
-    console.log(option, param)
-    const pageNumber = pageParams();
-    if (option && param) {
-        window.history.pushState({}, "", `/bidding.html?results=${option}&sort=${param}&page=${pageNumber}`);
-    } else if (option) {
-        window.history.pushState({}, "", `/bidding.html?results=${option}&page=${pageNumber}`);
-    } else {
-        window.history.pushState({}, "", `/bidding.html?page=${pageNumber}`);
-    }
+    const pageNumber = currentPage(params.get("page"));
+    param = param || "asc"; 
+    window.history.pushState({}, "", `/bidding.html?${option ? `results=${option}&` : ''}sort=${param}&page=${pageNumber}`);
 };
 
 
@@ -65,35 +85,31 @@ const updateURL = (option, param) => {
 
 
 ascFilter.addEventListener("click", async (e) => {
-    e.preventDefault()
-    const queries = params.set("sort", "asc")
-    params.set("sort", "asc");
+    e.preventDefault();
+    sortOrder = "asc";
+    updateFilterColors();
+    params.set("sort", sortOrder);
     params.set("page", "0");
-    updateURL(results, "asc");
-    await render();
-
-})
-
-
-
-
+    updateURL(results, sortOrder);
+    await setUrl();
+});
 
 
 descFilter.addEventListener("click", async (e) => {
-    e.preventDefault()
-    const queries = params.set("sort", "desc")
-    params.set("sort", "desc");
+    e.preventDefault();
+    sortOrder = "desc";
+    updateFilterColors();
+    params.set("sort", sortOrder);
     params.set("page", "0");
-    updateURL(results, "desc");
-    await render();
+    updateURL(results, sortOrder);
+    await setUrl();
+});
 
-})
 
-/* titleFilter.addEventListener("click", async (e) => {
-    e.preventDefault()
-    updateURL("", "")
-    await render()
-}) */
+
+
+
+
 
 const pagination = async (option, param) => {
     const pageNumber = pageParams();
@@ -144,7 +160,7 @@ async function listings(url) {
 
 
 
-render()
+setUrl()
 
 
 
@@ -208,3 +224,11 @@ const renderCards = async (data) => {
     } finally { }
 
 }
+
+
+    ; (() => {
+        window.addEventListener('load', () => {
+            updateFilterColors();
+            setUrl();
+        });
+    })();

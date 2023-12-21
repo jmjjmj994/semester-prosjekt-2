@@ -25,7 +25,8 @@
 
 
 <body class="bg-primary flex flex-col">
-    <header class="bg-custom-secondary flex items-center justify-between   h-[5rem] sticky top-0    z-10 global-padding">
+    <header
+        class="bg-custom-secondary flex items-center justify-between   h-[5rem] sticky top-0    z-10 global-padding">
         <section class="flex items-center justify-center gap-3 h-[3rem] lg:h-[5rem]  ">
             <button class="" data-header="hamburger-menu" aria-label="open menu" class="ring-1">
                 <i class="fa-solid fa-bars text-custom-textDark text-xl"></i>
@@ -37,10 +38,11 @@
                         class="fill-custom-textDark" />
                 </svg>
             </a>
-        
+
         </section>
         <section class="flex text-custom-textDark   w-[8rem]     p-1  h-auto">
-            <div data-type-navbar="user-container" class=" w-full relative  h-full flex  items-center justify-end gap-5 ">
+            <div data-type-navbar="user-container"
+                class=" w-full relative  h-full flex  items-center justify-end gap-5 ">
                 <a href="" data-type-user="avatar-link" class="rounded-full">
                     <img data-type-user="avatar"
                         class="min-h-[2.5rem] h-[2.5rem] min-w-[2.5rem] w-[2.5rem] rounded-full text-custom-textDark"
@@ -53,7 +55,7 @@
                 </button>
             </div>
         </section>
-    
+
         <nav data-type-component="navbar"
             class="flex flex-col  gap-2     fixed top-0 left-0 h-full  sm:max-w-[20rem] w-full  md:w-[22rem]  px-5 ">
             <section data-type-component="navbar-child" class=" flex justify-end py-2">
@@ -70,7 +72,8 @@
                         <input data-type-component="navbar-form-input"
                             class="placeholder:text-custom-textDark placeholder:text-sm  md:placeholder:text-base bg-custom-secondary text-custom-textDark links-typography h-full w-full rounded-sm py-3 px-2"
                             type="text" id="search" placeholder="Søk...">
-                        <button data-type-component="navbar-form-submit-btn" aria-label="navbar search form submit button"
+                        <button data-type-component="navbar-form-submit-btn"
+                            aria-label="navbar search form submit button"
                             class=" absolute top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2   text-xs  rounded-sm  bg-custom-btnBgAccent text-custom-textWhite uppercase py-1 px-2 md:px-4  lg:static lg:translate-x-0 lg:translate-y-0 lg:h-full lg:py-0 "><i
                                 class="fa-solid fa-magnifying-glass "></i></button>
                     </div>
@@ -128,65 +131,40 @@
                 <h1 data-type-section="result-information" class="text-custom-textDark text-center"></h1>
             </article>
 
-            <section class="h-[auto] headers-margin ">
-           <details class="bg-custom-secondary  md:w-[18rem]  text-custom-textDark  custom-z-low top-0 rounded-sm shadow-sm px-2 py-2 cursor-pointer">
-            <summary class=" text-lg text-bold">
-         
-     Sorter
-   
-            </summary>
-
-            <ul class="mt-2 flex flex-col gap-2">
-                <li>
-                   <a data-type-bidding-sort="a-å">A-Å</a>
-                </li>
-            <li class="flex items-center text-md gap-1">
-            <a data-type-bidding-sort="desc">Nylig lagt til</a>
-            </li>
-            <li class="flex items-center text-md gap-1">
-                <a data-type-bidding-sort="asc">Slutter snart</a>
-            </li>
-         </ul>
-           </details>
+            <section class="h-[auto] headers-margin w-[9rem] rounded-md shadow-lg">
+                <details data-type-bidding="details" tabindex="0"
+                    class="bg-custom-secondary   text-custom-textDark  custom-z-low top-0 border-inherit shadow-lg px-2 py-2 cursor-pointer">
+                    <summary class=" text-lg text-bold">
+                        Sorter
+                    </summary>
+                    <ul class="mt-2 flex flex-col gap-2 ">
+                        <li class="flex items-center text-md gap-1">
+                            <a data-type-bidding-sort="desc">Nylig lagt til</a>
+                        </li>
+                        <li class="flex items-center text-md gap-1">
+                            <a data-type-bidding-sort="asc">Slutter snart</a>
+                        </li>
+                    </ul>
+                </details>
             </section>
 
             <section data-type-section="listings-container" class="flex-1 featured-card-grid ">
-                <!--Card container-->
-
             </section>
 
 
-            <!--Pagination buttons-->
-            <div data-type-section="pagination-buttons"
-                class="">
-
+            <div data-type-section="pagination-buttons" class="">
                 <a data-type-section="pagination-prev-btn"
                     class=" cursor-pointer  bg-custom-secondary px-2 py-1 rounded-md ">
                     <i class="fa-solid fa-arrow-left pointer-events-none"></i>
                 </a>
-
-                <a data-type-section="pagination-next-btn"
-                    class=" cursor-pointer px-2 py-1 rounded-md bg-orange-300 ">
+                <a data-type-section="pagination-next-btn" class=" cursor-pointer px-2 py-1 rounded-md bg-orange-300 ">
                     <i class="fa-solid fa-arrow-right pointer-events-none"></i>
-
                 </a>
             </div>
+                <button class="fixed w-[5rem] h-[5rem] right-0">Upwards</button>
+        </section>
 
-
-
-
-
-
-        </section><!--wrapper-->
-
-
-
-
-
-
-
-
-
+    
     </main>
 
     <footer

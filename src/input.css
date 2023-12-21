@@ -343,6 +343,17 @@ box-shadow: 2px 1px 200px -100px hsl(255, 81%, 69%);
   opacity: 0;
    transition: 150ms ease-in;
 }
+.details-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+details[open] .details-content {
+  max-height: 100px; /* Adjust as needed */
+  opacity: 1;
+}
   /*Fancy things*/
 
   /*focus, hover, active  links*/
