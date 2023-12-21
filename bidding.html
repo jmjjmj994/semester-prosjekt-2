@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8" />
@@ -26,7 +26,7 @@
 
 <body class="bg-primary flex flex-col">
     <header
-        class="bg-custom-secondary flex items-center justify-between   h-[5rem] sticky top-0    z-10 global-padding">
+        class="bg-custom-secondary flex items-center justify-between   h-[5rem]    z-10 global-padding">
         <section class="flex items-center justify-center gap-3 h-[3rem] lg:h-[5rem]  ">
             <button class="" data-header="hamburger-menu" aria-label="open menu" class="ring-1">
                 <i class="fa-solid fa-bars text-custom-textDark text-xl"></i>
@@ -148,7 +148,9 @@
                 </details>
             </section>
 
-            <section data-type-section="listings-container" class="flex-1 featured-card-grid ">
+            <section data-type-section="listings-container" class="flex-1 featured-card-grid relative">
+                <div class="loader"></div>
+                 
             </section>
 
 
@@ -161,10 +163,11 @@
                     <i class="fa-solid fa-arrow-right pointer-events-none"></i>
                 </a>
             </div>
-                <button class="fixed w-[5rem] h-[5rem] right-0">Upwards</button>
+            
+            
         </section>
 
-    
+
     </main>
 
     <footer

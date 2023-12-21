@@ -1,4 +1,4 @@
-import { articleCard, skeletonCards } from "../utils/utils.js"
+import { articleCard, createButtonElement, skeletonCards } from "../utils/utils.js"
 const params = new URLSearchParams(window.location.search)
 const results = params.get("results");
 let sortOrder = params.get("sort") || "asc";
@@ -56,13 +56,13 @@ const currentPage = (page) => {
 const setUrl = async () => {
     const pageNumber = pageParams();
     const sortOrder = params.get("sort");
-    const defaultUrl = `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&_bids=true&sort=endsAt&sortOrder=asc&limit=10&offset=${pageNumber * 10}`;
+    const defaultUrl = `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&_bids=true&sort=endsAt&sortOrder=asc&limit=42&offset=${pageNumber * 42}`;
     let url = defaultUrl;
     if (results) {
-        url = `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&_bids=true&_tag=${results}&limit=10&offset=${pageNumber * 10}`;
+        url = `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&_bids=true&_tag=${results}&limit42&offset=${pageNumber * 42}`;
     }
     if (sortOrder) {
-        url = `https://api.noroff.dev/api/v1/auction/listings?sort=endsAt&sortOrder=${sortOrder}&_seller=true&_active=true&_bids=true&limit=10&offset=${pageNumber * 10}`;
+        url = `https://api.noroff.dev/api/v1/auction/listings?sort=endsAt&sortOrder=${sortOrder}&_seller=true&_active=true&_bids=true&limit42&offset=${pageNumber * 42}`;
     }
     await listings(url);
     pagination(results, sortOrder);
@@ -115,9 +115,7 @@ const pagination = async (option, param) => {
     const pageNumber = pageParams();
     const prevBtn = document.querySelector("[data-type-section='pagination-prev-btn']");
     const nextBtn = document.querySelector("[data-type-section='pagination-next-btn']");
-
     prevBtn.href = (pageNumber > 0) ? `/bidding.html?page=${pageNumber - 1}` : `/bidding.html?page=0`;
-
     if (option) {
         nextBtn.href = `/bidding.html?results=${option}&page=${pageNumber + 1}`;
     } else {
@@ -145,7 +143,6 @@ async function listings(url) {
                 'Content-Type': 'application/json'
             }
         });
-
         if (res.ok) {
             const data = await res.json()
             handleData(data)
@@ -159,8 +156,6 @@ async function listings(url) {
 }
 
 
-
-setUrl()
 
 
 
@@ -176,7 +171,7 @@ const handleData = async (data) => {
 
         nextBtn.classList.add("hidden");
         prevBtn.classList.add("hidden");
-    } else if (data.length < 10) {
+    } else if (data.length < 40) {
         nextBtn.classList.add('hidden');
         prevBtn.classList.remove('hidden');
 
@@ -196,33 +191,45 @@ const handleData = async (data) => {
 
 
 const renderCards = async (data) => {
-    console.log(data)
-    const container = document.querySelector("[data-type-section='listings-container']")
-    const skeleton = skeletonCards()
-    for (let i = 0; i < data.length; i++) {
-        container.innerHTML += skeleton
+    const container = document.querySelector("[data-type-section='listings-container']");
+    const scrollTopBtn = createButtonElement("w-[2rem] h-[2rem] rounded-full shadow-xl bg-white fixed right-[5px] custom-z-mid bg-custom-secondary hidden lg:block")
+  scrollTopBtn.onclick = ()  => scrollTop()
+
+    const details = document.querySelector("[data-type-bidding='details']")
+    const loader = document.querySelector(".loader");
+    if(loader) {
+        loader.style.display = "block";
     }
+   
+    container.innerHTML = ""; 
     try {
-        if (typeof data === "string" || data.length === 0) {
-            container.innerHTML = `<span> Ingen data tilgjengelig. Trykk <a class="text-purple-600 underline" href="/bidding.html">her</a> for å gå tilbake. </span>`;
-        } else {
-            container.innerHTML = "";
+        if (Array.isArray(data) && data.length > 0) {
+        
+            scrollTopBtn.innerHTML = `<i class="fa-solid fa-arrow-up"></i>`
+            container.append(scrollTopBtn)
             const cardPromises = data.map(async (item) => {
                 const { media, title, bids, endsAt, id } = item;
-                const createBidArray = bids.map(bid => bid.amount)
-                const highestBid = createBidArray.length > 0 ? Math.max(...createBidArray) : 0;
-                const card = articleCard(media, title, highestBid, endsAt, id);
-                return card
-
+                const highestBid = bids.length > 0 ? Math.max(...bids.map(bid => bid.amount)) : 0;
+                return articleCard(media, title, highestBid, endsAt, id);
             });
-
             const cards = await Promise.all(cardPromises);
-            container.innerHTML = ""
             cards.forEach(card => container.appendChild(card));
+        } else {
+            details.style.display = "none";
+            scrollTopBtn.style.display = "none";
+            container.innerHTML = ` <span class="absolute top-[35%] text-custom-textDark text-2xl text-center px-2 absolute-centered"> Ingen data tilgjengelig. Trykk <a class="text-purple-600 underline" href="/bidding.html">her</a> for å gå tilbake. </span> `;
         }
+    } finally {
+        loader.style.display = 'none';
+    }
+}
 
-    } finally { }
 
+
+function scrollTop () {
+    window.scrollTo(0, 0)
+    const html = document.querySelector("html");
+    
 }
 
 
@@ -230,5 +237,7 @@ const renderCards = async (data) => {
         window.addEventListener('load', () => {
             updateFilterColors();
             setUrl();
+          
+
         });
     })();
