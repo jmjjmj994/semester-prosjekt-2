@@ -81,8 +81,8 @@ export const validImgUrl = (url, callback) => {
 
 
 const cardHeader = (image) => {
-    const cardHeader = createCardElement("div", "h-[70%] relative")
-    const cardHeaderImage = createCardElement("img", "absolute object-cover w-full h-full ")
+    const cardHeader = createCardElement("div", "h-[70%] relative rounded-t-md p-2")
+    const cardHeaderImage = createCardElement("img", "block object-cover w-full h-full rounded-t-md")
     validImgUrl(image, (isValid) => {
         if (isValid) {
             cardHeaderImage.src = image;
@@ -131,8 +131,8 @@ const cardFooter = (bids, endsAt) => {
 
 
 export const articleCard = (image, title, bids, endsAt, id) => {
-    const article = createCardElement("article", "flex flex-col justify-between relative  bg-custom-card relative shadow-md text-custom-textGrey card-no-effect card-effect relative");
-    const link = createCardElement("a", "inset-0 absolute  custom-z-low");
+    const article = createCardElement("article", "flex flex-col justify-between relative  bg-custom-card rounded-md shadow-md relative shadow-md text-custom-textGrey card-no-effect card-effect relative");
+    const link = createCardElement("a", "inset-0 absolute  custom-z-low rounded-md");
     link.href = `/specific.html?id=${id}`
     const articleHeader = cardHeader(image)
     const articleBody = cardBody(title)
