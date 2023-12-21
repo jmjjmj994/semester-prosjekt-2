@@ -117,7 +117,7 @@ const renderSlides = (media) => {
     })
     slidePreviewArray.forEach((preview, index) => {
         preview.addEventListener("click", (e) => {
-         
+
             const currentIndex = index;
             curSlide = index
             moveSlidesOnClick(currentIndex)
@@ -141,21 +141,21 @@ const renderSlides = (media) => {
 
 const renderSingleSlide = async () => {
     const img = await fetchData()
-  console.log(img)
+    console.log(img)
     const slide = createCardElement("div", "flex-1 w-full h-full relative");
     const image = createCardElement("img", "absolute w-full h-full object-cover");
-    if(img.media.length === 0) {
+    if (img.media.length === 0) {
         console.log(img)
         image.src = "src/assets/no-image.jpg";
-        image.alt ="Placeholder image"
+        image.alt = "Placeholder image"
         slide.append(image);
         sliderContainer.append(slide);
     } else {
-     
+
         image.src = img.media
         image.alt = "product image"
         slide.append(image);
-        sliderContainer.append(slide); 
+        sliderContainer.append(slide);
     }
 
 }
@@ -174,12 +174,12 @@ const renderDescription = async () => {
         sellerHeader.textContent = data.seller.name
         sellerAvatar.src = data.seller.avatar
         sellerAvatar.alt = "Profile avatar"
-       
+
     } else {
         sellerHeader.textContent = "Logg inn for å se informasjon om selger"
         sellerAvatar.src = "src/assets/blank-avatar.png"
         sellerAvatar.alt = "Profile placeholder"
-        
+
     }
 
 
@@ -187,7 +187,7 @@ const renderDescription = async () => {
         productDescription.textContent = "Ingen tilgjengelig beskrivelse"
     }
 
-    
+
 
 
 }
@@ -220,7 +220,7 @@ const renderStatus = async () => {
             firstLiEl.classList.add("highest-bidder")
         }
     }
-
+    return bids
 
 
 }
@@ -240,7 +240,7 @@ const clearCredits = () => {
 
 const clearBid = () => {
     const formInput = document.querySelector("[data-type-specific='bid-input']");
-formInput.value = ""
+    formInput.value = ""
 }
 
 
@@ -264,6 +264,7 @@ const userCredits = async () => {
     if (!localStorageItems.token) {
         creditsContainer.innerHTML = ""
     }
+    return data.credits
 }
 
 
@@ -286,16 +287,16 @@ const setBid = async (amount) => {
             const data = await res.json();
             console.log(data)
             renderStatus()
-             clearCredits() 
+            clearCredits()
             userCredits()
             clearBid()
 
         } else {
-         throw new Error("Ikke nok kreditt") 
+            throw new Error("Ikke nok kreditt")
         }
 
     } catch (error) {
-        inputError(error.message) 
+        /*     inputError(error.message) */
 
     }
 }
@@ -304,47 +305,58 @@ const setBid = async (amount) => {
 
 
 
-const inputError = (msg) => {
+const inputFeedback = (msg, color, time) => {
     const formInput = document.querySelector("[data-type-specific='bid-input']");
+    const submitBidBtn = document.querySelector("[data-type-specific='submit-bid-btn']")
+    submitBidBtn.style.backgroundColor = color
+    submitBidBtn.style.color = "white"
     formInput.placeholder = msg
     formInput.value = ""
-    formInput.style.border = "1px solid red"
+    formInput.style.outline = `1px solid ${color}`
+    submitBidBtn.style.transition = `all 130ms ease-in-out`
+    submitBidBtn.style.transition = `all 130ms ease-in-out`
     setTimeout(() => {
+        formInput.style.transition = `all 130ms ease-in-out`
+        formInput.style.transition = `all 130ms ease-in-out`
+        submitBidBtn.style.backgroundColor = ""
+        submitBidBtn.style.color = ""
         formInput.placeholder = "Legg til bud"
-        formInput.style.border = ""
+        formInput.style.outline = ""
 
-    }, 3000)
+    }, time)
 }
+
 
     ; (() => {
         const formContainer = document.querySelector("[data-type-specific='form-container']")
         const form = document.querySelector("[data-type-specific='form']")
         const formInput = document.querySelector("[data-type-specific='bid-input']");
         const submitBidBtn = document.querySelector("[data-type-specific='submit-bid-btn']")
-        if (localStorageItems && localStorageItems.token) {
-
-        } else {
-            /* form.remove() */
+        if (!localStorageItems || !localStorageItems.token) {
             formContainer.className = "flex items-center justify-center  bg-custom-secondary px-[1rem] md:px-[10rem] rounded-md shadow-md  py-4"
             formContainer.innerHTML = `
-  
   <h3 class="text-center text-custom-textDark">
 Vennligst <a aria-label="to login page" class=" text-purple-500 underline" href="/login.html">logg inn </a> eller <a aria-label="to register page" class="text-purple-500 underline" href="/signup.html">registrer </a> deg for å delta i budrunden
-
-
-  </h3>
-  
-  
-  
-  `
+  </h3>`
         }
 
 
-        const validateInput = (value) => {
+        const validateInput = async (value) => {
+            const fetchBids = await renderStatus()
+            const bidArray = fetchBids.map(bid => {
+                return bid.amount
+            })
+            const credit = await userCredits()
             if (isNaN(value)) {
-                inputError("Vennligst skriv inn kun tall")
+                inputFeedback("Vennligst skriv inn kun tall", "red", 3000)
+                return
 
             }
+            if (bidArray[0] > credit) {
+                inputFeedback("Du har ikke nok kredit", "red", 3000)
+                return
+            }
+
 
         }
 
@@ -353,8 +365,10 @@ Vennligst <a aria-label="to login page" class=" text-purple-500 underline" href=
             e.preventDefault();
             const value = parseInt(formInput.value.trim())
             if (isNaN(value) || value === "") {
+                inputFeedback("Vennligst legg inn ett bud", "red", 3000)
                 return
             } else {
+                inputFeedback("", "green", 1500)
                 setBid(value)
 
 

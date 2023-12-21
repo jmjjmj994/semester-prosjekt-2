@@ -30,7 +30,7 @@ const currentPage = (page) => {
 const render = async () => {
     const pageNumber = pageParams();
     const sortOrder = params.get("sort");
-    const defaultUrl = `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&_bids=true&sort=title&sortOrder=asc&limit=10&offset=${pageNumber * 10}`;
+    const defaultUrl = `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&_bids=true&sort=endsAt&sortOrder=asc&limit=10&offset=${pageNumber * 10}`;
     let url = defaultUrl;
     if (results) {
         url = `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_active=true&_bids=true&_tag=${results}&limit=10&offset=${pageNumber * 10}`;
