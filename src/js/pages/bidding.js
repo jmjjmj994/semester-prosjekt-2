@@ -176,17 +176,17 @@ const handleData = async (data) => {
         prevBtn.classList.remove('hidden');
 
     } else if (pageNumber === 0) {
-        buttonContainer.className = " basis-[auto] w-full md:w-[20rem]   absolute bottom-0 flex justify-end lg:items-center left-[50%] transform -translate-x-1/2 -translate-y-1/2 px-1"
+        buttonContainer.className = " basis-[auto] w-full md:w-[20rem] px-5  absolute bottom-0 flex justify-end lg:items-center left-[50%] transform -translate-x-1/2 -translate-y-1/2 px-1"
         nextBtn.classList.remove("hidden");
         prevBtn.classList.add("hidden");
     } else {
-        buttonContainer.className = " basis-[auto] w-full md:w-[20rem]   absolute bottom-0 flex justify-between lg:items-center left-[50%] transform -translate-x-1/2 -translate-y-1/2 px-1"
+        buttonContainer.className = " basis-[auto] w-full md:w-[20rem] px-5   absolute bottom-0 flex justify-between lg:items-center left-[50%] transform -translate-x-1/2 -translate-y-1/2 px-1"
         nextBtn.classList.remove("hidden");
         prevBtn.classList.remove("hidden");
     }
 
 
-    renderCards(data)
+    renderCards(data) 
 }
 
 
