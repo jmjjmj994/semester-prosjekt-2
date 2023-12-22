@@ -1,27 +1,51 @@
-# semester-prosjekt-2
+# Budhjørnet
+
+![Screenshot](![screencapture-127-0-0-1-5500-index-html-2023-12-22-22_13_27](https://github.com/jmjjmj994/semester-prosjekt-2/assets/111571683/b8b1afb9-7c51-49b7-bd9a-58507da1de97))
 
 
 
 ## Description
-Noroff Vocational School semester-project-2 task. 
-This project simulates an online auction environment where users can bid on fictional items using fictional credits. 
-It's built with HTML, Tailwind CSS, and Vanilla JavaScript, focusing on an engaging and interactive user experience
 
-##Technologies used
+Budhjørnet is a fictional auction website.
+
+
+## Built With
 - HTML
-- Tailwind CSS
+- [Tailwind CSS](https://tailwindcss.com/)
 - Vanilla JavaScript
-
-
-## Prerequisites  
-- [node.js](url)
-
   
-### Installation and setup
-git clone git@github.com:jmjjmj994/semester-prosjekt-2.git
-cd semester-prosjekt-2
-npm install
 
-## usage
+## Getting Started
+
+### Installing
+
+
+1. Clone the repo:
+
+```bash
+git clone git@github.com:jmjjmj994/semester-prosjekt-2.git
+```
+
+2. Install the dependencies:
+
+```
+npm install
+```
+
+### Running
+
+
+To run the app, run the following commands:
+
+```bash
 npm run build
 npm run compile:tailwind
+```
+
+
+
+## Contact
+
+
+[My LinkedIn page](https://www.linkedin.com/in/jonathan-braaten-mj%C3%B8s-900b26255/)
+
