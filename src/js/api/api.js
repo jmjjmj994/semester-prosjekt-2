@@ -22,10 +22,6 @@ export const showLoader = (value) => {
 
 }
 
-
-
-//Auction-profiles related endpoints
-
 const allProfiles = async (limit) => {
     let url = `https://api.noroff.dev/api/v1/auction/profiles?_listings=true`
 
@@ -45,8 +41,6 @@ const allProfiles = async (limit) => {
     }
 }
 
-
-
 export const singleProfile = async (name) => {
     let url = `https://api.noroff.dev/api/v1/auction/profiles/${name}?_listings=true`
 
@@ -62,13 +56,7 @@ export const singleProfile = async (name) => {
     } catch (error) {
         console.log(error.message)
     }
-
 }
-
-
-
-
-
 
 export const updateMedia = async (name, imageUrl) => {
     let url = `https://api.noroff.dev/api/v1/auction/profiles/${name}/media`;
@@ -93,10 +81,8 @@ export const updateMedia = async (name, imageUrl) => {
 };
 
 
-
 const auctionProfiles = async (name, param) => {
     let url = `https://api.noroff.dev/api/v1/auction/profiles/${name}/${param}`;
-    //listings, bids, credits
     try {
         const res = await fetch(url, options)
 
@@ -112,16 +98,6 @@ const auctionProfiles = async (name, param) => {
 
 }
 
-
-
-
-
-//Auction-profiles related endpoints
-
-
-
-
-//Auction-listings related endpoints
 
 export const listingsByDate = async (order,limit) => {
     const url =
@@ -192,13 +168,6 @@ export const listingsByTags = async (tag, offset) => {
         } else {
             throw new Error("Failed to fetch data")
         }
-        /*       const res = await fetch(url, options)
-              if (res.ok) {
-                  const data = await res.json();
-                  return data;
-              } else {
-                  throw new Error("Failed to fetch data")
-              } */
 
     } catch (error) {
         console.log(error.message)
@@ -209,9 +178,7 @@ export const listingsByTags = async (tag, offset) => {
 export const singleListing = async (id) => {
     const url =
         `https://api.noroff.dev/api/v1/auction/listings/${id}?_seller=true&_bids=true&_active=true&tags=true`;
-
     try {
-
         const res = await fetch(url, {
             method: "GET",
             headers: {
@@ -224,8 +191,6 @@ export const singleListing = async (id) => {
         } else {
             throw new Error("Failed to fetch data")
         }
-
-
     } catch (error) {
         console.log(error.message)
     }
@@ -235,17 +200,13 @@ export const singleListing = async (id) => {
 
 
 export const createListing = async (title, description,  image, date) => {
-    console.log(image)
     let url = `https://api.noroff.dev/api/v1/auction/listings?_bids`
-    /* const norwegianDate = dateConverter(date); */
-console.log(image)
     const requestOptions = {
         method: "POST",
         headers: options.headers,
         body: JSON.stringify({
             title, title,
             description: description,
-          
             media: image,
             endsAt: date
         })
@@ -256,16 +217,11 @@ console.log(image)
     try {
         const res = await fetch(url, requestOptions)
         const data = await res.json()
-    
         return data;
 
     }
     catch (error) {
-
     }
-
-
-
 }
 
 
@@ -286,7 +242,7 @@ export const updateEntry = async (id, title, description, tags, image) => {
         const response = await fetch(url, requestOptions);
         if (response.ok) {
             const updatedListing = await response.json();
-            console.log('Listing updated:', updatedListing);
+           
 
         } else {
             const errorData = await response.json();
