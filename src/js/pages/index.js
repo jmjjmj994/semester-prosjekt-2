@@ -52,7 +52,7 @@ import { articleCard, skeletonCards, createCardElement, norwegianEndDate, localS
         CTASecondaryContainer.className = " text-accent flex overflow-hidden   items-center justify-center h-[50vh]"
         CTASecondaryContainer.innerHTML = `
 <div class="flex-1 h-full relative flex flex-col">
-  <div class="bg-custom-secondary auto-slide-translate text-custom-textDark global-padding flex flex-col items-center justify-center md:flex-row md:items-center md:justify-between w-full h-full absolute">
+  <div class="bg-custom-secondary auto-slide-translate text-custom-textDark global-padding flex flex-col items-center justify-center w-full h-full absolute">
     <a class="h-[20rem] max-w-[20rem] w-full flex flex-col items-center justify-center right-0 bottom-[20px] text-xs" href="https://storyset.com/web">
       <img class="w-full h-full object-cover" src="${illustrations.illustration_1}" alt="Illustration">
       Web illustrations by Storyset
