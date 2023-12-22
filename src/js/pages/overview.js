@@ -67,7 +67,6 @@ const listingsCardFooter = (id) => {
     const cardDeleteBtn = createButtonElement("bg-custom-btnBgSpecial text-black btn-bold py-1 px-4 relative rounded-sm shadow-sm");
     cardDeleteBtn.textContent = "Slett";
     cardFooter.append(cardDeleteBtn);
-
     cardDeleteBtn.addEventListener("click", async (e) => {
         deleteEntry(id)
     })
@@ -92,7 +91,6 @@ const renderCards = async () => {
         myListings.forEach(listing => {
             const { id, media, title, description, created, endsAt } = listing
             const norwegianEnd = dateConverter(endsAt)
-
             const listingCard = card(id, media, title, description, norwegianEnd);
             container.append(listingCard)
         })
