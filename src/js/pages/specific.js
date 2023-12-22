@@ -10,9 +10,6 @@ const sliderContainer = document.querySelector("[data-type-specific='slider']")
 const previewContainer = document.querySelector("[data-type-specific='preview-container']")
 const MILLISECOND = 3000
 const ERROR_CLR = "#FF6D4D"
-
-
-
 const fetchData = async () => {
     const res = await singleListing(id)
     const specificData = {
@@ -27,20 +24,12 @@ const fetchData = async () => {
     }
     document.title = `${res.title}`
     return specificData;
-
-
 }
-
-
-
-
 const handleSlides = async () => {
     const object = await fetchData();
     const media = object.media;
     renderSlides(media)
 }
-
-
 const renderSlides = (media) => {
     let curSlide = 0;
     const image = media.slice(0, 4)
@@ -69,67 +58,45 @@ const renderSlides = (media) => {
                 slideArray.push(slide)
             })
         })
-
         slideArray.forEach(slide => {
             sliderContainer.append(slide)
         })
         slidePreviewArray.forEach(preview => {
             previewContainer.append(preview)
         })
-
     }
     slides()
-
-
-
     nextBtn.addEventListener("click", (e) => {
         curSlide === maxSlide ? (curSlide = 0) : curSlide++;
         moveSlides();
     });
-
     prevBtn.addEventListener("click", (e) => {
         curSlide === 0 ? (curSlide = maxSlide) : curSlide--;
         moveSlides();
     });
-
-
     function moveSlides() {
         slideArray.forEach((slide, index) => {
             slide.style.transform = `translateX(${100 * (index - curSlide)}%)`;
         });
     }
-
-
-
-
     slideArray.forEach((slide, index) => {
         slide.style.transform = `translateX(${index * 100}%)`;
         slide.style.cssText = "transition:0.1s ease-in-out; opacity:0.5s;";
     })
     slidePreviewArray.forEach((preview, index) => {
         preview.addEventListener("click", (e) => {
-
             const currentIndex = index;
             curSlide = index
             moveSlidesOnClick(currentIndex)
         })
     })
-
-
-
     function moveSlidesOnClick(num) {
         slideArray.forEach((slide, index) => {
             slide.style.transform = `translateX(${100 * (index - num)}%)`;
-
         });
 
     }
-
-
-
 }
-
-
 const renderSingleSlide = async () => {
     const img = await fetchData()
     const slide = createCardElement("div", "flex-1 w-full h-full relative");
@@ -140,7 +107,6 @@ const renderSingleSlide = async () => {
         slide.append(image);
         sliderContainer.append(slide);
     } else {
-
         image.src = img.media
         image.alt = "product image"
         slide.append(image);
@@ -148,9 +114,6 @@ const renderSingleSlide = async () => {
     }
 
 }
-
-
-
 const renderDescription = async () => {
     const data = await fetchData()
     const sellerHeader = document.querySelector("[data-type-specific='description-seller']")
@@ -163,32 +126,21 @@ const renderDescription = async () => {
         sellerHeader.textContent = data.seller.name
         sellerAvatar.src = data.seller.avatar
         sellerAvatar.alt = "Profile avatar"
-
     } else {
         sellerHeader.textContent = "Logg inn for å se informasjon om selger"
         sellerAvatar.src = "src/assets/blank-avatar.png"
         sellerAvatar.alt = "Profile placeholder"
-
     }
-
-
     if (!data.description) {
         productDescription.textContent = "Ingen tilgjengelig beskrivelse"
     }
-
-
-
-
 }
-
 const renderStatus = async () => {
     clearProductStatus()
     const data = await fetchData()
     const productStatusContainer = document.querySelector("[data-type-specific='product-status']")
     const ul = document.querySelector("[data-type-specific='product-status-ul']")
     const bids = data.bids
-
-
     if (bids.length === 0) {
         productStatusContainer.innerHTML = `<h3> Ingen aktive bud! Vær den første til å legge inn ett bud </h3>`
     } else {
@@ -203,7 +155,6 @@ const renderStatus = async () => {
             ul.append(li)
 
         })
-
         const firstLiEl = ul.querySelector("li")
         if (firstLiEl) {
             firstLiEl.classList.add("highest-bidder")
@@ -213,30 +164,23 @@ const renderStatus = async () => {
 
 
 }
-
 const clearProductStatus = () => {
     const ul = document.querySelector("[data-type-specific='product-status-ul']")
     if (ul) {
         ul.innerHTML = ""
     }
 }
-
 const clearCredits = () => {
     const creditsContainer = document.querySelector("[data-type-navbar='user-bid-credits']")
     creditsContainer.innerHTML = "";
 
 }
-
 const clearBid = () => {
     const formInput = document.querySelector("[data-type-specific='bid-input']");
     formInput.value = ""
 }
-
-
-
 const userCredits = async () => {
     clearCredits()
-
     const data = await singleProfile(localStorageItems.userData.name);
     const creditsContainer = document.querySelector("[data-type-navbar='user-bid-credits']")
     if (localStorageItems.token) {
@@ -255,10 +199,6 @@ const userCredits = async () => {
     }
     return data.credits
 }
-
-
-
-
 const setBid = async (amount) => {
     const formInput = document.querySelector("[data-type-specific='bid-input']");
     let url = `https://api.noroff.dev/api/v1/auction/listings/${id}/bids?_seller=true&_bids=true&_active=true`
@@ -269,31 +209,22 @@ const setBid = async (amount) => {
             "amount": amount
         })
     };
-
     try {
         const res = await fetch(url, requestOptions);
         if (!res.ok) {
             const errorData = await res.json()
-            throw new Error(errorData.message || "Du kan ikke by under det høyeste budet") 
-            } 
-
+            throw new Error(errorData.message || "Du kan ikke by under det høyeste budet")
+        }
         const data = await res.json();
         console.log(data)
         renderStatus()
         clearCredits()
         userCredits()
         clearBid()
-
     } catch (error) {
-    inputFeedback(error.message, ERROR_CLR, MILLISECOND)
-
+        inputFeedback(error.message, ERROR_CLR, MILLISECOND)
     }
 }
-
-
-
-
-
 const inputFeedback = (msg, color, time) => {
     const formInput = document.querySelector("[data-type-specific='bid-input']");
     const submitBidBtn = document.querySelector("[data-type-specific='submit-bid-btn']")
@@ -305,7 +236,6 @@ const inputFeedback = (msg, color, time) => {
     submitBidBtn.style.transition = `all 100ms linear`
     formInput.style.transition = `all 100ms linear`
     setTimeout(() => {
-       
         submitBidBtn.style.backgroundColor = ""
         submitBidBtn.style.color = ""
         formInput.placeholder = "Legg til bud"
@@ -313,8 +243,6 @@ const inputFeedback = (msg, color, time) => {
 
     }, time)
 }
-
-
     ; (() => {
         const formContainer = document.querySelector("[data-type-specific='form-container']")
         const form = document.querySelector("[data-type-specific='form']")
@@ -327,29 +255,20 @@ const inputFeedback = (msg, color, time) => {
 Vennligst <a aria-label="to login page" class=" text-purple-500 underline" href="/login.html">logg inn </a> eller <a aria-label="to register page" class="text-purple-500 underline" href="/signup.html">registrer </a> deg for å delta i budrunden
   </h3>`
         }
-
-
         const validateInput = async (value) => {
             const fetchBids = await renderStatus()
             const bidArray = fetchBids.map(bid => bid.amount)
-            const highestBid = bidArray.length > 0 ? bidArray[0] : 0 //6
+            const highestBid = bidArray.length > 0 ? bidArray[0] : 0
             const currentCredit = await userCredits()
-            
             if (isNaN(value)) {
                 inputFeedback("Vennligst skriv inn kun tall", ERROR_CLR, 3000)
                 return
-                    }
-
-           
+            }
             if (highestBid > currentCredit) {
                 inputFeedback("Du har ikke nok kredit", ERROR_CLR, MILLISECOND)
                 return
             }
-    
-
         }
-
-
         form.addEventListener("submit", (e) => {
             e.preventDefault();
             const value = parseInt(formInput.value.trim())
@@ -359,20 +278,12 @@ Vennligst <a aria-label="to login page" class=" text-purple-500 underline" href=
             } else {
                 inputFeedback("", "green", MILLISECOND)
                 setBid(value)
-
-
             }
         })
-
-
         formInput.addEventListener("input", (e) => {
             validateInput(e.target.value)
         })
     })();
-
-
-
-
 
 ; (async () => {
     const loader = document.querySelector(".loader")
@@ -390,41 +301,27 @@ Vennligst <a aria-label="to login page" class=" text-purple-500 underline" href=
         } else if (media > 1) {
             handleSlides()
         }
-
     }
-
     async function loadContent() {
         const wrapper = document.querySelector("[data-type-specific='wrapper']")
         if (loader) {
             loader.style.display = "block"
             wrapper.style.display = "none"
-
         }
         try {
-
             if (id) {
                 await initializer()
             } else {
                 throw new Error("Problem loading content")
             }
-
         } finally {
             if (loader) {
                 loader.style.display = "none";
             }
-
             wrapper.style.display = "flex"
-
-
         }
-
-
     }
-
     loadContent()
-
-
-
 })();
 
 
