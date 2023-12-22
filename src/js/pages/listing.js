@@ -69,13 +69,13 @@ validateInput()
 
 
 const imagePreview = (image) => {
-    const img = document.querySelector("[data-container-='image-container-img']")
+    const img = document.querySelector("[data-container='image-container-img']")
     img.src = image
     img.alt = image
 }
 
 const clearImagePreview = () => {
-    const img = document.querySelector("[data-container-='image-container-img']")
+    const img = document.querySelector("[data-container='image-container-img']")
     img.src = ""
     img.alt = ""
 }
@@ -85,7 +85,6 @@ const clearImagePreview = () => {
 const createPreview = () => {
     galleryArr = []
     const productInputTitle = document.querySelector("[data-input-type='product-title']")
-
     const productImageInput = document.querySelector("[data-input-type='product-image']")
     const productImageInput2 = document.querySelector("[data-input-type='product-image-2']")
     const productImageInput3 = document.querySelector("[data-input-type='product-image-3']")

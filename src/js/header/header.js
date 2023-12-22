@@ -28,14 +28,11 @@ const navbarToggler = (value, search) => {
         navbarUlLi.forEach((li, index) => {
             li.style.transform = `translateX(0%)`
             li.style.transition = `all 250ms linear ${index * 20}ms`
-        
         })
-
     } else {
         navbar.classList.remove("isActive")
         navbarUlLi.forEach((li, index) => {
             li.style.transform = `translateX(-${105}%)`
-           
         })
     }
 }
@@ -60,10 +57,17 @@ document.addEventListener("click", (e) => {
         navbar.classList.remove('isActive');
         navbarUlLi.forEach((li, index) => {
             li.style.transform = `translateX(-${105}%)`
-
         })
     }
  
+})
+
+document.addEventListener("DOMContentLoaded", (e) => {
+   document.addEventListener("keydown", (e) =>{
+    if(e.key === "Escape" && navbar.classList.contains("isActive")) {
+      navbar.classList.remove("isActive")
+    }
+   })
 })
 
 

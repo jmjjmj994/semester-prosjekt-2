@@ -115,7 +115,7 @@ const renderCards = async () => {
         containerHeaderH1.textContent = "Min oversikt"
 
     } else {
-        container.className = "hidden ";
+        container.className = "hidden";
         parentContainer.className = "flex-1 items-center "
         containerHeader.className = "h-full w-full flex items-center height-calc justify-center text-center"
         containerHeaderH1.innerHTML = `
