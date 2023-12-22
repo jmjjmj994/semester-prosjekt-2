@@ -55,16 +55,6 @@ svg {
     transform: translate(0%);
   }
 
-  /*   @media screen and (min-width: 1024px) {
-    nav {
-      transform: translate(0);
-      transition: 1ms;
-    }
-  } */
-
-  /*navigation*/
-
-  /*Profile overlay */
 
   [data-header="overlay"] {
     opacity: 0;

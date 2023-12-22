@@ -107,7 +107,7 @@ import { articleCard, skeletonCards, createCardElement, norwegianEndDate, localS
 
 
 ; (async () => {
-    const featuredListings = await listingsByDate("asc",31);
+    const featuredListings = await listingsByDate("asc",33);
     const featuredSection = document.querySelector("[data-featured-section='grid-container']");
     const sortListingsByBids = () => {
         const items = featuredListings;
