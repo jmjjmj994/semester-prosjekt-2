@@ -72,7 +72,7 @@ const userAvatar = async () => {
         avatarLink.ariaLabel = "Link to profile page";
         profileImage.src = data && data.avatar ? data.avatar : "src/assets/blank-avatar.png";
     } else {
-        profileImage.src = "src/assets/default-avatar.png";
+        profileImage.src = "/src/assets/blank-avatar.png";
         avatarLink.href = "/login.html";
     }
 

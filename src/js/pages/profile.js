@@ -82,6 +82,7 @@ const toggleOverlay = (value) => {
         avatarOverlayForm.querySelector("button [autofocus], input").focus()
     } else {
         avatarOverlay.classList.remove("isActive");
+        avatarOverlayFormInput.value = ""
     }
 }
 function toggleAriaHidden(hide) {
