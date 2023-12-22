@@ -109,10 +109,6 @@ const displayError = (error, color) => {
     }, 3000);
 }
 
-
-
-
-
 avatarOverlayForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
@@ -141,8 +137,6 @@ avatarOverlayForm.addEventListener("submit", async (e) => {
         });
     }
 })
-
-
 const changeUserAvatar = async (imageUrl) => {
     try {
         await updateMedia(localStorageItems.userData.name, imageUrl);
@@ -154,8 +148,6 @@ const changeUserAvatar = async (imageUrl) => {
 
 
 }
-
-
 
 async function init() {
     overlayListeners();

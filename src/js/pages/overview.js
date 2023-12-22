@@ -1,6 +1,5 @@
 import { localStorageItems, createCardElement, createButtonElement, dateConverter, norwegianEndDate } from "../utils/utils.js";
 import { options, singleListing, updateEntry } from "../api/api.js";
-
 const listingsByProfile = async (name) => {
     const url =
         `https://api.noroff.dev/api/v1/auction/profiles/${name}/listings?_listings=true`;
@@ -22,10 +21,8 @@ const listingsByProfile = async (name) => {
 
     }
 }
-
 const deleteListing = async (id) => {
     const container = document.querySelector("[data-type-overview='listings-wrapper']")
-
     try {
         const url = `https://api.noroff.dev/api/v1/auction/listings/${id}`;
         const res = await fetch(url, {
@@ -44,7 +41,6 @@ const deleteListing = async (id) => {
         throw error;
     }
 }
-
 const listingsCardHeader = (img) => {
     const cardHeader = createCardElement("div", "relative h-[15rem] rounded-sm");
     const cardHeaderImg = createCardElement("img", "absolute  w-full h-full object-cover border-inherit");
@@ -53,7 +49,6 @@ const listingsCardHeader = (img) => {
     cardHeader.append(cardHeaderImg);
     return cardHeader
 }
-
 const listingsCardBody = (title, description, start, end) => {
     const cardBody = createCardElement("div", "flex p-2 flex-col text-custom-textDark ");
     const cardBodyTitle = createCardElement("h2")
@@ -66,11 +61,8 @@ const listingsCardBody = (title, description, start, end) => {
     cardBodyEnd.textContent = end;
     cardBody.append(cardBodyTitle, cardBodyDescription, cardBodyStart, cardBodyEnd);
     return cardBody
-
-
 }
 const listingsCardFooter = (id) => {
-
     const cardFooter = createCardElement("div", " p-2 flex  gap-2 ");
     const cardDeleteBtn = createButtonElement("bg-custom-btnBgSpecial text-black btn-bold py-1 px-4 relative rounded-sm shadow-sm");
     cardDeleteBtn.textContent = "Slett";
@@ -81,7 +73,6 @@ const listingsCardFooter = (id) => {
     })
     return cardFooter
 }
-
 const card = (id, media, title, description, start, end) => {
     const card = createCardElement("div", "bg-custom-card flex flex-col rounded-sm shadow-sm card-effect card-no-effect ")
     card.setAttribute("data-type-card", `${id}`)
@@ -91,21 +82,17 @@ const card = (id, media, title, description, start, end) => {
     card.append(cardHeader, cardBody, cardFooter)
     return card
 }
-
-
 const renderCards = async () => {
     const parentContainer = document.querySelector("[data-type-overview='listings-wrapper']");
     const container = document.querySelector("[data-type-overview='my-listings']")
     const containerHeader = document.querySelector("[data-type-overview='header']")
     const containerHeaderH1 = document.querySelector("[data-type-overview='header-h1']")
     const myListings = await listingsByProfile(localStorageItems.userData.name);
-
-
     if (myListings.length > 0) {
         myListings.forEach(listing => {
             const { id, media, title, description, created, endsAt } = listing
             const norwegianEnd = dateConverter(endsAt)
-        
+
             const listingCard = card(id, media, title, description, norwegianEnd);
             container.append(listingCard)
         })
@@ -113,41 +100,27 @@ const renderCards = async () => {
         parentContainer.className = "flex-1 height-calc global-margin-block global-padding "
         containerHeader.className = "text-center"
         containerHeaderH1.textContent = "Min oversikt"
-
     } else {
         container.className = "hidden";
         parentContainer.className = "flex-1 items-center "
         containerHeader.className = "h-full w-full flex items-center height-calc justify-center text-center"
         containerHeaderH1.innerHTML = `
-        
         <span class=>
 Her var det tomt! Trykk <a class="text-purple-600 underline" href="/listing.html">her</a> for å opprette en annonse
         <span>
-        
-        
-        
         `
     }
-
-
 }
-
-
 const deleteEntry = async (id) => {
     const deleteCall = await deleteListing(id);
 
 }
-
-
 const initializer = () => {
 
     renderCards()
 
 }
 initializer()
-
-/*********************************************** */
-
 
 
 
