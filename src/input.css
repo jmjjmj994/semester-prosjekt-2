@@ -169,6 +169,9 @@ svg {
     color: black;
   }
   /*Cards*/
+  img {
+    font-style: italic;
+  }
 
   .preview-grid {
     display: grid;

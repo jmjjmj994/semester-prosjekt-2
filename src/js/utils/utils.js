@@ -144,19 +144,20 @@ export const articleCard = (image, title, bids, endsAt, id) => {
 }
 
 export const skeletonCards = () => {
-    const skeletonCard = `
-        <div class="flex flex-col justify-between bg-custom-card  rounded-sm shadow-lg  card-no-effect card-effect relative">
-            <div class="card-header h-[70%] relative  animate-pulse">
-                <div class=" h-[full]  absolute inset-0  bg-gray-200 rounded-md"></div>
-            </div>
-            <div class="card-body p-4 ">
-                <div class=" h-[2rem] bg-gray-200 rounded-md mb-2 w-full animate-pulse"></div>
-            </div>
-            <div class="basis-[auto] flex gap-4   p-1 overflow-hidden">
-                <div class="skeleton-bids w-20 h-6 flex-1 bg-gray-200 animate-pulse rounded-md"></div>
-                <div class="skeleton-ends-at w-24 h-6 flex-1 bg-gray-200 animate-pulse rounded-md"></div>
-            </div>
-        </div>
-    `;
+    const skeletonCard = createCardElement("div", "flex flex-col justify-between bg-custom-card rounded-sm shadow-lg card-no-effect card-effect relative");
+    const cardHeader = createCardElement("div", "card-header h-[70%] relative animate-pulse");
+    const cardHeaderFill = createCardElement("div", "h-[full] absolute inset-0 bg-gray-200 rounded-md");
+    cardHeader.appendChild(cardHeaderFill);
+    skeletonCard.appendChild(cardHeader);
+    const cardBody = createCardElement("div", "card-body p-4");
+    const cardBodyFill = createCardElement("div", "h-[2rem] bg-gray-200 rounded-md mb-2 w-full animate-pulse");
+    cardBody.appendChild(cardBodyFill);
+    skeletonCard.appendChild(cardBody);
+    const cardFooter = createCardElement("div", "basis-[auto] flex gap-4 p-1 overflow-hidden");
+    const skeletonBids = createCardElement("div", "skeleton-bids w-20 h-6 flex-1 bg-gray-200 animate-pulse rounded-md");
+    const skeletonEndsAt = createCardElement("div", "skeleton-ends-at w-24 h-6 flex-1 bg-gray-200 animate-pulse rounded-md");
+    cardFooter.appendChild(skeletonBids);
+    cardFooter.appendChild(skeletonEndsAt);
+    skeletonCard.appendChild(cardFooter);
     return skeletonCard;
 }

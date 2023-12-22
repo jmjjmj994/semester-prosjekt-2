@@ -1,11 +1,6 @@
 import { listings, singleProfile, listingsByDate } from "../api/api.js";
 import { articleCard, skeletonCards, createCardElement, norwegianEndDate, localStorageItems } from "../utils/utils.js";
 
-
-
-
-
-
 ; (() => {
     const CTAHeaders = () => {
         const CTAWrapper = document.querySelector("[data-type-cta='wrapper']")
@@ -14,9 +9,6 @@ import { articleCard, skeletonCards, createCardElement, norwegianEndDate, localS
         const CTAHeaderSecondary = createCardElement("span", "cta-header-secondary block text-wrap ")
         CTAWrapper.prepend(CTAHeader)
         CTAHeader.append(CTAHeaderPrimary, CTAHeaderSecondary)
-        const primaryCTAText = document.querySelector("[data-type-cta='primary']");
-        const secondaryCTAText = document.querySelector("[data-type-cta='secondary']");
-
         if (!localStorageItems.token) {
             CTAHeaderPrimary.innerHTML = "Utforsk spennende auksjoner nå!"
             CTAHeaderSecondary.innerHTML = "Logg inn eller registrer deg for å delta og by på unike varer."
@@ -49,16 +41,11 @@ import { articleCard, skeletonCards, createCardElement, norwegianEndDate, localS
 
 
 ; (async () => {
-
     const illustrations = {
         illustration_1: "src/assets/Search engines-amico.webp",
         illustration_2: "src/assets/Save the Earth-amico.webp",
     }
     const CTASecondaryContainer = document.querySelector("[data-type-cta='secondary-cta']")
-
-
-
-
     if (localStorageItems && localStorageItems.userData && localStorageItems.userData.name) {
         const fetchProfile = await singleProfile(localStorageItems.userData.name);
         const profileListings = Object.values(fetchProfile._count)[0]
@@ -84,31 +71,14 @@ import { articleCard, skeletonCards, createCardElement, norwegianEndDate, localS
                     Utforsk
                 </a>`
     }
-
-
-
-
-
-
-
-
-
-
-
 })();
 
 
 
 
-
-
-
-
-
-
 ; (async () => {
-    const featuredListings = await listingsByDate("asc",33);
     const featuredSection = document.querySelector("[data-featured-section='grid-container']");
+    const featuredListings = await listingsByDate("asc", 33);
     const sortListingsByBids = () => {
         const items = featuredListings;
         const featuredItems = items
@@ -116,7 +86,7 @@ import { articleCard, skeletonCards, createCardElement, norwegianEndDate, localS
                 item.title && item.media && item._count && item._count.bids &&
                 item.bids && Array.isArray(item.bids)
             )
-            .map(({ title, media, _count, endsAt, id, bids }) => ({
+            .map(({ title, media, endsAt, id, bids }) => ({
                 title,
                 media,
                 bids,
@@ -128,50 +98,46 @@ import { articleCard, skeletonCards, createCardElement, norwegianEndDate, localS
 
 
     const renderFeaturedCards = async () => {
-        const skeleton = skeletonCards()
         const items = sortListingsByBids();
+        const fragment = document.createDocumentFragment();
         for (let i = 0; i < items.length; i++) {
-            featuredSection.innerHTML += skeleton
+            fragment.appendChild(skeletonCards())
         }
+        featuredSection.appendChild(fragment)
         try {
-            if (typeof items === "string" || items.length === 0) {
-                featuredSection.innerHTML = `<span> Vi har problemet med å hente dataen. Vennligst prøv igjen </span>`;
-            } else {
-                featuredSection.innerHTML = "";
+            if (Array.isArray(items)) {
                 const cardPromises = items.map(async (item) => {
                     const { media, title, bids, endsAt, id } = item;
                     const createBidArray = bids.map(bid => bid.amount)
                     const highestBid = createBidArray.length > 0 ? Math.max(...createBidArray) : 0;
                     const card = articleCard(media, title, highestBid, endsAt, id);
                     return card
-
-                });
-
+                })
                 const cards = await Promise.all(cardPromises);
                 featuredSection.innerHTML = ""
                 cards.forEach(card => featuredSection.appendChild(card));
+            } else {
+
+                throw new Error("Problem med å hente dataen")
+
             }
 
-        } finally { }
+        } catch (error) {
+            featuredSection.innerHTML = "<p> Vi har problemer med å hente dataen. Vennligst prøv igjen</p>"
+        }
     }
-
     renderFeaturedCards()
 })();
 
 
 
-
-
-
 ; (() => {
-    const carouselContainer = document.querySelector("[data-carousel-container]");
     const carouselSlides = document.querySelectorAll("[data-carousel-slide]");
     const carouselPrevBtn = document.querySelector("[data-prev-btn]");
     const carouselNextBtn = document.querySelector("[data-next-btn]");
     carouselSlides.forEach((slide, index) => {
         slide.style.cssText = "transition:0.2s ease-in-out; opacity:0.5s;";
         slide.style.transform = `translateX(${index * 100}%)`;
-
     });
     let curSlide = 0;
     let maxSlide = carouselSlides.length - 1;
@@ -179,20 +145,15 @@ import { articleCard, skeletonCards, createCardElement, norwegianEndDate, localS
         curSlide === maxSlide ? (curSlide = 0) : curSlide++;
         moveSlides();
     });
-
     carouselPrevBtn.addEventListener("click", (e) => {
         curSlide === 0 ? (curSlide = maxSlide) : curSlide--;
         moveSlides();
     });
-
-
     function moveSlides() {
         carouselSlides.forEach((slide, index) => {
             slide.style.transform = `translateX(${100 * (index - curSlide)}%)`;
         });
     }
-
-
 })();
 
 
