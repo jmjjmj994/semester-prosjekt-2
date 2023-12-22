@@ -4,40 +4,6 @@ const results = params.get("results");
 let sortOrder = params.get("sort") || "asc";
 const ascFilter = document.querySelector("[data-type-bidding-sort='asc']");
 const descFilter = document.querySelector("[data-type-bidding-sort='desc']");
-
-
-const updateFilterColors = () => {
-    if (sortOrder === "asc") {
-        ascFilter.style.color = "#ccccff";
-        descFilter.style.color = "";
-    } else {
-        descFilter.style.color = "#ccccff";
-        ascFilter.style.color = "";
-    }
-};
-
-; (() => {
-    window.addEventListener('load', () => {
-        if (!sortOrder || sortOrder === "asc") {
-            ascFilter.style.color = "#ccccff";
-            descFilter.style.color = "";
-        } else {
-            descFilter.style.color = "#ccccff";
-            ascFilter.style.color = "";
-        }
-    });
-});
-; (() => {
-    const details = document.querySelector("[data-type-bidding='details']")
-   details.addEventListener("mouseleave", () => {
-    details.open = false
-   })
-
-
-})();
-
-
-
 const pageParams = () => {
     const page = params.get("page")
     return currentPage(page)
@@ -72,17 +38,9 @@ const setUrl = async () => {
 
 const updateURL = (option, param) => {
     const pageNumber = currentPage(params.get("page"));
-    param = param || "asc"; 
+    param = param || "asc";
     window.history.pushState({}, "", `/products.html?${option ? `results=${option}&` : ''}sort=${param}&page=${pageNumber}`);
 };
-
-
-
-
-
-
-
-
 
 ascFilter.addEventListener("click", async (e) => {
     e.preventDefault();
@@ -132,9 +90,6 @@ const pagination = async (option, param) => {
 };
 
 
-
-
-
 async function listings(url) {
     try {
         const res = await fetch(url, {
@@ -145,9 +100,9 @@ async function listings(url) {
         });
         if (res.ok) {
             const data = await res.json()
-            handleData(data)
+            handleButtons(data)
         } else {
-            throw new Error("Failed to fetch data")
+            throw new Error("Vi har problemer med å hente dataen")
         }
 
     } catch (error) {
@@ -160,7 +115,7 @@ async function listings(url) {
 
 
 
-const handleData = async (data) => {
+const handleButtons = async (data) => {
     const buttonContainer = document.querySelector("[data-type-products='pagination-buttons']")
     const prevBtn = document.querySelector("[data-type-products='pagination-prev-btn']");
     const nextBtn = document.querySelector("[data-type-products='pagination-next-btn']");
@@ -186,58 +141,88 @@ const handleData = async (data) => {
     }
 
 
-    renderCards(data) 
+    renderCards(data)
 }
 
 
 const renderCards = async (data) => {
     const container = document.querySelector("[data-type-products='listings-container']");
     const scrollTopBtn = createButtonElement("w-[2rem] h-[2rem] rounded-full shadow-xl bg-white fixed right-[5px] custom-z-mid bg-custom-secondary hidden lg:block")
-  scrollTopBtn.onclick = ()  => scrollTop()
-
+    scrollTopBtn.onclick = () => scrollTop()
     const details = document.querySelector("[data-type-bidding='details']")
-    const loader = document.querySelector(".loader");
-    if(loader) {
-        loader.style.display = "block";
+    container.innerHTML = ""
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i < data.length; i++) {
+        fragment.append(skeletonCards())
     }
-   
-    container.innerHTML = ""; 
+    container.appendChild(fragment)
+
     try {
         if (Array.isArray(data) && data.length > 0) {
-        
             scrollTopBtn.innerHTML = `<i class="fa-solid fa-arrow-up"></i>`
-            container.append(scrollTopBtn)
+
             const cardPromises = data.map(async (item) => {
                 const { media, title, bids, endsAt, id } = item;
                 const highestBid = bids.length > 0 ? Math.max(...bids.map(bid => bid.amount)) : 0;
                 return articleCard(media, title, highestBid, endsAt, id);
             });
             const cards = await Promise.all(cardPromises);
+            container.innerHTML = ""
+            container.append(scrollTopBtn)
             cards.forEach(card => container.appendChild(card));
         } else {
             details.style.display = "none";
             scrollTopBtn.style.display = "none";
             container.innerHTML = ` <span class="absolute top-[35%] text-custom-textDark text-2xl text-center px-2 absolute-centered"> Ingen data tilgjengelig. Trykk <a class="text-purple-600 underline" href="/products.html">her</a> for å gå tilbake. </span> `;
         }
-    } finally {
-        loader.style.display = 'none';
+    } finally { }
+}
+
+
+
+const updateFilterColors = () => {
+    if (sortOrder === "asc") {
+        ascFilter.style.color = "#ccccff";
+        descFilter.style.color = "";
+    } else {
+        descFilter.style.color = "#ccccff";
+        ascFilter.style.color = "";
     }
-}
+};
+
+; (() => {
+    window.addEventListener('load', () => {
+        if (!sortOrder || sortOrder === "asc") {
+            ascFilter.style.color = "#ccccff";
+            descFilter.style.color = "";
+        } else {
+            descFilter.style.color = "#ccccff";
+            ascFilter.style.color = "";
+        }
+    });
+});
+; (() => {
+    const details = document.querySelector("[data-type-bidding='details']")
+    details.addEventListener("mouseleave", () => {
+        details.open = false
+    })
+
+
+})();
 
 
 
-function scrollTop () {
+function scrollTop() {
     window.scrollTo(0, 0)
-    const html = document.querySelector("html");
-    
+
 }
 
 
-    ; (() => {
-        window.addEventListener('load', () => {
-            updateFilterColors();
-            setUrl();
-          
+; (() => {
+    window.addEventListener('load', () => {
+        updateFilterColors();
+        setUrl();
 
-        });
-    })();
+
+    });
+})();
