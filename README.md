@@ -1,8 +1,5 @@
 # Budhjørnet
 
-![Screenshot](![Alt text](src/assets/screencapture-127-0-0-1-5500-index-html-2023-12-22-22_13_27.png))
-
-
 
 ## Description
 
