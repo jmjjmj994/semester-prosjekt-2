@@ -12,7 +12,6 @@ const productDateInput = document.querySelector("[data-input-type='product-end']
 const today = new Date().toISOString().split("T")[0];
 productDateInput.min = today;
 productInputTitle.value = "";
-
 productImageInput.value = "";
 productTextareaInput.value = ""
 productDateInput.value = "";
@@ -23,7 +22,6 @@ form.addEventListener("submit", async (e) => {
     const validatedInput = validateInput(galleryArr);
     if (validatedInput) {
         await createListing(validatedInput.title, validatedInput.description, validatedInput.image, validatedInput.end)
-
         previewGallery.innerHTML = "";
         previewImage.src = "";
         previewImage.alt = "";
@@ -53,7 +51,6 @@ const validateInput = (galleryArr) => {
             end: inputDateVal
         }
         productInputTitle.value = "";
-
         productImageInput.value = "";
         productTextareaInput.value = ""
         productDateInput.value = "";
