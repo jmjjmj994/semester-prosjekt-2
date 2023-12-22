@@ -134,6 +134,7 @@ export const articleCard = (image, title, bids, endsAt, id) => {
     const article = createCardElement("article", "flex flex-col justify-between relative  bg-custom-card rounded-md shadow-md relative shadow-md text-custom-textGrey card-no-effect card-effect relative");
     const link = createCardElement("a", "inset-0 absolute  custom-z-low rounded-md");
     link.href = `/specific.html?id=${id}`
+    link.setAttribute("aria-label", "link to the specific product")
     const articleHeader = cardHeader(image)
     const articleBody = cardBody(title)
     const articleFooter = cardFooter(bids, endsAt)

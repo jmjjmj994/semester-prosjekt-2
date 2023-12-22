@@ -34,7 +34,7 @@ searchForm.addEventListener("submit", async (e) => {
     const inputValue = searchFormInput.value.trim().toLowerCase();
     const data = await fetchData();
     if (data) {
-        window.location.href = `/bidding.html?results=${inputValue}`
+        window.location.href = `/products.html?results=${inputValue}`
         searchFormInput.value = ""
     } else {
         searchFormInput.value = ""

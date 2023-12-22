@@ -73,7 +73,7 @@ const setUrl = async () => {
 const updateURL = (option, param) => {
     const pageNumber = currentPage(params.get("page"));
     param = param || "asc"; 
-    window.history.pushState({}, "", `/bidding.html?${option ? `results=${option}&` : ''}sort=${param}&page=${pageNumber}`);
+    window.history.pushState({}, "", `/products.html?${option ? `results=${option}&` : ''}sort=${param}&page=${pageNumber}`);
 };
 
 
@@ -113,21 +113,21 @@ descFilter.addEventListener("click", async (e) => {
 
 const pagination = async (option, param) => {
     const pageNumber = pageParams();
-    const prevBtn = document.querySelector("[data-type-section='pagination-prev-btn']");
-    const nextBtn = document.querySelector("[data-type-section='pagination-next-btn']");
-    prevBtn.href = (pageNumber > 0) ? `/bidding.html?page=${pageNumber - 1}` : `/bidding.html?page=0`;
+    const prevBtn = document.querySelector("[data-type-products='pagination-prev-btn']");
+    const nextBtn = document.querySelector("[data-type-products='pagination-next-btn']");
+    prevBtn.href = (pageNumber > 0) ? `/products.html?page=${pageNumber - 1}` : `/products.html?page=0`;
     if (option) {
-        nextBtn.href = `/bidding.html?results=${option}&page=${pageNumber + 1}`;
+        nextBtn.href = `/products.html?results=${option}&page=${pageNumber + 1}`;
     } else {
-        nextBtn.href = `/bidding.html?page=${pageNumber + 1}`;
+        nextBtn.href = `/products.html?page=${pageNumber + 1}`;
     }
 
     if (option && param) {
-        nextBtn.href = `/bidding.html?results=${option}&sort=${param}&page=${pageNumber + 1}`;
+        nextBtn.href = `/products.html?results=${option}&sort=${param}&page=${pageNumber + 1}`;
     }
 
     if (param) {
-        nextBtn.href = `/bidding.html?sort=${param}&page=${pageNumber + 1}`;
+        nextBtn.href = `/products.html?sort=${param}&page=${pageNumber + 1}`;
     }
 };
 
@@ -161,9 +161,9 @@ async function listings(url) {
 
 
 const handleData = async (data) => {
-    const buttonContainer = document.querySelector("[data-type-section='pagination-buttons']")
-    const prevBtn = document.querySelector("[data-type-section='pagination-prev-btn']");
-    const nextBtn = document.querySelector("[data-type-section='pagination-next-btn']");
+    const buttonContainer = document.querySelector("[data-type-products='pagination-buttons']")
+    const prevBtn = document.querySelector("[data-type-products='pagination-prev-btn']");
+    const nextBtn = document.querySelector("[data-type-products='pagination-next-btn']");
     const pageNumber = pageParams()
     if (data.length === 0) {
         console.log("Data length is 0");
@@ -191,7 +191,7 @@ const handleData = async (data) => {
 
 
 const renderCards = async (data) => {
-    const container = document.querySelector("[data-type-section='listings-container']");
+    const container = document.querySelector("[data-type-products='listings-container']");
     const scrollTopBtn = createButtonElement("w-[2rem] h-[2rem] rounded-full shadow-xl bg-white fixed right-[5px] custom-z-mid bg-custom-secondary hidden lg:block")
   scrollTopBtn.onclick = ()  => scrollTop()
 
@@ -217,7 +217,7 @@ const renderCards = async (data) => {
         } else {
             details.style.display = "none";
             scrollTopBtn.style.display = "none";
-            container.innerHTML = ` <span class="absolute top-[35%] text-custom-textDark text-2xl text-center px-2 absolute-centered"> Ingen data tilgjengelig. Trykk <a class="text-purple-600 underline" href="/bidding.html">her</a> for å gå tilbake. </span> `;
+            container.innerHTML = ` <span class="absolute top-[35%] text-custom-textDark text-2xl text-center px-2 absolute-centered"> Ingen data tilgjengelig. Trykk <a class="text-purple-600 underline" href="/products.html">her</a> for å gå tilbake. </span> `;
         }
     } finally {
         loader.style.display = 'none';
