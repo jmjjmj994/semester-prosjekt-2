@@ -85,7 +85,7 @@ async function login(email, password) {
         const profileLink = document.querySelector("[data-type-navbar='profile-link']")
         const overViewLink = document.querySelector("[data-type-navbar='overview-link']")
         if (localStorageItems.token) {
-            logInLogOut.innerHTML = `<i class="fa-solid fa-right-from-bracket"></i>`
+            logInLogOut.innerHTML = `Logg ut`
             overViewLink.href = "/overview.html"
             logInLogOut.href = "/index.html"
          
@@ -93,7 +93,7 @@ async function login(email, password) {
             overViewLink.href ="/login.html"
             profileLink.href = "/login.html"
             listingLink.href = "/login.html"
-            logInLogOut.innerHTML = `<i class="fa-solid fa-right-to-bracket"></i>`
+            logInLogOut.innerHTML = `Logg inn`
             logInLogOut.href = "/login.html"
         }
 
