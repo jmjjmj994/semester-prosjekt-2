@@ -67,11 +67,7 @@ const renderSlides = (media) => {
                 slidePreview.setAttribute("data-type-specific", "slide-preview")
                 slidePreviewArray.push(slidePreview);
                 slideArray.push(slide)
-
             })
-
-
-
         })
 
         slideArray.forEach(slide => {
@@ -83,13 +79,6 @@ const renderSlides = (media) => {
 
     }
     slides()
-
-
-
-
-
-
-
 
 
 

@@ -10,22 +10,28 @@ const fetchData = async () => {
     const inputValue = searchFormInput.value.trim().toLowerCase();
     const fetchListings = await listingsByTags(inputValue, 0)
     if (inputValue === "") {
-        displayError("Søkefeltet kan ikke være tomt", "Søk...")
+        inputFeedback("Søkefeltet kan ikke være tomt", "Søk...", "#FF6D4D")
         return;
     } else if (fetchListings.length === 0) {
         searchFormInput.value = ""
-        displayError("Søket ga ingen resultater", "Søk...")
+        inputFeedback("Søket ga ingen resultater", "Søk...", "#FF6D4D")
         return;
     } else {
         return fetchListings
     }
 }
 
-const displayError = (error, placeholder) => {
-    searchFormInput.placeholder = error
+const inputFeedback = (msg, placeholder, clr) => {
+    searchFormInput.placeholder = msg
+    searchFormInput.style.outline = `1px solid ${clr}`
+    searchFormButton.style.outline = `1px solid ${clr}`
+    searchFormInput.style.transition = `100ms all ease-in`
+    searchFormButton.style.transition = `100ms all ease-in`
     setTimeout(() => {
         searchFormInput.placeholder = placeholder;
-    }, 4000)
+        searchFormButton.style.outline = ``
+        searchFormInput.style.outline = ``
+    }, 3000)
 }
 
 
@@ -34,6 +40,7 @@ searchForm.addEventListener("submit", async (e) => {
     const inputValue = searchFormInput.value.trim().toLowerCase();
     const data = await fetchData();
     if (data) {
+        inputFeedback("", "", "green")
         window.location.href = `/products.html?results=${inputValue}`
         searchFormInput.value = ""
     } else {

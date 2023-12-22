@@ -6,7 +6,6 @@ const previewGallery = document.querySelector("[data-type-preview='gallery']")
 const previewImage = document.querySelector("[data-type-preview='image']")
 previewGallery.innerHTML = ""
 const productInputTitle = document.querySelector("[data-input-type='product-title']")
-
 const productImageInput = document.querySelector("[data-input-type='product-image']")
 const productTextareaInput = document.querySelector("[data-input-type='product-textarea']")
 const productDateInput = document.querySelector("[data-input-type='product-end']")

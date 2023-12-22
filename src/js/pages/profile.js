@@ -86,8 +86,8 @@ const toggleOverlay = (value) => {
 }
 function toggleAriaHidden(hide) {
     const elements = document.querySelectorAll('body > *:not([data-type-overlay="overlay"])');
-    elements.forEach(function(elem) {
-        if(hide) {
+    elements.forEach(function (elem) {
+        if (hide) {
             elem.setAttribute('aria-hidden', 'true');
         } else {
             elem.removeAttribute('aria-hidden');
@@ -132,7 +132,6 @@ avatarOverlayForm.addEventListener("submit", async (e) => {
                 } catch (error) {
                     avatarOverlayFormInput.value = ""
                     console.error("Problemer med å bytte avatar:", error.message);
-
                 }
             } else {
                 avatarOverlayFormInput.value = ""
