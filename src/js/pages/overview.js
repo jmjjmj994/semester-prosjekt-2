@@ -13,7 +13,6 @@ const listingsByProfile = async (name) => {
 
         if (res.ok) {
             const data = await res.json();
-            console.log(data)
             return data;
         } else {
             throw new Error("There seem to be an error fetching your data. Please refresh the page")
@@ -25,7 +24,7 @@ const listingsByProfile = async (name) => {
 }
 
 const deleteListing = async (id) => {
-    const container = document.querySelector("[data-type-listings='my-listings']")
+    const container = document.querySelector("[data-type-overview='listings-wrapper']")
 
     try {
         const url = `https://api.noroff.dev/api/v1/auction/listings/${id}`;
