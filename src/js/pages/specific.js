@@ -8,7 +8,9 @@ const nextBtn = document.querySelector("[data-type-specific='next-btn']")
 const sliderWrapper = document.querySelector("[ data-type-specific='slider-wrapper' ]")
 const sliderContainer = document.querySelector("[data-type-specific='slider']")
 const previewContainer = document.querySelector("[data-type-specific='preview-container']")
-const loader = document.querySelector(".loader")
+const MILLISECOND = 3000
+const ERROR_CLR = "#FF6D4D"
+
 
 
 const fetchData = async () => {
@@ -271,6 +273,7 @@ const userCredits = async () => {
 
 
 const setBid = async (amount) => {
+    const formInput = document.querySelector("[data-type-specific='bid-input']");
     let url = `https://api.noroff.dev/api/v1/auction/listings/${id}/bids?_seller=true&_bids=true&_active=true`
     const requestOptions = {
         method: "POST",
@@ -282,21 +285,20 @@ const setBid = async (amount) => {
 
     try {
         const res = await fetch(url, requestOptions);
-        console.log(res)
-        if (res.ok) {
-            const data = await res.json();
-            console.log(data)
-            renderStatus()
-            clearCredits()
-            userCredits()
-            clearBid()
+        if (!res.ok) {
+            const errorData = await res.json()
+            throw new Error(errorData.message || "Du kan ikke by under det høyeste budet") 
+            } 
 
-        } else {
-            throw new Error("Ikke nok kreditt")
-        }
+        const data = await res.json();
+        console.log(data)
+        renderStatus()
+        clearCredits()
+        userCredits()
+        clearBid()
 
     } catch (error) {
-        /*     inputError(error.message) */
+    inputFeedback(error.message, ERROR_CLR, MILLISECOND)
 
     }
 }
@@ -343,20 +345,21 @@ Vennligst <a aria-label="to login page" class=" text-purple-500 underline" href=
 
         const validateInput = async (value) => {
             const fetchBids = await renderStatus()
-            const bidArray = fetchBids.map(bid => {
-                return bid.amount
-            })
-            const credit = await userCredits()
+            const bidArray = fetchBids.map(bid => bid.amount)
+            const highestBid = bidArray.length > 0 ? bidArray[0] : 0 //6
+            const currentCredit = await userCredits()
+            
             if (isNaN(value)) {
-                inputFeedback("Vennligst skriv inn kun tall", "red", 3000)
+                inputFeedback("Vennligst skriv inn kun tall", ERROR_CLR, 3000)
                 return
+                    }
 
-            }
-            if (bidArray[0] > credit) {
-                inputFeedback("Du har ikke nok kredit", "red", 3000)
+           
+            if (highestBid > currentCredit) {
+                inputFeedback("Du har ikke nok kredit", ERROR_CLR, MILLISECOND)
                 return
             }
-
+    
 
         }
 
@@ -365,10 +368,10 @@ Vennligst <a aria-label="to login page" class=" text-purple-500 underline" href=
             e.preventDefault();
             const value = parseInt(formInput.value.trim())
             if (isNaN(value) || value === "") {
-                inputFeedback("Vennligst legg inn ett bud", "red", 3000)
+                inputFeedback("Vennligst legg inn ett bud", ERROR_CLR, MILLISECOND)
                 return
             } else {
-                inputFeedback("", "green", 1500)
+                inputFeedback("", "green", MILLISECOND)
                 setBid(value)
 
 
@@ -382,24 +385,64 @@ Vennligst <a aria-label="to login page" class=" text-purple-500 underline" href=
     })();
 
 
-const initializer = async () => {
-    renderStatus()
-    renderDescription()
-    userCredits()
-    const data = await fetchData();
-    const media = data.media.length;
-    if (media <= 1) {
-        prevBtn.className = "hidden";
-        nextBtn.className = "hidden";
-        previewContainer.className = "hidden";
-        renderSingleSlide()
-    } else if (media > 1) {
-        handleSlides()
+
+
+
+; (async () => {
+    const loader = document.querySelector(".loader")
+    const initializer = async () => {
+        renderStatus()
+        renderDescription()
+        userCredits()
+        const data = await fetchData();
+        const media = data.media.length;
+        if (media <= 1) {
+            prevBtn.className = "hidden";
+            nextBtn.className = "hidden";
+            previewContainer.className = "hidden";
+            renderSingleSlide()
+        } else if (media > 1) {
+            handleSlides()
+        }
+
     }
 
-}
+    async function loadContent() {
+        const wrapper = document.querySelector("[data-type-specific='wrapper']")
+        if (loader) {
+            loader.style.display = "block"
+            wrapper.style.display = "none"
 
-initializer()
+        }
+        try {
+
+            if (id) {
+                await initializer()
+            } else {
+                throw new Error("Problem loading content")
+            }
+
+        } finally {
+            if (loader) {
+                loader.style.display = "none";
+            }
+
+            wrapper.style.display = "flex"
+
+
+        }
+
+
+    }
+
+    loadContent()
+
+
+
+})();
+
+
+
 
 
 
