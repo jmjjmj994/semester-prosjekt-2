@@ -302,11 +302,10 @@ const inputFeedback = (msg, color, time) => {
     formInput.placeholder = msg
     formInput.value = ""
     formInput.style.outline = `1px solid ${color}`
-    submitBidBtn.style.transition = `all 130ms ease-in-out`
-    submitBidBtn.style.transition = `all 130ms ease-in-out`
+    submitBidBtn.style.transition = `all 100ms linear`
+    formInput.style.transition = `all 100ms linear`
     setTimeout(() => {
-        formInput.style.transition = `all 130ms ease-in-out`
-        formInput.style.transition = `all 130ms ease-in-out`
+       
         submitBidBtn.style.backgroundColor = ""
         submitBidBtn.style.color = ""
         formInput.placeholder = "Legg til bud"

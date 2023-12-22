@@ -348,6 +348,17 @@ details[open] .details-content {
   max-height: 100px; /* Adjust as needed */
   opacity: 1;
 }
+
+.svg-icon-green {
+    fill: green;
+}
+
+.svg-icon-red {
+    fill: red;
+}
+.svg-icon-default {
+fill:hsl(274, 90%, 61%) ;
+}
   /*Fancy things*/
 
   /*focus, hover, active  links*/
