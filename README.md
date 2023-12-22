@@ -1,6 +1,6 @@
 # Budhjørnet
 
-![Screenshot](![screencapture-127-0-0-1-5500-index-html-2023-12-22-22_13_27](https://github.com/jmjjmj994/semester-prosjekt-2/assets/111571683/b8b1afb9-7c51-49b7-bd9a-58507da1de97))
+![Screenshot](![Alt text](src/assets/screencapture-127-0-0-1-5500-index-html-2023-12-22-22_13_27.png))
 
 
 
