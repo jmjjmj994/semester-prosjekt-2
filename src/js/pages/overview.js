@@ -25,7 +25,7 @@ const listingsByProfile = async (name) => {
 }
 
 const deleteListing = async (id) => {
-    const container = document.querySelector("[data-type-section='my-listings']")
+    const container = document.querySelector("[data-type-listings='my-listings']")
 
     try {
         const url = `https://api.noroff.dev/api/v1/auction/listings/${id}`;
@@ -50,7 +50,7 @@ const listingsCardHeader = (img) => {
     const cardHeader = createCardElement("div", "relative h-[15rem] rounded-sm");
     const cardHeaderImg = createCardElement("img", "absolute  w-full h-full object-cover border-inherit");
     cardHeaderImg.src = img;
-    cardHeader.alt = "listing";
+    cardHeaderImg.alt = "image of product";
     cardHeader.append(cardHeaderImg);
     return cardHeader
 }
@@ -73,7 +73,7 @@ const listingsCardBody = (title, description, start, end) => {
 const listingsCardFooter = (id) => {
 
     const cardFooter = createCardElement("div", " p-2 flex  gap-2 ");
-    const cardDeleteBtn = createButtonElement("bg-custom-btnBgAccent text-custom-textWhite py-1 px-4 relative rounded-sm shadow-sm");
+    const cardDeleteBtn = createButtonElement("bg-custom-btnBgSpecial text-black btn-bold py-1 px-4 relative rounded-sm shadow-sm");
     cardDeleteBtn.textContent = "Slett";
     cardFooter.append(cardDeleteBtn);
 
@@ -95,8 +95,8 @@ const card = (id, media, title, description, start, end) => {
 
 
 const renderCards = async () => {
-    const parentContainer = document.querySelector("[data-type-overview='parent-section']");
-    const container = document.querySelector("[data-type-section='my-listings']")
+    const parentContainer = document.querySelector("[data-type-overview='listings-wrapper']");
+    const container = document.querySelector("[data-type-overview='my-listings']")
     const containerHeader = document.querySelector("[data-type-overview='header']")
     const containerHeaderH1 = document.querySelector("[data-type-overview='header-h1']")
     const myListings = await listingsByProfile(localStorageItems.userData.name);
