@@ -116,6 +116,7 @@ const handleSingleSlide = async (img) => {
         image.alt = "Placeholder image"
         slide.append(image);
         sliderContainer.append(slide);
+        
     } else {
         image.src = img
         image.alt = "product image"
