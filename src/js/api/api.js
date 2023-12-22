@@ -15,7 +15,6 @@ export const options = {
 
 
 
-
 export const showLoader = (value) => {
     const loader = document.querySelector("[data-loader]")
     value ? loader.style.cssText = "display:block" : loader.style.cssText = "display:none"
@@ -99,7 +98,7 @@ const auctionProfiles = async (name, param) => {
 }
 
 
-export const listingsByDate = async (order,limit) => {
+export const listingsByDate = async (order, limit) => {
     const url =
         `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_bids=true&_count&sort=endsAt&sortOrder=${order}&_active=true&tags=true&limit=${limit}`;
 
@@ -143,7 +142,7 @@ export const listings = async (limit) => {
         } else {
             throw new Error("Failed to fetch data")
         }
-     
+
 
     } catch (error) {
         console.log(error.message)
@@ -151,7 +150,7 @@ export const listings = async (limit) => {
 }
 
 export const listingsByTags = async (tag, offset) => {
-  
+
     const url = `https://api.noroff.dev/api/v1/auction/listings?_seller=true&_tag=${tag}&_bids=true&_active=true&_limit=25&_offset=${offset}`;
 
     try {
@@ -199,7 +198,7 @@ export const singleListing = async (id) => {
 
 
 
-export const createListing = async (title, description,  image, date) => {
+export const createListing = async (title, description, image, date) => {
     let url = `https://api.noroff.dev/api/v1/auction/listings?_bids`
     const requestOptions = {
         method: "POST",
@@ -242,7 +241,7 @@ export const updateEntry = async (id, title, description, tags, image) => {
         const response = await fetch(url, requestOptions);
         if (response.ok) {
             const updatedListing = await response.json();
-           
+
 
         } else {
             const errorData = await response.json();
