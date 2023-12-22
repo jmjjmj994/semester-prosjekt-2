@@ -8,13 +8,20 @@ import { articleCard, skeletonCards, createCardElement, norwegianEndDate, localS
 
 ; (() => {
     const CTAHeaders = () => {
+        const CTAWrapper = document.querySelector("[data-type-cta='wrapper']")
+        const CTAHeader = createCardElement("h1", "text-custom-textDark lg:max-w-[45ch]")
+        const CTAHeaderPrimary = createCardElement("span", "cta-header block")
+        const CTAHeaderSecondary = createCardElement("span", "cta-header-secondary block text-wrap ")
+        CTAWrapper.prepend(CTAHeader)
+        CTAHeader.append(CTAHeaderPrimary, CTAHeaderSecondary)
         const primaryCTAText = document.querySelector("[data-type-cta='primary']");
         const secondaryCTAText = document.querySelector("[data-type-cta='secondary']");
+
         if (!localStorageItems.token) {
-            primaryCTAText.innerHTML = "Utforsk spennende auksjoner nå!"
-            secondaryCTAText.innerHTML = "Logg inn eller registrer deg for å delta og by på unike varer."
+            CTAHeaderPrimary.innerHTML = "Utforsk spennende auksjoner nå!"
+            CTAHeaderSecondary.innerHTML = "Logg inn eller registrer deg for å delta og by på unike varer."
         } else {
-            primaryCTAText.innerHTML = `Velkommen tilbake, ${localStorageItems.userData.name}!`
+            CTAHeaderPrimary.innerHTML = `Velkommen tilbake, ${localStorageItems.userData.name}!`
         }
     }
     const CTAButtons = () => {

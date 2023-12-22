@@ -27,7 +27,7 @@ svg {
     --color-card: 0, 0%, 11%;
     --color-tertiary: 4, 90%, 61%;
     --color-cta--sec: 259, 32%, 41%;
-    --color-btn-bg--accent: 255, 81%, 69%;
+    --color-btn-bg--accent: 255, 81%, 50%;
     --color-btn-bg--special: 46, 90%, 61%;
     --color-btn-bg--small: 0, 0%, 80%;
     --color-text-dark: 0, 0%, 100%;
@@ -108,18 +108,19 @@ svg {
     }
   }
 
-  .cta-header-span {
+  .cta-header-secondary {
     font-size: 1.2rem;
     letter-spacing: -0.025rem;
+    
   }
 
   @media screen and (min-width: 768px) {
-    .cta-header-span {
+    .cta-header-secondary {
       font-size: 1.6rem;
     }
 
     @media screen and (min-width: 1024px) {
-      .cta-header-span {
+      .cta-header-secondary {
         font-size: 1.7rem;
       }
     }
