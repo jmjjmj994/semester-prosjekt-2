@@ -143,11 +143,9 @@ const renderSlides = (media) => {
 
 const renderSingleSlide = async () => {
     const img = await fetchData()
-    console.log(img)
     const slide = createCardElement("div", "flex-1 w-full h-full relative");
     const image = createCardElement("img", "absolute w-full h-full object-cover");
     if (img.media.length === 0) {
-        console.log(img)
         image.src = "src/assets/no-image.jpg";
         image.alt = "Placeholder image"
         slide.append(image);
