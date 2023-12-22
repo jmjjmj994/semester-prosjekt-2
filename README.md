@@ -18,7 +18,7 @@ It's built with HTML, Tailwind CSS, and Vanilla JavaScript, focusing on an engag
 
   
 ### Installation and setup
-git clone [git@github.com:jmjjmj994/semester-prosjekt-2.git]
+git clone git@github.com:jmjjmj994/semester-prosjekt-2.git
 cd semester-prosjekt-2
 npm install
 
