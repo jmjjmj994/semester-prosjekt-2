@@ -66,18 +66,33 @@ const renderUserInformation = async (data) => {
 const overlayListeners = () => {
     const avatarOverlayOpenBtn = document.querySelector("[data-type-overlay='prompt-overlay'");
     const avatarOverlayCloseBtn = document.querySelector("[data-type-overlay='remove-overlay']");
-    avatarOverlayOpenBtn.onclick = () => toggleOverlay(true);
-    avatarOverlayCloseBtn.onclick = () => toggleOverlay(false);
+    avatarOverlayOpenBtn.addEventListener("click", (e) => {
+        toggleAriaHidden(true)
+        toggleOverlay(true)
+    })
+    avatarOverlayCloseBtn.addEventListener("click", (e) => {
+        toggleAriaHidden(false)
+        toggleOverlay(false)
+    })
 
 }
 const toggleOverlay = (value) => {
     if (value) {
         avatarOverlay.classList.add("isActive");
+        avatarOverlayForm.querySelector("button [autofocus], input").focus()
     } else {
         avatarOverlay.classList.remove("isActive");
     }
-
-
+}
+function toggleAriaHidden(hide) {
+    const elements = document.querySelectorAll('body > *:not([data-type-overlay="overlay"])');
+    elements.forEach(function(elem) {
+        if(hide) {
+            elem.setAttribute('aria-hidden', 'true');
+        } else {
+            elem.removeAttribute('aria-hidden');
+        }
+    });
 }
 
 
